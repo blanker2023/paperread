@@ -1,15 +1,15 @@
 window.NLOS_DATA = {
   issue: {
     date: "2026-11-03",
-    number: 2,
-    updatedAt: "2026-11-03T08:50:17Z",
+    number: 3,
+    updatedAt: "2026-11-03T14:44:06Z",
     sourceCount: 1,
     fetched: 227,
-    kept: 3,
-    headline: "让神经场的表示更高效、评估更可信。",
-    note: "本期数据来自 arXiv 实时检索；按主方向独立配额编排，跨方向论文单独标注。本期 T01 / T03 方向无达标候选，按规则空缺。",
-    dailyIds: ["2611.02658", "2611.02044", "2611.00870"],
-    headlineIds: ["2611.02658", "2611.02044", "2611.00870"],
+    kept: 1,
+    headline: "神经场不止于重建：把表示能力用在测量与反演的稳定性上。",
+    note: "本期数据来自 arXiv 实时检索；按主方向独立配额编排。本轮 T01 / T03 无新增达标候选，T04 仅 1 篇新增（其余候选已在第 2 期收录，不重复计入），按规则减条不掺水。",
+    dailyIds: ["2611.01018"],
+    headlineIds: ["2611.01018"],
     crossIds: []
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
@@ -184,10 +184,21 @@ window.NLOS_DATA = {
       tags: ["3DGS 评估", "数字孪生", "覆盖率指标"], primaryClass: "cs.RO",
       summary: "提出一套以物理真值为参照的重建与评估管线，定量衡量人控与漫游车桅杆相机单目输入在月面行进效应（运动模糊、月尘霾、轨迹偏差、稀疏视角）下的逼真重建精度。在三个月面模拟场景上基准测试六种 3DGS 变体，发现测试集新视图合成指标并不成比例地转化为数字孪生重建质量，轨迹偏差与几何覆盖起关键作用；并提出基于 COLMAP 位姿与点云结构的覆盖率评分 Sc，作为无参考条件下的结构保真度启发指标。",
       why: "提醒读者：3DGS 训练指标高不等于重建结果可信。这套评估方法论对任何依赖神经场重建做下游测量的成像研究都有警示意义。"
+    },
+    {
+      id: "2611.01018", no: 16, tier: "C", section: "physics", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.52, score: 0.52, evidence: "mixed",
+      title: "Robust Pixel-wise Digital Image Correlation under Large Motions and Illumination Variations via a Global-to-Local Hybrid Neural Field",
+      titleZh: "全局到局部混合神经场：大位移与光照变化下的鲁棒逐像素数字图像相关",
+      authors: ["Xianglong Guo", "Jianyang Li"],
+      venue: "arXiv · cs.CV", published: "2026-10-31", url: "https://arxiv.org/abs/2611.01018", pdf: "https://arxiv.org/pdf/2611.01018",
+      tags: ["神经场", "数字图像相关", "光照鲁棒"], primaryClass: "cs.CV",
+      summary: "把数字图像相关（DIC）拆成两阶段：第一阶段通过粗旋转搜索、相位相关与掩膜细化估计主导的面内刚性变换，为大平移与大旋转提供可靠初始化；第二阶段用 KAN 与 MLP 的混合网络表示残余位移场，并以有效重叠、光照鲁棒的结构损失优化，局部灰度模型显式容纳乘性与加性亮度变化。仿真与真实实验在噪声、非均匀变形、大旋转、光照变化与成像退化条件下均能稳定恢复位移。",
+      why: "它把神经场用在位移场表示而不是场景重建上，方向与主流 NeRF / 3DGS 路线不同；其中「先刚性对齐再残差细化」的两阶段初始化与显式灰度扰动建模，对任何测量型逆问题的稳定性设计都有借鉴价值。"
     }
   ],
   archive: [
-    { date: "2026-11-03", number: 2, count: 3, highlights: "1 个方向 · 跨方向 0 篇 · OctreeSplat / 损失感知密度控制 / 月面数字孪生评估", current: true },
+    { date: "2026-11-03", number: 3, count: 1, highlights: "1 个方向 · 跨方向 0 篇 · 神经场 DIC 鲁棒位移测量", current: true },
+    { date: "2026-11-03", number: 2, count: 3, highlights: "1 个方向 · 跨方向 0 篇 · OctreeSplat / 损失感知密度控制 / 月面数字孪生评估", current: false },
     { date: "2026-11-03", number: 1, count: 9, highlights: "3 个方向 · 跨方向 2 篇 · MALCT / 瞬态渲染 / 神经算子", current: false },
     { date: "2026-11-02", number: 0, count: 0, highlights: "首版站点尚未开始归档", empty: true }
   ],
