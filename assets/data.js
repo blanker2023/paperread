@@ -1,15 +1,15 @@
 window.NLOS_DATA = {
   issue: {
     date: "2026-11-03",
-    number: 3,
-    updatedAt: "2026-11-03T14:44:06Z",
+    number: 4,
+    updatedAt: "2026-11-03T15:27:16Z",
     sourceCount: 1,
-    fetched: 227,
-    kept: 1,
-    headline: "神经场不止于重建：把表示能力用在测量与反演的稳定性上。",
-    note: "本期数据来自 arXiv 实时检索；按主方向独立配额编排。本轮 T01 / T03 无新增达标候选，T04 仅 1 篇新增（其余候选已在第 2 期收录，不重复计入），按规则减条不掺水。",
-    dailyIds: ["2611.01018"],
-    headlineIds: ["2611.01018"],
+    fetched: 752,
+    kept: 4,
+    headline: "十个方向全部订阅：从散射介质到成像工具，全面覆盖计算成像。",
+    note: "本期起 10 个方向全部启用并默认订阅，按方向独立配额编排。本轮新增 4 篇（T02/T05/T06/T10 各 1），其余候选已在往期收录，不重复计入；T01/T03/T04/T07/T08/T09 无新增达标候选，按规则减条不掺水。",
+    dailyIds: ["2611.02149", "2611.02549", "2611.01384", "2611.03322"],
+    headlineIds: ["2611.02149", "2611.02549", "2611.01384"],
     crossIds: []
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
@@ -17,13 +17,13 @@ window.NLOS_DATA = {
     { id: "T01", name: "非视域成像", en: "NON-LINE-OF-SIGHT", parent: "计算介质", order: 1, defWeight: 3, quota: 3, enabled: true, tagline: "看不见的拐角后面有什么", description: "NLOS、光锥变换、相量场与隐藏场景重建。", cadence: "日增 0–3 篇" },
     { id: "T03", name: "单光子与瞬态成像", en: "SINGLE-PHOTON & TRANSIENT", parent: "计算探测器", order: 2, defWeight: 3, quota: 3, enabled: true, tagline: "捕捉光子抵达的时间", description: "SPAD、TCSPC、瞬态光传输与光子高效成像。", cadence: "日增 0–3 篇" },
     { id: "T04", name: "神经场与逆问题重建", en: "NEURAL FIELDS & INVERSE PROBLEMS", parent: "计算处理", order: 3, defWeight: 3, quota: 3, enabled: true, tagline: "让表示学习与物理模型相遇", description: "神经场、3DGS、深度展开与扩散先验；必须命中成像任务锚词。", cadence: "日增 0–3 篇" },
-    { id: "T02", name: "散射介质成像", en: "THROUGH SCATTERING", parent: "计算介质", order: 4, defWeight: 2, quota: 2, enabled: false, tagline: "穿过散射，重新看清", description: "散射介质、波前整形与抗散射重建。", cadence: "即将支持" },
-    { id: "T05", name: "高光谱重建", en: "HYPERSPECTRAL", parent: "计算处理", order: 5, defWeight: 2, quota: 2, enabled: false, tagline: "从光谱维度恢复更多细节", description: "高光谱采集、压缩感知与光谱重建。", cadence: "即将支持" },
-    { id: "T06", name: "相位恢复与叠层成像", en: "PHASE RETRIEVAL", parent: "计算处理", order: 6, defWeight: 2, quota: 2, enabled: false, tagline: "从强度里找回相位", description: "相位恢复、叠层衍射与相干成像。", cadence: "即将支持" },
-    { id: "T07", name: "光场与无透镜成像", en: "LIGHT FIELD & LENSLESS", parent: "计算介质", order: 7, defWeight: 2, quota: 2, enabled: false, tagline: "重新设计光与传感器", description: "光场、编码孔径与无透镜计算成像。", cadence: "即将支持" },
-    { id: "T08", name: "计算摄影", en: "COMPUTATIONAL PHOTOGRAPHY", parent: "计算处理", order: 8, defWeight: 1, quota: 2, enabled: false, tagline: "传感器之外的图像能力", description: "计算摄影、图像形成与新型视觉采集。", cadence: "即将支持" },
-    { id: "T09", name: "显微计算成像", en: "COMPUTATIONAL MICROSCOPY", parent: "计算探测器", order: 9, defWeight: 1, quota: 2, enabled: false, tagline: "在微观尺度拓展可见边界", description: "计算显微、超分辨与显微逆问题。", cadence: "即将支持" },
-    { id: "T10", name: "成像工具与数据集", en: "TOOLS & DATASETS", parent: "研究生态", order: 10, defWeight: 1, quota: 2, enabled: false, tagline: "让方法更容易复现", description: "仿真器、基准、数据集与开源研究工具。", cadence: "即将支持" }
+    { id: "T02", name: "散射介质成像", en: "THROUGH SCATTERING", parent: "计算介质", order: 4, defWeight: 2, quota: 3, enabled: true, tagline: "穿过散射，重新看清", description: "散射介质、波前整形与抗散射重建。", cadence: "日增 0–3 篇" },
+    { id: "T05", name: "高光谱重建", en: "HYPERSPECTRAL", parent: "计算处理", order: 5, defWeight: 2, quota: 3, enabled: true, tagline: "从光谱维度恢复更多细节", description: "高光谱采集、压缩感知与光谱重建。", cadence: "日增 0–3 篇" },
+    { id: "T06", name: "相位恢复与叠层成像", en: "PHASE RETRIEVAL", parent: "计算处理", order: 6, defWeight: 2, quota: 3, enabled: true, tagline: "从强度里找回相位", description: "相位恢复、叠层衍射与相干成像。", cadence: "日增 0–3 篇" },
+    { id: "T07", name: "光场与无透镜成像", en: "LIGHT FIELD & LENSLESS", parent: "计算介质", order: 7, defWeight: 2, quota: 3, enabled: true, tagline: "重新设计光与传感器", description: "光场、编码孔径与无透镜计算成像。", cadence: "日增 0–3 篇" },
+    { id: "T08", name: "计算摄影", en: "COMPUTATIONAL PHOTOGRAPHY", parent: "计算处理", order: 8, defWeight: 1, quota: 3, enabled: true, tagline: "传感器之外的图像能力", description: "计算摄影、图像形成与新型视觉采集。", cadence: "日增 0–3 篇" },
+    { id: "T09", name: "显微计算成像", en: "COMPUTATIONAL MICROSCOPY", parent: "计算探测器", order: 9, defWeight: 1, quota: 3, enabled: true, tagline: "在微观尺度拓展可见边界", description: "计算显微、超分辨与显微逆问题。", cadence: "日增 0–3 篇" },
+    { id: "T10", name: "成像工具与数据集", en: "TOOLS & DATASETS", parent: "研究生态", order: 10, defWeight: 1, quota: 3, enabled: true, tagline: "让方法更容易复现", description: "仿真器、基准、数据集与开源研究工具。", cadence: "日增 0–3 篇" }
   ],
   sections: [
     { id: "core", name: "核心重建", en: "CORE RECONSTRUCTION", description: "新模型、新表示与重建质量的前沿推进" },
@@ -194,12 +194,58 @@ window.NLOS_DATA = {
       tags: ["神经场", "数字图像相关", "光照鲁棒"], primaryClass: "cs.CV",
       summary: "把数字图像相关（DIC）拆成两阶段：第一阶段通过粗旋转搜索、相位相关与掩膜细化估计主导的面内刚性变换，为大平移与大旋转提供可靠初始化；第二阶段用 KAN 与 MLP 的混合网络表示残余位移场，并以有效重叠、光照鲁棒的结构损失优化，局部灰度模型显式容纳乘性与加性亮度变化。仿真与真实实验在噪声、非均匀变形、大旋转、光照变化与成像退化条件下均能稳定恢复位移。",
       why: "它把神经场用在位移场表示而不是场景重建上，方向与主流 NeRF / 3DGS 路线不同；其中「先刚性对齐再残差细化」的两阶段初始化与显式灰度扰动建模，对任何测量型逆问题的稳定性设计都有借鉴价值。"
+    },
+    {
+      id: "2611.02149", no: 17, tier: "C", section: "system", primaryTopic: "T05", topicTags: ["T05"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Scan-less Hyperspectral Polarimetric Imaging Using Dual-Comb Single-Pixel Imaging",
+      titleZh: "双光梳单像素成像：无扫描的高光谱偏振成像",
+      authors: ["Shogo Tanimura", "Eiji Hase", "Hidenori Koresawa", "Kyuki Shibuya", "Yu Tokizane", "Akifumi Asahara", "Kaoru Minoshima", "Takeshi Yasui"],
+      venue: "arXiv · physics.optics", published: "2026-11-01", url: "https://arxiv.org/abs/2611.02149", pdf: "https://arxiv.org/pdf/2611.02149",
+      tags: ["双光梳", "单像素成像", "偏振", "无扫描"], primaryClass: "physics.optics",
+      summary: "把双光梳光谱偏振测量（DCSP）与结构光照明、单像素探测结合，提出 DCSP-SPI 框架：无需相机即可无扫描地同时获取高光谱偏振图像。利用双光梳干涉的固有幅度与相位灵敏度，重建振幅比 ψ 与相位差 δ 的频谱分辨图像，并通过多入射偏振态扩展到完整 Jones 矩阵元素的高光谱重建。实验用双折射分辨率靶与 Fabry-Pérot 标准具验证。",
+      why: "把「无扫描 + 高光谱 + 偏振」三项能力在同一单像素平台上打通，是对光谱偏振成像采集链路的一次系统级整合，适合关注新型采集方式的读者。"
+    },
+    {
+      id: "2611.02549", no: 18, tier: "C", section: "physics", primaryTopic: "T02", topicTags: ["T02", "T07"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Deterministic and dynamic synthesis of optical skyrmions through an ultrathin multimode fibre",
+      titleZh: "经超薄多模光纤确定性动态合成光学斯格明子",
+      authors: ["R. E. Bautista Gonzalez", "R. Mouthaan", "A. McIntosh", "K. Dholakia"],
+      venue: "arXiv · physics.optics", published: "2026-11-02", url: "https://arxiv.org/abs/2611.02549", pdf: "https://arxiv.org/pdf/2611.02549",
+      tags: ["传输矩阵", "多模光纤", "相位恢复", "拓扑光场"], primaryClass: "physics.optics",
+      summary: "在强耦合多模光纤中，结合矢量传输矩阵控制与相位恢复优化框架，在光纤出射端确定性生成并动态重构任意光学斯格明子（Néel、Bloch、反斯格明子、高阶与双半子）。通过偏振分辨 Stokes 测量与斯格明子数定量验证拓扑性质，波前重编程支持偏振纹理的可逆切换。",
+      why: "它在复杂散射介质里用「传输矩阵 + 相位恢复」实现矢量场的确定性合成，把散射从障碍变成可控工具，对散射成像与光场调控是双重启发。"
+    },
+    {
+      id: "2611.01384", no: 19, tier: "C", section: "physics", primaryTopic: "T06", topicTags: ["T06"], confidence: 0.52, score: 0.52, evidence: "sim",
+      title: "Benign population landscapes do not transfer to empirical risk minimization in nonsmooth optimization",
+      titleZh: "非光滑优化中良性总体景观未必迁移到经验风险最小化",
+      authors: ["Penghao Wang", "Mateo Díaz", "Liwei Jiang"],
+      venue: "arXiv · math.OC", published: "2026-11-01", url: "https://arxiv.org/abs/2611.01384", pdf: "https://arxiv.org/pdf/2611.01384",
+      tags: ["相位恢复", "非凸优化", "鞍点", "理论"], primaryClass: "math.OC",
+      summary: "研究非光滑优化中「良性景观」从总体目标到经验目标的迁移问题。以高斯测量下的稳健相位恢复为例证明：总体目标是良性的，但经验目标却以不随样本量消失的概率存在尖锐伪局部极小，这一渐近概率下界与维度无关，说明常用的两步迁移策略在非光滑场景并不成立。",
+      why: "它从理论上解释了稳健相位恢复为何会卡在伪局部极小，对理解相位恢复算法收敛行为、避免把总体性质误套到有限样本有直接价值。"
+    },
+    {
+      id: "2611.03322", no: 20, tier: "C", section: "benchmark", primaryTopic: "T10", topicTags: ["T10"], confidence: 0.52, score: 0.52, evidence: "sim",
+      title: "View optimization in Computed Tomography",
+      titleZh: "计算机断层成像的视角优化",
+      authors: ["Seemeen Karimi", "Christopher McGuire"],
+      venue: "arXiv · eess.IV", published: "2026-11-02", url: "https://arxiv.org/abs/2611.03322", pdf: "https://arxiv.org/pdf/2611.03322",
+      tags: ["稀疏视角", "CT", "视角选择", "性能预测"], primaryClass: "eess.IV",
+      summary: "针对少视角 CT 的数据欠采样问题，提出基于离散前向模型矩阵分解、并融入预期目标梯度信息的对象感知性能预测框架，为候选视角集给出定量评分，支撑视角选择推荐。方法可在采集前（先验）或采集后（自适应）阶段确定下一个最佳视角，用 5 视角与 15 视角仿真 CT 数据验证。",
+      why: "视角选择是少视角 CT 从「看得见」到「看得准」的关键，这套可先验也可自适应的评分框架，对任何稀疏采集逆问题都有方法论参考价值。"
     }
   ],
   archive: [
-    { date: "2026-11-03", number: 3, count: 1, highlights: "1 个方向 · 跨方向 0 篇 · 神经场 DIC 鲁棒位移测量", current: true },
-    { date: "2026-11-03", number: 2, count: 3, highlights: "1 个方向 · 跨方向 0 篇 · OctreeSplat / 损失感知密度控制 / 月面数字孪生评估", current: false },
-    { date: "2026-11-03", number: 1, count: 9, highlights: "3 个方向 · 跨方向 2 篇 · MALCT / 瞬态渲染 / 神经算子", current: false },
+    { date: "2026-11-03", number: 4, count: 4, highlights: "4 个方向 · 跨方向 0 篇 · 双光梳偏振 / 斯格明子 / 相位恢复理论 / CT 视角优化", current: true,
+      dailyIds: ["2611.02149", "2611.02549", "2611.01384", "2611.03322"], headlineIds: ["2611.02149", "2611.02549", "2611.01384"] },
+    { date: "2026-11-03", number: 3, count: 1, highlights: "1 个方向 · 跨方向 0 篇 · 神经场 DIC 鲁棒位移测量", current: false,
+      dailyIds: ["2611.01018"], headlineIds: ["2611.01018"] },
+    { date: "2026-11-03", number: 2, count: 3, highlights: "1 个方向 · 跨方向 0 篇 · OctreeSplat / 损失感知密度控制 / 月面数字孪生评估", current: false,
+      dailyIds: ["2611.02658", "2611.02044", "2611.00870"], headlineIds: ["2611.02658", "2611.02044", "2611.00870"] },
+    { date: "2026-11-03", number: 1, count: 9, highlights: "3 个方向 · 跨方向 2 篇 · MALCT / 瞬态渲染 / 神经算子", current: false, rebuilt: true,
+      dailyIds: ["2610.22847", "2609.16017", "2606.21270", "2508.09655", "2609.26846", "2610.31271", "2508.02003", "2607.04183", "2603.09548"],
+      headlineIds: ["2610.22847", "2606.21270", "2508.09655"] },
     { date: "2026-11-02", number: 0, count: 0, highlights: "首版站点尚未开始归档", empty: true }
   ],
   watchlist: [

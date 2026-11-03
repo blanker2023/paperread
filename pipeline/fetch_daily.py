@@ -52,6 +52,69 @@ TOPICS = {
                     "deep unfolding", "unrolled", "diffusion prior", "plug-and-play",
                     "computational imaging", "image reconstruction", "tomography"],
     },
+    "T02": {
+        "queries": [
+            'all:"imaging through scattering"',
+            'all:"wavefront shaping" AND all:"imaging"',
+            'all:"scattering media" AND all:"reconstruction"',
+        ],
+        "anchors": ["scattering", "wavefront shaping", "transmission matrix", "speckle",
+                    "turbid", "diffuser", "memory effect", "opaque"],
+    },
+    "T05": {
+        "queries": [
+            'all:"hyperspectral" AND all:"reconstruction"',
+            'all:"snapshot" AND all:"spectral imaging"',
+            'all:"CASSI"',
+        ],
+        "anchors": ["hyperspectral", "spectral imaging", "snapshot", "cassi",
+                    "compressive spectral", "spectral reconstruction", "multispectral"],
+    },
+    "T06": {
+        "queries": [
+            'all:"phase retrieval"',
+            'all:"ptychography"',
+            'all:"coherent diffractive imaging"',
+        ],
+        "anchors": ["phase retrieval", "ptychograph", "coherent diffractive",
+                    "holograph", "phase imaging", "transport of intensity"],
+    },
+    "T07": {
+        "queries": [
+            'all:"light field" AND all:"imaging"',
+            'all:"lensless imaging"',
+            'all:"coded aperture" AND all:"imaging"',
+        ],
+        "anchors": ["light field", "lensless", "coded aperture", "flatcam",
+                    "diffusercam", "mask-based", "plenoptic"],
+    },
+    "T08": {
+        "queries": [
+            'all:"computational photography"',
+            'all:"computational imaging" AND all:"camera"',
+            'all:"burst" AND all:"denoising"',
+        ],
+        "anchors": ["computational photography", "hdr", "burst", "demosaic",
+                    "deblur", "image signal processor", "low-light", "camera pipeline"],
+    },
+    "T09": {
+        "queries": [
+            'all:"computational microscopy"',
+            'all:"Fourier ptychographic"',
+            'all:"super-resolution" AND all:"microscopy"',
+        ],
+        "anchors": ["microscopy", "super-resolution", "fourier ptychographic",
+                    "fluorescence", "label-free", "phase contrast", "localization microscopy"],
+    },
+    "T10": {
+        "queries": [
+            'all:"benchmark" AND all:"computational imaging"',
+            'all:"dataset" AND all:"image reconstruction"',
+            'all:"simulator" AND all:"computational imaging"',
+        ],
+        "anchors": ["benchmark", "dataset", "simulator", "open-source", "open source",
+                    "reproducib", "evaluation framework", "toolkit"],
+    },
 }
 
 # T04 收紧：必须命中成像任务锚词（方案要求）

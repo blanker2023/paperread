@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T14:44:28.989Z",
+  "generatedAt": "2026-11-03T15:28:03.278Z",
   "rangeDays": 90,
   "papers": [
     {
@@ -563,6 +563,144 @@
       "primaryClass": "cs.CV",
       "summary": "把数字图像相关（DIC）拆成两阶段：第一阶段通过粗旋转搜索、相位相关与掩膜细化估计主导的面内刚性变换，为大平移与大旋转提供可靠初始化；第二阶段用 KAN 与 MLP 的混合网络表示残余位移场，并以有效重叠、光照鲁棒的结构损失优化，局部灰度模型显式容纳乘性与加性亮度变化。仿真与真实实验在噪声、非均匀变形、大旋转、光照变化与成像退化条件下均能稳定恢复位移。",
       "why": "它把神经场用在位移场表示而不是场景重建上，方向与主流 NeRF / 3DGS 路线不同；其中「先刚性对齐再残差细化」的两阶段初始化与显式灰度扰动建模，对任何测量型逆问题的稳定性设计都有借鉴价值。"
+    },
+    {
+      "id": "2611.02149",
+      "no": 17,
+      "tier": "C",
+      "section": "system",
+      "primaryTopic": "T05",
+      "topicTags": [
+        "T05"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "real",
+      "title": "Scan-less Hyperspectral Polarimetric Imaging Using Dual-Comb Single-Pixel Imaging",
+      "titleZh": "双光梳单像素成像：无扫描的高光谱偏振成像",
+      "authors": [
+        "Shogo Tanimura",
+        "Eiji Hase",
+        "Hidenori Koresawa",
+        "Kyuki Shibuya",
+        "Yu Tokizane",
+        "Akifumi Asahara",
+        "Kaoru Minoshima",
+        "Takeshi Yasui"
+      ],
+      "venue": "arXiv · physics.optics",
+      "published": "2026-11-01",
+      "url": "https://arxiv.org/abs/2611.02149",
+      "pdf": "https://arxiv.org/pdf/2611.02149",
+      "tags": [
+        "双光梳",
+        "单像素成像",
+        "偏振",
+        "无扫描"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "把双光梳光谱偏振测量（DCSP）与结构光照明、单像素探测结合，提出 DCSP-SPI 框架：无需相机即可无扫描地同时获取高光谱偏振图像。利用双光梳干涉的固有幅度与相位灵敏度，重建振幅比 ψ 与相位差 δ 的频谱分辨图像，并通过多入射偏振态扩展到完整 Jones 矩阵元素的高光谱重建。实验用双折射分辨率靶与 Fabry-Pérot 标准具验证。",
+      "why": "把「无扫描 + 高光谱 + 偏振」三项能力在同一单像素平台上打通，是对光谱偏振成像采集链路的一次系统级整合，适合关注新型采集方式的读者。"
+    },
+    {
+      "id": "2611.02549",
+      "no": 18,
+      "tier": "C",
+      "section": "physics",
+      "primaryTopic": "T02",
+      "topicTags": [
+        "T02",
+        "T07"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "real",
+      "title": "Deterministic and dynamic synthesis of optical skyrmions through an ultrathin multimode fibre",
+      "titleZh": "经超薄多模光纤确定性动态合成光学斯格明子",
+      "authors": [
+        "R. E. Bautista Gonzalez",
+        "R. Mouthaan",
+        "A. McIntosh",
+        "K. Dholakia"
+      ],
+      "venue": "arXiv · physics.optics",
+      "published": "2026-11-02",
+      "url": "https://arxiv.org/abs/2611.02549",
+      "pdf": "https://arxiv.org/pdf/2611.02549",
+      "tags": [
+        "传输矩阵",
+        "多模光纤",
+        "相位恢复",
+        "拓扑光场"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "在强耦合多模光纤中，结合矢量传输矩阵控制与相位恢复优化框架，在光纤出射端确定性生成并动态重构任意光学斯格明子（Néel、Bloch、反斯格明子、高阶与双半子）。通过偏振分辨 Stokes 测量与斯格明子数定量验证拓扑性质，波前重编程支持偏振纹理的可逆切换。",
+      "why": "它在复杂散射介质里用「传输矩阵 + 相位恢复」实现矢量场的确定性合成，把散射从障碍变成可控工具，对散射成像与光场调控是双重启发。"
+    },
+    {
+      "id": "2611.01384",
+      "no": 19,
+      "tier": "C",
+      "section": "physics",
+      "primaryTopic": "T06",
+      "topicTags": [
+        "T06"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "sim",
+      "title": "Benign population landscapes do not transfer to empirical risk minimization in nonsmooth optimization",
+      "titleZh": "非光滑优化中良性总体景观未必迁移到经验风险最小化",
+      "authors": [
+        "Penghao Wang",
+        "Mateo Díaz",
+        "Liwei Jiang"
+      ],
+      "venue": "arXiv · math.OC",
+      "published": "2026-11-01",
+      "url": "https://arxiv.org/abs/2611.01384",
+      "pdf": "https://arxiv.org/pdf/2611.01384",
+      "tags": [
+        "相位恢复",
+        "非凸优化",
+        "鞍点",
+        "理论"
+      ],
+      "primaryClass": "math.OC",
+      "summary": "研究非光滑优化中「良性景观」从总体目标到经验目标的迁移问题。以高斯测量下的稳健相位恢复为例证明：总体目标是良性的，但经验目标却以不随样本量消失的概率存在尖锐伪局部极小，这一渐近概率下界与维度无关，说明常用的两步迁移策略在非光滑场景并不成立。",
+      "why": "它从理论上解释了稳健相位恢复为何会卡在伪局部极小，对理解相位恢复算法收敛行为、避免把总体性质误套到有限样本有直接价值。"
+    },
+    {
+      "id": "2611.03322",
+      "no": 20,
+      "tier": "C",
+      "section": "benchmark",
+      "primaryTopic": "T10",
+      "topicTags": [
+        "T10"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "sim",
+      "title": "View optimization in Computed Tomography",
+      "titleZh": "计算机断层成像的视角优化",
+      "authors": [
+        "Seemeen Karimi",
+        "Christopher McGuire"
+      ],
+      "venue": "arXiv · eess.IV",
+      "published": "2026-11-02",
+      "url": "https://arxiv.org/abs/2611.03322",
+      "pdf": "https://arxiv.org/pdf/2611.03322",
+      "tags": [
+        "稀疏视角",
+        "CT",
+        "视角选择",
+        "性能预测"
+      ],
+      "primaryClass": "eess.IV",
+      "summary": "针对少视角 CT 的数据欠采样问题，提出基于离散前向模型矩阵分解、并融入预期目标梯度信息的对象感知性能预测框架，为候选视角集给出定量评分，支撑视角选择推荐。方法可在采集前（先验）或采集后（自适应）阶段确定下一个最佳视角，用 5 视角与 15 视角仿真 CT 数据验证。",
+      "why": "视角选择是少视角 CT 从「看得见」到「看得准」的关键，这套可先验也可自适应的评分框架，对任何稀疏采集逆问题都有方法论参考价值。"
     }
   ]
 }

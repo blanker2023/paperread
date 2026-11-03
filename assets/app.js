@@ -3,7 +3,7 @@
   const data = window.NLOS_DATA;
   const STORAGE = {
     read: "nlos-read-v1", feedback: "nlos-feedback-v1", saved: "nlos-saved-v1",
-    subscriptions: "imaging-subscriptions-v2", mailSync: "imaging-mail-sync-v2"
+    subscriptions: "imaging-subscriptions-v3", mailSync: "imaging-mail-sync-v2"
   };
   const icons = {
     search: '<circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>',
@@ -283,7 +283,13 @@
       }
     });
     const reset = document.getElementById("reset-subscriptions");
-    if (reset) reset.onclick = function () { writeStore(STORAGE.subscriptions, defaultSubscriptions()); draw(); toast("已恢复默认三方向订阅"); };
+    if (reset) reset.onclick = function () { writeStore(STORAGE.subscriptions, defaultSubscriptions()); draw(); toast("已恢复默认订阅（全部方向）"); };
+    const subscribeAll = document.getElementById("subscribe-all");
+    if (subscribeAll) subscribeAll.onclick = function () {
+      const all = {};
+      data.topics.filter(function (t) { return t.enabled; }).forEach(function (t) { all[t.id] = 3; });
+      writeStore(STORAGE.subscriptions, all); draw(); toast("已订阅全部方向，权重置顶");
+    };
     const syncButton = document.getElementById("mail-sync");
     if (syncButton) syncButton.onclick = function () {
       writeStore(STORAGE.mailSync, { topics: getSubscriptions(), updatedAt: new Date().toISOString(), status: "pending" });
@@ -294,9 +300,46 @@
   function renderArchive() {
     const target = document.getElementById("archive-list");
     if (!target) return;
-    target.innerHTML = data.archive.map(function (issue) {
-      const inner = '<div class="archive-date">' + issue.date.slice(5).replace("-", ".") + '<small>' + issue.date.slice(0, 4) + ' · ISSUE ' + String(issue.number).padStart(3, "0") + '</small></div><div class="archive-info"><h2>' + (issue.current ? "计算成像日报 · 今日" : "计算成像日报") + '</h2><p>' + esc(issue.highlights) + '</p></div><div class="archive-count">' + (issue.count || "—") + '<small>' + (issue.count ? "篇入选" : "暂无归档") + '</small></div>';
-      return issue.empty ? '<div class="archive-item archive-empty">' + inner + '</div>' : '<a class="archive-item" href="index.html">' + inner + '</a>';
+    const share = window.__shareUrl || function (p) { return p; };
+    const live = data.archive.filter(function (i) { return !i.empty; });
+    const total = document.getElementById("archive-total");
+    if (total) total.textContent = "2026 年 · 共 " + live.length + " 期";
+    const params = new URLSearchParams(location.search);
+    const issueNo = params.get("issue");
+    const issue = issueNo ? data.archive.find(function (i) { return String(i.number) === issueNo && !i.empty; }) : null;
+    if (issueNo) {
+      if (!issue || !issue.dailyIds || !issue.dailyIds.length) {
+        target.innerHTML = '<div class="empty-state">' + icon("empty") + '<h2>没有找到这一期</h2><p>期号不存在，或该期未记录论文清单。</p></div>';
+        return;
+      }
+      const papers = issue.dailyIds.map(paperById).filter(Boolean);
+      const headlineSet = issue.headlineIds || [];
+      let number = 1;
+      const displayNumbers = {};
+      const headlineCards = papers.filter(function (p) { return headlineSet.indexOf(p.id) >= 0; }).map(function (p) {
+        displayNumbers[p.id] = number++;
+        return paperCard(p, { displayNo: displayNumbers[p.id], showCross: true });
+      }).join("");
+      const rest = papers.filter(function (p) { return headlineSet.indexOf(p.id) < 0; });
+      const grouped = data.topics.filter(function (t) { return t.enabled; }).sort(function (a, b) { return a.order - b.order; }).map(function (t) {
+        return { topic: t, papers: rest.filter(function (p) { return p.primaryTopic === t.id; }).sort(function (a, b) { return b.score - a.score; }) };
+      }).filter(function (g) { return g.papers.length; });
+      let html = '<div class="archive-issue-head"><a class="text-link" href="' + share("archive.html") + '">← 返回期刊索引</a>' +
+        '<h2>第 ' + issue.number + ' 期 · ' + issue.date + '</h2><p>' + esc(issue.highlights) + (issue.rebuilt ? '（论文清单为回填重建）' : '') + '</p></div>';
+      if (headlineCards) html += '<div class="headlines" style="margin:18px 0 8px">' + headlineCards + '</div>';
+      grouped.forEach(function (g) {
+        const cards = g.papers.map(function (p) { displayNumbers[p.id] = number++; return paperCard(p, { displayNo: displayNumbers[p.id], showCross: p.topicTags.length > 1 }); }).join("");
+        html += '<details class="digest-section topic-section" open><summary><span class="section-name"><span class="topic-badge topic-' + g.topic.id + '">' + g.topic.id + '</span><strong>' + esc(g.topic.name) + '</strong><small>' + esc(g.topic.en) + '</small></span><span class="section-count">' + g.papers.length + ' 篇</span><span class="section-chevron"></span></summary><div class="section-body">' + cards + '</div></details>';
+      });
+      if (!papers.length) html += '<div class="empty-state">' + icon("empty") + '<h2>该期论文清单缺失</h2><p>这一期记录的论文已不在库中。</p></div>';
+      target.innerHTML = html;
+      return;
+    }
+    target.innerHTML = data.archive.map(function (iss) {
+      const inner = '<div class="archive-date">' + iss.date.slice(5).replace("-", ".") + '<small>' + iss.date.slice(0, 4) + ' · ISSUE ' + String(iss.number).padStart(3, "0") + '</small></div><div class="archive-info"><h2>' + (iss.current ? "计算成像日报 · 今日" : "计算成像日报") + '</h2><p>' + esc(iss.highlights) + '</p></div><div class="archive-count">' + (iss.count || "—") + '<small>' + (iss.count ? "篇入选" : "暂无归档") + '</small></div>';
+      if (iss.empty) return '<div class="archive-item archive-empty">' + inner + '</div>';
+      const href = iss.dailyIds && iss.dailyIds.length ? share("archive.html?issue=" + iss.number) : share("index.html");
+      return '<a class="archive-item" href="' + href + '">' + inner + '</a>';
     }).join("");
   }
   function normalize(value) { return String(value || "").toLowerCase().replace(/[\s\-_—–·:：,，.。()（）\[\]{}]+/g, " ").trim(); }
@@ -315,10 +358,12 @@
   function renderSearch() {
     const input = document.getElementById("search-input");
     if (!input) return;
+    const topicFilters = document.getElementById("topic-filters");
+    if (topicFilters) topicFilters.innerHTML = '<button class="filter-chip active" data-topic-filter="all">全部方向</button>' + data.topics.filter(function (t) { return t.enabled; }).sort(function (a, b) { return a.order - b.order; }).map(function (t) { return '<button class="filter-chip" data-topic-filter="' + t.id + '">' + t.id + " · " + esc(t.name) + "</button>"; }).join("");
     let activeTier = "all";
     let activeTopic = "all";
     let index = data.papers;
-    fetch("data/search-index.json").then(function (r) { if (!r.ok) throw new Error("index"); return r.json(); }).then(function (payload) { if (payload.papers && payload.papers.length) index = payload.papers; run(); }).catch(run);
+    fetch((window.__shareUrl || function (p) { return p; })("data/search-index.json")).then(function (r) { if (!r.ok) throw new Error("index"); return r.json(); }).then(function (payload) { if (payload.papers && payload.papers.length) index = payload.papers; run(); }).catch(run);
     function run() {
       const query = input.value.trim();
       document.querySelectorAll("[data-tier]").forEach(function (chip) { chip.classList.toggle("active", chip.dataset.tier === activeTier); });
