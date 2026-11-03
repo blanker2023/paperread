@@ -1,0 +1,537 @@
+{
+  "generatedAt": "2026-11-03T08:51:48.150Z",
+  "rangeDays": 90,
+  "papers": [
+    {
+      "id": "2610.22847",
+      "no": 1,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01",
+        "T03"
+      ],
+      "confidence": 0.91,
+      "score": 0.91,
+      "evidence": "mixed",
+      "title": "Measurement-Adaptive Light-Cone Transform for Robust Non-Line-of-Sight Imaging",
+      "titleZh": "测量自适应光锥变换：面向稳健 NLOS 成像",
+      "authors": [
+        "Lianfang Wang",
+        "Xueying Liu",
+        "Junnan Dong",
+        "Qinghua Zhang",
+        "Jun Liu",
+        "Yong Wang",
+        "Yuping Duan"
+      ],
+      "venue": "arXiv · eess.IV",
+      "published": "2026-10-16",
+      "url": "https://arxiv.org/abs/2610.22847",
+      "pdf": "https://arxiv.org/pdf/2610.22847",
+      "tags": [
+        "LCT",
+        "物理引导",
+        "低信号"
+      ],
+      "primaryClass": "eess.IV",
+      "summary": "提出 MALCT，在保留 LCT 频域高效反演结构的同时，引入测量条件权重与频率相关正则化。时空特征模块用于低信号重建，并评估时间响应展宽、采集时间下降和稀疏空间采样等条件。",
+      "why": "它不是另起一套黑箱网络，而是在可解释的 LCT 框架内做自适应增强，适合直接对照现有重建管线。"
+    },
+    {
+      "id": "2609.16017",
+      "no": 2,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01",
+        "T03"
+      ],
+      "confidence": 0.89,
+      "score": 0.89,
+      "evidence": "mixed",
+      "title": "Cascaded Non-Line-of-Sight Imaging",
+      "titleZh": "级联非视距成像：把高次反射变成新的虚拟视点",
+      "authors": [
+        "Diego Royo",
+        "María Peña",
+        "Forrest B. Peterson",
+        "Andreas Velten",
+        "Julio Marco",
+        "Diego Gutierrez"
+      ],
+      "venue": "ACM TOG · SIGGRAPH Asia 2026",
+      "published": "2026-09-03",
+      "url": "https://arxiv.org/abs/2609.16017",
+      "pdf": "https://arxiv.org/pdf/2609.16017",
+      "code": "https://graphics.unizar.es/projects/CascadedNLOS/",
+      "doi": "10.1145/3842503",
+      "tags": [
+        "高次反射",
+        "多拐角",
+        "虚拟视点"
+      ],
+      "primaryClass": "cs.GR",
+      "summary": "利用传统方法忽略的四次、五次反射，在隐藏墙面上构造虚拟脉冲响应，从而级联第二个虚拟 NLOS 系统。仿真与真实原型展示了双拐角目标成像，也讨论了粗糙隐藏墙面带来的可见性限制。",
+      "why": "把高次光子从噪声变成信息来源，扩展了可成像场景与观察角度，是系统模型层面的明显推进。"
+    },
+    {
+      "id": "2606.21270",
+      "no": 3,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T01",
+        "T03",
+        "T04"
+      ],
+      "confidence": 0.87,
+      "score": 0.87,
+      "evidence": "real",
+      "title": "Non-line-of-sight imaging with arbitrary relay surface geometries via 3D Gaussian Transient Rendering",
+      "titleZh": "基于 3D 高斯瞬态渲染的任意中继面 NLOS 成像",
+      "authors": [
+        "Yi Wang",
+        "Ziyu Zhan",
+        "Yuran Wang",
+        "Hao Wang",
+        "Qiang Liu",
+        "Zuoqiang Shi",
+        "Lingyun Qiu",
+        "Xing Fu"
+      ],
+      "venue": "arXiv · physics.optics",
+      "published": "2026-06-19",
+      "url": "https://arxiv.org/abs/2606.21270",
+      "pdf": "https://arxiv.org/pdf/2606.21270",
+      "tags": [
+        "3D Gaussian",
+        "可微渲染",
+        "任意中继面"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "用 3D 高斯表示隐藏场景，并耦合高效可微瞬态渲染模型，直接从测量瞬态端到端优化。方法不假设中继面几何，兼容共焦与非共焦配置，重点面向空间有限、稀疏采样和非平面中继区域。",
+      "why": "将 3D Gaussian 与瞬态光传输结合，直指真实部署中“中继墙不平整、采样不完整”的常见约束。"
+    },
+    {
+      "id": "2508.09655",
+      "no": 4,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T01",
+        "T04"
+      ],
+      "confidence": 0.79,
+      "score": 0.79,
+      "evidence": "mixed",
+      "title": "Noise-adapted Neural Operator for Robust Non-Line-of-Sight Imaging",
+      "titleZh": "噪声自适应神经算子用于稳健 NLOS 成像",
+      "authors": [
+        "Lianfang Wang",
+        "Kuilin Qin",
+        "Xueying Liu",
+        "Huibin Chang",
+        "Yong Wang",
+        "Yuping Duan"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2025-08-13",
+      "url": "https://arxiv.org/abs/2508.09655",
+      "pdf": "https://arxiv.org/pdf/2508.09655",
+      "tags": [
+        "神经算子",
+        "算法展开",
+        "噪声估计"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "先估计瞬态数据噪声，再以参数化神经算子逼近逆映射，并通过深度算法展开构建可解释的三维重建框架。全局与局部时空特征融合用于提升快速扫描和稀疏照明条件下的稳定性。",
+      "why": "噪声水平被显式纳入逆问题求解，而不是依赖固定网络去适应所有测量条件。"
+    },
+    {
+      "id": "2609.26846",
+      "no": 5,
+      "tier": "B",
+      "section": "physics",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01",
+        "T04"
+      ],
+      "confidence": 0.68,
+      "score": 0.68,
+      "evidence": "mixed",
+      "title": "Reconstruction and Range Characterization for a Directional Confocal Non-Line-of-Sight Imaging Model",
+      "titleZh": "方向性共焦 NLOS 模型的重建与值域刻画",
+      "authors": [
+        "Lingyun Qiu",
+        "Zuoqiang Shi",
+        "Jianyu Wang",
+        "Shiwei Wu"
+      ],
+      "venue": "arXiv · math.NA",
+      "published": "2026-09-22",
+      "url": "https://arxiv.org/abs/2609.26846",
+      "pdf": "https://arxiv.org/pdf/2609.26846",
+      "tags": [
+        "方向反照率",
+        "Helmholtz",
+        "逆问题"
+      ],
+      "primaryClass": "math.NA",
+      "summary": "研究共焦测量下方向反照率场的可恢复性，明确无散场构成全部歧义，并给出恢复 Helmholtz 无旋分量的显式 Fourier-sine 公式。算法使用 FFT 与 Stolt 插值，在模型、渲染和实测瞬态上验证。",
+      "why": "不仅提出算法，还回答了什么能被恢复、什么天然不可见，有助于判断实验结果的可靠性边界。"
+    },
+    {
+      "id": "2610.31271",
+      "no": 6,
+      "tier": "B",
+      "section": "physics",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01",
+        "T04"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "sim",
+      "title": "Numerical reconstruction of polygonal obstacles by diffracted waves",
+      "titleZh": "利用衍射波数值重建多边形障碍物",
+      "authors": [
+        "Xi Chen",
+        "Kuangmiao Xiong",
+        "Boxi Xu"
+      ],
+      "venue": "arXiv · math.NA",
+      "published": "2026-10-22",
+      "url": "https://arxiv.org/abs/2610.31271",
+      "pdf": "https://arxiv.org/pdf/2610.31271",
+      "tags": [
+        "衍射",
+        "逆散射",
+        "阴影区"
+      ],
+      "primaryClass": "math.NA",
+      "summary": "从单脉冲波场中分离衍射信号，以到达时间恢复可见顶点，再利用振幅推断角方向与张角。方法可处理反射波无法到达接收器的阴影区域，并在多种多边形障碍物与加噪条件下验证。",
+      "why": "提供了一条区别于常规椭圆反演的逆散射路径，尤其适合关注遮挡边界与角点恢复的研究。"
+    },
+    {
+      "id": "2508.02003",
+      "no": 7,
+      "tier": "A",
+      "section": "efficient",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01",
+        "T04"
+      ],
+      "confidence": 0.77,
+      "score": 0.77,
+      "evidence": "sim",
+      "title": "Fast and Memory-efficient Non-line-of-sight Imaging with Quasi-Fresnel Transform",
+      "titleZh": "基于准 Fresnel 变换的快速低内存 NLOS 成像",
+      "authors": [
+        "Yijun Wei",
+        "Jianyu Wang",
+        "Leping Xiao",
+        "Zuoqiang Shi",
+        "Xing Fu",
+        "Lingyun Qiu"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2025-08-04",
+      "url": "https://arxiv.org/abs/2508.02003",
+      "pdf": "https://arxiv.org/pdf/2508.02003",
+      "tags": [
+        "Quasi-Fresnel",
+        "低内存",
+        "轻量设备"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "利用多数隐藏目标的二维特性，以二维函数表示场景，并通过准 Fresnel 变换建立测量与场景之间的直接反演。目标是降低三维体表示带来的计算与内存开销，为移动和嵌入式设备重建提供路径。",
+      "why": "从问题表示本身降低复杂度，而不是只优化实现，对资源受限部署很有参考价值。"
+    },
+    {
+      "id": "2607.04183",
+      "no": 8,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01"
+      ],
+      "confidence": 0.61,
+      "score": 0.61,
+      "evidence": "real",
+      "title": "Non-Line-of-Sight imaging using raster scanning at NIR wavelength",
+      "titleZh": "近红外波段光栅扫描 NLOS 成像",
+      "authors": [
+        "Mohammad Roueinfar",
+        "Mahdi Salmanian"
+      ],
+      "venue": "ICEE · eess.IV",
+      "published": "2026-07-05",
+      "url": "https://arxiv.org/abs/2607.04183",
+      "pdf": "https://arxiv.org/pdf/2607.04183",
+      "doi": "10.1109/ICEE67339.2025.11213924",
+      "tags": [
+        "近红外",
+        "光栅扫描",
+        "三次反射"
+      ],
+      "primaryClass": "eess.IV",
+      "summary": "采用近红外激光、云台光栅扫描与近红外相机构建三次反射成像系统，并对不同隐藏目标进行实验。结果以真实图像为参照，使用 MSE 与 RMSE 评价重建误差。",
+      "why": "装置链路清楚，适合用作非时间分辨 NLOS 实验系统与误差评价的对照。"
+    },
+    {
+      "id": "2603.09548",
+      "no": 9,
+      "tier": "A",
+      "section": "benchmark",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T01",
+        "T03"
+      ],
+      "confidence": 0.82,
+      "score": 0.82,
+      "evidence": "real",
+      "title": "A comprehensive study of time-of-flight non-line-of-sight imaging",
+      "titleZh": "飞行时间 NLOS 成像的统一比较研究",
+      "authors": [
+        "Julio Marco",
+        "Adrian Jarabo",
+        "Ji Hyun Nam",
+        "Alberto Tosi",
+        "Diego Gutierrez",
+        "Andreas Velten"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-03-10",
+      "url": "https://arxiv.org/abs/2603.09548",
+      "pdf": "https://arxiv.org/pdf/2603.09548",
+      "tags": [
+        "统一模型",
+        "基准",
+        "Radon 变换"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "在统一前向模型与硬件条件下梳理多类 ToF NLOS 方法，联系 Radon 变换与相量场虚拟 LOS 模型，并在相同设备和相近光子计数下比较。研究重点落在分辨率、可见性和噪声敏感性的共同限制。",
+      "why": "适合作为阅读新算法前的基准坐标系，帮助区分方法差异与实验条件差异。"
+    },
+    {
+      "id": "2510.25660",
+      "no": 10,
+      "tier": "B",
+      "section": "tools",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T01",
+        "T03",
+        "T04"
+      ],
+      "confidence": 0.71,
+      "score": 0.71,
+      "evidence": "sim",
+      "title": "mitransient: Transient light transport in Mitsuba 3",
+      "titleZh": "mitransient：Mitsuba 3 的瞬态光传输扩展",
+      "authors": [
+        "Diego Royo",
+        "Jorge Garcia-Pueyo",
+        "Miguel Crespo",
+        "Guillermo Enguita",
+        "Óscar Pueyo-Ciutad",
+        "Diego Bielsa"
+      ],
+      "venue": "arXiv · cs.GR",
+      "published": "2025-10-29",
+      "url": "https://arxiv.org/abs/2510.25660",
+      "pdf": "https://arxiv.org/pdf/2510.25660",
+      "code": "https://mitransient.readthedocs.io",
+      "tags": [
+        "Mitsuba 3",
+        "可微渲染",
+        "开源工具"
+      ],
+      "primaryClass": "cs.GR",
+      "summary": "为 Mitsuba 3 增加时间维度，支持 CPU/GPU 瞬态模拟、偏振跟踪与瞬态可微渲染，并提供 NLOS 场景和采集噪声模拟工具。用于在缺少昂贵硬件时快速原型化瞬态成像系统。",
+      "why": "能直接补齐仿真验证与可微渲染实验工具链，降低新想法的验证门槛。"
+    },
+    {
+      "id": "2604.00225",
+      "no": 11,
+      "tier": "C",
+      "section": "transfer",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.49,
+      "score": 0.49,
+      "evidence": "mixed",
+      "title": "Pupil Design for Computational Wavefront Estimation",
+      "titleZh": "面向计算波前估计的光瞳设计",
+      "authors": [
+        "Ali Almuallem",
+        "Nicholas Chimitt",
+        "Bole Ma",
+        "Qi Guo",
+        "Stanley H. Chan"
+      ],
+      "venue": "arXiv · eess.IV",
+      "published": "2026-03-31",
+      "url": "https://arxiv.org/abs/2604.00225",
+      "pdf": "https://arxiv.org/pdf/2604.00225",
+      "tags": [
+        "光瞳设计",
+        "波前估计",
+        "非对称性"
+      ],
+      "primaryClass": "eess.IV",
+      "summary": "提出定量非对称指标指导光瞳设计，研究非对称性与单次强度测量波前可恢复性的关系，并分析通光量与噪声表现之间的权衡。结论由大规模仿真与光学实验共同支持。",
+      "why": "虽非直接 NLOS 方法，其波前编码与可恢复性分析可迁移到采集端联合设计。"
+    },
+    {
+      "id": "2602.00633",
+      "no": 12,
+      "tier": "C",
+      "section": "transfer",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T01",
+        "T03"
+      ],
+      "confidence": 0.45,
+      "score": 0.45,
+      "evidence": "real",
+      "title": "Near-lossless method for generating thermal photon-bunched light",
+      "titleZh": "近无损耗产生热光子聚束光的方法",
+      "authors": [
+        "Xi Jie Yeo",
+        "Darren Ming Zhi Koh",
+        "Justin Yu Xiang Peh",
+        "Christian Kurtsiefer",
+        "Peng Kian Tan"
+      ],
+      "venue": "arXiv · quant-ph",
+      "published": "2026-01-31",
+      "url": "https://arxiv.org/abs/2602.00633",
+      "pdf": "https://arxiv.org/pdf/2602.00633",
+      "tags": [
+        "光子聚束",
+        "时间相关",
+        "量子光源"
+      ],
+      "primaryClass": "quant-ph",
+      "summary": "面向利用时间相关的测距、同步与 NLOS 成像，展示一种低损耗光子聚束生成方法，试图解决既有光源相干时间过短或亮度不足的问题，为相关测量提供新的光源选择。",
+      "why": "属于光源侧储备进展，可观察其是否能支撑新的被动或相关测量 NLOS 方案。"
+    },
+    {
+      "id": "2611.02658",
+      "no": 13,
+      "tier": "B",
+      "section": "efficient",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "real",
+      "title": "OctreeSplat: Hierarchical Octree-Guided Feed-Forward Gaussian Splatting",
+      "titleZh": "OctreeSplat：八叉树引导的层级前馈高斯泼溅",
+      "authors": [
+        "Yibin Zhao",
+        "Yihan Pan",
+        "Wenli Yang",
+        "Jun Nan",
+        "Jianjun Yi"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-02",
+      "url": "https://arxiv.org/abs/2611.02658",
+      "pdf": "https://arxiv.org/pdf/2611.02658",
+      "tags": [
+        "3DGS",
+        "前馈重建",
+        "八叉树"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "提出 OctreeSplat，一种层级八叉树引导的前馈 3D 高斯泼溅方法。从冻结的视觉基础模型提取多视图特征与几何先验，构建层级八叉树并预测致密化分数，使高斯基元按局部复杂度以空间可变密度分配；随机实体体渲染改进深度监督并支持表面重建，可选测试时优化模块在相机参数可用时提升一致性。训练仅更新 7600 万新增参数、需 35 GPU 小时，在 Replica、TUM、Tanks and Temples、DTU 上以更少基元取得有竞争力的视图合成与表面重建质量。",
+      "why": "前馈 3DGS 的关键瓶颈是基元分配与场景复杂度不匹配，八叉树引导的按需致密化给出了低成本解法，对重建效率敏感的成像管线有直接参考价值。"
+    },
+    {
+      "id": "2611.02044",
+      "no": 14,
+      "tier": "B",
+      "section": "efficient",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "mixed",
+      "title": "Unified Loss-Aware Density Control for 3D Gaussian Splatting",
+      "titleZh": "面向 3D 高斯泼溅的统一损失感知密度控制",
+      "authors": [
+        "Tae-Young Kim",
+        "Jiwoo Chung",
+        "Jae-Pil Heo"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-01",
+      "url": "https://arxiv.org/abs/2611.02044",
+      "pdf": "https://arxiv.org/pdf/2611.02044",
+      "tags": [
+        "3DGS",
+        "密度控制",
+        "损失感知"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "将 3DGS 的自适应密度控制重新表述为一系列局部损失下降决策：用基于 Taylor 展开的逐高斯代理量预测分裂、克隆与不透明度衰减三种操作对目标函数的改变。在归一化位置-尺度联合空间扩展二阶分裂；把克隆建模为代理最小化问题并赋予子高斯有原则的不透明度；以选择性软衰减替代全局不透明度重置。标准 3DGS 基准上以相当或更少的基元预算获得更好的渲染质量。",
+      "why": "把 3DGS 里长期靠启发式的密度控制变成可量化的损失决策，方法干净且即插即用，适合作为改进现有重建管线的直接参考。"
+    },
+    {
+      "id": "2611.00870",
+      "no": 15,
+      "tier": "B",
+      "section": "benchmark",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "real",
+      "title": "A Reproducible Reconstruction and Evaluation Framework for Photorealistic Lunar Analog Scene Reconstruction Toward Digital Twins",
+      "titleZh": "面向数字孪生的月面模拟场景逼真重建与可复现评估框架",
+      "authors": [
+        "Antar Mazumder",
+        "Ryan Hartzell",
+        "Luke Boyd",
+        "Alexander Robinson",
+        "Neha Sharma",
+        "Chance Carnival",
+        "Frances Zhu"
+      ],
+      "venue": "arXiv · cs.RO",
+      "published": "2026-10-31",
+      "url": "https://arxiv.org/abs/2611.00870",
+      "pdf": "https://arxiv.org/pdf/2611.00870",
+      "code": "https://rose-lab-admin.github.io/rose-lunar-dt-rec",
+      "tags": [
+        "3DGS 评估",
+        "数字孪生",
+        "覆盖率指标"
+      ],
+      "primaryClass": "cs.RO",
+      "summary": "提出一套以物理真值为参照的重建与评估管线，定量衡量人控与漫游车桅杆相机单目输入在月面行进效应（运动模糊、月尘霾、轨迹偏差、稀疏视角）下的逼真重建精度。在三个月面模拟场景上基准测试六种 3DGS 变体，发现测试集新视图合成指标并不成比例地转化为数字孪生重建质量，轨迹偏差与几何覆盖起关键作用；并提出基于 COLMAP 位姿与点云结构的覆盖率评分 Sc，作为无参考条件下的结构保真度启发指标。",
+      "why": "提醒读者：3DGS 训练指标高不等于重建结果可信。这套评估方法论对任何依赖神经场重建做下游测量的成像研究都有警示意义。"
+    }
+  ]
+}

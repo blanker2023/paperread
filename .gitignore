@@ -1,0 +1,14 @@
+# 机密：QQ 邮箱 SMTP 授权码，绝不上传
+pipeline/mail_config.json
+
+# 本地运行产物
+pipeline/outbox/
+pipeline/candidates.json
+
+# WorkBuddy 项目数据
+.workbuddy/
+
+# 预览截图与临时文件
+preview*.png
+.e*/
+*.log
