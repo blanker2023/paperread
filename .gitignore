@@ -12,3 +12,7 @@ pipeline/candidates.json
 preview*.png
 .e*/
 *.log
+
+# 发布产物与应用标记
+publish/
+.wbapp_*.genie
