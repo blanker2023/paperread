@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-03",
-    number: 5,
-    updatedAt: "2026-11-03T15:52:19Z",
+    date: "2026-11-04",
+    number: 6,
+    updatedAt: "2026-11-04T02:18:38Z",
     sourceCount: 1,
-    fetched: 752,
-    kept: 13,
-    headline: "稀疏视角 CT 迎来先验驱动的高斯重建，相位恢复与生成先验同步推进。",
-    note: "3 天窗口内 8 条候选全部已在第 2–4 期收录，为避免空期改用 7 天窗口补充检索（34 条候选、26 条未收录），按方向独立配额择优收录 13 篇（T01×1 / T04×3 / T06×3 / T08×2 / T09×2 / T10×2），跨方向 2 篇；T02/T03/T05/T07 无达标新增候选，按规则减条不掺水。",
-    dailyIds: ["2610.39359", "2610.40046", "2610.38207", "2610.41531", "2611.00157", "2610.40187", "2610.41011", "2610.40166", "2610.37802", "2610.39340", "2610.38589", "2610.40393", "2610.37519"],
-    headlineIds: ["2610.39359", "2610.37802", "2610.38207"],
-    crossIds: ["2610.38207", "2610.41011"]
+    fetched: 1358,
+    kept: 6,
+    headline: "遮挡式非视域用低成本闪光 LiDAR 打通仿真到实测，超低场 MRI 与单像素相位成像同步给出开源工具链与压缩测量方案。",
+    note: "3 天窗口检索 1358 条、产出 29 条候选，其中 6 条已在第 2–5 期收录；其余候选大量落在非成像主题（手写识别、视频编辑、材料学工具链、射电望远镜标定等），按「不掺水」原则逐条人工复核后收录 6 篇（T01×1 / T04×1 / T06×1 / T08×2 / T10×1），跨方向 1 篇；T02/T03/T05/T07/T09 无达标成像候选，按规则减条。",
+    dailyIds: ["2611.04068", "2611.01511", "2611.01675", "2611.01888", "2611.04092", "2611.01823"],
+    headlineIds: ["2611.04068", "2611.01511", "2611.01675"],
+    crossIds: ["2611.04068"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -364,10 +364,72 @@ window.NLOS_DATA = {
       tags: ["非视域感知", "超维计算", "ISAC"], primaryClass: "cs.RO",
       summary: "智慧工厂中人等被动目标可能处在机器人视场外并造成安全风险，而 LiDAR、雷达、相机都受视距与遮挡限制。作者提出仅依赖通信基础设施分布式信道测量的视场外被动实体感知框架：把信道测量嵌入高维表示（超维计算），在不显式重建信道的前提下做风险感知分类。基于商用射线追踪的数值仿真与 ROS 场景验证显示，严重遮挡下分类准确率可达 89%，计算复杂度保持较低，并改善了路径规划安全性。",
       why: "提供了一条不靠光学、而靠通信信道与分布式感知的非视域路线，与光学 NLOS 互补。超维计算的轻量嵌入也适合边缘端实时部署。"
+    },
+    {
+      id: "2611.04068", no: 34, tier: "A", section: "system", primaryTopic: "T01", topicTags: ["T01", "T03"], confidence: 0.76, score: 0.76, evidence: "mixed",
+      title: "Simulation-Driven Approach for Occlusion-Based Non-Line-Of-Sight Detection Using a Low-Cost Flash LiDAR",
+      titleZh: "仿真驱动的遮挡式非视域目标检测：基于低成本闪光 LiDAR",
+      authors: ["Peizhao Qiu", "Emmanuel A Olowe", "Zhenya Zang", "Istvan Gyongy", "Danial Chitnis"],
+      venue: "arXiv · eess.IV", published: "2026-11-02", url: "https://arxiv.org/abs/2611.04068", pdf: "https://arxiv.org/pdf/2611.04068",
+      tags: ["非视域检测", "SPAD 闪光 LiDAR", "蒙特卡洛瞬态仿真"], primaryClass: "eess.IV",
+      summary: "现有非视域工作多针对「拐角后」这一典型构型，本文转向更难的目标被场景几何遮挡的遮挡式非视域场景。为绕开大规模真实数据采集的困难，作者搭建基于光子的蒙特卡洛瞬态仿真器，生成多样化合成训练数据并与实验数据对照校验；再训练 AI 模型识别与隐藏目标关联的多跳（多次反弹）光子模式。模型在合成测试集上平均精度 AP 达 0.91，直接迁移到 TMF8829 SPAD 闪光 LiDAR 采集的 180 次真实测量时，准确率 86.67%、AP 0.95，说明仿真得到的瞬态数据足以支撑低成本商用传感器完成隐藏目标检测。",
+      why: "用「仿真训练 + 零样本迁移到消费级 SPAD 阵列」验证了遮挡式 NLOS 的可行性，硬件成本比 TCSPC 逐点扫描低一个量级；多跳光子模式的建模思路可直接挪到隐藏场景重建的前端检测环节。"
+    },
+    {
+      id: "2611.01511", no: 35, tier: "A", section: "tools", primaryTopic: "T10", topicTags: ["T10"], confidence: 0.98, score: 0.98, evidence: "sim",
+      title: "OpenULF: A Modular Toolkit Enables Data-Driven Ultra-Low-Field MRI with both Classical and Quantum Sensors",
+      titleZh: "OpenULF：面向经典与量子传感器的数据驱动超低场 MRI 模块化工具链",
+      authors: ["Hanhan Wu", "Yuchen Yuan", "Weiwen Jiang"],
+      venue: "arXiv · eess.IV", published: "2026-11-01", url: "https://arxiv.org/abs/2611.01511", pdf: "https://arxiv.org/pdf/2611.01511",
+      tags: ["超低场 MRI", "开源仿真器", "SQUID 与线圈"], primaryClass: "eess.IV",
+      summary: "超低场（<10 mT）MRI 便携廉价，但两类接收器各有短板：SQUID 量子传感器灵敏度高却需低温制冷，经典感应线圈室温廉价但信号更弱，二者在传统物理成像下都受低信噪比困扰。数据驱动重建已在相近逆问题上突破此类极限，超低场 MRI 却缺少公开数据集、基准与灵活仿真器。OpenULF 提供模块化开源仿真工具链：经 Bloch 方程校验的物理仿真器、标定过的 SQUID 与线圈接收模型、重建网络，以及自动化设计空间搜索引擎；接收器抽象基类、解耦物理与学习的类型化 HDF5 契约、可断点续跑的扫描引擎，使传感器、模型与数据集三者可独立替换。作者据此在四个解剖数据集上训练 774 个模型并完成三次设计空间探索，发现 ML 重建效果强烈依赖数据集与传感器，SQUID 与线圈的交叉点在 450 μT 附近，传感器硬件与模型容量在设计阶段可相互置换——最优传感器由数据集与场强决定，而非由信噪比决定。",
+      why: "把「传感器—前向物理—重建网络」做成可替换的正交模块，是逆问题类工作里少见的工程化范式；对自建 NLOS / 瞬态仿真数据管线，其接口分层和可断点续跑的扫描引擎有直接参考价值。"
+    },
+    {
+      id: "2611.01675", no: 36, tier: "B", section: "system", primaryTopic: "T06", topicTags: ["T06"], confidence: 0.68, score: 0.68, evidence: "real",
+      title: "Learned optical compression for single-pixel quantitative phase imaging",
+      titleZh: "学习式光学压缩实现单像素定量相位成像",
+      authors: ["Ary Portes", "Yuntian Wang", "Che-Yung Shen", "Shiqi Chen", "Aydogan Ozcan"],
+      venue: "arXiv · physics.optics", published: "2026-11-01", url: "https://arxiv.org/abs/2611.01675", pdf: "https://arxiv.org/pdf/2611.01675",
+      tags: ["单像素成像", "定量相位", "衍射光学编码"], primaryClass: "physics.optics",
+      summary: "定量相位成像（QPI）能看到透明物体的光程差变化，但通常依赖空间分辨的强度测量。作者把衍射光学编码器与数字神经网络解码器联合优化，让与重建相关的相位信息集中到紧凑的测量向量里：单个可重构相位调制面依次显示与输入物体无关的学习式编码图案，每张图案只给出一个标量强度。可见光波段的实验系统以约 40 倍维度压缩重建未知物体的定量相位图，所用测量数仅为重建像素数的 2.55%；对手写数字与光栅状相位物体做盲测，平均 Pearson 相关系数分别为 0.945 与 0.848，同等测量预算下重建保真度明显优于其他编码策略。光学编码器固定后，只需解码器的神经自适应即可迁移到未见过的数据分布。",
+      why: "把「测量矩阵」从数字掩膜搬到真实的衍射光学面，并用 2.55% 的测量数拿到 0.94 的相关系数，是单像素 / 压缩感知路线的一记强实证；「编码器固定、解码器微调」的迁移方式对跨样品、跨波段的相位成像很实用。"
+    },
+    {
+      id: "2611.01888", no: 37, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.64, score: 0.64, evidence: "real",
+      title: "Prior-Guided Physics-Informed Deep Learning for Fast 4D MRI Reconstruction",
+      titleZh: "先验引导的物理信息深度学习用于快速 4D MRI 重建",
+      authors: ["Mojtaba Safari", "Parag J. Parikh", "Shansong Wang", "Mingzhe Hu", "Philip Connell", "Stanley L. Liauw", "Ralph R. Weichselbaum", "Zhen Tian", "Xiaofeng Yang"],
+      venue: "arXiv · cs.CV", published: "2026-11-01", url: "https://arxiv.org/abs/2611.01888", pdf: "https://arxiv.org/pdf/2611.01888",
+      tags: ["4D MRI", "展开网络", "物理信息"], primaryClass: "cs.CV",
+      summary: "提出 PGPI4MR，一种先验引导、物理信息约束的 4D MRI 重建方法：借用其他呼吸相位的信息，或同一次扫描前 30 秒的定位扫描，来提升重建质量而不增加扫描时间。网络为展开式（unrolled）结构，可从 60/30/15 秒数据重建 16 个呼吸相位，也能由 0.29–0.49 秒的数据重建单个体积；网络只在其他志愿者上训练一次，不针对新志愿者重训。在自由呼吸 MR-linac（1.5T）、腹部（3T）与大腿加压（1.5T）三组实测 k 空间上，各扫描时长的留出误差均为最低，16 个相位在扫描结束后中位 7.5–13 秒内产出；耦合 16 个相位使 60 秒数据的误差比逐相位单独重建降低 9.1%，0.49 秒亚秒重建的误差比最优对照低 15.5%，在较快的 GPU 上每个 0.29 秒窗口都能在 0.5 秒内完成采集与重建。",
+      why: "把「先验」从外部数据集换成同一受试者自身的定位扫描，绕开了跨受试者泛化这道坎；展开网络加物理一致性在极短采集窗口上的增益，与瞬态成像的低光子预算重建是同一类问题。"
+    },
+    {
+      id: "2611.04092", no: 38, tier: "C", section: "benchmark", primaryTopic: "T08", topicTags: ["T08"], confidence: 0.52, score: 0.52, evidence: "mixed",
+      title: "CHROMA-MILL: Joint Low-Light Enhancement and White Balance under Colored Illumination",
+      titleZh: "CHROMA-MILL：彩色光照下低照度增强与白平衡联合校正的数据集与方法",
+      authors: ["Pol Riubrogent-Comas", "David Serrano-Lozano", "Maria Pilligua", "Michael S. Brown", "Ramon Baldrich", "Javier Vazquez-Corral"],
+      venue: "arXiv · cs.CV", published: "2026-11-03", url: "https://arxiv.org/abs/2611.04092", pdf: "https://arxiv.org/pdf/2611.04092",
+      tags: ["低照度增强", "白平衡", "RAW 数据集"], primaryClass: "cs.CV",
+      summary: "低照度环境下拍到的是弱而带噪的传感器信号，低照度增强（LLIE）之后还得做自动白平衡（AWB），而同一份含噪信号同样会削弱照度推断能力。工程上通常先增强再白平衡，但这个串行策略几乎没被认真检验，因为现有低照度数据集光源范围窄、且没有照度真值可供评价 AWB。作者构建 CHROMA-MILL：用单反与手机在四种标定光源、十一个强度档下拍摄 50 个场景的 RAW 数据集；由于光可加，在线性 RAW 域做混合即可合成物理有效、色度真值精确的光源混合样本。基准测试表明联合校正最优，据此提出 CTI-Retinexformer，同时监督照度图、色度预测与光照不变的场景嵌入，较最优串行方案在 PSNR_L 上高 0.7 dB、ΔE00 低 1.1。",
+      why: "补上了「光源色度真值」这一长期缺失的评测条件，并用线性 RAW 域混合扩增出物理自洽的难例；任何「先恢复再估计」的级联式计算摄影管线，都能拿它当现成反例。"
+    },
+    {
+      id: "2611.01823", no: 39, tier: "C", section: "core", primaryTopic: "T08", topicTags: ["T08"], confidence: 0.52, score: 0.52, evidence: "sim",
+      title: "LUMEN: Geometry-Guided Diffusion Model for Spatially-Varying HDR Illumination Estimation",
+      titleZh: "LUMEN：几何引导扩散模型的空间变化 HDR 光照估计",
+      authors: ["Hongze Chen", "Fangyu Lin", "Runze Zhang", "Lingting Zhu", "Weikai Chen", "Zeyu Hu", "Yingda Yin", "Keyang Luo", "Xin Wang", "Zehong Lin", "Jun Zhang"],
+      venue: "arXiv · cs.CV", published: "2026-11-01", url: "https://arxiv.org/abs/2611.01823", pdf: "https://arxiv.org/pdf/2611.01823",
+      tags: ["HDR 光照估计", "扩散模型", "逆渲染"], primaryClass: "cs.CV",
+      summary: "从图像估计场景光照之所以难，根源在于光照本身随几何、遮挡与光源位置而空间变化。现有做法用局部环境图或探针表示引入几何线索，但多依赖回归或参数模型，结果过度平滑、真实感有限。LUMEN 改用生成式视角：先从单视图或多视图图像重建粗略三维场景，在任意位置渲染部分环境图以编码可见性与空间结构，再与多视图图像特征融合后送入扩散 Transformer，生成完整的 HDR 环境图。为训练该模型，作者构建了 700 个室内场景、带稠密空间监督的合成数据集，含多视图 RGB、深度以及多个采样位置上的 HDR 光照。实验显示其视觉保真度与空间一致性较既有方法显著提升。",
+      why: "用「渲染出的部分环境图」作条件、让扩散模型补全全向 HDR 光照，相当于给逆渲染加了一个几何感知的生成先验；这条「残缺物理观测 + 生成补全」的路径与非视域重建的思路高度同构。"
     }
   ],
   archive: [
-    { date: "2026-11-03", number: 5, count: 13, highlights: "6 个方向 · 跨方向 2 篇 · 稀疏视角 CBCT / 荧光涨落超分辨 / 叠层衍射扩散采样", current: true,
+    { date: "2026-11-04", number: 6, count: 6, highlights: "5 个方向 · 跨方向 1 篇 · 遮挡式 NLOS 闪光 LiDAR / 超低场 MRI 开源工具链 / 单像素定量相位压缩", current: true,
+      dailyIds: ["2611.04068", "2611.01511", "2611.01675", "2611.01888", "2611.04092", "2611.01823"], headlineIds: ["2611.04068", "2611.01511", "2611.01675"] },
+    { date: "2026-11-03", number: 5, count: 13, highlights: "6 个方向 · 跨方向 2 篇 · 稀疏视角 CBCT / 荧光涨落超分辨 / 叠层衍射扩散采样", current: false,
       dailyIds: ["2610.39359", "2610.40046", "2610.38207", "2610.41531", "2611.00157", "2610.40187", "2610.41011", "2610.40166", "2610.37802", "2610.39340", "2610.38589", "2610.40393", "2610.37519"], headlineIds: ["2610.39359", "2610.37802", "2610.38207"] },
     { date: "2026-11-03", number: 4, count: 4, highlights: "4 个方向 · 跨方向 0 篇 · 双光梳偏振 / 斯格明子 / 相位恢复理论 / CT 视角优化", current: false,
       dailyIds: ["2611.02149", "2611.02549", "2611.01384", "2611.03322"], headlineIds: ["2611.02149", "2611.02549", "2611.01384"] },
