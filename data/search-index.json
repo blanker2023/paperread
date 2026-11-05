@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T01:54:22.033Z",
+  "generatedAt": "2026-11-05T16:16:32.537Z",
   "rangeDays": 90,
   "papers": [
     {
@@ -2149,6 +2149,385 @@
       "primaryClass": "math.CA",
       "summary": "研究多窗短时傅里叶变换的相位恢复问题，窗函数取前两个归一化 Hermite 函数的复线性组合，并假设该窗系数向量族在二维复空间上可做相位恢复。作者证明：只要采样集是可分的且其下 Beurling 密度大于 2，或者是密度不低于 2 的平移格点，多窗幅度采样就能把平方可积函数空间中的任意信号唯一确定到全局相位；并进一步说明该采样密度已是最优，改进了 Grohs、Liehr 与 Rathmair 于 2025 年在《泛函分析杂志》上关于多窗 STFT 相位恢复格点唯一性的结果。",
       "why": "采样密度决定相位恢复所需测量数的下限，本文把「多窗 STFT 到底要多密才唯一」证到了一个紧的界，还证明该界最优。对设计叠层衍射、傅里叶叠层这类以窗滑动为核心的采集协议，这是可以直接用来定标采样步长的理论依据。"
+    },
+    {
+      "id": "siam-rsdt",
+      "no": 61,
+      "tier": "B",
+      "section": "physics",
+      "primaryTopic": "T02",
+      "topicTags": [
+        "T02",
+        "T04"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Raster Scan Diffraction Tomography",
+      "titleZh": "光栅扫描衍射层析：把聚焦波束纳入衍射层析框架",
+      "authors": [
+        "Peter Elbau",
+        "Noemi Naujoks",
+        "Otmar Scherzer"
+      ],
+      "venue": "SIAM Journal on Imaging Sciences",
+      "published": "2026-11-02",
+      "url": "https://doi.org/10.1137/26m1854367",
+      "doi": "10.1137/26m1854367",
+      "tags": [
+        "衍射层析",
+        "Herglotz 波",
+        "扫描几何"
+      ],
+      "primaryClass": "math.NA",
+      "summary": "衍射层析是弱散射介质定量成像的常用逆散射技术，但其传统表述假设单色平面波照明——这个简化与医学超声等实际系统不符，后者用聚焦波束扫描人体感兴趣区；这类「聚焦照明 + 扫描」的测量装置此前一直没能进入衍射层析框架。作者把入射场建模为 Herglotz 波（平面波在单位球面上的连续叠加），从而将聚焦波束纳入理论，在该设定下导出新的傅里叶衍射关系，作为从扫描数据做定量层析重建的基础；并据此系统分析了不同扫描几何对重建结果的影响。",
+      "why": "把「聚焦 + 扫描」这种最常见的实际采集方式写进衍射层析的数学框架，而不是硬套平面波假设——对超声、光声、OCT 这类用聚焦探头逐点扫的模态，这是重建公式层面的修正，而不是又一个网络结构。"
+    },
+    {
+      "id": "2611.06784",
+      "no": 62,
+      "tier": "C",
+      "section": "physics",
+      "primaryTopic": "T02",
+      "topicTags": [
+        "T02"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "sim",
+      "title": "Fundamental Limits of Coherent Imaging in The Presence of Atmospheric Turbulence",
+      "titleZh": "大气湍流下相干成像的根本极限：幅度与相位联合估计的极小极大速率",
+      "authors": [
+        "Songbin Liu",
+        "Hanyu Yang",
+        "Junren Chen",
+        "Arian Maleki"
+      ],
+      "venue": "arXiv · math.ST",
+      "published": "2026-11-04",
+      "url": "https://arxiv.org/abs/2611.06784",
+      "pdf": "https://arxiv.org/pdf/2611.06784",
+      "tags": [
+        "大气湍流",
+        "散斑",
+        "极小极大风险"
+      ],
+      "primaryClass": "math.ST",
+      "summary": "研究复值多视相干成像中同时估计信号幅度与大气相位失真的根本极限：观测受乘性散斑与加性高斯噪声污染，各视共享一个已知的高斯感知矩阵，两个参数都属于结构化的函数类。作者分析约束最大似然估计器，给出在容许参数类上一致成立的联合极小极大风险上界；再用 oracle 归约与 Fano 型论证给出最坏情况下界，量化结构复杂度、信号与测量维度、视数、噪声水平各自的作用，并在多数组态下得到匹配的极小极大速率——低噪声且测量维数大于信号维数时，相位估计仍留有一段间隙。作者还在实值情形构造两阶段估计器，在附加条件下以高概率把符号恢复到全局符号，并给出不含失真复杂度项的一致风险界；数值实验验证了联合误差、信号误差与相位误差随模型参数的变化。",
+      "why": "「多视平均能救回多少相位」过去基本靠仿真经验，这篇给出了极小极大意义下的定量答案，还指出相位估计在低噪声、过采样条件下存在本质间隙——做自适应光学、穿透湍流或散射介质成像时，可以据此判断该加视数还是改算法。"
+    },
+    {
+      "id": "2611.05843",
+      "no": 63,
+      "tier": "C",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "real",
+      "title": "Dual Flow: Joint Image-Measurement Flow for Inverse Problems",
+      "titleZh": "Dual Flow：图像域与测量域耦合的联合流模型解线性逆问题",
+      "authors": [
+        "Sevket Ege Yesilyurt",
+        "Figen S. Oktem"
+      ],
+      "venue": "arXiv · eess.IV",
+      "published": "2026-11-04",
+      "url": "https://arxiv.org/abs/2611.05843",
+      "pdf": "https://arxiv.org/pdf/2611.05843",
+      "tags": [
+        "流模型",
+        "逆问题",
+        "前向模型一致性"
+      ],
+      "primaryClass": "eess.IV",
+      "summary": "现有基于生成模型的线性逆问题求解方法，多用含噪测量在图像域做条件或引导采样；Dual Flow 把图像重建与测量去噪写成一个耦合估计问题，在图像域和测量域各跑一个流模型并联合更新——含噪测量只用于初始化测量状态，之后两域状态互相驱动。按构造，最终的图像与测量估计严格满足前向模型。作者推导了联合流的采样更新（由给定联合状态下干净图像的条件均值决定），给出联合状态充分统计量的闭式表达，并证明所需条件均值可化为一个带算子相关噪声的图像域高斯去噪问题，据此训练速度预测网络。方法除推理步数外无需调超参，重建时间显著短于对比方法；在多种线性逆问题与图像数据集上取得失真指标与感知质量的当前最优，并额外分析了模型失配鲁棒性、多样本生成与不确定性刻画能力。",
+      "why": "绝大多数扩散/流先验只把测量当「外挂约束」，这篇让测量自己也成为一个被去噪的状态，于是「重建结果必须满足前向模型」变成构造性保证而不是罚项——对压缩感知、单像素、层析这类前向算子明确的成像问题非常直接。"
+    },
+    {
+      "id": "sparc-xray",
+      "no": 64,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.65,
+      "score": 0.65,
+      "evidence": "mixed",
+      "title": "A foundation model for three-dimensional anatomical reconstruction from sparse X-ray projections",
+      "titleZh": "SPARC：从稀疏 X 光投影重建三维解剖的基础模型",
+      "authors": [
+        "Yiqun Lin",
+        "Jiayang Xu",
+        "Lie Ju",
+        "Jiarong Guo",
+        "Weiru Wang",
+        "Hualiang Wang",
+        "姚慧峰",
+        "Haoran Sun",
+        "Bin Pu",
+        "Kenli LI",
+        "Daniel Alexander",
+        "Hejie Cui",
+        "Yukun Zhou"
+      ],
+      "venue": "Research Square（预印本）",
+      "published": "2026-11-02",
+      "url": "https://doi.org/10.21203/rs.3.rs-11354431/v1",
+      "doi": "10.21203/rs.3.rs-11354431/v1",
+      "tags": [
+        "稀疏视角",
+        "X 光三维重建",
+        "基础模型"
+      ],
+      "primaryClass": "eess.IV",
+      "summary": "CT 能给出三维解剖信息，但设备昂贵、辐射剂量高于常规 X 光；若能仅用少量 X 光投影重建三维结构，就能把广泛存在的 X 光机从二维扩展到三维。作者提出 SPARC：在 47,149 例胸部 CT 上一次性预训练的基础模型，可适配不同 X 光采集构型与解剖部位。在覆盖五个部位（八个数据集中有七个主要位于胸部以外）的评测里，SPARC 的重建保真度优于五种现有方法——八投影时 PSNR 比最强基线高 0.8–2.6 dB，四投影时高 1.4–2.7 dB。把基于 CT 训练的异常分类与器官分割工具直接用于 SPARC 的八投影重建（不足 CT 数百层投影的 3%），18 种胸部异常的 AUC 达到 CT 上的 98%，腹部器官与肺叶的 Dice 分别为 86% 与 93%，相对最强对比方法高出 8.8% 与 4.4%。预训练还大幅提升适配数据效率：用 10 例患者微调，重建精度即优于同架构从零训练的 100 例。模型与代码已公开。",
+      "why": "稀疏视角重建的真正门槛不是 PSNR，而是「下游诊断工具还能不能用」；这篇直接用分类/分割工具在重建体上的保持率来证明，而且 10 例微调就超过 100 例从零训练——对想做稀疏采集 + 基础模型的组，这套评测口径比单纯刷指标更有说服力。注意：目前是 Research Square 预印本，尚未经同行评审。"
+    },
+    {
+      "id": "lpr-petg",
+      "no": 65,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T05",
+      "topicTags": [
+        "T05"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Microscale Photoelasticity Engineering in PETG Polymer for Spectroscopic Applications",
+      "titleZh": "PETG 中的微尺度光弹工程：为重建式光谱仪做时空编码单元",
+      "authors": [
+        "Shiqi Liu",
+        "Zhuo Wang",
+        "Fanrong Zeng",
+        "Jihong Han",
+        "Han Lin",
+        "Baohua Jia",
+        "Zongyin Yang",
+        "Jianrong Qiu",
+        "Bo Zhang"
+      ],
+      "venue": "Laser & Photonics Reviews",
+      "published": "2026-11-02",
+      "url": "https://doi.org/10.1002/lpor.72147",
+      "doi": "10.1002/lpor.72147",
+      "tags": [
+        "光谱编码",
+        "光弹双折射",
+        "重建式光谱仪"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "光谱响应器件的小型化是可集成「计算增强光谱系统」的关键，但器件尺寸越小响应带宽越窄，只能靠堆叠大量结构各异的响应单元来补足采样数。作者提出用光弹效应工程化光谱响应：以超快激光在聚对苯二甲酸乙二醇酯（PETG）内写入微涡旋结构，借其随频率变化的应力双折射实现高效时空编码。单个编码单元即可覆盖 400–1550 nm，物理尺寸紧凑，光谱特性还能通过偏振调节，从而提供像素级可调、信息量丰富的响应，服务于重建式光谱。作者在偏振取向分析、光谱成像与双模态生物特征认证三类任务上演示了该结构，并指出这条路径可在热塑性介质内实现高效光谱编码，走向低成本、易集成的光谱系统。",
+      "why": "计算光谱仪的核心矛盾是「编码单元要小、编码要多样」，这篇把编码自由度从结构几何转到偏振与应力，一个单元就覆盖可见到近红外——是往低成本、可批量集成的重建式光谱仪方向推进的一块硬件拼图。"
+    },
+    {
+      "id": "boe-oral",
+      "no": 66,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T05",
+      "topicTags": [
+        "T05"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Portable dual-mode multispectral system for quantitative oral imaging of hemoglobin and bacterial porphyrins",
+      "titleZh": "便携双模态多光谱口腔成像：定量血红蛋白与细菌卟啉",
+      "authors": [
+        "Zongze Huo",
+        "Erica Y. Chu",
+        "Ruikang K. Wang"
+      ],
+      "venue": "Biomedical Optics Express",
+      "published": "2026-11-02",
+      "url": "https://doi.org/10.1364/boe.618059",
+      "doi": "10.1364/boe.618059",
+      "tags": [
+        "RGB 光谱复原",
+        "Wiener 估计",
+        "口腔筛查"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "作者提出一套紧凑的口腔双模态多光谱成像系统，集成白光反射与紫外诱导自发荧光两路。可见光反射光谱由商用 RGB 相机经多项式增强的 Wiener 估计器复原，交叉偏振片用于抑制釉质与唾液产生的镜面反射。白光模式下，重建光谱被映射为血红蛋白指数与血氧饱和度指数，在红斑黏膜与外观正常黏膜之间呈现出对比；紫外模式下，卟啉指数在易积菌斑部位升高。两种模式的重建精度都用校准色卡做了验证。该平台成本低、可便携，适合口腔评估与纵向随访。",
+      "why": "只用一颗 RGB 相机加一个可解释的线性复原器就拿到逐像素光谱指数，工程门槛极低；交叉偏振抑制镜面反射这个细节，是口腔、皮肤这类潮湿高反表面做光谱成像绕不开的一步，比换更大的网络更管用。"
+    },
+    {
+      "id": "2611.06736",
+      "no": 67,
+      "tier": "C",
+      "section": "physics",
+      "primaryTopic": "T06",
+      "topicTags": [
+        "T06"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "sim",
+      "title": "Universality of smallest singular values of random row submatrices and phase retrieval problems",
+      "titleZh": "随机行子矩阵最小奇异值的普适律：相位恢复的唯一性不等于稳定性",
+      "authors": [
+        "Shu Wen",
+        "Christian E. Häggblom",
+        "Xiufan Yang"
+      ],
+      "venue": "arXiv · math.PR",
+      "published": "2026-11-04",
+      "url": "https://arxiv.org/abs/2611.06736",
+      "pdf": "https://arxiv.org/pdf/2611.06736",
+      "tags": [
+        "相位恢复",
+        "条件数",
+        "唯一性阈值"
+      ],
+      "primaryClass": "math.PR",
+      "summary": "论文为随机行子矩阵的极端最小奇异值、以及实相位恢复在唯一性阈值附近的全局稳定性，建立了普适的对数律。设 A_m 为 i.i.d. 中心化、方差为一的亚高斯实矩阵，且 N_m/m→γ>1；记 M 为所有 m+r_m 行行子矩阵上最小奇异值的最小值，k_m=r_m+1，作者证明当 k_m log m = o(m) 时，(k_m/m)·log M 依概率收敛到 −h(γ)，其中 h(γ)=γlogγ−(γ−1)log(γ−1)，且该极限速率在给定的分布类内普适。对 N_m=2m−1+r_m 次幅度测量的实相位恢复，令 L 为映射 x↦|A_m x| 在模去全局符号意义下的最优下 Lipschitz 常数、κ=‖A_m‖/L 为尺度不变的全局条件数，则同一区域内 (k_m/m)·log L → −log4、(k_m/m)·log κ → log4。结论是：即便这些测量几乎必然把任意信号唯一确定到符号，条件数仍随维数指数增长，在所述区域内以趋于 1 的概率超过 m 的任意固定幂——这量化了「唯一性」与「噪声下一致稳定」的差别。",
+      "why": "相位恢复领域长期把「测量够多就唯一」当作好消息，这篇证明唯一性几乎免费、稳定性却指数级昂贵；做叠层衍射、傅里叶叠层、编码衍射时，它给出了「多测一点到底值多少」的定量标尺。"
+    },
+    {
+      "id": "2611.04548",
+      "no": 68,
+      "tier": "C",
+      "section": "core",
+      "primaryTopic": "T07",
+      "topicTags": [
+        "T07"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "real",
+      "title": "Predicting Void Points in Self-Occluding Forest Volumes",
+      "titleZh": "在自遮挡森林体数据中预测空点：改标签而非改成像",
+      "authors": [
+        "Benjamin Bachmayr",
+        "Mohamed Youssef",
+        "Oliver Bimber"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-03",
+      "url": "https://arxiv.org/abs/2611.04548",
+      "pdf": "https://arxiv.org/pdf/2611.04548",
+      "tags": [
+        "合成孔径成像",
+        "焦栈",
+        "空区标注"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "合成孔径成像（SAI）让无人机通过把多个位移视角在同一深度上翘曲平均来观测林冠，但遮挡只是被压制而非被消除，观测不足的区域会显得「有东西」，导致生物量被系统性高估。Deep Forest 项目无法区分重建伪影与真实植被，因为其训练数据只含实测反射点、把空区排除在外，网络学不到显式的占据边界。本文不改成像流程而改训练标签：每个仿真场景渲染两次，一次是 9×9 俯视阵列用于生成焦栈，一次是按场景几何切出的 550 层厚度切片作为占据标签，把空区显式标为负类。Gazebo 管线生成含 80–200 棵树、三个树种的程序化林分，预训练 Pix2Pix 把渲染 RGB 转成近红外波段，光场渲染生成 550 层的三通道对齐焦栈。在留出场景上评估四种架构：普通 2D U-Net 的 IoU 为 0.6290，优于体素 3D U-Net 的 0.5707；传统重建方法明显更差（COLMAP 0.3446、DepthAnything3 0.2959，均已做过最优膨胀扫描）；RGB 输入的体素变体在不做膨胀与逐场景标定下取得最高 IoU 0.6514。",
+      "why": "用「焦栈当输入、占据当标签」直接绕开多视图几何，说明在密集遮挡场景里显式标注空区比换更强的重建器更有效——这类「标签侧修正」的思路可以迁移到任何弱纹理、强遮挡的合成孔径重建任务。"
+    },
+    {
+      "id": "rs-lfsr",
+      "no": 69,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T07",
+      "topicTags": [
+        "T07"
+      ],
+      "confidence": 0.65,
+      "score": 0.65,
+      "evidence": "mixed",
+      "title": "Arbitrary-Scale Light Field Super-Resolution via Spatio-Angular Consistent Neural Epipolar Geometry Learning",
+      "titleZh": "任意尺度光场超分：时空角度一致的神经极线几何学习",
+      "authors": [
+        "Lili Lin",
+        "Wenyu Li",
+        "Hao Zheng",
+        "Qiming Fang",
+        "Jiahan Meng",
+        "Wenhui Zhou"
+      ],
+      "venue": "Research Square（预印本）",
+      "published": "2026-11-02",
+      "url": "https://doi.org/10.21203/rs.3.rs-11144103/v1",
+      "doi": "10.21203/rs.3.rs-11144103/v1",
+      "tags": [
+        "光场超分",
+        "极线平面图",
+        "隐式表示"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "光场成像同时记录光线的空间与角度信息，但空间分辨率与角度分辨率之间的固有权衡限制了它的应用。作者提出一种时空角度一致（spatio-angular consistent）的局部神经极线几何学习框架，用于任意尺度光场超分：把光场的极线平面图（EPI）建模为连续的局部隐式几何函数，从而在角度域与空间域同时实现超分。在合成与真实数据集上，该方法在任意放大倍数下都保持了较高的几何结构保真度。",
+      "why": "光场超分的老问题是「放大倍数一变就得重训」，把 EPI 当作连续隐式函数后，尺度从超参变成了输入——这条任意尺度连续表示的路子在光场、显微光场、阵列相机上都能直接套用。注意：目前是 Research Square 预印本，尚未经同行评审。"
+    },
+    {
+      "id": "lpr-slim",
+      "no": 70,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T09",
+      "topicTags": [
+        "T09"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "SLIM: Functional Nanoscopy for Simultaneous Super‐Resolution Imaging and Quantitative Lifetime Mapping by Spatiotemporal Multiplexing of Spontaneous Emission",
+      "titleZh": "SLIM：靠自发辐射的时空复用同时做超分辨与定量寿命成像",
+      "authors": [
+        "Luwei Wang",
+        "Min Yi",
+        "Yue Chen",
+        "Qinglin Chen",
+        "Jia Li",
+        "Xiaoyu Weng",
+        "Liwei Liu",
+        "Junle Qu"
+      ],
+      "venue": "Laser & Photonics Reviews",
+      "published": "2026-11-04",
+      "url": "https://doi.org/10.1002/lpor.72160",
+      "doi": "10.1002/lpor.72160",
+      "tags": [
+        "STED",
+        "荧光寿命",
+        "时间解复用"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "观测细胞器相互作用、蛋白聚集、代谢调控这类纳米尺度过程，需要同时拿到结构细节与功能状态。基于受激辐射耗尽（STED）的超分辨可与荧光寿命成像（FLIM）结合，但耗尽光会扰动荧光衰减动力学、损害寿命精度；常规 FLIM 又受衍射极限限制。作者提出 SLIM：用脉冲激发光配一束延时可调（纳秒量级）的 STED 耗尽光，在每次采集周期内开出一个时间窗口，把自发辐射与受激辐射在时间上分开，从而同时获取超分辨结构与定量寿命。相对衍射受限的 FLIM，结构分辨率提升 3–5 倍，寿命精度保持在共聚焦参考值的 5% 以内，且耗尽功率比常规 STED 低一个数量级。作者在多种生物样本上演示，并实现了细胞器动态的长时间活细胞成像。",
+      "why": "超分辨与寿命成像长期互斥，因为耗尽光会改寿命；这篇不换探针、不加重建网络，而是用「时间窗口」把两种发射在时间维度上解复用——是把复用/解复用思维真正用在显微系统设计上的典型例子，对瞬态成像也有借鉴意义。"
+    },
+    {
+      "id": "cosrev-spec3d",
+      "no": 71,
+      "tier": "B",
+      "section": "benchmark",
+      "primaryTopic": "T10",
+      "topicTags": [
+        "T05",
+        "T10"
+      ],
+      "confidence": 0.65,
+      "score": 0.65,
+      "evidence": "real",
+      "title": "Spectral 3D computer vision: A survey of acquisition, representations, learning, and applications",
+      "titleZh": "光谱三维计算机视觉综述：采集、表示、学习与应用",
+      "authors": [
+        "Ali Zia",
+        "Usman Ali",
+        "Charissa Yu",
+        "Jun Wei Zhou"
+      ],
+      "venue": "Computer Science Review",
+      "published": "2026-11-03",
+      "url": "https://doi.org/10.1016/j.cosrev.2026.101084",
+      "doi": "10.1016/j.cosrev.2026.101084",
+      "tags": [
+        "高光谱三维",
+        "综述",
+        "基准与标定"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "光谱三维视觉把波长分辨的测量与几何信息结合起来，支撑材料感知的重建、感知与场景分析，但文献分散在高光谱/多光谱传感、跨光谱深度与位姿估计、光谱点云、LiDAR–高光谱融合以及神经场景表示等方向。本文做结构化综述：覆盖光谱与几何采集、数据表示、标定与配准、光谱三维重建、集成式光谱三维采集与联合物理建模、学习方法、下游任务、基准数据集、应用与软件工具；把现有方法归为三条互补主线——光谱支撑三维信息估计、光谱三维重建与建图、集成式光谱三维采集与联合物理建模；并比较代表性数据集与在分类、回归、分割、语义场景分析、光谱新视角合成上的报告结果。核心判断是：当 RGB 外观或几何单独不足时，光谱确实能提供互补的材料、状态与可见性线索，但收益大小依赖任务与基线，很多报告的增益并未把光谱贡献与同时发生的传感、架构、空间上下文或融合方式变化隔离开。领域进展受限于原生光谱三维基准稀缺、辐射与几何标定不一致、评测协议异构、跨传感器跨域验证不足。作者给出标准化基准、不确定性感知融合、物理约束学习、高效光谱三维表示与跨域泛化等优先方向。",
+      "why": "这份综述最有用的是「泼冷水」那部分：明确指出多数光谱增益没做消融、基准与标定不统一。要做光谱–几何联合采集，先照它的清单核对评测协议，比再读十篇刷点论文更省时间。"
     }
   ]
 }
