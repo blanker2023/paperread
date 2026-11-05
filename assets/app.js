@@ -62,7 +62,14 @@
   function paperById(id) { return data.papers.find(function (p) { return p.id === id; }); }
   function bibtex(p) {
     const slug = p.authors[0].split(" ").pop().toLowerCase().replace(/[^a-z]/g, "") + p.published.slice(0, 4) + p.id.replace(".", "");
-    const lines = ["@misc{" + slug + ",", "  title = {" + p.title + "},", "  author = {" + p.authors.join(" and ") + "},", "  year = {" + p.published.slice(0, 4) + "},", "  eprint = {" + p.id + "},", "  archivePrefix = {arXiv},", "  primaryClass = {" + p.primaryClass + "},"];
+    const isArxiv = !p.doi && /^[0-9]/.test(p.id);
+    if (isArxiv) {
+      const lines = ["@misc{" + slug + ",", "  title = {" + p.title + "},", "  author = {" + p.authors.join(" and ") + "},", "  year = {" + p.published.slice(0, 4) + "},", "  eprint = {" + p.id + "},", "  archivePrefix = {arXiv},", "  primaryClass = {" + p.primaryClass + "},"];
+      lines.push("  url = {" + p.url + "}", "}");
+      return lines.join("\n");
+    }
+    const lines = ["@article{" + slug + ",", "  title = {" + p.title + "},", "  author = {" + p.authors.join(" and ") + "},", "  year = {" + p.published.slice(0, 4) + "},"];
+    if (p.venue) lines.push("  journal = {" + p.venue + "},");
     if (p.doi) lines.push("  doi = {" + p.doi + "},");
     lines.push("  url = {" + p.url + "}", "}");
     return lines.join("\n");
@@ -178,6 +185,13 @@
       banner.textContent = "数据更新于 " + data.issue.updatedAt.replace("T", " ").slice(0, 16) + " UTC，可能不是最新";
       document.body.insertBefore(banner, document.body.firstChild);
     }
+    // 运行状态页：动态日期与本期篇数
+    const lastRun = document.getElementById("status-last-run");
+    if (lastRun) lastRun.textContent = (data.issue.date || "—") + " · arXiv · 自动化已就绪";
+    const cand = document.getElementById("status-candidates");
+    if (cand) cand.textContent = data.issue.fetched != null ? String(data.issue.fetched) : "—";
+    const sel = document.getElementById("status-selected");
+    if (sel) sel.textContent = data.issue.kept != null ? String(data.issue.kept) : "—";
   }
   function renderToday() {
     const target = document.getElementById("headlines");
@@ -186,6 +200,31 @@
       const subs = getSubscriptions();
       const topics = subscribedTopics();
       const daily = data.issue.dailyIds.map(paperById).filter(Boolean);
+      // 动态日期与期号
+      const issueDate = data.issue.date || "";
+      const issueNo = data.issue.number || 0;
+      const issueUpdated = data.issue.updatedAt || "";
+      const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const dt = issueDate.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      if (dt) {
+        const y = dt[1], m = +dt[2], dd = +dt[3];
+        const d0 = new Date(Date.UTC(y, m - 1, dd));
+        const heroEl = document.getElementById("hero-date");
+        if (heroEl) heroEl.textContent = weekdays[d0.getUTCDay()] + " · " + ("0" + dd).slice(-2) + " " + months[m - 1] + " " + y;
+        const toplineEl = document.getElementById("topline-date");
+        if (toplineEl) toplineEl.textContent = y + "." + ("0" + m).slice(-2) + "." + ("0" + dd).slice(-2) + " · " + (issueUpdated ? "已更新" : "今日已更新");
+        const issueNoEl = document.getElementById("issue-number");
+        if (issueNoEl) issueNoEl.textContent = "№ " + String(issueNo).padStart(3, "0");
+      }
+      // 本期一句话（来自 issue.headline，若无则用 note）
+      const sideQuote = document.getElementById("side-quote");
+      if (sideQuote) sideQuote.textContent = data.issue.headline || data.issue.note || "—";
+      const sideQuoteSrc = document.getElementById("side-quote-src");
+      if (sideQuoteSrc) sideQuoteSrc.textContent = "第 " + issueNo + " 期 · " + (issueDate || "");
+      // footer 期号
+      const footerIssue = document.getElementById("footer-issue");
+      if (footerIssue) footerIssue.textContent = "ISSUE " + String(issueNo).padStart(3, "0");
       const headlines = data.issue.headlineIds.map(paperById).filter(function (p) { return p && subs[p.primaryTopic]; });
       let number = 1;
       target.innerHTML = headlines.map(function (p) { return paperCard(p, { displayNo: number++, showCross: true }); }).join("");

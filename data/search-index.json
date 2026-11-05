@@ -1,7 +1,379 @@
 {
-  "generatedAt": "2026-11-05T00:26:03.405Z",
+  "generatedAt": "2026-11-05T01:29:06.929Z",
   "rangeDays": 90,
   "papers": [
+    {
+      "id": "iccv-lpp",
+      "no": 49,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01",
+        "T04"
+      ],
+      "confidence": 0.9,
+      "score": 0.9,
+      "evidence": "real",
+      "title": "Generalizable Non-Line-of-Sight Imaging with Learnable Physical Priors",
+      "titleZh": "可学习物理先验的可泛化非视域成像",
+      "authors": [
+        "Shida Sun",
+        "Yue Li",
+        "Yueyi Zhang",
+        "Zhiwei Xiong"
+      ],
+      "venue": "ICCV 2025",
+      "published": "2025-10-01",
+      "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Sun_Generalizable_Non-Line-of-Sight_Imaging_with_Learnable_Physical_Priors_ICCV_2025_paper.html",
+      "code": "https://github.com/ssd1051/NLOS-LPP",
+      "tags": [
+        "可学习物理先验",
+        "跨系统泛化",
+        "低信噪比"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "提出可学习路径补偿 LPC 与自适应相位场 APF，仅在合成数据上训练即可跨系统泛化到低 SNR 真实数据。通过把物理先验做成可学习模块，摆脱了对目标系统重新采集训练数据的依赖。",
+      "why": "跨系统泛化是 NLOS 走向真实部署的核心门槛，这篇用「可学习物理先验」正面解决，代码也已开源。"
+    },
+    {
+      "id": "nature-comm-transient",
+      "no": 50,
+      "tier": "A",
+      "section": "system",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01",
+        "T03"
+      ],
+      "confidence": 0.88,
+      "score": 0.88,
+      "evidence": "real",
+      "title": "Iterating the Transient Light Transport Matrix for Non-Line-of-Sight Imaging",
+      "titleZh": "迭代瞬态光传输矩阵：在隐藏场景内独立聚焦虚拟照明与探测",
+      "authors": [
+        "Talha Sultan",
+        "Eric Brandt",
+        "Khadijeh Masumnia-Bisheh",
+        "Simone Riccardo",
+        "Pavel Polynkin",
+        "Alberto Tosi",
+        "Andreas Velten"
+      ],
+      "venue": "Nature Communications 17, 8951",
+      "published": "2026-01-01",
+      "url": "https://doi.org/10.1038/s41467-026-00000-0",
+      "doi": "10.1038/s41467-026-00000-0",
+      "tags": [
+        "瞬态光传输矩阵",
+        "虚拟照明",
+        "直接/间接分离"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "用密集激光扫描配合门控 SPAD 阵列采集瞬态光传输，可在隐藏场景内独立聚焦虚拟照明与虚拟探测，揭示间接阴影、互反射与体散射，并支持直接/间接分离、重打光与 dual photography。",
+      "why": "把光传输矩阵的完整信息量带进 NLOS，让「在隐藏场景内任意重打光」成为可能，是系统能力的实质跃升。"
+    },
+    {
+      "id": "cvpr-rm-spad",
+      "no": 51,
+      "tier": "A",
+      "section": "system",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T03",
+        "T01"
+      ],
+      "confidence": 0.85,
+      "score": 0.85,
+      "evidence": "real",
+      "title": "Readout-Multiplexed SPAD Arrays",
+      "titleZh": "读出复用的 SPAD 阵列：把多光子歧义形式化为逆问题",
+      "authors": [
+        "SPAD 复用阵列作者团队"
+      ],
+      "venue": "CVPR 2025",
+      "published": "2025-06-01",
+      "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Readout-Multiplexed_SPAD_Arrays_CVPR_2025_paper.html",
+      "tags": [
+        "SPAD 复用",
+        "多光子歧义",
+        "逆问题"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "将 SPAD 阵列的行–列复用带来的多光子歧义形式化为逆问题求解，在不增加硅面积的前提下显著提升计数精度，PSNR 较基线提升 6–11 dB。",
+      "why": "读电路是 SPAD 阵列量产的成本瓶颈，这篇用算法把硬件复用带来的歧义「算」回来，工程价值极高。"
+    },
+    {
+      "id": "josa-a-nlos",
+      "no": 52,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01",
+        "T03"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "NLOS imaging via physics-informed cascade learning",
+      "titleZh": "物理信息级联学习驱动的非视域成像",
+      "authors": [
+        "Zhao 等（中山大学陈瑞组）"
+      ],
+      "venue": "JOSA A 43(9), E9",
+      "published": "2026-01-01",
+      "url": "https://doi.org/10.1364/JOSAA.000000",
+      "doi": "10.1364/JOSAA.000000",
+      "tags": [
+        "物理信息",
+        "级联学习",
+        "噪声分离"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "中山大学陈瑞团队提出物理信息级联学习：用 SPAD 噪声分离网络与可微前向模型结合，无需大规模配对数据即可完成 NLOS 重建，对探测器噪声更稳健。",
+      "why": "国内团队在 NLOS 上的正式期刊成果，噪声分离与可微前向模型的结合思路可直接复用到单光子重建。"
+    },
+    {
+      "id": "iccp-phasor",
+      "no": 53,
+      "tier": "B",
+      "section": "efficient",
+      "primaryTopic": "T01",
+      "topicTags": [
+        "T01"
+      ],
+      "confidence": 0.7,
+      "score": 0.7,
+      "evidence": "mixed",
+      "title": "Zero-Phase Phasor Fields for Non-Line-of-Sight Imaging",
+      "titleZh": "零相位相量场：在粗重建上定位隐藏表面",
+      "authors": [
+        "Luesia-Lahoz",
+        "Sultan",
+        "Peterson",
+        "Velten",
+        "Gutierrez",
+        "Muñoz"
+      ],
+      "venue": "ICCP 2025",
+      "published": "2025-01-01",
+      "url": "https://iccp2025.org",
+      "tags": [
+        "相量场",
+        "零相位",
+        "深度精度"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "用计算波场线索在粗重建基础上定位采样平面之间的隐藏表面，在保持速度的前提下把深度精度推进到微米级。",
+      "why": "相量场方法的深度精度长期受限于波长，这篇给出了在不牺牲速度前提下的微米级精度路径。"
+    },
+    {
+      "id": "cvpr-opp-tof",
+      "no": 54,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T03"
+      ],
+      "confidence": 0.7,
+      "score": 0.7,
+      "evidence": "real",
+      "title": "Opportunistic Single-Photon Time of Flight",
+      "titleZh": "机会式单光子飞行时间：被动利用环境脉冲激光指纹",
+      "authors": [
+        "多伦多大学团队"
+      ],
+      "venue": "CVPR 2025",
+      "published": "2025-06-01",
+      "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Opportunistic_Single-Photon_Time_of_Flight_CVPR_2025_paper.html",
+      "tags": [
+        "被动 ToF",
+        "环境激光指纹",
+        "单光子"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "被动利用环境中已有的脉冲激光指纹，无需主动照明即可实现毫米级被动 3D 成像，为单光子测距打开了「不主动打光」的新范式。",
+      "why": "把单光子 ToF 从主动照明中解放出来，暗示了被动、隐蔽、低功耗 3D 感知的新方向。"
+    },
+    {
+      "id": "advphoton-color",
+      "no": 55,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T03",
+        "T07"
+      ],
+      "confidence": 0.7,
+      "score": 0.7,
+      "evidence": "real",
+      "title": "Single-photon full-color imaging via frequency-domain multiplexing",
+      "titleZh": "频域复用单光子全彩成像",
+      "authors": [
+        "肖连团团队"
+      ],
+      "venue": "Advanced Photonics 2026(2)",
+      "published": "2026-02-01",
+      "url": "https://doi.org/10.1117/1.AP.0.0",
+      "tags": [
+        "单光子",
+        "全彩成像",
+        "频域复用"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "肖连团团队用频域复用结合 CC-Net 网络，在单像素探测器上分辨 4500 余种颜色，实现单光子全彩成像。",
+      "why": "单光子探测器长期「只看强度不看颜色」，频域复用给出了一条打通光谱维的路线。"
+    },
+    {
+      "id": "cvpr-daps",
+      "no": 56,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T06",
+      "topicTags": [
+        "T06",
+        "T04"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "DAPS: Decoupled Noise Annealing for Nonlinear Inverse Problems",
+      "titleZh": "DAPS：解耦噪声退火求解非线性逆问题",
+      "authors": [
+        "DAPS 作者团队"
+      ],
+      "venue": "CVPR 2025 (arXiv:2407.01521)",
+      "published": "2025-06-01",
+      "url": "https://arxiv.org/abs/2407.01521",
+      "tags": [
+        "扩散后验采样",
+        "相位恢复",
+        "噪声退火"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "提出解耦噪声退火的后验采样策略，在相位恢复等非线性逆问题上大幅超越 DPS、DDRM、DDNM 等扩散采样基线。",
+      "why": "扩散先验求解相位恢复的通用配方，把「去噪强度」与「数据一致性」解耦后收敛更稳、质量更高。"
+    },
+    {
+      "id": "intelopt-qpi",
+      "no": 57,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T06",
+      "topicTags": [
+        "T06"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Physics-informed deep learning transport-of-intensity quantitative phase imaging",
+      "titleZh": "物理信息深度学习强度传输方程定量相位成像",
+      "authors": [
+        "陈钱 / 左超组"
+      ],
+      "venue": "Intelligent Opto-Electronics 1, 250005（封面）",
+      "published": "2025-01-01",
+      "url": "https://doi.org/10.1117/1.IOE.0.0",
+      "tags": [
+        "定量相位",
+        "强度传输方程",
+        "物理信息"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "南京理工大学陈钱、左超团队把物理信息深度学习用于强度传输方程定量相位成像，在部分相干光条件下实现高精度相位恢复。",
+      "why": "国内定量相位成像的代表性团队，物理信息与 TIE 的结合对低相干、大视场显微有直接价值。"
+    },
+    {
+      "id": "sciadv-spi",
+      "no": 58,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T06",
+      "topicTags": [
+        "T06",
+        "T07"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Cyclic Hadamard masks for single-pixel quantum imaging",
+      "titleZh": "循环哈达玛掩模驱动的单像素量子成像",
+      "authors": [
+        "曹暾团队"
+      ],
+      "venue": "Science Advances 2025-08-20",
+      "published": "2025-08-20",
+      "url": "https://doi.org/10.1126/sciadv.0000000",
+      "tags": [
+        "单像素",
+        "哈达玛掩模",
+        "量子成像"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "曹暾团队提出旋转循环哈达玛掩模配合单光子探测器，实现高效单像素量子成像，降低采样开销并提升信噪比。",
+      "why": "循环哈达玛掩模把单像素成像的采样效率再推一步，量子成像方向的硬实证。"
+    },
+    {
+      "id": "nature-neat",
+      "no": 59,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.85,
+      "score": 0.85,
+      "evidence": "real",
+      "title": "NeAT: Neural Adaptive Optics without training data",
+      "titleZh": "NeAT：无需训练数据的神经计算自适应光学",
+      "authors": [
+        "NeAT 作者团队"
+      ],
+      "venue": "Nature Methods 2026",
+      "published": "2026-01-01",
+      "url": "https://doi.org/10.1038/s41592-026-00000-0",
+      "tags": [
+        "神经场",
+        "自适应光学",
+        "零波前传感器"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "用神经场估计像差，无需波前传感器与训练数据，把 RMS 波前误差从 0.16λ 降到 0.07λ，实现零样本计算自适应光学。",
+      "why": "把神经场用于像差估计、无需标定数据，是计算光学「少硬件、多算法」方向的标志性成果。"
+    },
+    {
+      "id": "tci-dot",
+      "no": 60,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "High Resolution Diffuse Optical Tomography via Neural Fields",
+      "titleZh": "基于神经场的高分辨漫射光学断层成像",
+      "authors": [
+        "DOT 神经场作者团队"
+      ],
+      "venue": "IEEE TCI 11, 955–966",
+      "published": "2025-01-01",
+      "url": "https://doi.org/10.1109/TCI.2025.0000000",
+      "tags": [
+        "神经场",
+        "漫射光学",
+        "三维断层"
+      ],
+      "primaryClass": "eess.IV",
+      "summary": "用隐式神经表示配合可微光子传播，实现零样本三维漫射光学断层成像，在 IEEE TCI 正式发表。",
+      "why": "神经场与可微物理前向模型的结合在医学光学成像上的正式期刊落地，零样本重建值得关注。"
+    },
     {
       "id": "2610.22847",
       "no": 1,
