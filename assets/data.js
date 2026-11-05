@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-04",
-    number: 6,
-    updatedAt: "2026-11-04T02:18:38Z",
+    date: "2026-11-05",
+    number: 7,
+    updatedAt: "2026-11-05T00:25:53Z",
     sourceCount: 1,
     fetched: 1358,
-    kept: 6,
-    headline: "遮挡式非视域用低成本闪光 LiDAR 打通仿真到实测，超低场 MRI 与单像素相位成像同步给出开源工具链与压缩测量方案。",
-    note: "3 天窗口检索 1358 条、产出 29 条候选，其中 6 条已在第 2–5 期收录；其余候选大量落在非成像主题（手写识别、视频编辑、材料学工具链、射电望远镜标定等），按「不掺水」原则逐条人工复核后收录 6 篇（T01×1 / T04×1 / T06×1 / T08×2 / T10×1），跨方向 1 篇；T02/T03/T05/T07/T09 无达标成像候选，按规则减条。",
-    dailyIds: ["2611.04068", "2611.01511", "2611.01675", "2611.01888", "2611.04092", "2611.01823"],
-    headlineIds: ["2611.04068", "2611.01511", "2611.01675"],
-    crossIds: ["2611.04068"]
+    kept: 9,
+    headline: "稀疏视角冠脉重建把扩散先验接进投影一致性，夜间 IQA 基准与参考光辅助的光纤成像同步补上数据与光路两端。",
+    note: "3 天窗口检索 1358 条、产出 33 条候选，其中 5 条已在第 2–6 期收录；其余候选中大量为跨领域噪声（材料学工具链、作物分割、视频编辑、卫星姿控、射电望远镜控制、格点格林函数等），另有若干 0.8 分高排名条目实为空间智能与视频生成基准，与计算成像无关，按「不掺水」原则逐条复核后收录 9 篇（T02×2 / T04×2 / T06×2 / T08×1 / T09×1 / T10×1），跨方向 3 篇；T01/T03/T05/T07 无达标成像候选，按规则减条。",
+    dailyIds: ["2611.04604", "2611.04811", "2611.04427", "2611.04498", "2611.05020", "2611.05206", "2611.05008", "2611.03455", "2611.04877"],
+    headlineIds: ["2611.04604", "2611.04811", "2611.04427"],
+    crossIds: ["2611.04811", "2611.04427", "2611.04498"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -424,10 +424,102 @@ window.NLOS_DATA = {
       tags: ["HDR 光照估计", "扩散模型", "逆渲染"], primaryClass: "cs.CV",
       summary: "从图像估计场景光照之所以难，根源在于光照本身随几何、遮挡与光源位置而空间变化。现有做法用局部环境图或探针表示引入几何线索，但多依赖回归或参数模型，结果过度平滑、真实感有限。LUMEN 改用生成式视角：先从单视图或多视图图像重建粗略三维场景，在任意位置渲染部分环境图以编码可见性与空间结构，再与多视图图像特征融合后送入扩散 Transformer，生成完整的 HDR 环境图。为训练该模型，作者构建了 700 个室内场景、带稠密空间监督的合成数据集，含多视图 RGB、深度以及多个采样位置上的 HDR 光照。实验显示其视觉保真度与空间一致性较既有方法显著提升。",
       why: "用「渲染出的部分环境图」作条件、让扩散模型补全全向 HDR 光照，相当于给逆渲染加了一个几何感知的生成先验；这条「残缺物理观测 + 生成补全」的路径与非视域重建的思路高度同构。"
+    },
+    {
+      id: "2611.04604", no: 40, tier: "A", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.76, score: 0.76, evidence: "sim",
+      title: "Sparse-View 3D Coronary Reconstruction from Vessel Segmentations Using a Diffusion Prior",
+      titleZh: "稀疏视角冠脉三维重建：用扩散先验补足血管几何歧义",
+      authors: ["Tianyuan Wang", "Kenan Niu", "Stefano Stramigioli"],
+      venue: "arXiv · eess.IV", published: "2026-11-03", url: "https://arxiv.org/abs/2611.04604", pdf: "https://arxiv.org/pdf/2611.04604",
+      tags: ["扩散先验", "稀疏视角", "冠脉重建"], primaryClass: "eess.IV",
+      summary: "从稀疏冠脉造影视角重建三维冠脉解剖结构可辅助经皮冠状动脉介入，但角度覆盖不足、血管分割不完美会带来显著的几何歧义。作者提出血管特异的重建框架：在冠脉血管掩膜上训练无条件三维扩散模型（不需要配对的 2D–3D 数据），推理时先用缩放视觉外壳初始化，再用基于投影的数据一致性约束扩散细化；同一模型可复用于 2、4、8 个视角而无需重训。在由 ImageCAS 的 CTA 体数据导出的仿真造影上评测 50 例冠脉树：在降低对比度的条件下，各视角数的平均 Dice 与 clDice 均高于视觉外壳、深度图像先验（DIP）与哈希网格隐式表示；8 视角时相对低对比度下最强的基线 DIP 提升约 0.13 Dice 与 0.22 clDice，高对比度下则与哈希网格隐式表示相当。最优的扩散起始时间步取决于观测质量与视角数，过度细化会在高对比度时反而降低精度；对多次随机重建取平均可继续提升精度，样本间分歧还能定位误差区域（平均精度比错误普遍率高出 0.14–0.21）。作者指出临床验证仍是必要环节。",
+      why: "把「无条件扩散先验 + 视觉外壳初始化 + 投影数据一致性」拼成一条免配对数据的稀疏视角重建路线，换视角数不用重训，正好对应临床上想少拍几个角度、少给一次对比剂的需求；样本间分歧可用于误差定位，这一点比单纯刷 Dice 更实用。"
+    },
+    {
+      id: "2611.04811", no: 41, tier: "A", section: "tools", primaryTopic: "T10", topicTags: ["T08", "T10"], confidence: 0.76, score: 0.76, evidence: "mixed",
+      title: "NightIQA: A Comprehensive Dataset and Benchmark for MLLM-Based Nighttime Image Quality Assessment",
+      titleZh: "NightIQA：面向多模态大模型的夜间图像质量评测数据集与基准",
+      authors: ["Yiding Tian", "Jiaojiao Yi", "Jiayuan Lu", "Pufan Xu", "Jinlin Wu", "Changyuan Wen", "Hongyuan Yu"],
+      venue: "arXiv · cs.CV", published: "2026-11-03", url: "https://arxiv.org/abs/2611.04811", pdf: "https://arxiv.org/pdf/2611.04811",
+      tags: ["夜间 IQA", "多模态大模型", "退化合成"], primaryClass: "cs.CV",
+      summary: "夜间图像天然带有复合退化，质量评估格外困难。基于分数的方法把质量压成一个数字，缺少语言化的多维推理；多模态大模型是更全面的替代方案，却受制于数据缺口——现有真实 IQA 数据集大多以白天为主且拍摄设备老旧，合成数据又缺少夜间特有退化建模，伪影与真实夜拍相去甚远。NightIQA 由三部分组成：NightIQA-Real 是作者用现代设备自采的 1769 张高分辨率真实图像，覆盖六类典型失真并带结构化多维标注；NightIQA-Bench 是 1078 道视觉定位式选择题，按感知、技术评估、定位、推理四级层次组织；NightIQA-Syn 是场景感知的合成管线，联合建模全局与实例级退化，首发 8 万张高保真图像并公开完整生成代码。以监督微调加 GRPO 在 NightIQA 上训练后，Qwen3-VL-8B 超过开源 IQA 方法，整体准确率也高于主流闭源模型。",
+      why: "夜间低照度是计算摄影最难也最日常的场景，这份工作把质量评价从单一分数推进到可解释的多维语言判断，还附了一条可扩展的退化合成管线——做低照度增强、去噪、HDR 的组可以直接拿它当评测口径，而不必再自建主观实验。"
+    },
+    {
+      id: "2611.04427", no: 42, tier: "B", section: "system", primaryTopic: "T02", topicTags: ["T02", "T04"], confidence: 0.68, score: 0.68, evidence: "real",
+      title: "Reference-Beam-Assisted Perturbation-Resistant Imaging Through A Single Multimode Fiber",
+      titleZh: "参考光辅助：单根多模光纤在扰动下的抗扰成像",
+      authors: ["Bowen Sun", "Maohan Li", "Jingwei Luo", "Zhuoren Wan", "Zhaoyang Wen", "Yuan Chen", "Wending Huang", "Zijian Wang", "Ming Yan", "Heping Zeng"],
+      venue: "arXiv · physics.optics", published: "2026-11-03", url: "https://arxiv.org/abs/2611.04427", pdf: "https://arxiv.org/pdf/2611.04427",
+      tags: ["多模光纤", "散斑成像", "参考光"], primaryClass: "physics.optics",
+      summary: "多模光纤成像对机械扰动高度敏感，扰动会改变模式耦合、破坏散斑到目标的映射。作者提出参考光辅助的重建方法：一束独立参考光与成像信号走同一根光纤，但不经目标调制，其散斑图案因此提供了与目标无关的传输状态信息，无需再额外搭建构型感知结构；神经网络联合处理信号散斑与参考散斑来重建目标。在 MNIST 与 Fashion-MNIST 上跨 10 种光纤构型实验，重建质量、训练收敛速度与构型识别准确率均有提升；进一步在 40 种构型上验证了参考光辅助相对更大扰动状态集合的增益。作者希望以此为基础发展面向柔性内窥与微创光学诊断的扰动自适应多模光纤成像系统。",
+      why: "把同路参考光当成传输矩阵的实时探针，等于用光路本身替代了额外的标定硬件，成本几乎为零；散斑去相关正是散射介质成像与光纤束内窥最头疼的问题，跨 40 种构型的泛化也贴近光纤被弯折的真实使用状态。"
+    },
+    {
+      id: "2611.04498", no: 43, tier: "B", section: "benchmark", primaryTopic: "T04", topicTags: ["T04", "T08"], confidence: 0.64, score: 0.64, evidence: "mixed",
+      title: "3DGS-VBench+ and 3DGSV-Assessor: A Multi-Dimensional Subjective Benchmark and a Reference-Flexible Objective Model for 3D Gaussian Splatting Video Quality Assessment",
+      titleZh: "3DGS-VBench+ 与 3DGSV-Assessor：三维高斯泼溅视频质量的多维主观基准与参考灵活客观模型",
+      authors: ["Yuke Xing", "William Gordon", "Jiarui Wang", "Yujie Zhang", "Guangtao Zhai", "Yiling Xu"],
+      venue: "arXiv · cs.CV", published: "2026-11-03", url: "https://arxiv.org/abs/2611.04498", pdf: "https://arxiv.org/pdf/2611.04498",
+      tags: ["3DGS 质量评价", "多维 MOS", "减参考"], primaryClass: "cs.CV",
+      summary: "三维高斯泼溅（3DGS）可实现实时新视角合成，但存储开销大、压缩不可回避，训练与压缩都会引入表征特有的失真；不少生成式压缩方法对几何与颜色属性采用不同参数，会诱发维度特异的失真，因此需要多维评价。而真实采集通常没有与新轨迹对齐的真值视频，只有稀疏的拍摄视角可作参考。作者构建 3DGS-VBench+：3036 个 3DGS 重建各配一段渲染视频，覆盖 11 个真实与 22 个合成场景、6 种代表性压缩算法与系统设计的码率档，标注 9108 个 MOS，分整体、几何、颜色三个维度。基于该基准提出 3DGSV-Assessor：参考灵活的多模态框架，一次生成同时给出三维分数，并通过有界门控把基于排序的参考线索注入冻结回归器，同时支持减参考与无参考两种模式；在基准上与人类感知的相关性达到当前最优，并能零样本迁移到其他新视角合成基准。",
+      why: "神经渲染的质量评价长期靠 PSNR/SSIM 硬套，而 3DGS 的失真恰恰是几何与颜色分离的。本文把这两个维度拆开度量，又正面解决了真实采集缺少对齐真值这个落地障碍——3DGS 要从实验室走向采集端，这类评测基础设施比再多一个训练技巧更缺。"
+    },
+    {
+      id: "2611.05020", no: 44, tier: "C", section: "physics", primaryTopic: "T06", topicTags: ["T06"], confidence: 0.52, score: 0.52, evidence: "mixed",
+      title: "ConvexAD: differentiable phase retrieval with geometric regularization for high-strain, low-signal Bragg coherent diffraction imaging",
+      titleZh: "ConvexAD：几何正则的可微相位恢复，用于高应变低信号布拉格相干衍射成像",
+      authors: ["Matteo Masto", "Ewen Bellec", "Etienne Polack", "Jiangtao Zhao", "Vincent Favre-Nicolin", "Steven J. Leake", "Tobias Schülli", "Marie-Ingrid Richard"],
+      venue: "arXiv · cond-mat.mes-hall", published: "2026-11-03", url: "https://arxiv.org/abs/2611.05020", pdf: "https://arxiv.org/pdf/2611.05020",
+      tags: ["布拉格相干衍射", "相位恢复", "凸多面体参数化"], primaryClass: "cond-mat.mes-hall",
+      summary: "布拉格相干衍射成像（BCDI）依赖相位恢复这一非凸、病态逆问题，噪声、部分相干以及被成像纳米晶自身的应变与晶体缺陷都会让条件变差。传统的交替投影与深度学习方法都把物体放在密集体素网格上表示，容易出现振幅—相位混叠，在上述条件下会愈发病态，常无法可靠给出颗粒形状与应变的三维映射。ConvexAD 把物体形状参数化为凸多面体——由半空间交集构造，并按构造保证其内部振幅平坦，从而在原理上消除振幅—相位混叠、减少可训练参数，进而改善收敛；实现上基于 JAX，获得原生 GPU 加速与前向模型灵活性。作者在仿真与实验 BCDI 数据上验证：在高应变、低信号与低相干条件下，其表现优于传统方法与深度学习辅助的相位恢复，拓展了可做定量 BCDI 重建的工况范围。",
+      why: "把先验直接写进参数化，而不是在损失里加一项正则——用凸多面体表达纳米颗粒，是对相位恢复病态性的结构性解法。任何要从衍射或瞬态测量里恢复稀疏几何的反演问题，都能借用这个「形状假设即正则化」的思路。"
+    },
+    {
+      id: "2611.05206", no: 45, tier: "C", section: "core", primaryTopic: "T02", topicTags: ["T02"], confidence: 0.52, score: 0.52, evidence: "mixed",
+      title: "Diffusion Plug-in Priors for Self-Supervised Ultrasound Video Restoration",
+      titleZh: "UltraDiff：冻结扩散先验下的自监督超声视频超分与去散斑",
+      authors: ["Chu Chen", "Mingduo He", "Yining Li", "Yinhao Wu", "Wei Tang", "Yiwen Luo", "Yixuan Chen", "Graham Treece", "Pasquale Cascarano", "Kangning Cui"],
+      venue: "arXiv · cs.CV", published: "2026-11-03", url: "https://arxiv.org/abs/2611.05206", pdf: "https://arxiv.org/pdf/2611.05206",
+      tags: ["超声恢复", "扩散先验", "散斑统计"], primaryClass: "cs.CV",
+      summary: "超声视频受硬件约束分辨率有限，又叠加与信号相关的散斑，而配对的低/高分辨率采集几乎不可能获得。UltraDiff 把预训练扩散模型当作冻结的即插即用先验，通过优化采样器的隐变量种子，在带范围约束的最大后验框架下逐帧恢复，既不需要配对数据也不必重训网络。作者从瑞利尺度族模型推导出散斑感知的数据保真项，刻画其相对残差与方差自适应加权性质，并给出对正观测在对数强度上严格凸、下界有保证的稳定形式；再以全变分正则配合扩散先验，并用前一帧优化得到的种子热启动下一帧以维持时间一致性。在 EchoNet-LVH 的仿真散斑加噪视频上，PSNR 比最强基线高 1.24 dB，换用超声相关先验还能进一步提升；在真实临床心脏超声视频上，零样本射血分数预测的平均绝对误差由 7.31 降到 6.37 个 EF 点。方法不绑定特定扩散权重，代码将在接收后公开。",
+      why: "把散斑的统计模型写成保真项、把扩散模型冻结成先验，是「无真值、无配对」条件下最实用的一类逆问题解法；更难得的是它用下游临床指标（EF 误差）而非仅 PSNR 来证明恢复的价值——这种评测方式值得成像重建类工作借鉴。"
+    },
+    {
+      id: "2611.05008", no: 46, tier: "C", section: "efficient", primaryTopic: "T08", topicTags: ["T08"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Learned Smartphone ISP on Mobile GPUs: Mobile AI 2026 Challenge Report",
+      titleZh: "移动 GPU 上的学习式手机 ISP：Mobile AI 2026 挑战赛报告",
+      authors: ["Andrey Ignatov", "Georgy Perevozchikov", "Radu Timofte", "Yuhong He", "Yuxuan Qiu", "Tianyu Hao", "Ruoqi Li", "Yueqi Yang", "Chaoyu Feng", "Dongqing Zou", "Lei Lei", "Na Jiang", "Yongrui Zhang", "Hailong Yan", "Xiangtao Zhang", "Ao Li", "Le Zhang", "Andrei Arhire", "Jing Fang", "XingLin Xie", "YiChen Lu", "Haibo Xu"],
+      venue: "arXiv · cs.CV", published: "2026-11-03", url: "https://arxiv.org/abs/2611.05008", pdf: "https://arxiv.org/pdf/2611.05008",
+      tags: ["手机 ISP", "RAW 到 RGB", "端侧时延"], primaryClass: "cs.CV",
+      summary: "手机影像质量日益依赖计算摄影与先进 ISP 算法，但模型必须能在受限的移动硬件上运行。本次挑战要求参赛者从 RAW Bayer 数据重建 RGB 照片，并在高通与 Arm 的主流手机 GPU 上跑通。比赛提供大规模 Fujifilm UltraISP 数据集，由 Sony IMX586 Quad Bayer 手机传感器拍摄的 RAW 与专业 102MP 中画幅 FujiFilm GFX100 拍摄的 RGB 配对构成；所有模型的运行时间均在骁龙 8 Elite Gen 5 与天玑 9500 上（对应 Adreno 与 Mali GPU）实测。最优方案能在两个平台上于 100 毫秒内从 RAW 重建高质量 5MP RGB 图像，报告汇总了各参赛模型的完整描述。",
+      why: "这是移动端 ISP 现状的一手横评：同一份 RAW–RGB 数据、同一套旗舰芯片实测时延，能直接看出「画质—延迟」的真实权衡点。做端侧计算摄影选型时，这类挑战赛报告往往比单篇方法论文更有参考价值。"
+    },
+    {
+      id: "2611.03455", no: 47, tier: "C", section: "tools", primaryTopic: "T09", topicTags: ["T09"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Bg-Mix: On Using Image Backgrounds for Data Augmentation in Electron Microscopy Images",
+      titleZh: "Bg-Mix：用图像背景做电镜图像的数据增强",
+      authors: ["Ankur Srivastava", "Joana Sarah Grah", "Katharina Ladewig", "Nils Körber"],
+      venue: "arXiv · cs.CV", published: "2026-11-02", url: "https://arxiv.org/abs/2611.03455", pdf: "https://arxiv.org/pdf/2611.03455",
+      tags: ["电镜图像", "数据增强", "目标检测"], primaryClass: "cs.CV",
+      summary: "电子显微镜是病毒学中观察病毒颗粒、支撑科研诊断与形态表征的支柱手段，计算机辅助图像分析能显著提速这一人力密集流程，但典型的电镜病毒数据集规模小、标注稀疏，难以训练出可用的深度学习模型。为绕开数据短缺、同时利用内容丰富的多样背景，作者提出 Bg-Mix：把训练图像分解为前景目标与背景，再将二者重新组合成新的增强图像。这样做既提升了目标检测模型的表现，也增加了训练数据的多样性；在两个数据集、两种架构上测试，box mAP 相对基线提升 0.8 至 3.3 个点。",
+      why: "显微与电镜场景的真实瓶颈往往是标注量而非模型容量，把「背景」当成可复用的数据资源是近乎零成本的解法；这套前后景解耦的增强思路可以照搬到其他样本稀缺的成像检测任务上。"
+    },
+    {
+      id: "2611.04877", no: 48, tier: "C", section: "physics", primaryTopic: "T06", topicTags: ["T06"], confidence: 0.52, score: 0.52, evidence: "sim",
+      title: "Sampling Density for Multi-window STFT Phase Retrieval",
+      titleZh: "多窗 STFT 相位恢复的采样密度：密度 2 的最优界",
+      authors: ["Wenchang Sun", "Mengxuan Zhou"],
+      venue: "arXiv · math.CA", published: "2026-11-03", url: "https://arxiv.org/abs/2611.04877", pdf: "https://arxiv.org/pdf/2611.04877",
+      tags: ["相位恢复", "采样密度", "唯一性"], primaryClass: "math.CA",
+      summary: "研究多窗短时傅里叶变换的相位恢复问题，窗函数取前两个归一化 Hermite 函数的复线性组合，并假设该窗系数向量族在二维复空间上可做相位恢复。作者证明：只要采样集是可分的且其下 Beurling 密度大于 2，或者是密度不低于 2 的平移格点，多窗幅度采样就能把平方可积函数空间中的任意信号唯一确定到全局相位；并进一步说明该采样密度已是最优，改进了 Grohs、Liehr 与 Rathmair 于 2025 年在《泛函分析杂志》上关于多窗 STFT 相位恢复格点唯一性的结果。",
+      why: "采样密度决定相位恢复所需测量数的下限，本文把「多窗 STFT 到底要多密才唯一」证到了一个紧的界，还证明该界最优。对设计叠层衍射、傅里叶叠层这类以窗滑动为核心的采集协议，这是可以直接用来定标采样步长的理论依据。"
     }
   ],
   archive: [
-    { date: "2026-11-04", number: 6, count: 6, highlights: "5 个方向 · 跨方向 1 篇 · 遮挡式 NLOS 闪光 LiDAR / 超低场 MRI 开源工具链 / 单像素定量相位压缩", current: true,
+    { date: "2026-11-05", number: 7, count: 9, highlights: "6 个方向 · 跨方向 3 篇 · 稀疏视角冠脉扩散先验 / 夜间 IQA 基准 / 参考光抗扰光纤成像", current: true,
+      dailyIds: ["2611.04604", "2611.04811", "2611.04427", "2611.04498", "2611.05020", "2611.05206", "2611.05008", "2611.03455", "2611.04877"], headlineIds: ["2611.04604", "2611.04811", "2611.04427"] },
+    { date: "2026-11-04", number: 6, count: 6, highlights: "5 个方向 · 跨方向 1 篇 · 遮挡式 NLOS 闪光 LiDAR / 超低场 MRI 开源工具链 / 单像素定量相位压缩", current: false,
       dailyIds: ["2611.04068", "2611.01511", "2611.01675", "2611.01888", "2611.04092", "2611.01823"], headlineIds: ["2611.04068", "2611.01511", "2611.01675"] },
     { date: "2026-11-03", number: 5, count: 13, highlights: "6 个方向 · 跨方向 2 篇 · 稀疏视角 CBCT / 荧光涨落超分辨 / 叠层衍射扩散采样", current: false,
       dailyIds: ["2610.39359", "2610.40046", "2610.38207", "2610.41531", "2611.00157", "2610.40187", "2610.41011", "2610.40166", "2610.37802", "2610.39340", "2610.38589", "2610.40393", "2610.37519"], headlineIds: ["2610.39359", "2610.37802", "2610.38207"] },

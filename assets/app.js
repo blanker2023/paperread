@@ -129,7 +129,7 @@
     if (!p) return;
     if (action === "save") {
       const saved = readStore(STORAGE.saved);
-      if (saved[id]) { delete saved[id]; toast("已取消收藏"); } else { saved[id] = { title: p.title, ts: new Date().toISOString() }; toast("已收藏，稍后可在兴趣页查看"); }
+      if (saved[id]) { delete saved[id]; toast("已取消收藏"); } else { saved[id] = { title: p.title, titleZh: p.titleZh, summary: p.summary, why: p.why, url: p.url, category: p.primaryTopic, ts: new Date().toISOString() }; toast("已收藏，稍后可在兴趣页查看"); }
       writeStore(STORAGE.saved, saved);
     } else {
       const feedback = readStore(STORAGE.feedback);
@@ -240,6 +240,41 @@
     };
     draw();
     window.addEventListener("storage", function (event) { if (event.key === STORAGE.subscriptions) draw(); });
+    const refreshBtn = document.getElementById("refresh-today");
+    if (refreshBtn) {
+      refreshBtn.addEventListener("click", function () {
+        refreshBtn.disabled = true;
+        refreshBtn.textContent = "正在同步最新数据…";
+        const hint = document.getElementById("refresh-hint");
+        loadFreshData(function (ok) {
+          refreshBtn.disabled = false;
+          refreshBtn.textContent = "⟳ 刷新今日内容";
+          if (ok) draw();
+          if (hint) { hint.textContent = ok ? "已同步最新一期 · " + data.issue.date : "未能获取最新数据，请稍后重试"; hint.classList.add("show"); setTimeout(function () { hint.classList.remove("show"); }, 3000); }
+        });
+      });
+    }
+  }
+  function loadFreshData(callback) {
+    // 用带时间戳的 URL 强制绕过微信/浏览器缓存，重新拉取 data.js
+    const base = "assets/data.js";
+    const sep = base.indexOf("?") > -1 ? "&" : "?";
+    const url = base + sep + "t=" + Date.now();
+    const s = document.createElement("script");
+    s.src = url;
+    s.async = true;
+    s.onload = function () {
+      const fresh = window.NLOS_DATA;
+      if (fresh && fresh.issue && fresh.issue.date) {
+        data.issue = fresh.issue;
+        data.papers = fresh.papers;
+        data.topics = fresh.topics;
+        data.archive = fresh.archive;
+        callback(true);
+      } else { callback(false); }
+    };
+    s.onerror = function () { callback(false); };
+    document.head.appendChild(s);
   }
   function renderTopicsPage() {
     const grid = document.getElementById("topics-grid");
@@ -427,6 +462,7 @@
     const useful = entries.filter(function (e) { return e.action === "useful"; }).length;
     const useless = entries.filter(function (e) { return e.action === "useless"; }).length;
     document.getElementById("feedback-summary").innerHTML = '<div><strong>' + useful + '</strong><span>有用</span></div><div><strong>' + useless + '</strong><span>没用</span></div><div><strong>' + savedEntries.length + '</strong><span>收藏</span></div>';
+    renderSavedList(savedEntries);
     const labels = { useful: "有用", useless: "没用", save: "收藏" };
     document.getElementById("feedback-history").innerHTML = all.length ? all.slice(0, 12).map(function (e) { return '<div class="feedback-row"><span class="tier ' + (e.action === "useless" ? "tier-B" : "tier-A") + '">' + labels[e.action] + '</span><span>' + esc(e.title) + '</span><small>' + e.ts.slice(0, 10) + '</small></div>'; }).join("") : '<div class="empty-state"><h2>还没有反馈</h2><p>在论文卡片上点击「有用」「没用」或「收藏」，记录会保存在本机。</p></div>';
     const topicCounts = {};
@@ -434,6 +470,47 @@
     const topics = Object.keys(topicCounts).sort(function (a, b) { return topicCounts[b] - topicCounts[a]; }).slice(0, 6);
     document.getElementById("dynamic-topics").innerHTML = topics.length ? topics.map(function (t) { return '<span class="profile-topic">' + esc(t) + '<strong>' + (topicCounts[t] > 0 ? "+" : "") + topicCounts[t] + '</strong></span>'; }).join("") : '<span class="profile-topic">等待你的反馈<strong>·</strong></span>';
   }
+  let savedCategory = "all";
+  function renderSavedList(savedEntries) {
+    const container = document.getElementById("saved-list");
+    if (!container) return;
+    const categories = data.topics.filter(function (t) { return t.enabled; });
+    const chips = '<button class="filter-chip' + (savedCategory === "all" ? " active" : "") + '" data-saved-cat="all">全部</button>' +
+      categories.map(function (t) { return '<button class="filter-chip' + (savedCategory === t.id ? " active" : "") + '" data-saved-cat="' + t.id + '">' + esc(t.name) + '</button>'; }).join("");
+    const filtered = savedEntries.filter(function (e) { return savedCategory === "all" || e.category === savedCategory; });
+    let html = '<div class="saved-filters">' + chips + '</div>';
+    if (!filtered.length) {
+      html += '<div class="empty-state"><h2>' + (savedEntries.length ? "该分类下还没有收藏" : "还没有收藏") + '</h2><p>在论文卡片上点击「收藏」，即可在这里按方向整理并直达原文。</p></div>';
+    } else {
+      html += filtered.map(function (e) {
+        const t = topicById(e.category);
+        const catName = t ? t.name : (e.category || "未分类");
+        return '<article class="saved-card" data-saved-id="' + esc(e.id) + '">' +
+          '<div class="saved-card-top"><span class="topic-badge topic-' + esc(e.category) + '">' + esc(e.category) + '</span><span class="saved-cat-name">' + esc(catName) + '</span><span class="saved-date">' + esc(e.ts ? e.ts.slice(0, 10) : "") + '</span></div>' +
+          '<a class="saved-title" href="' + esc(e.url || "#") + '" target="_blank" rel="noopener">' + esc(e.title) + '</a>' +
+          (e.titleZh ? '<p class="saved-title-zh">' + esc(e.titleZh) + '</p>' : "") +
+          (e.summary ? '<p class="saved-summary">' + esc(e.summary) + '</p>' : "") +
+          '<div class="saved-actions"><a class="saved-link" href="' + esc(e.url || "#") + '" target="_blank" rel="noopener">查看原文<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9"></path><path d="M18 13v7H4V6h7"></path></svg></a>' +
+          '<button class="saved-remove" data-saved-remove="' + esc(e.id) + '" aria-label="取消收藏">移除</button></div></article>';
+      }).join("");
+    }
+    container.innerHTML = html;
+  }
+  document.addEventListener("click", function (event) {
+    const chip = event.target.closest("[data-saved-cat]");
+    if (chip) { savedCategory = chip.dataset.savedCat; renderInterest(); return; }
+    const removeBtn = event.target.closest("[data-saved-remove]");
+    if (removeBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+      const id = removeBtn.dataset.savedRemove;
+      const saved = readStore(STORAGE.saved);
+      delete saved[id];
+      writeStore(STORAGE.saved, saved);
+      toast("已移除收藏");
+      renderInterest();
+    }
+  });
   initGlobal();
   renderToday();
   renderTopicsPage();

@@ -3,10 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="theme-color" content="#f4f2ec">
   <meta name="description" content="计算成像日报：按订阅方向筛选非视域、单光子与神经场重建等领域的重要论文，提供中文摘要、推荐理由与引用导出。">
   <title>今日 · 计算成像日报</title>
-  <link id="main-css" rel="stylesheet" href="assets/styles.css"><script>(function(){var s=new URLSearchParams(location.search).get("sharecode");window.__shareUrl=function(p){if(!s)return p;return p+(p.indexOf("?")>-1?"&":"?")+"sharecode="+encodeURIComponent(s)};var l=document.getElementById("main-css");if(l&&s)l.href=window.__shareUrl(l.getAttribute("href"));if(s)document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll('a[href$=".html"]').forEach(function(a){a.href=window.__shareUrl(a.getAttribute("href"))})})})();</script>
+  <link id="main-css" rel="stylesheet" href="assets/styles.css?v=4"><script>(function(){var s=new URLSearchParams(location.search).get("sharecode");window.__shareUrl=function(p){if(!s)return p;return p+(p.indexOf("?")>-1?"&":"?")+"sharecode="+encodeURIComponent(s)};var l=document.getElementById("main-css");if(l&&s)l.href=window.__shareUrl(l.getAttribute("href"));if(s)document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll('a[href$=".html"]').forEach(function(a){a.href=window.__shareUrl(a.getAttribute("href"))})})})();</script>
 </head>
 <body data-page="today">
   <a class="skip-link" href="#main">跳到正文</a>
@@ -28,6 +31,8 @@
 
   <nav id="topic-nav" class="topic-nav container" aria-label="我的订阅方向"></nav>
 
+  <div class="container" style="margin-top:2px"><button id="refresh-today" class="refresh-btn" type="button">⟳ 刷新今日内容</button><span id="refresh-hint" class="pull-hint"></span></div>
+
   <main id="main" class="container layout">
     <div class="main-column">
       <section aria-labelledby="headline-title">
@@ -47,6 +52,6 @@
 
   <footer class="site-footer"><div class="container footer-main"><div><div class="footer-brand">计算成像日报</div><p class="footer-copy">一个无需登录的个人研究站点。每天只更新一次，把有限注意力留给真正重要的论文。</p></div><div class="footer-col"><strong>阅读</strong><a href="archive.html">历史存档</a><a href="search.html">论文搜索</a><a href="topics.html">方向订阅</a><a href="interest.html">兴趣画像</a></div><div class="footer-col"><strong>关于</strong><a href="status.html">运行状态</a><a href="https://arxiv.org" target="_blank" rel="noopener">arXiv 数据源</a><a href="status.html">邮件订阅筹备中</a></div></div><div class="container footer-bottom"><span>数据来源于 arXiv · 摘要基于原始摘要整理</span><span>零外部资源 · 本地存储 · ISSUE 001</span></div></footer>
   <nav class="mobile-nav" aria-label="移动端导航"><a href="index.html" data-nav="today" data-icon="home" data-label="今日"></a><a href="archive.html" data-nav="archive" data-icon="archive" data-label="存档"></a><a href="search.html" data-nav="search" data-icon="search" data-label="搜索"></a><a href="topics.html" data-nav="topics" data-icon="topics" data-label="订阅"></a><a href="interest.html" data-nav="interest" data-icon="interest" data-label="兴趣"></a></nav>
-  <script>(function(){var u=window.__shareUrl||function(p){return p};var d=document.createElement("script");d.src=u("assets/data.js");d.async=false;var a=document.createElement("script");a.src=u("assets/app.js");a.async=false;document.body.appendChild(d);document.body.appendChild(a);})();</script>
+  <script>(function(){var u=window.__shareUrl||function(p){return p};var bv="v4";function ver(p){p=u(p);return p+(p.indexOf("?")>-1?"&":"?")+bv;}var d=document.createElement("script");d.src=ver("assets/data.js");d.async=false;var a=document.createElement("script");a.src=ver("assets/app.js");a.async=false;document.body.appendChild(d);document.body.appendChild(a);})();</script>
 </body>
 </html>

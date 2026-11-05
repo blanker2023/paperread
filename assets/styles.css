@@ -210,6 +210,30 @@ mark { padding: 0 1px; color: inherit; background: #f1d897; }
 .feedback-row { display: grid; grid-template-columns: 72px 1fr auto; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 12px; }
 .feedback-row small { color: var(--muted); }
 
+.saved-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.saved-list { display: grid; gap: 0; }
+.saved-card { display: block; padding: 18px 0; border-bottom: 1px solid var(--line); transition: background .15s; }
+.saved-card:hover { background: var(--paper); }
+.saved-card-top { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 10px; color: var(--muted); }
+.saved-cat-name { letter-spacing: .04em; }
+.saved-date { margin-left: auto; }
+.saved-title { display: inline-block; margin: 0 0 4px; font-family: var(--serif); font-size: 17px; font-weight: 600; line-height: 1.35; text-decoration: none; color: inherit; }
+.saved-card:hover .saved-title { color: var(--teal); }
+.saved-title-zh { margin: 0 0 8px; color: var(--teal); font-size: 13px; line-height: 1.5; }
+.saved-summary { margin: 0 0 12px; color: var(--muted); font-size: 12px; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.saved-actions { display: flex; align-items: center; gap: 16px; }
+.saved-link { display: inline-flex; align-items: center; gap: 5px; color: var(--teal); font-size: 12px; font-weight: 500; }
+.saved-link svg { width: 14px; height: 14px; }
+.saved-remove { margin-left: auto; padding: 5px 10px; border: 1px solid var(--line); background: none; color: var(--muted); font-size: 11px; cursor: pointer; border-radius: 3px; }
+.saved-remove:hover { color: #b3261e; border-color: #b3261e; }
+
+.pull-hint { display: none; padding: 7px 0; text-align: center; color: var(--muted); font-size: 11px; }
+.pull-hint.show { display: block; }
+.refresh-btn { padding: 8px 16px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 12px; cursor: pointer; border-radius: 4px; font-family: inherit; }
+.refresh-btn:hover { border-color: var(--teal); color: var(--teal); }
+.refresh-btn:disabled { opacity: .55; cursor: default; }
+
+
 .site-footer { border-top: 1px solid var(--ink); }
 .footer-main { display: grid; grid-template-columns: 1.2fr .8fr .8fr; gap: 40px; padding: 35px 0; }
 .footer-brand { font-family: var(--serif); font-size: 22px; }
