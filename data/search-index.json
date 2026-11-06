@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T16:16:32.537Z",
+  "generatedAt": "2026-11-06T17:00:32.102Z",
   "rangeDays": 90,
   "papers": [
     {
@@ -2528,6 +2528,478 @@
       "primaryClass": "cs.CV",
       "summary": "光谱三维视觉把波长分辨的测量与几何信息结合起来，支撑材料感知的重建、感知与场景分析，但文献分散在高光谱/多光谱传感、跨光谱深度与位姿估计、光谱点云、LiDAR–高光谱融合以及神经场景表示等方向。本文做结构化综述：覆盖光谱与几何采集、数据表示、标定与配准、光谱三维重建、集成式光谱三维采集与联合物理建模、学习方法、下游任务、基准数据集、应用与软件工具；把现有方法归为三条互补主线——光谱支撑三维信息估计、光谱三维重建与建图、集成式光谱三维采集与联合物理建模；并比较代表性数据集与在分类、回归、分割、语义场景分析、光谱新视角合成上的报告结果。核心判断是：当 RGB 外观或几何单独不足时，光谱确实能提供互补的材料、状态与可见性线索，但收益大小依赖任务与基线，很多报告的增益并未把光谱贡献与同时发生的传感、架构、空间上下文或融合方式变化隔离开。领域进展受限于原生光谱三维基准稀缺、辐射与几何标定不一致、评测协议异构、跨传感器跨域验证不足。作者给出标准化基准、不确定性感知融合、物理约束学习、高效光谱三维表示与跨域泛化等优先方向。",
       "why": "这份综述最有用的是「泼冷水」那部分：明确指出多数光谱增益没做消融、基准与标定不统一。要做光谱–几何联合采集，先照它的清单核对评测协议，比再读十篇刷点论文更省时间。"
+    },
+    {
+      "id": "2611.07665",
+      "no": 72,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T08",
+      "topicTags": [
+        "T08",
+        "T04"
+      ],
+      "confidence": 0.76,
+      "score": 0.76,
+      "evidence": "real",
+      "title": "CoGenRec: A Unified Generative Framework for Complementary Vision Reconstruction",
+      "titleZh": "CoGenRec：把互补传感器的两条通路统一进一个生成式重建框架",
+      "authors": [
+        "Yapeng Meng",
+        "Yuguo Chen",
+        "Xiangru Chen",
+        "Shaojun Xu",
+        "Xuezhen Wang",
+        "Lijian Wang",
+        "Zheyu Yang",
+        "Yihan Lin",
+        "Luping Shi",
+        "Rong Zhao"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-05",
+      "url": "https://arxiv.org/abs/2611.07665",
+      "pdf": "https://arxiv.org/pdf/2611.07665",
+      "tags": [
+        "互补传感器",
+        "视频扩散先验",
+        "去模糊/插帧/HDR"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "采集极高速运动与高动态范围场景，本质上受制于时间分辨率、空间细节、信噪比与动态范围之间的权衡——在有限带宽、功耗与量子效率下，传统帧式相机只能时间欠采样、被曝光拖出运动模糊、甚至饱和。互补视觉传感器（CVS）把视觉信息拆成两条互补通路：空间稠密但时间稀疏的长曝光 RGB 通路，以及时间稠密但空间稀疏的短曝光时空差分通路；两者合起来在宽动态范围内同时给出外观、结构与运动线索，使重建得以突破常规成像的极限。作者提出 CoGenRec：用曝光感知的外观建模与双向时间传播，把互补测量编码成多尺度时空特征，用这些特征约束视频扩散模型，并把特征注入 VAE 解码器以恢复隐空间压缩时丢掉的细节，从而把物理测量的场景保真度与学习到的视频先验的外观恢复能力拼在一起。一个框架统一了视频去模糊、高时间分辨率帧插值与 HDR 融合三类任务：在 SportsSloMo-CVS 上，相比最强通用基线分别提升 4.40 / 3.89 / 5.04 dB PSNR；在 129 个未见的真实 CVS 场景上也保持了良好的感知质量。",
+      "why": "互补传感器这类「双通路采样」设计的价值几乎全在重建端：两条通路谁补谁、在哪一层融合，直接决定上限。CoGenRec 的做法是把互补测量当作扩散模型的条件、同时把特征塞进 VAE 解码器补细节，而不是在像素域做事后融合——这对多曝光、多传感器、事件+帧的混合采集系统是可直接借用的分工：测得准的部分交给物理测量，丢掉的部分交给生成先验。"
+    },
+    {
+      "id": "x8gj-tvc3",
+      "no": 73,
+      "tier": "B",
+      "section": "physics",
+      "primaryTopic": "T02",
+      "topicTags": [
+        "T02"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Self-portrait of the focusing process in speckle: II. Gouy phase shift for defocus correction and pixel depth reassignment",
+      "titleZh": "散斑里的聚焦自画像 II：用 Gouy 相移做逐像素散焦校正与深度重指派",
+      "authors": [
+        "Flavien Bureau",
+        "Emma Brenner",
+        "Naiara Korta Martiartu",
+        "Elsa Giraudat",
+        "Arthur Le Ber",
+        "William Lambert",
+        "Louis Carmier",
+        "Aymeric Guibal",
+        "Mathias Fink",
+        "Alexandre Aubry"
+      ],
+      "venue": "Physical Review Applied",
+      "published": "2026-11-05",
+      "url": "https://doi.org/10.1103/x8gj-tvc3",
+      "doi": "10.1103/x8gj-tvc3",
+      "tags": [
+        "散斑干涉",
+        "Gouy 相移",
+        "声速估计与像差校正"
+      ],
+      "primaryClass": "physics.med-ph",
+      "summary": "这是「用散斑做像差校正与混响补偿」三部曲的第二篇。用波探测非均匀介质时，波速的多尺度起伏同时带来两类麻烦：短尺度非均匀性产生背向散射回波，其随机干涉在波束成形图像上形成散斑；大尺度波速起伏则扭曲聚焦波前，在图像上造成像差。作者展示焦点的「自画像」如何随声速模型演化，并给出一个相当醒目的现象：当声速模型取到最优时会出现 Gouy 相移。这个极敏感的特征同时支撑两件事——(i) 为图像中每个像素单独优化声速模型；(ii) 在整个视场内做局部、精细的散焦补偿，从而压掉图像里的大部分像差。方法先在仿体与数值仿真上验证，再用于一位成像条件困难患者的在体肝脏数据：声速优化实现了像差的轴向补偿，并把每个单次散射回波按真实散射体位置做深度重指派。由于距离测量在诊断中常常是关键，这种波速优化不仅对超声、对其他基于回波定位原理的成像方法同样重要。",
+      "why": "组织内声速未知导致的散焦是超声定量化的老难题，常规做法是估一个全局平均声速、或者请「导引星」。这篇把 Gouy 相移当成焦点质量的内在标尺，做成逐像素的声速搜索——不需要额外硬件，也不需要已知点目标。对光声、OCT 这类同样依赖相干门/回波定位的模态，这套「用散斑自身判断聚焦好不好」的思路有直接迁移价值。"
+    },
+    {
+      "id": "boe-pam-beams",
+      "no": 74,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T09",
+      "topicTags": [
+        "T09",
+        "T02"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "mixed",
+      "title": "Joint simulation framework for evaluating non-diffraction beams in optical-resolution photoacoustic microscopy in scattering media",
+      "titleZh": "散射介质中光声显微的无衍射光束评测：光-声联合仿真框架",
+      "authors": [
+        "Ximiao Yu",
+        "Haiqi Zhang",
+        "Zhixian Lin",
+        "Simo Tian",
+        "Yingying Chen",
+        "Hui Gong",
+        "Qingming Luo",
+        "Xiaoquan Yang"
+      ],
+      "venue": "Biomedical Optics Express",
+      "published": "2026-11-03",
+      "url": "https://doi.org/10.1364/boe.613821",
+      "doi": "10.1364/boe.613821",
+      "tags": [
+        "光声显微",
+        "无衍射光束",
+        "散射介质仿真"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "无衍射光束被引入光分辨光声显微（OR-PAM）以扩展景深，但它们在散射生物组织里到底还剩多少性能，此前缺乏系统评估。作者提出一个光-声联合仿真框架：光学部分用分形传播方法建模，声学部分用 k-Wave 仿真，考察散射造成的光束畸变如何影响 OR-PAM 成像。比较了高斯、Bessel、Airy、针状与液滴状 Bessel 五种光束，把光场分布与吸收体分布耦合生成初始声压，再用微球阵列与血管模型评估成像性能。结果显示散射越强，五种光束的差异越被放大：高散射介质中高斯与 Airy 照明图像明显退化，Bessel 与液滴状 Bessel 能更好地保住深层结构；Bessel 与针状光束成像距离长，但旁瓣明显。液滴状 Bessel 虽非各项光学传播指标最优，却在散射介质 OR-PAM 中取得较好的平衡。光束实测与碳纳米颗粒成像支持了仿真趋势，小鼠耳部血管成像展示了五种光束的在体表现。该研究为生物组织 OR-PAM 的照明光束选择与优化提供了参考。",
+      "why": "「用 Bessel/Airy 光束换景深」在显微里讲了很多年，但在散射组织里哪种光束还保得住深层结构，一直缺定量比较。这个框架把光学传播与声学检测串起来评，结论也实用：高散射下 Airy 崩得最快，液滴状 Bessel 折中最好。做在体光声、或任何要在散射组织里选照明光束的实验，可以直接拿它的比较表当起点。"
+    },
+    {
+      "id": "ao-coded-ct",
+      "no": 75,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "sim",
+      "title": "Three-dimensional residual projection completion for coded-aperture cone-beam computed tomography",
+      "titleZh": "编码孔径锥束 CT 的三维残差投影补全：只补缺失、不动实测",
+      "authors": [
+        "Tianyi Mao",
+        "Yushen Jiang",
+        "Leijun Zheng",
+        "Xu Ma",
+        "Shujin Zhu",
+        "Xiubin Dai"
+      ],
+      "venue": "Applied Optics",
+      "published": "2026-11-05",
+      "url": "https://doi.org/10.1364/ao.613760",
+      "doi": "10.1364/ao.613760",
+      "tags": [
+        "编码孔径",
+        "稀疏视角 CT",
+        "投影域补全"
+      ],
+      "primaryClass": "physics.med-ph",
+      "summary": "编码孔径锥束 CT 通过遮挡一部分探测器-视角射线来降低 X 光剂量，但由此产生的交错缺失采样让直接体重建既费算力又易出伪影。作者提出投影域重建框架：用三维 U-Net 学习残差修正，在 Feldkamp–Davis–Kress（FDK）重建之前先把编码投影张量补全。网络输入是实测编码投影、基于插值的初始估计与二值孔径掩膜，只对未测量的样本预测有界残差修正，实测数据被严格保真；训练目标组合了缺失区域保真、接缝强度一致与接缝梯度一致三项，专门压编码孔径边界处的不连续。在 188 个投影体上的实验表明，所选损失组合改善了投影补全，重建结果接近参考 FDK 图像；38 个测试病例上重建与参考的平均 PSNR 为 44.6 dB、平均 SSIM 为 0.98。",
+      "why": "稀疏/编码孔径 CT 的常见做法是在图像域补，或者让网络在投影域「顺手」把实测数据也改掉——后者让结果不可解释、也无法回溯源数据。这篇的约束很干净：只在未测量处加有界残差，实测值一个不动，再用接缝一致损失压边界伪影。做任何稀疏采样重建时，「保实测 + 只补缺失」都该是默认设定，而不是可选项。"
+    },
+    {
+      "id": "ir-amenet",
+      "no": 76,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.65,
+      "score": 0.65,
+      "evidence": "mixed",
+      "title": "AME-Net++: adaptive mixture-of-experts for intelligent intraoperative 3D reconstruction",
+      "titleZh": "AME-Net++：自适应专家混合的术中三维血管重建",
+      "authors": [
+        "Shi-Qi Liu",
+        "You-Jun Zhang",
+        "Xiao-Liang Xie",
+        "Lin-Sen Zhang",
+        "Xiao-Hu Zhou",
+        "Xi-Yao Ma",
+        "Zeng-Guang Hou",
+        "Xin-Kai Qu"
+      ],
+      "venue": "Intelligence & Robotics",
+      "published": "2026-11-05",
+      "url": "https://doi.org/10.20517/ir.2026.39",
+      "doi": "10.20517/ir.2026.39",
+      "tags": [
+        "稀疏 X 光投影",
+        "专家混合",
+        "术中导航"
+      ],
+      "primaryClass": "eess.IV",
+      "summary": "微创血管介入中，术中三维血管重建与准确的空间刻画对机器人手术导航的安全与精度至关重要。与依赖固定训练/测试划分的常规监督学习不同，基于投影的神经重建要在稀疏 X 光观测与对应的三维空间表示之间建立患者特异的映射。作者提出 AME-Net++：一个自适应专家混合网络，把特征感知、专家自适应协作与多尺度优化集成起来，从术中多视角 X 光投影重建三维结构。具体地，用自适应特征保持策略抑制投影噪声、同时保住血管结构的几何连续性；针对组织衰减异质与区域相关的结构变化，设计带可学习路由的并行专家混合架构，把局部特征动态分配给合适的专家子网，做区域自适应的精细表示学习；此外提出多尺度信息感知的复合损失，联合优化全局结构保真、局部密度一致与边缘细节保持。在公开数据集与自建动物介入血管数据集上，AME-Net++ 在二维投影合成与三维体素重建两项任务上都表现良好；重建血管中心线的平均误差为 1.5 ± 0.67 mm，说明主要血管走行被以有临床意义的空间精度保住。",
+      "why": "和 SPARC（八视角 X 光重建三维解剖）是同一条线上的工作，但更强调「患者特异、单次标定」：没有大规模配对数据，只能靠投影一致性自己约束自己。真正可借的是它的损失设计——全局结构、局部密度、边缘细节三路一起管，正好对应稀疏投影重建最容易出问题的三类伪影（拉丝、断层、边界糊）。1.5 mm 的中心线误差也给了个可对标的量级。"
+    },
+    {
+      "id": "ao-fringe-speckle",
+      "no": 77,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T06",
+      "topicTags": [
+        "T06"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Single-image phase retrieval method based on fusion coding of fringe and digital speckle patterns",
+      "titleZh": "条纹与数字散斑融合编码的单帧相位恢复",
+      "authors": [
+        "Wenjie Li",
+        "Yonglong Pan",
+        "Guijie Liu",
+        "Qiyu Lai",
+        "Haowei Liu",
+        "Yang Huang",
+        "Zhaoguang Huang"
+      ],
+      "venue": "Applied Optics",
+      "published": "2026-11-06",
+      "url": "https://doi.org/10.1364/ao.613685",
+      "doi": "10.1364/ao.613685",
+      "tags": [
+        "单帧结构光",
+        "条纹级次",
+        "散斑相关"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "结构光三维重建长期在速度与精度之间取舍。作者提出基于条纹图案与数字散斑融合编码的单帧相位恢复方法：先用 GD-DCUNet 模型（多分支空洞卷积提特征、残差融合机制、信息整合与分配策略）把条纹信息与散斑信息从一张融合编码图里分离出来；分离得到的条纹图交给新构建的 CSAS-UNet 预测包裹相位的分子项与分母项，分离得到的散斑图则通过与参考散斑图做相关运算来预测条纹级次。在极线、包裹相位与连通域构成的多重约束下，该相关运算显著缩小了采样点候选匹配点的搜索范围，从而稳健、快速地给出条纹级次。对比实验表明，该方法仅用单幅图像即可高精度恢复相位，在复杂表面与低纹理区域也保持了很好的稳定性与重建质量，具备工程应用潜力。",
+      "why": "单帧结构光的核心矛盾是「稠密条纹保精度」与「随机编码保级次」不可兼得。这篇不是折中，而是把两种编码叠进同一张图再用网络分离——等于一次曝光拿到两次曝光的信息。对动态场景三维测量（振动、旋转、活体）这是条便宜且工程化的路；分离网络与级次预测解耦的设计，也让换相机、换镜头时不必整体重训。"
+    },
+    {
+      "id": "ao-ghost-spad",
+      "no": 78,
+      "tier": "B",
+      "section": "efficient",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T03"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Time-optimized frame-filtered ghost imaging with pseudo-thermal light and a SPAD array",
+      "titleZh": "伪热光 + SPAD 阵列的按帧计数滤波鬼成像：把采集时间压下来",
+      "authors": [
+        "V. S. Starovoitov",
+        "N. D. Samoilenko",
+        "V. N. Chizhevsky",
+        "D. Mogilevtsev",
+        "M. Perenzoni",
+        "L. Gasparini"
+      ],
+      "venue": "Applied Optics",
+      "published": "2026-11-05",
+      "url": "https://doi.org/10.1364/ao.612408",
+      "doi": "10.1364/ao.612408",
+      "tags": [
+        "鬼成像",
+        "SPAD 阵列",
+        "暗计数抑制"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "作者用一块 SPAD 阵列同时充当多像素「桶」探测器与成像相机来做鬼成像实验。实验用伪热光源，光强弱到 SPAD 的暗计数对成像产生明显的破坏作用。为压低暗计数对鬼影的影响、并减小图像中随机散斑结构的涨落，他们按每帧的计数个数对采集数据做滤波，再用短程滑动平均对鬼影平滑。合适的滤波器参数使获得高质量鬼影所需的数据采集时间显著缩短。",
+      "why": "鬼成像落地最现实的障碍就是「要多少帧」。这篇的答案朴素但有效：低光下暗计数不是均匀底噪，而是稀疏事件，按帧计数门限就能整帧剔掉；再让同一块 SPAD 阵列既当桶探测器又当相机，等于省掉一路光路与配准。做单像素/鬼成像低成本样机时，这个滤波几乎零成本，值得先试。"
+    },
+    {
+      "id": "2611.08288",
+      "no": 79,
+      "tier": "B",
+      "section": "efficient",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "real",
+      "title": "Hierarchical Incremental Beta Splatting for Online Reconstruction",
+      "titleZh": "分层增量 Beta Splatting：边采集边重建的在线三维重建",
+      "authors": [
+        "Linus Franke"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-05",
+      "url": "https://arxiv.org/abs/2611.08288",
+      "pdf": "https://arxiv.org/pdf/2611.08288",
+      "tags": [
+        "在线 3DGS",
+        "Beta 核",
+        "LOD 层次"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "在线三维高斯泼溅要在采集过程中完成重建：每个关键帧只生成一次基元，且仅做几十次迭代优化，几乎没有机会修正糟糕的初始化或补齐细节；而高斯基元本身是「软」的，需要大量重叠才能形成实心表面。作者提出分层增量 Beta Splatting（HIBS），把 beta 核引入增量重建：其形状参数可在「类高斯的软剖面」与「平顶、近不透明的面元」之间插值，相当于一个几何置信度旋钮。置信度感知的生成策略用几何可观测性与多视角深度一致性来初始化不透明度与形状——几何可验证处生成实心基元，不可验证处生成软基元留待修正。在线致密化过程中，误差驱动重定位把失效基元回收利用到光度误差热点；beta 核的有界支撑带来精确的瓦片剔除与更快的栅格化，闭式的保形合并公式提供 LOD 层级，兼顾快速优化与实时渲染。在 Mip-NeRF 360 的 on-the-fly 协议下，PSNR 最高提升 0.8 dB，优化时间最多减少 40%。",
+      "why": "在线/流式重建的核心指标不是峰值画质，而是「只允许几十次迭代」时怎么不押错注。把核形状当作置信度来用，让没把握的地方先留软、后面再收——这个思路比单纯加迭代更对路；有界支撑带来的剔除与闭式 LOD 合并，也让实时性有了着落。做机器人/手持实时建图的可以对照它的 spawn 与 relocation 规则。"
+    },
+    {
+      "id": "2611.07613",
+      "no": 80,
+      "tier": "B",
+      "section": "efficient",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T03"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "real",
+      "title": "Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation",
+      "titleZh": "实时全波形 LiDAR Transformer：强度引导的 token 裁剪与物理感知增广",
+      "authors": [
+        "Kotaro Oishi",
+        "Kazuma Ikeda",
+        "Ryosei Hara",
+        "Ryo Yoshida",
+        "Mariko Isogawa",
+        "Kentaro Yoshioka"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-05",
+      "url": "https://arxiv.org/abs/2611.07613",
+      "pdf": "https://arxiv.org/pdf/2611.07613",
+      "tags": [
+        "全波形 LiDAR",
+        "token 剪枝",
+        "物理先验增广"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "全波形 LiDAR（FWL）把完整回波波形按直方图记录，保留多路径回波与弱信号等丰富反射特征，弥补常规 LiDAR 在雾雨、透明物体、低反射表面下的短板。但基于 Transformer 的 FWL 方法有两个瓶颈：低强度背景区域的冗余 token 带来高计算开销；标注数据稀缺导致泛化受限。作者利用 FWL 数据固有的物理结构同时解决两者：一是 FWL-ToPM，用强度分布做 token 剪枝与合并，有选择地减少 token 同时保住关键波形内容；二是 FWLAug，一种以正则化方式设计、保持波形结构的数据增强，保留每条射线的飞行时间波形与视锥几何，从而改善对未见场景的泛化。在 Ghost-FWL 基准上，FWL-ToPM 实现 8 倍以上加速并达到实时吞吐，同时比先前最优方法 F1 高出近 9 个点，是首个既实时又提精度的 FWL Transformer；FWLAug 在标准基准与未见场景的分布外测试集上均进一步提升性能。代码与分布外数据集已公开。",
+      "why": "「低强度区域的 token 大多没用」这个先验在瞬态/波形数据上几乎是白送的加速点，但很少有人把它做成可插拔的剪枝模块。8 倍加速叠加近 9 点 F1，说明在波形数据里物理先验比更大模型更值钱；配套的保结构增广也能直接搬到 SPAD/TCSPC 这类时序数据上。"
+    },
+    {
+      "id": "lpr-metalens-ip",
+      "no": 81,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T08",
+      "topicTags": [
+        "T08"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Reconfigurable Optical Image Processor Unit via Phase‐Programmed On‐Chip Metalens",
+      "titleZh": "可重构光学图像处理单元：用相位编程的片上超透镜做边缘检测与局部增强",
+      "authors": [
+        "Tao Wang",
+        "Yiming Zhang",
+        "Tonghui Dou",
+        "Ke Xu"
+      ],
+      "venue": "Laser & Photonics Reviews",
+      "published": "2026-11-05",
+      "url": "https://doi.org/10.1002/lpor.72187",
+      "doi": "10.1002/lpor.72187",
+      "tags": [
+        "超透镜",
+        "空间微分",
+        "免训练光学处理"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "图像处理对信息提取、模式识别与知识获取至关重要。与电子学的数字图像处理相比，光学图像处理借助光传播的内在并行性，在吞吐、延迟与能效上有潜在优势。光学神经网络已被广泛用于特征提取与图像增强，但依赖数字域中大量数据驱动的训练与参数优化；相比之下，空间微分通过光传播本身就能为某些图像处理任务提供一条直接、免训练的路径。这类操作此前多靠自由空间波前整形实现，系统笨重且对失准敏感；集成纳米光子平台具备纳米级对准精度与晶圆级集成能力，但亚微米单模波导对波前工程的调控能力有限。作者提出一种光学图像处理单元：用可编程的输入相位，在同一个无源超透镜上选择一阶与二阶主导的空间响应；通过实验表征的多端口响应做重建，演示了八级灰度图像的边缘检测与局部对比度增强。",
+      "why": "把图像处理搬到光域，最现实的问题是「一块固定器件只能算一个算子」。这里用输入相位编程，让同一块无源超透镜在一阶/二阶微分响应之间切换——可重构、免训练、不需要非线性材料。对想做传感器端预计算（边缘先出、后端少算）的系统，这是比堆光学神经网络更轻的路线，也提示了「一个无源器件 + 可编程照明/相位」这套复用思路。"
+    },
+    {
+      "id": "2611.05510",
+      "no": 82,
+      "tier": "C",
+      "section": "tools",
+      "primaryTopic": "T10",
+      "topicTags": [
+        "T10",
+        "T03"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "real",
+      "title": "Fast and accurate false-alarm probabilities for linear detection statistics in Poisson noise",
+      "titleZh": "泊松噪声下线性检测统计量的快速精确虚警概率",
+      "authors": [
+        "Maayane T. Soumagnac",
+        "Eran O. Ofek",
+        "Shachar Israeli",
+        "David Glukhov"
+      ],
+      "venue": "arXiv · astro-ph.IM",
+      "published": "2026-11-03",
+      "url": "https://arxiv.org/abs/2611.05510",
+      "pdf": "https://arxiv.org/pdf/2611.05510",
+      "tags": [
+        "虚警概率",
+        "复合泊松",
+        "开源工具"
+      ],
+      "primaryClass": "astro-ph.IM",
+      "summary": "在噪声数据里检测弱信号，往往要算检测统计量的显著性，也就是虚警概率。当底层噪声服从泊松统计——例如光子稀缺的天文图像这类低计数测量——这个计算并不简单，现有做法多依赖大量仿真去估检测阈值。作者给出泊松噪声下任意线性检测统计量虚警概率的精确且高效的解法：他们证明该检测统计量是复合泊松随机变量，从而可以用基于快速傅里叶变换（FFT）与 Panjer 递推的高效实现。方法在数值离散化意义下是精确的，相比仿真加速数个量级，并且能算出仿真无法触及的虚警概率。虽然动机来自低计数天文成像，该框架适用于任何泊松分布事件的检测问题。作者提供了开源的 Python 与 MATLAB 实现。",
+      "why": "光子计数成像里「这个亮点是真的还是噪声」最终都要落到虚警概率上，而大家通常用蒙特卡洛凑阈值。把统计量识别为复合泊松变量后直接 FFT / Panjer 递推，几个数量级的加速意味着可以逐像素扫阈值、生成整幅显著性图——做 SPAD、单光子成像或任何低计数检测时，这一步可以直接替换掉仿真，而且是精确解。"
+    },
+    {
+      "id": "lpr-itpd",
+      "no": 83,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T10",
+      "topicTags": [
+        "T10"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Self‐Powered Multi‐Dimensional Photodetector With Record Sensitivity and MHz Bandwidth via Hybrid Photoelectric and Electrocaloric Effects",
+      "titleZh": "自供电多维光电探测器：光电效应 + 电热卡效应把灵敏度与 MHz 带宽同时做上去",
+      "authors": [
+        "Weifeng Zhao",
+        "Fangkai Wang",
+        "Jiajun Zhong",
+        "Weijiang Yi",
+        "Chengjie Fang",
+        "Tianhao Yang",
+        "Zongtao Lin",
+        "Feng Qiu",
+        "He Zhu",
+        "Huizhen Wu",
+        "Ning Dai",
+        "Jiaqi Zhu"
+      ],
+      "venue": "Laser & Photonics Reviews",
+      "published": "2026-11-05",
+      "url": "https://doi.org/10.1002/lpor.72190",
+      "doi": "10.1002/lpor.72190",
+      "tags": [
+        "强度-时间探测",
+        "零偏压",
+        "器件进展"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "能同时捕捉入射光强度与时间信息的多维强度-时间光电探测器（ITPD）是智能感知追求的方向，但现有主流方案基于电荷俘获或热释电效应，灵敏度与速度受限，难以进入高端应用。作者提出一种 ITPD：在范德华异质结与自发极化介质膜中分别集成光电效应与电热卡效应。介质表面诱导的正电荷层通过非平衡电荷转移实现零偏压光电流，电热卡效应则带来快速的电流淬灭；两者一起形成尖峰式响应，峰值探测率达到 5×10¹³ Jones（比现有基准高一个量级），帧率（即 1/上升时间）达到 0.25 MHz 的纪录水平。",
+      "why": "计算成像的上限常常由探测器决定：能同时给出强度与到达时间的阵列，才谈得上单曝光瞬态成像。这款器件把「响应」与「淬灭」拆给两条相互独立的物理机制（光电 + 电热卡），于是零偏压、高探测率与 0.25 MHz 帧率可以同时拿到，而不是互相牺牲。若后续能做成阵列，对无快门高速/瞬态成像是一个实质性的器件选项。"
+    },
+    {
+      "id": "lpr-oct-scope",
+      "no": 84,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T09",
+      "topicTags": [
+        "T09"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Theranostic Endoscope for Three‐Dimensional OCT‐Guided Ultrafast Laser Ablation of Atherosclerotic Lesions",
+      "titleZh": "诊疗一体内窥镜：三维 OCT 引导的超快激光消融",
+      "authors": [
+        "Anlan Shen",
+        "Fan Yang",
+        "Wei Yu",
+        "Sen Yang",
+        "Xinwu Lu",
+        "Fu Wang",
+        "Zhen Zhao",
+        "Jigang Wu",
+        "William Wijns",
+        "Shengxian Tu"
+      ],
+      "venue": "Laser & Photonics Reviews",
+      "published": "2026-11-05",
+      "url": "https://doi.org/10.1002/lpor.72171",
+      "doi": "10.1002/lpor.72171",
+      "tags": [
+        "内窥 OCT",
+        "共路传输",
+        "术中引导"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "超快激光手术通过非线性相互作用，能在多种生物组织中实现损伤极小的有效去除，对安全有效再通仍属未满足临床需求的钙化动脉粥样硬化病变是颇具前景的治疗方式；但临床落地受阻于缺少既能承受高峰值强度、又保持小型化与高性能的内窥镜。集成 OCT 还能进一步加分：OCT 可同时提供病变诊断与消融评估。作者报道一款紧凑的诊疗一体内窥镜（20 mm × 2 mm）：基于压电扫描的反谐振空芯光纤让超快激光与 OCT 光束共路传输，配合光纤球透镜与梯度折射率透镜组成的两级聚焦系统。该设计在 2.4 mm 直径的大视场内实现高效消融，同时以 2 体积/秒的速率做原位高分辨三维 OCT 监测。作者在人钙化斑块上验证了三维 OCT 引导超快激光旋切的概念，消融速率达 2.1 mm³/min。",
+      "why": "「看得见才敢切」——把 3D OCT 与消融激光塞进 2 mm 的探头里共路传输，是术中影像引导从术前规划走向「边看边做」的关键一步。2 体积/秒的实时三维反馈对扫描策略与在线重建延迟都提出硬约束，做内窥 OCT、或任何要在极小孔径里同时塞进成像与作用光束的系统，重点看它的共路与两级聚焦设计。"
     }
   ]
 }
