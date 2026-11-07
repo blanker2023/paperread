@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-07",
-    number: 10,
-    updatedAt: "2026-11-06T17:00:24Z",
+    date: "2026-11-08",
+    number: 11,
+    updatedAt: "2026-11-07T16:43:34Z",
     sourceCount: 3,
-    fetched: 1543,
-    kept: 13,
-    headline: "互补传感器用两条通路换回极速与高动态范围，散斑自画像靠 Gouy 相移把组织声速散焦逐像素校回来，编码孔径 CT 只补缺失、不动实测。",
-    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1543 条、产出 100 条候选，其中 13 条为第 2–9 期已收录，其余多为跨领域噪声（医学图像分类、SAR 基础模型、视频编辑与生成、点云压缩、脑电溯源、天文光谱等）。最终收录 13 篇：T02×1 / T03×2 / T04×3 / T06×1 / T08×2 / T09×2 / T10×2，跨方向 3 篇，A 级 1 篇、B 级 11 篇、C 级 1 篇；T01/T05/T07 无达标候选，按规则减条——高光谱方向当日仅有偏振高光谱「分类」论文、光场方向仅有近眼显示论文，均非成像重建，未收录。2 篇 Optics Express 散射类论文（轴向记忆效应理论、相干阶差分测距）仅在 accepted 状态、Crossref 无摘要，按「无摘要不硬写」弃用。",
-    dailyIds: ["2611.07665", "x8gj-tvc3", "boe-pam-beams", "ao-coded-ct", "ir-amenet", "ao-fringe-speckle", "ao-ghost-spad", "2611.08288", "2611.07613", "lpr-metalens-ip", "2611.05510", "lpr-itpd", "lpr-oct-scope"],
-    headlineIds: ["2611.07665", "x8gj-tvc3", "ao-coded-ct"],
-    crossIds: ["2611.07665", "boe-pam-beams", "2611.05510"]
+    fetched: 1545,
+    kept: 8,
+    headline: "RGB 与热像共享几何、各留专属高斯，把 4D 重建从静态温度推到传热过程；偏振前向模型证明延迟量与退偏度、而非偏振度，才是分辨胶原纤维与细胞核的抓手；氧化亚铜把光声转换效率抬了两个量级，应变波可直接读出异质结层间耦合。",
+    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1545 条、产出 87 条候选、0 错误；按 DOI 与标题严格去重后剔除往期已收录 12 条（含上一期的 SPAD 关联成像与单图相位恢复两篇），其余多为跨领域噪声（视频生成与编辑、图像美学评估、SAR 基础模型、脑电源成像、视频异常检测、自动驾驶与机器人导航、近眼显示器件等）。最终收录 8 篇：T02×2 / T03×2 / T04×3 / T08×1，跨方向 1 篇；全部为 B 级——当日没有 ≥0.75 的成像候选，按规则不虚抬等级。T01/T05/T06/T07/T09/T10 空缺：高光谱方向当日只有偏振高光谱分类与 RGB 光谱重建辅助分类两类论文，光场方向只有近眼显示设计，显微方向仅有无摘要的角膜 OCT 弹性成像，均非成像重建，不掺水。另弃用 2 篇 Optics Express：相干阶差分测距（Crossref 无摘要）与固体高次谐波散射可辨识性（主题为 HHG 电子散射，非成像）。",
+    dailyIds: ["dtg-4d", "pmgs-mesh", "ao-litho-dan", "josaa-polar-fwd", "lpr-kk-kerker", "lpr-phonon", "oe-ife-markov", "mm-cage-llie"],
+    headlineIds: ["dtg-4d", "josaa-polar-fwd", "lpr-phonon"],
+    crossIds: ["dtg-4d"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -874,10 +874,92 @@ window.NLOS_DATA = {
       tags: ["内窥 OCT", "共路传输", "术中引导"], primaryClass: "physics.optics",
       summary: "超快激光手术通过非线性相互作用，能在多种生物组织中实现损伤极小的有效去除，对安全有效再通仍属未满足临床需求的钙化动脉粥样硬化病变是颇具前景的治疗方式；但临床落地受阻于缺少既能承受高峰值强度、又保持小型化与高性能的内窥镜。集成 OCT 还能进一步加分：OCT 可同时提供病变诊断与消融评估。作者报道一款紧凑的诊疗一体内窥镜（20 mm × 2 mm）：基于压电扫描的反谐振空芯光纤让超快激光与 OCT 光束共路传输，配合光纤球透镜与梯度折射率透镜组成的两级聚焦系统。该设计在 2.4 mm 直径的大视场内实现高效消融，同时以 2 体积/秒的速率做原位高分辨三维 OCT 监测。作者在人钙化斑块上验证了三维 OCT 引导超快激光旋切的概念，消融速率达 2.1 mm³/min。",
       why: "「看得见才敢切」——把 3D OCT 与消融激光塞进 2 mm 的探头里共路传输，是术中影像引导从术前规划走向「边看边做」的关键一步。2 体积/秒的实时三维反馈对扫描策略与在线重建延迟都提出硬约束，做内窥 OCT、或任何要在极小孔径里同时塞进成像与作用光束的系统，重点看它的共路与两级聚焦设计。"
+    },
+    {
+      id: "dtg-4d", no: 85, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04", "T08"], confidence: 0.65, score: 0.65, evidence: "real",
+      title: "Dynamic Thermal Gaussians: Multimodal 4D Gaussian Splatting",
+      titleZh: "动态热高斯：把 RGB 与热成像一起放进 4D 高斯泼溅",
+      authors: ["Rongfeng Lu", "LiFeng Lin", "Xiaobao Wei", "Quan Chen", "Ming Lu", "Yitian Xue", "Yaoqi Sun", "Yuhan Gao", "Anke Xue", "Chenggang Yan"],
+      venue: "ACM Multimedia (MM '26)", published: "2026-11-06", url: "https://doi.org/10.1145/3767308.3835430", doi: "10.1145/3767308.3835430",
+      tags: ["RGB-热融合", "4D 高斯泼溅", "动态场景重建"], primaryClass: "cs.CV",
+      summary: "热成像是军事与热分析的关键手段，三维热重建又把温度分析从二维推到三维；但现有工作几乎都假设温度分布是静态的，忽略了真实环境里热传导随时间的演化。作者提出首个面向复杂场景的动态 RGB-热 4D 重建框架：把颜色外观、热观测与几何随时间共同建模，用一个多模态动态场景表示将两种模态锚定到共享的几何基底上，保证它们在时空形变下保持一致；再用多模态嵌入增强各模态的运动表达能力，并用多模态路由机制维护一组共享的多模态高斯基底，同时在各自细节丰富的区域自适应地「长出」模态专属的高斯以补足表达能力。工作还贡献了一个含高频温度变化的基准数据集，用于评测 4D 重建。实验显示该方法能同时高保真地重建外观与温度的时空演化，代码与数据集已公开。",
+      why: "多传感器融合重建的难点不在「怎么拼」，而在两路观测的采样规律与失效模式完全不同：热像分辨率低、帧率低，但携带的是与可见光物理上解耦的温度场。这里用共享几何基底加模态专属高斯的双层结构，「一致的部分共享、不一致的部分分开」，比强行共享一套表示更符合物理；对 RGB-事件、RGB-深度、多曝光这类同样非同步、非同质的采集配置，这套路由思路可直接迁移。"
+    },
+    {
+      id: "pmgs-mesh", no: 86, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.64, score: 0.64, evidence: "real",
+      title: "Perception Over Geometry: Rethinking Gaussian Allocation in Mesh-based Splatting",
+      titleZh: "P-MGS：高斯该分多少，看外观复杂度而不是网格密度",
+      authors: ["Yuting Wang", "Yang Zhao", "Shanding Diao", "Penglin Wang", "Yuan Chen", "Wei Jia", "Ronggang Wang"],
+      venue: "arXiv · cs.CV", published: "2026-11-05", url: "https://arxiv.org/abs/2611.07979", pdf: "https://arxiv.org/pdf/2611.07979",
+      tags: ["3D 高斯泼溅", "网格编辑", "自适应表示"], primaryClass: "cs.GR",
+      summary: "3D 高斯泼溅能做出照片级的新视角合成，但本身没有显式拓扑，想做几何编辑就得借助网格：现有做法把高斯绑定到三角面片上，通常给每个面片分配固定数量的高斯。然而决定外观重建所需表达能力的，是局部外观的复杂程度，而不是网格剖分的密度。作者提出 P-MGS，把外观建模与几何控制解耦：一方面用感知复杂度引导的分配策略，依据多视角观测估计出的表面外观需求来分配高斯；另一方面让高斯在优化时不受网格约束、之后再事后绑定回原网格，于是既保留了自适应细化的自由度，又保住了网格拓扑。网格编辑时，用局部仿射形变传递同步更新高斯中心与协方差，减少错位与悬浮伪影。实验表明，它以更少的高斯取得更好的平均新视角合成质量，同时网格编辑保持连贯。",
+      why: "面片固定高斯数是一种「按几何均匀、按外观不均」的错配：平坦墙面上堆了过多高斯，细节处反而不够。把预算分给「看起来复杂」的区域，本质上是把表示能力当资源来调度——这与按信息量分配采样、按稀疏度分配测量的思路同源。做可编辑重建、或要把高斯塞进显存与带宽受限的端侧时，这套分配比反复调阈值更直接。"
+    },
+    {
+      id: "ao-litho-dan", no: 87, tier: "B", section: "physics", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.72, score: 0.72, evidence: "sim",
+      title: "Virtual metrology for process perturbation prediction in lithographic alignment marks using a physics-guided directed attention network",
+      titleZh: "光刻对准标记的「虚拟量测」：从衍射响应反演工艺扰动",
+      authors: ["Shiqing Lu", "Zhipeng Wu", "Yuejing Qi", "Jiani Su", "Hao Jin", "Xin Zhou", "Bokai Su"],
+      venue: "Applied Optics", published: "2026-11-05", url: "https://doi.org/10.1364/ao.611381", doi: "10.1364/ao.611381",
+      tags: ["衍射反演", "物理引导网络", "半导体量测"], primaryClass: "physics.optics",
+      summary: "光刻对准标记的工艺扰动会改变多层膜轮廓、破坏标记对称性，进而带来对准位置的不确定度。对准位置偏差（APD）与晶圆质量（WQ）响应里其实编码了与工艺相关的信息，但要从这些响应里把扰动反演出来并不容易：这个逆关系是非线性的，而且各参数强耦合。作者把任务定义为「对准标记虚拟量测」——由成对的 APD/WQ 响应矩阵估计工艺扰动值，并提出物理引导的有向注意力网络 PG-DAN。其核心是衍射极限掩码注意力（DLMA）：把波长、衍射级次、传播、局域性与同一性等先验注入 APD/WQ 的注意力 logits，使模型依据物理上有意义的 token 关系、而不是无约束的数据相关性来聚合；有向解码器则在预测时遵循多层耦合的顺序。在严格耦合波分析（RCWA）数据集上，PG-DAN 取得平均 R² 0.999875、平均量程归一化 RMSE 0.34%、MAE 0.23%，误差低于常规神经逆模型。",
+      why: "这是一个很干净的「测量即编码」样本：衍射级次与波长就是编码矩阵的行，工艺扰动是待解的隐变量，网络要做的是解一个条件数很差的逆问题。把衍射物理直接写进注意力掩码，等价于给逆问题加结构化先验——比事后正则更硬。任何「从衍射/干涉响应反演结构参数」的场景（散射测量、OCT 反演、衍射层析）都可以照搬这个把物理约束织进网络连接的做法。"
+    },
+    {
+      id: "josaa-polar-fwd", no: 88, tier: "B", section: "physics", primaryTopic: "T02", topicTags: ["T02"], confidence: 0.72, score: 0.72, evidence: "sim",
+      title: "Shape and orientation in tissue polarimetry: a comparative forward-model study of collagen fibrils and cell nuclei across index contrast",
+      titleZh: "组织偏振测量的前向模型：把「形状」和「取向有序」分开",
+      authors: ["Nasrettin Yunus"],
+      venue: "JOSA A", published: "2026-11-06", url: "https://doi.org/10.1364/josaa.616303", doi: "10.1364/josaa.616303",
+      tags: ["偏振成像", "穆勒矩阵", "组织散射前向模型"], primaryClass: "physics.optics",
+      summary: "组织偏振测量把散射光的偏振态当作微结构的指纹，但单一观测量无法把散射体的形状与其群体的取向有序度分开。作者用经洛伦兹-米理论校验的 T 矩阵方法，计算了软组织两类主导散射体——长椭球的胶原纤维与扁椭球的细胞核——的单次散射穆勒矩阵，并对每个矩阵做 Lu-Chipman 分解，得到线偏振度、延迟量与退偏度，在轴比、取向集中度、波长与相对折射率构成的参数网格上系统比较。结果显示：偏振度是弱判别量，在整个参数网格上只变化几个百分点；真正把对比度找回来的是延迟量与退偏度，而且两类散射体给出方向相反的签名——胶原的延迟量对取向有序度的响应约比细胞核强 2.3 倍，两者的退偏度随形状的依赖方向也相反。因此信号的取向敏感性本身就指向「纤维性」而非「核性」来源，这一判别方向与宫颈胶原重塑、轴突白质束的独立穆勒矩阵测量一致。前向模型经精确洛伦兹-米理论与全波 FDTD 双重校验，其输出（含新分辨出的退偏各向异性通道）可作为解释体组织偏振测量的单次散射核。",
+      why: "偏振成像长期卡在「测得到、说不清」：穆勒矩阵的十六个数没有明确的组织学归属。这篇把归属做成了可控的前向实验——固定散射体形状、扫取向集中度，看哪个观测量在动。结论对做偏振门控与偏振去散射的人很实用：别盯着偏振度，延迟量与退偏度的取向敏感性才是区分纤维与细胞核的抓手；若要反演微结构参数，这也是一份经两种独立方法校验的现成字典。"
+    },
+    {
+      id: "lpr-kk-kerker", no: 89, tier: "B", section: "physics", primaryTopic: "T02", topicTags: ["T02"], confidence: 0.72, score: 0.72, evidence: "mixed",
+      title: "Kramers‐Kronig Relation Empowered Kerker‐Like Effect for Macroscopic Objects",
+      titleZh: "把空间 Kramers-Kronig 关系用到宏观物体：宽角度的后向散射抑制",
+      authors: ["Yaqing Huang", "Yu Luo", "Xiaojun Hu", "Letian Guo", "Yuqi Wang", "Wei Liu", "Hao Shao", "Dexin Ye"],
+      venue: "Laser & Photonics Reviews", published: "2026-11-05", url: "https://doi.org/10.1002/lpor.72181", doi: "10.1002/lpor.72181",
+      tags: ["散射抑制", "空间 KK 关系", "多极调控"], primaryClass: "physics.optics",
+      summary: "散射调控几乎贯穿光子学与波动物理的所有分支。以多极干涉为基础的 Kerker 效应及其推广，在亚波长尺度上塑造散射方向图非常有效，但它本质上是窄带的，而且面对电大尺寸的宏观物体就失效——多极模式数量一多，幅度与相位无法再同步控制。作者跳出「按预设多极干涉设计」的框架，提出一条空间 Kramers-Kronig（KK）设计路线，用于电大结构的后向半空间散射抑制，可在整个后向半空间实现宽角抑制，这是常规低阶多极工程难以进入的区间。工作给出了理论推导，用全波仿真验证，并通过实验测量确认性能。结果表明，空间 KK 关系可以通过材料层面的机制、自动且集体地调节众多多极通道，从而塑造电大散射体的散射；这一思路可推广到声波、弹性波与物质波等波系统。",
+      why: "把 KK 关系从「频率域里实部虚部互为希尔伯特变换」搬到「空间域里折射率的实虚部配对」，就能让一大片多极通道自动协同——这是用解析约束替代逐模式优化的典型手法。对成像的启发在抗散射与杂散光抑制：若能把后向散射整体压下去，弱信号检测与穿透散射介质的对比度预算会直接改善。需要留一分怀疑的是它给出的是材料层面的设计路线，能否在可见光波段做成实际器件、宽带性能如何，还要看后续工作。"
+    },
+    {
+      id: "lpr-phonon", no: 90, tier: "B", section: "physics", primaryTopic: "T03", topicTags: ["T03"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Giant‐Amplitude Coherent Acoustic Waves in Cuprous Oxide",
+      titleZh: "氧化亚铜里的巨幅相干声波：给纳米尺度成像换一个更强的声源",
+      authors: ["Jia‐Wei Tan", "Hong‐Hua Fang", "Shuang Zhao", "Xiao‐Jie Wang", "Xiang Long", "Zhong‐Shan Jin", "Cong Hu", "Yu‐Dong Lian", "Gong Wang", "Hong‐Bo Sun"],
+      venue: "Laser & Photonics Reviews", published: "2026-11-05", url: "https://doi.org/10.1002/lpor.72166", doi: "10.1002/lpor.72166",
+      tags: ["相干声子", "超快光声", "纳米尺度成像"], primaryClass: "physics.optics",
+      summary: "GHz 到 THz 频段的相干声波为纳米尺度成像与量子技术提供了有力手段，但在固体中一直受制于光激发产生的声学响应太弱：瞬态反射率调制通常低于 10⁻⁴。作者报道氧化亚铜（Cu₂O）单晶能高效产生相干声波，瞬态反射率调制接近 10⁻²，比常规水平高出约两个量级；这一强响应与形变势主导的产生机制相符，源于强电子-声子耦合。此外，Cu₂O 本身热导率低、立方结构高度对称，有利于抑制声子耗散、维持声波传播。借助该平台，作者用双脉冲激发演示了相干声波的干涉，并证明产生的应变波能以纳米级灵敏度映射 WS₂/hBN 范德华异质结中层间耦合的变化。这些结果确立了 Cu₂O 作为相干声子工程的光声介质地位，也为超快声光成像与调控提供了新的可能。",
+      why: "光声与声光成像的信噪比几乎完全由「光能换多少声」决定，两个量级的提升不是优化而是换材料。真正值得注意的是最后那个实验：用双脉冲产生的应变波去读范德华异质结的层间耦合——这已经是一次无需扫描探针的纳米尺度内部界面成像。做泵浦-探测、光声显微，或想给亚表面结构找非光学对比机制的人，可以把 Cu₂O 当作声源基底来评估。"
+    },
+    {
+      id: "oe-ife-markov", no: 91, tier: "B", section: "physics", primaryTopic: "T03", topicTags: ["T03"], confidence: 0.72, score: 0.72, evidence: "sim",
+      title: "Analytical Markov chain for spatiotemporal flux evolution of the inner filter effect in fluorescent media",
+      titleZh: "荧光介质内滤效应的解析马尔可夫链：把瞬态光谱前向模型压到亚秒级",
+      authors: ["Xuhui Yang", "Guofu Cao"],
+      venue: "Optics Express", published: "2026-11-06", url: "https://doi.org/10.1364/oe.609369", doi: "10.1364/oe.609369",
+      tags: ["内滤效应", "瞬态光输运", "快速前向模型"], primaryClass: "physics.optics",
+      summary: "在多组分荧光介质中表征发射谱与衰减时间谱，是识别材料本征性质、优化探测器的关键；但次级内滤效应（IFE）引起的波长演化会扭曲这些可观测谱。蒙特卡洛光线追迹虽能模拟这种扭曲，却需要极长的计算时间才能积累足够的追踪统计量，难以支撑高维参数空间里的优化。作者基于时空解耦提出解析的马尔可夫输运模型：用拉普拉斯变换把连续域上的多重嵌套卷积积分转成离散的马尔可夫转移矩阵，使计算复杂度从随波长 bin 数 Nλ 与级联阶数 n 指数增长的 O(Nλⁿ)，降为线性的 O(Nλ+n)。所得代数解把瞬态衰减时间谱表示为 Gamma 波包的连续叠加，并能在亚秒时间内预测 IFE 导致的稳态波长谱畸变。在正交与前向面两种光谱仪构型下，计算谱线与蒙特卡洛仿真在线型上吻合。该模型可作为快速前向引擎，加速参数空间筛选、为探测器早期设计提供参考，并作为物理约束输入服务于事件顶点重建算法。",
+      why: "内滤效应在荧光成像与荧光寿命测量里始终是个「越浓越不准」的隐形标定误差，通常靠蒙特卡洛硬算，或者干脆忽略。把嵌套卷积看成马尔可夫链、用拉普拉斯变换对角化，是把指数复杂度换成线性的经典一招。对做荧光分子层析、荧光寿命成像或探测器响应建模的人，这是一份可以直接嵌进反演循环里的快速前向算子——反演要迭代成百上千次，前向模型慢一个量级就等于方法不可用。"
+    },
+    {
+      id: "mm-cage-llie", no: 92, tier: "B", section: "core", primaryTopic: "T08", topicTags: ["T08"], confidence: 0.65, score: 0.65, evidence: "mixed",
+      title: "Towards Color-faithful Low-light Image Enhancement via Adaptive Color Debiasing and Saturation Rectification",
+      titleZh: "CAGE：低照度增强先把色偏修好，再谈提亮",
+      authors: ["Zhichen Yang", "Rui Xu", "Yuzhen Niu", "Fusheng Li", "Hui Da", "Ri Cheng"],
+      venue: "ACM Multimedia (MM '26)", published: "2026-11-06", url: "https://doi.org/10.1145/3767308.3835237", doi: "10.1145/3767308.3835237",
+      tags: ["低照度增强", "颜色校正", "计算摄影"], primaryClass: "cs.CV",
+      summary: "低照度成像常带色偏，根源在低信噪比与成像过程本身。近年低照度增强方法在亮度恢复上已做得很好，但忠实的颜色还原依旧困难，表现为整体色偏加上局部的欠饱和与过饱和。作者提出 CAGE——一个带自适应色偏校正与色域协调饱和校正的柱面颜色校正框架，用于色彩忠实的低照度增强。首先是 AdaLAB：一个柱面自适应 LAB 颜色空间，为均匀的颜色校正提供解耦且随图自适应的基；在此之上是 AdaCCT，一个带正逆变换的自适应柱面颜色变换，负责 RGB 与 AdaLAB 之间的相互转换，以及必要的色偏校正与饱和校正。前向变换在主干增强之前，通过色度平面的平移与缩放重排色度分布，压掉嵌入的色偏；逆变换则通过色域外的亮度补偿实现忠实的饱和校正。在多个基准上的实验显示，CAGE 的颜色还原更忠实，具体表现为色偏与饱和度异常下降，并在不同低照度增强主干上一致提升整体视觉质量。",
+      why: "低照度增强的评测长期被 PSNR/SSIM 主导，而色偏这类「看一眼就知道错」的失真在指标上几乎不可见。这篇把问题拆成两段：先在柱面 LAB 里做与亮度解耦的色度重排，再在逆变换时用亮度补偿处理色域裁剪——这正是相机 ISP 里色度处理与色调映射的先后关系。对做 RAW 域计算摄影、或要评估「增强后颜色还像不像」的人来说，它提供了一个可插拔的前后处理模块，也点出了一类该被认真对待的失真。"
     }
   ],
   archive: [
-    { date: "2026-11-07", number: 10, count: 13, highlights: "7 个方向 · 跨方向 3 篇 · 互补传感器生成重建 / 散斑自画像散焦校正 / 编码孔径 CT 投影补全", current: true,
+    { date: "2026-11-08", number: 11, count: 8, highlights: "4 个方向 · 跨方向 1 篇 · 动态 RGB-热 4D 重建 / 组织偏振前向模型 / 相干声波纳米成像", current: true,
+      dailyIds: ["dtg-4d", "pmgs-mesh", "ao-litho-dan", "josaa-polar-fwd", "lpr-kk-kerker", "lpr-phonon", "oe-ife-markov", "mm-cage-llie"], headlineIds: ["dtg-4d", "josaa-polar-fwd", "lpr-phonon"] },
+    { date: "2026-11-07", number: 10, count: 13, highlights: "7 个方向 · 跨方向 3 篇 · 互补传感器生成重建 / 散斑自画像散焦校正 / 编码孔径 CT 投影补全", current: false,
       dailyIds: ["2611.07665", "x8gj-tvc3", "boe-pam-beams", "ao-coded-ct", "ir-amenet", "ao-fringe-speckle", "ao-ghost-spad", "2611.08288", "2611.07613", "lpr-metalens-ip", "2611.05510", "lpr-itpd", "lpr-oct-scope"], headlineIds: ["2611.07665", "x8gj-tvc3", "ao-coded-ct"] },
     { date: "2026-11-06", number: 9, count: 11, highlights: "7 个方向 · 跨方向 2 篇 · 光栅扫描衍射层析 / 稀疏 X 光基础模型 / 双域联合流逆问题", current: false,
       dailyIds: ["siam-rsdt", "2611.06784", "2611.05843", "sparc-xray", "lpr-petg", "boe-oral", "2611.06736", "2611.04548", "rs-lfsr", "lpr-slim", "cosrev-spec3d"], headlineIds: ["siam-rsdt", "sparc-xray", "2611.05843"] },
