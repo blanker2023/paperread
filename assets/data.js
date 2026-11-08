@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-08",
-    number: 11,
-    updatedAt: "2026-11-07T16:43:34Z",
+    date: "2026-11-09",
+    number: 12,
+    updatedAt: "2026-11-08T16:13:43Z",
     sourceCount: 3,
     fetched: 1545,
-    kept: 8,
-    headline: "RGB 与热像共享几何、各留专属高斯，把 4D 重建从静态温度推到传热过程；偏振前向模型证明延迟量与退偏度、而非偏振度，才是分辨胶原纤维与细胞核的抓手；氧化亚铜把光声转换效率抬了两个量级，应变波可直接读出异质结层间耦合。",
-    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1545 条、产出 87 条候选、0 错误；按 DOI 与标题严格去重后剔除往期已收录 12 条（含上一期的 SPAD 关联成像与单图相位恢复两篇），其余多为跨领域噪声（视频生成与编辑、图像美学评估、SAR 基础模型、脑电源成像、视频异常检测、自动驾驶与机器人导航、近眼显示器件等）。最终收录 8 篇：T02×2 / T03×2 / T04×3 / T08×1，跨方向 1 篇；全部为 B 级——当日没有 ≥0.75 的成像候选，按规则不虚抬等级。T01/T05/T06/T07/T09/T10 空缺：高光谱方向当日只有偏振高光谱分类与 RGB 光谱重建辅助分类两类论文，光场方向只有近眼显示设计，显微方向仅有无摘要的角膜 OCT 弹性成像，均非成像重建，不掺水。另弃用 2 篇 Optics Express：相干阶差分测距（Crossref 无摘要）与固体高次谐波散射可辨识性（主题为 HHG 电子散射，非成像）。",
-    dailyIds: ["dtg-4d", "pmgs-mesh", "ao-litho-dan", "josaa-polar-fwd", "lpr-kk-kerker", "lpr-phonon", "oe-ife-markov", "mm-cage-llie"],
-    headlineIds: ["dtg-4d", "josaa-polar-fwd", "lpr-phonon"],
-    crossIds: ["dtg-4d"]
+    kept: 7,
+    headline: "积分球把散斑光谱仪的分辨率推到 6 飞米，80 倍提升让原子超精细结构直接可读；OCT 薄界面改用符号距离场回归，靠一张粗几何先验先把断线接上；单目乒乓 4D 重建把「先分段再重建」倒成「先抬升再分段」，140 小时带球旋转标注的数据集一并公开。",
+    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1545 条、产出 67 条候选、0 错误；按 DOI（含 id 中 doi: 前缀）与标题严格去重后剔除往期已收录 17 条，其余多为跨领域噪声——ACM MM '26 会议录批量入库带来的生成式编辑、视频压缩、多模态大模型论文占了近一半，另有越野导航、医学影像分类、光频梳量子关联、莫尔结构光等。最终收录 7 篇：T02×2 / T04×2 / T08×1 / T10×2，跨方向 3 篇；全部 B 级，当日最高分仅 0.72，无 ≥0.75 的成像候选。T01/T03/T05/T06/T07/T09 空缺：单光子方向只有 SLM-DMD 混合光束偏转（属显示与 LiDAR 扫描，非光子计数成像），相位恢复方向仅 1 条且本属荧光内滤噪声建模，高光谱方向仍是昨日已判弃的偏振高光谱分类与伪可见光通道两条，光场方向只有近眼显示设计，显微方向只有视频超分，均非成像重建，不掺水。另弃用 3 篇：固体高次谐波散射的可辨识性（实为 HHG 电子散射，非成像）、相干阶差分测距（Crossref 无摘要）、4D 高斯目标分割 TIBR4D（下游分割任务非重建）。注意 OpenAlex 的 venue 仍被检索词污染（Nature Communications 被标成 COSI、Lasers in Medical Science 被标成「中科院上海光机所」），出处已按 Crossref container-title 逐个核实。",
+    dailyIds: ["speckle-fm", "bbnirs-abs", "pg-sdfnet", "niraf-lsci", "m3isr-bench", "tt4d-lift", "mrf-reg-hybrid"],
+    headlineIds: ["speckle-fm", "pg-sdfnet", "tt4d-lift"],
+    crossIds: ["speckle-fm", "pg-sdfnet", "m3isr-bench", "tt4d-lift"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -954,10 +954,82 @@ window.NLOS_DATA = {
       tags: ["低照度增强", "颜色校正", "计算摄影"], primaryClass: "cs.CV",
       summary: "低照度成像常带色偏，根源在低信噪比与成像过程本身。近年低照度增强方法在亮度恢复上已做得很好，但忠实的颜色还原依旧困难，表现为整体色偏加上局部的欠饱和与过饱和。作者提出 CAGE——一个带自适应色偏校正与色域协调饱和校正的柱面颜色校正框架，用于色彩忠实的低照度增强。首先是 AdaLAB：一个柱面自适应 LAB 颜色空间，为均匀的颜色校正提供解耦且随图自适应的基；在此之上是 AdaCCT，一个带正逆变换的自适应柱面颜色变换，负责 RGB 与 AdaLAB 之间的相互转换，以及必要的色偏校正与饱和校正。前向变换在主干增强之前，通过色度平面的平移与缩放重排色度分布，压掉嵌入的色偏；逆变换则通过色域外的亮度补偿实现忠实的饱和校正。在多个基准上的实验显示，CAGE 的颜色还原更忠实，具体表现为色偏与饱和度异常下降，并在不同低照度增强主干上一致提升整体视觉质量。",
       why: "低照度增强的评测长期被 PSNR/SSIM 主导，而色偏这类「看一眼就知道错」的失真在指标上几乎不可见。这篇把问题拆成两段：先在柱面 LAB 里做与亮度解耦的色度重排，再在逆变换时用亮度补偿处理色域裁剪——这正是相机 ISP 里色度处理与色调映射的先后关系。对做 RAW 域计算摄影、或要评估「增强后颜色还像不像」的人来说，它提供了一个可插拔的前后处理模块，也点出了一类该被认真对待的失真。"
+    },
+    {
+      id: "speckle-fm", no: 93, tier: "B", section: "system", primaryTopic: "T02", topicTags: ["T02", "T05"], confidence: 0.65, score: 0.65, evidence: "real",
+      title: "Ultra-high precision speckle spectrometer enabling radio-frequency scale resolution of atomic spectra",
+      titleZh: "把积分球当散射腔：散斑光谱仪把分辨率推到 6 飞米",
+      authors: ["Gabriel Britto Monteiro", "Christopher Perrella", "Sarah K. Scholten", "Morgan Facchin", "Andre Nicholas Luiten", "Graham D. Bruce", "Kishan Dholakia"],
+      venue: "Nature Communications", published: "2026-11-07", url: "https://doi.org/10.1038/s41467-026-78325-y", doi: "10.1038/s41467-026-78325-y",
+      tags: ["散斑光谱", "多重散射腔", "计算光谱仪"], primaryClass: "physics.optics",
+      summary: "散斑是随机干涉形成的颗粒状强度图样，天然把光谱信息编码进高维空间，因此散斑光谱仪以体积小、免对准、机械稳定见长；但它的分辨率长期停留在皮米量级。作者用积分球充当多重散射腔，让光在腔内经历大跨度分布的光程，从而放大光谱灵敏度。在 780 nm 处，器件实现 6 fm 分辨率、对应 1.3×10⁸ 的分辨本领，比此前实现提升约 80 倍。这一分辨率足以清晰分辨电光调制器产生的激光边带，反演出的边带功率与期望值偏差在 1% 以内；还可直接以散斑方式测出 ⁸⁵Rb D2 线的超精细结构，其透射谱与独立波长计参考测量相差不超过 3.7%。这些结果把散斑确立为超高精度光谱、射频光谱与微波光子学的平台。",
+      why: "散斑光谱仪的核心是一张「随机但确定」的传输矩阵：定标一次，此后每测一张散斑图就是解一次线性逆问题。它的分辨率天花板本质上由有效光程差的动态范围决定，而积分球恰好用一个廉价器件把这个范围拉开——这是「用多次散射换分辨率」的清晰示范。做单像素/压缩感知光谱、散射介质标定的人值得关注两点：定标矩阵的条件数如何随腔体参数变化，以及飞米级分辨率下温度与振动漂移如何维持（文章靠机械免对准与差分读出）。若要把散斑编码从纯光谱推广到成像，这套光程设计思路可以直接借。"
+    },
+    {
+      id: "bbnirs-abs", no: 94, tier: "B", section: "physics", primaryTopic: "T02", topicTags: ["T02"], confidence: 0.72, score: 0.72, evidence: "mixed",
+      title: "From relative to absolute quantification of cytochrome c oxidase and hemoglobin in human tissue: a standalone broadband near-infrared spectroscopy (bbNIRS) framework",
+      titleZh: "独立式宽带近红外：把「相对」浓度变成「绝对」浓度",
+      authors: ["Fatemeh Tavakoli", "Hanli Liu"],
+      venue: "Biomedical Optics Express", published: "2026-11-05", url: "https://doi.org/10.1364/boe.612014", doi: "10.1364/boe.612014",
+      tags: ["扩散光学", "吸收散射分离", "导数域拟合"], primaryClass: "physics.optics",
+      summary: "便携式宽带近红外光谱（bbNIRS）适合床旁组织监测，但单靠连续谱无法把吸收与散射分开，弱吸收体（如细胞色素 c 氧化酶 CCO）只能给出相对变化。作者提出一套模型约束的估计框架，同时反演氧合与脱氧血红蛋白、还原型与氧化型 CCO、水体积分数，以及散射幅度 a 与散射幂 b。框架由四部分组成：扩散理论前向建模、解析雅可比灵敏度分析、基于模型的光谱窗口选择，以及用一阶与二阶光谱导数抑制参数串扰的四阶段导数域拟合算法（ε-TetraDF）。在加入 1–10% 噪声的扩散理论仿真中，多数参数相对恢复误差小于 10%（10% 噪声下 [CCOred] 约 14%）；蒙特卡洛仿真中 [HbO]、[HHb]、[CCOoxi]、水分数、a、b 的平均相对误差小于 6%，[CCOred] 为 7.9%。健康成人前额在体测量给出 [HbO]=41.7 μM、[HHb]=19.3 μM、StO₂=68.3%、水分数 76.0%、[CCOtotal]=5.3 μM，均落在生理合理区间。",
+      why: "这是散射介质定量反演的教科书式组合拳：前向模型（扩散近似）定结构、雅可比定灵敏度、光谱窗口选择定「哪些波长真有信息」、导数域拟合定抗串扰。特别值得记的是用二阶导数压参数串扰——吸收体的窄特征在二阶导上分得更开，而散射的幂律背景被压平，这比在原始谱上直接做最小二乘稳健得多。做 fNIRS、扩散光学层析或任何「多组分 + 强散射」反演的人，可以把这套「窗口选择 + 导数域」两步法搬过去；同时要清楚它的边界：点测量、单距离、扩散近似，深部组织与低散射情形仍需谨慎。"
+    },
+    {
+      id: "pg-sdfnet", no: 95, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04", "T09"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Extraction of thin orthokeratology lens surfaces in spectral-domain OCT using prior-guided signed-distance regression",
+      titleZh: "PG-SDFNet：用几何先验引导符号距离场，把 OCT 里的薄界面接上",
+      authors: ["Hongbiao Xie", "Mengqi Li", "Peifang Xu", "Juan Ye", "Chunlei Yao", "Gangyong Jia", "Lin An"],
+      venue: "Biomedical Optics Express", published: "2026-11-05", url: "https://doi.org/10.1364/boe.619830", doi: "10.1364/boe.619830",
+      tags: ["神经隐式表示", "OCT 界面提取", "几何先验"], primaryClass: "physics.optics",
+      summary: "从频域 OCT 图像中提取干燥、离体的角膜塑形镜（OK 镜）内表面很困难：目标是一条薄反射界面，受散斑噪声、信号衰减与反射伪影干扰，缺段会在径向视图之间留下空隙，因此「覆盖完整度」必须与「定位精度」一起考虑。作者提出 PG-SDFNet，把连续的符号距离场（SDF）回归与每张 OCT B-scan 自动生成的粗几何先验结合：先验通过输入端融合与先验引导的跳连调制注入网络，引导表面表示学习；标注轮廓提供稠密距离监督。数据覆盖 7 个 OK 镜品牌的 839 次采集、共 53,696 张径向 B-scan，其中单一品牌的 95 次采集（5,737 张标注 B-scan）用于开发与内部评测。在 19 次采集（1,140 张 B-scan）的测试集上，采集级平均召回 0.9405、Dice 0.4346，相比 SDF-Concat 在全部 19 次采集上召回更高、16 次 Dice 更高；单视图召回阈值 0.80 时径向完整度达 0.9029。",
+      why: "薄层、低对比、强散斑的界面提取，是 OCT 类成像最常见的失败点，而失败方式往往不是「测偏」而是「断线」。把表面写成 SDF 连续场，等于把「这条线必须连续」从后处理约束变成表示本身的归纳偏置——这是神经隐式表示最实用的价值之一。再叠加一个由 B-scan 自动生成、并不精确的粗先验，作用是限定解的搜索域，而不是替网络做决定；这一点在 Dice 仅 0.43 而召回 0.94 的组合里体现得很清楚：方法选择了「先保证不断、再逐步收边」。做层析界面分割、内窥 OCT 或任何需要跨视图一致表面重建时，这套「连续场 + 粗先验」的结构比逐帧分割再拼接更稳。"
+    },
+    {
+      id: "niraf-lsci", no: 96, tier: "B", section: "system", primaryTopic: "T08", topicTags: ["T08"], confidence: 0.68, score: 0.68, evidence: "real",
+      title: "Endoscopic NIRAF-LSCI multimodal system with pseudo-color visualization for parathyroid autofluorescence localization and tissue perfusion assessment: preclinical validation",
+      titleZh: "一台内窥镜同时看自发荧光与散斑血流：甲状腺手术里的双通道验证",
+      authors: ["Chang Cai", "Chuoqi Yang", "Wanyu Sun", "Qiye Wen", "Xiao Xiao", "Dianxin Zhou", "Zifeng Luo", "Chao Zheng", "Xuhui Geng", "Zhenhao Liang", "S Q Wang"],
+      venue: "Lasers in Medical Science", published: "2026-11-06", url: "https://doi.org/10.1007/s10103-026-05092-z", doi: "10.1007/s10103-026-05092-z",
+      tags: ["激光散斑对比成像", "近红外自发荧光", "术中灌注"], primaryClass: "physics.optics",
+      summary: "甲状腺术后甲旁减多源于甲状旁腺（PG）被误伤或血供受损。近红外自发荧光（NIRAF）能准确找到 PG，却不给功能灌注信息；激光散斑对比成像（LSCI）能无标记、实时评估灌注。作者验证了一套集成 NIRAF 与 LSCI 的多模态内窥系统，在同一次成像中完成 PG 定位与血管评估，重点考察 LSCI 的灌注表现与伪彩半定量可视化的临床可用性。系统在 8 只 SD 大鼠上测试（以大鼠甲状腺这一同源血供组织作为灌注替代），在血供完整、部分阻断、完全阻断三种严格控制的在位条件下成像。伪彩图由标准化流程生成：时间激光散斑对比分析（tLASCA）算出血流指数、以基线锚定的 5–95 百分位联合归一化、再用 Jet 色图映射。术中探针式定量 NIRAF 用于验证荧光信号灶：PG 荧光强度 149.8±8.7 mV，显著高于甲状腺 93.8±8.0、气管 84.6±9.1、肌肉 66.3±10.4 mV（均 P<0.001），阳性与阴性预测值均为 100%，所有荧光灶无一假阳。随灌注下降散斑对比度单调上升，映射为连续的蓝—红实时伪彩灌注图；组织病理确认全部荧光组织均为 PG。",
+      why: "散斑对比成像的物理很朴素——血流快则散斑模糊、对比度低；但要把它做成术中可用的定量图，难点全在标定与归一化：曝光时间与散斑相关时间是否匹配、不同组织的光学性质差异如何扣除、单帧噪声多大。这里用「基线锚定的 5–95 百分位联合归一化」把不同样本、不同光照拉到同一色标，是让半定量图在临床上可读的关键一步。做 LSCI、扩散相关光谱或任何「从统计量反演功能参数」的成像，可以把它当作标定流程的参考实现；同时要知道它目前只是 8 只动物的临床前验证，跨物种、跨组织的定量可比性尚未解决。"
+    },
+    {
+      id: "m3isr-bench", no: 97, tier: "B", section: "benchmark", primaryTopic: "T10", topicTags: ["T10", "T04"], confidence: 0.65, score: 0.65, evidence: "sim",
+      title: "M 3 ISR: A Multi-Modal Multi-View Benchmark for 3D/4D Gaussian Splatting and Feedforward Compression",
+      titleZh: "M³ISR：为 3D/4D 高斯泼溅与压缩准备一个可控的多视图基准",
+      authors: ["Xinhui Liu", "Lei Liu", "Zhenghao Chen", "Lebin Zhou", "Wei Wang", "Wei Jiang"],
+      venue: "ACM MM Workshop · Rich Media with Generative AI", published: "2026-11-07", url: "https://doi.org/10.1145/3841458.3841537", doi: "10.1145/3841458.3841537",
+      tags: ["高斯泼溅基准", "自由视点视频", "率失真评测"], primaryClass: "cs.CV",
+      summary: "自由视点视频与交互渲染越来越依赖显式高斯表示，但表示体积、动态更新与计算开销限制了落地。现有多视图视频数据集虽提供真实拍摄内容，却难以把相机几何、表示效率与时间冗余的影响分离开。作者提出 M³ISR，一个面向 3D 与 4D 高斯泼溅的可控合成基准：含 5 组室内外场景共 25 个场景、两种相机/运动配置、6 路同步 1080p 视图，以及稠密真值标注（RGB、相机参数、深度、语义与实例分割、静态—动态掩码）。共享中心的相机设计有意分离角度视角变化，使新视角合成与表示效率可以被对照评测。基准分五条互补赛道：3DGS 合成、4DGS 合成、4DGS 流式传输、3DGS 压缩、4DGS 压缩。代表性基线显示静态重建质量差异不大，但表示存储差异显著；被评测的流式方法报告的训练或重建成本远高于对应的离线动态重建基线。作者还定义了 3DGS/4DGS 的前馈压缩任务，给出参考的率—失真表述与初步基线。",
+      why: "高斯类方法的评测长期有个尴尬：真实数据集里「质量差异」常被场景复杂度与相机分布掩盖，做压缩与流式的人无法判断收益来自方法还是来自数据。合成基准加上共享中心相机，把角度变量单独拎出来，这是把对照实验做干净的常规手段，但在这个方向上还很少见。更值得注意的是那条基线结论——静态质量差不多而存储差很多，说明 4DGS 的瓶颈已经从「能不能重建」转向「能不能装进带宽与显存」。做高斯压缩、流式传输或端侧部署的人，可以直接拿它当率—失真评测的起点。"
+    },
+    {
+      id: "tt4d-lift", no: 98, tier: "B", section: "tools", primaryTopic: "T10", topicTags: ["T10", "T04"], confidence: 0.65, score: 0.65, evidence: "real",
+      title: "TT4D: A Pipeline and Dataset for Table Tennis 4D Reconstruction From Monocular Videos",
+      titleZh: "TT4D：先把球「抬」到三维，再切分——单目乒乓 4D 重建的数据与流水线",
+      authors: ["Nima Rahmanian", "Daniel Kienzle", "Thomas Gossard", "Dvij Kalaria", "Rainer Lienhart", "Shankar Sastry"],
+      venue: "ACM Multimedia (MM '26)", published: "2026-11-06", url: "https://doi.org/10.1145/3767308.3835475", doi: "10.1145/3767308.3835475",
+      tags: ["单目 4D 重建", "轨迹提升", "体育数据集"], primaryClass: "cs.CV",
+      summary: "作者发布 TT4D，一个大规模、高保真的乒乓球数据集：从单目转播视频重建出 140 余小时的单打与双打比赛，标注包括高质量相机标定、精确三维球位、球旋转、时间分段以及逐时三维人体网格，可用于虚拟回放、球员分析与机器人学习。规模与精度来自一条新的重建流水线。此前方法先用二维球轨迹把比赛切成单次击球片段，再做重建；但基于二维的时间分段在遮挡与视角变化下会崩掉，导致重建不可靠。作者把范式反过来：先用一个学习式提升网络把整条未分段的二维轨迹抬升到三维，再由这条三维轨迹可靠地完成时间分段。同一个提升网络还推断球旋转、处理不可靠的球检测，并在严重遮挡时恢复球轨迹。正是这种「先抬升」的设计，使其成为目前唯一能从通用视角单目转播视频重建乒乓球比赛的方法。作者用两项下游任务证明数据保真度：估计击球瞬间的球拍位姿与速度，以及训练比赛回合的生成模型。",
+      why: "单目 4D 重建的常见死穴是把「分段」当成前处理——一旦分段错了，后面再好的重建也救不回来。这里把顺序倒过来，用三维轨迹反过来指导分段，本质上是让「更难但更鲁棒的量」去约束「更容易但更脆弱的决策」，这与先估计全局位姿再优化局部结构的思路一致。另外，140 小时带旋转与人体网格标注的规模，对做高速小目标跟踪、卷帘快门校正与「物理可信」生成模型的人都是稀缺资源；球旋转标注尤其难得，因为它需要从仅有二维投影的转播画面里被推断出来。"
+    },
+    {
+      id: "mrf-reg-hybrid", no: 99, tier: "B", section: "efficient", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Efficient Parallel Implementation of a 3-D MRF-Based Deformable Image Registration Algorithm in Medical Dynamic CT Imaging",
+      titleZh: "把 MRF 形变配准拆给 CPU 与 GPU：混合调度换来 9 倍加速",
+      authors: ["Miloud Chemam", "Mohamed Elbahri", "Chakib Mustapha Anouar Zouaoui", "Nasreddine Taleb"],
+      venue: "Journal of Imaging", published: "2026-11-06", url: "https://doi.org/10.3390/jimaging12110555", doi: "10.3390/jimaging12110555",
+      tags: ["形变配准", "马尔可夫随机场", "异构计算"], primaryClass: "physics.med-ph",
+      summary: "配准是医学图像分析的基础环节，高分辨率与实时处理的需求让形变配准的算力压力越来越大，许多高精度方法因计算昂贵难以进入临床。作者针对用于动态 CT 的三维 MRF（马尔可夫随机场）形变配准算法提出三种加速策略：先用 OpenMP 把可并行部分在多核 CPU 上并行化；再实现完全基于 CUDA 的 GPU 版本；最后设计 CPU/GPU 异构混合版本，把计算任务在两种平台上优化分配。在 Learn2Reg 数据集、192×160×256 的图像上，混合方案整体性能最好：它把串行的图优化瓶颈策略性地留在 CPU，取得相对串行实现约 9 倍的加速，同时精度相当；而纯 GPU 方案受限于硬件利用率反而表现不佳，说明把 MRF 优化映射到大规模并行架构本身存在结构性困难。作者还提供了可视化配准过程与结果的图形界面。",
+      why: "图割/MRF 这类离散优化在 GPU 上天生别扭：标签传播与图结构是串行的，能并行的只有能量计算与数据项。这篇文章的价值不在于「用了 GPU」，而在于老老实实报告了纯 GPU 版本因硬件利用率上不去而变慢，并给出「把串行瓶颈留在 CPU」的混合划分。任何想把迭代式逆问题（配准、层析重建、相位恢复里的图优化）搬到异构平台的人，都可以把它当作一张分工表：数据项并行、正则项的图结构串行、内存带宽决定实际收益。9 倍加速对临床工作流是有意义的量级，但要注意它对比的是串行基线，而不是已有的高度优化实现。"
     }
   ],
   archive: [
-    { date: "2026-11-08", number: 11, count: 8, highlights: "4 个方向 · 跨方向 1 篇 · 动态 RGB-热 4D 重建 / 组织偏振前向模型 / 相干声波纳米成像", current: true,
+    { date: "2026-11-09", number: 12, count: 7, highlights: "4 个方向 · 跨方向 3 篇 · 6 飞米散斑光谱仪 / OCT 薄界面 SDF 回归 / 单目 4D 重建数据集", current: true,
+      dailyIds: ["speckle-fm", "bbnirs-abs", "pg-sdfnet", "niraf-lsci", "m3isr-bench", "tt4d-lift", "mrf-reg-hybrid"], headlineIds: ["speckle-fm", "pg-sdfnet", "tt4d-lift"] },
+    { date: "2026-11-08", number: 11, count: 8, highlights: "4 个方向 · 跨方向 1 篇 · 动态 RGB-热 4D 重建 / 组织偏振前向模型 / 相干声波纳米成像", current: false,
       dailyIds: ["dtg-4d", "pmgs-mesh", "ao-litho-dan", "josaa-polar-fwd", "lpr-kk-kerker", "lpr-phonon", "oe-ife-markov", "mm-cage-llie"], headlineIds: ["dtg-4d", "josaa-polar-fwd", "lpr-phonon"] },
     { date: "2026-11-07", number: 10, count: 13, highlights: "7 个方向 · 跨方向 3 篇 · 互补传感器生成重建 / 散斑自画像散焦校正 / 编码孔径 CT 投影补全", current: false,
       dailyIds: ["2611.07665", "x8gj-tvc3", "boe-pam-beams", "ao-coded-ct", "ir-amenet", "ao-fringe-speckle", "ao-ghost-spad", "2611.08288", "2611.07613", "lpr-metalens-ip", "2611.05510", "lpr-itpd", "lpr-oct-scope"], headlineIds: ["2611.07665", "x8gj-tvc3", "ao-coded-ct"] },
