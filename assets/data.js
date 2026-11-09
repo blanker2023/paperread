@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-09",
-    number: 12,
-    updatedAt: "2026-11-08T16:13:43Z",
+    date: "2026-11-10",
+    number: 13,
+    updatedAt: "2026-11-09T16:15:55Z",
     sourceCount: 3,
-    fetched: 1545,
-    kept: 7,
-    headline: "积分球把散斑光谱仪的分辨率推到 6 飞米，80 倍提升让原子超精细结构直接可读；OCT 薄界面改用符号距离场回归，靠一张粗几何先验先把断线接上；单目乒乓 4D 重建把「先分段再重建」倒成「先抬升再分段」，140 小时带球旋转标注的数据集一并公开。",
-    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1545 条、产出 67 条候选、0 错误；按 DOI（含 id 中 doi: 前缀）与标题严格去重后剔除往期已收录 17 条，其余多为跨领域噪声——ACM MM '26 会议录批量入库带来的生成式编辑、视频压缩、多模态大模型论文占了近一半，另有越野导航、医学影像分类、光频梳量子关联、莫尔结构光等。最终收录 7 篇：T02×2 / T04×2 / T08×1 / T10×2，跨方向 3 篇；全部 B 级，当日最高分仅 0.72，无 ≥0.75 的成像候选。T01/T03/T05/T06/T07/T09 空缺：单光子方向只有 SLM-DMD 混合光束偏转（属显示与 LiDAR 扫描，非光子计数成像），相位恢复方向仅 1 条且本属荧光内滤噪声建模，高光谱方向仍是昨日已判弃的偏振高光谱分类与伪可见光通道两条，光场方向只有近眼显示设计，显微方向只有视频超分，均非成像重建，不掺水。另弃用 3 篇：固体高次谐波散射的可辨识性（实为 HHG 电子散射，非成像）、相干阶差分测距（Crossref 无摘要）、4D 高斯目标分割 TIBR4D（下游分割任务非重建）。注意 OpenAlex 的 venue 仍被检索词污染（Nature Communications 被标成 COSI、Lasers in Medical Science 被标成「中科院上海光机所」），出处已按 Crossref container-title 逐个核实。",
-    dailyIds: ["speckle-fm", "bbnirs-abs", "pg-sdfnet", "niraf-lsci", "m3isr-bench", "tt4d-lift", "mrf-reg-hybrid"],
-    headlineIds: ["speckle-fm", "pg-sdfnet", "tt4d-lift"],
-    crossIds: ["speckle-fm", "pg-sdfnet", "m3isr-bench", "tt4d-lift"]
+    fetched: 1544,
+    kept: 5,
+    headline: "复平面上的有界增量让动态相干衍射成像摆脱空间支撑约束，10π 累积相位也能顺着帧序跟着走；级联全息把层间错位直接写进波传播模型，约 100 像素的横向失调下重建仍稳定；高光谱端元提取先剔掉混合像素再解自字典，精度不掉而计算时间大幅下降。",
+    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1544 条、产出 57 条候选、0 错误；但成像类候选严重不足，按既定策略追加 7 天窗口兜底（137 条候选，同一批 1544 条检索结果按更宽时间窗过滤），两窗口合并去重后共 137 条，再与往期 99 篇按 DOI（含 id 中 doi: 前缀）与标题双重比对，剔除重复 38 条，余 99 条中绝大多数仍为噪声——ACM MM '26 会议录批量入库带来的生成式编辑、视频压缩、多模态大模型、AI 生成图检测论文占了一半以上，另有车辆紧急制动、驾驶员疲劳检测、医学影像分割与分类综述、光伏故障诊断、睡眠呼吸暂停 CBCT 测量、全息对偶场论等。最终收录 5 篇：T04×3 / T05×1 / T06×1，跨方向 2 篇；全部 B 级，当日最高分 0.72，无 ≥0.75 的成像候选。T01/T02/T03/T07/T08/T09 空缺：T01 仅 1 条共聚焦内窥（且为 accepted 无摘要），T02 仅有声呐到光学的 GAN 转换与 SAR 基础模型（均为下游任务而非散射成像），T03 全是量子光学与激光器件（簇态产生、声子辅助倍频、等离激元振动激发），T07 仍是近眼显示设计与莫尔结构光拓扑，T08 仅 1 条 AIGC 图像增强的用户接受度问卷研究，T09 的显微方向仅剩荧光内滤噪声与视频超分，均非成像重建，不掺水。另弃用 3 篇 Optica 论文：动态 CDI 之外的定量三维吸收成像（YongKeun Park 组）、双通道共聚焦内窥、OCT 弹性成像与二次谐波显微，三篇在 Crossref 与出版社页面均只有「accepted for publication」占位、无摘要，无法据实撰写，按既定规则弃用；其中动态 CDI 一篇已找到同期 arXiv 预印本（2605.24250）故予收录。出处已按 Crossref container-title 逐个核实：OpenAlex 仍把 GSCV++ 的 venue 污染为「西安电子科技大学杭州研究院」（实为 arXiv 预印本，作者 Qi Yang 等）。",
+    dailyIds: ["cdi-dyn-support", "cascaded-holo", "hs-endmember-dr", "2611.06020", "2611.05359"],
+    headlineIds: ["cdi-dyn-support", "cascaded-holo", "hs-endmember-dr"],
+    crossIds: ["cascaded-holo", "2611.05359"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -1024,10 +1024,62 @@ window.NLOS_DATA = {
       tags: ["形变配准", "马尔可夫随机场", "异构计算"], primaryClass: "physics.med-ph",
       summary: "配准是医学图像分析的基础环节，高分辨率与实时处理的需求让形变配准的算力压力越来越大，许多高精度方法因计算昂贵难以进入临床。作者针对用于动态 CT 的三维 MRF（马尔可夫随机场）形变配准算法提出三种加速策略：先用 OpenMP 把可并行部分在多核 CPU 上并行化；再实现完全基于 CUDA 的 GPU 版本；最后设计 CPU/GPU 异构混合版本，把计算任务在两种平台上优化分配。在 Learn2Reg 数据集、192×160×256 的图像上，混合方案整体性能最好：它把串行的图优化瓶颈策略性地留在 CPU，取得相对串行实现约 9 倍的加速，同时精度相当；而纯 GPU 方案受限于硬件利用率反而表现不佳，说明把 MRF 优化映射到大规模并行架构本身存在结构性困难。作者还提供了可视化配准过程与结果的图形界面。",
       why: "图割/MRF 这类离散优化在 GPU 上天生别扭：标签传播与图结构是串行的，能并行的只有能量计算与数据项。这篇文章的价值不在于「用了 GPU」，而在于老老实实报告了纯 GPU 版本因硬件利用率上不去而变慢，并给出「把串行瓶颈留在 CPU」的混合划分。任何想把迭代式逆问题（配准、层析重建、相位恢复里的图优化）搬到异构平台的人，都可以把它当作一张分工表：数据项并行、正则项的图结构串行、内存带宽决定实际收益。9 倍加速对临床工作流是有意义的量级，但要注意它对比的是串行基线，而不是已有的高度优化实现。"
+    },
+    {
+      id: "cdi-dyn-support", no: 100, tier: "B", section: "core", primaryTopic: "T06", topicTags: ["T06"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Dynamic Coherent Diffractive Imaging Using Only a Support Constraint in the Complex Plane",
+      titleZh: "复平面上的有界增量：动态相干衍射成像只需一个支撑约束",
+      authors: ["Yaocheng Tian", "Taichi Tsuchiya", "Karen Chen-Wiegart", "Horacio Espinosa", "Yuichiro Kunai", "George Barbastathis"],
+      venue: "Optics Express", published: "2026-11-09", url: "https://arxiv.org/abs/2605.24250", pdf: "https://arxiv.org/pdf/2605.24250", doi: "10.1364/OE.606567",
+      tags: ["相干衍射成像", "逐帧增量先验", "投影可行性"], primaryClass: "physics.optics",
+      summary: "动态相干衍射成像要在连续采集的近场衍射图里同时解出随时间演化的相位，通常得靠物体的空间支撑域或强先验；一旦样品边界随时间扩张，支撑约束就失效。作者提出一个极简的动态先验：把相邻帧之间的联系写成乘性更新因子，只要求这个因子在复平面上落在一个有界扇形内——复角受限即相位增量有界，模长受限即振幅不放大（无源），一个约束同时给定了两件事。重建由此变成交替投影的可行性问题，只有两个算子：测量域的模量投影，与物体域的圆扇区投影。实验用空间光调制器作标定好的动态样品验证两例——空间范围不断扩张的反应–扩散相位图案，与累积相位达到 10π 的生长相位图案，重建相位轨迹均与真值吻合。作者随后不改参数把这套框架用于光聚合 3D 打印的原位监测，恢复了图案化蓝光引发聚合所产生的时空相位，使相位轨迹成为光化学系统辨识与过程控制的观测量。正式版见 Optics Express，预印本为 arXiv:2605.24250。",
+      why: "传统 CDI 与叠层成像的支撑约束是「物体在空间上有限」，样品一长大一移动，约束就崩。这篇把「有限」从空间挪到时间轴：不限制物体在哪，只限制它一帧之间能变多少。扇形边界的妙处在于一箭双雕——幅角受限给出相位增量有界，模长受限（≤1）给出被动无源，物理上正是「薄样品在短时间内不会凭空增益光」。副作用是 10π 的累积相位也能顺着帧序无歧义地跟下去，无需事后解缠。做动态相位成像、原位监测（打印、刻蚀、电化学）的人值得注意两点：一是先验界与帧间时间间隔必须匹配，界太松约束失效、太紧跟不上快速演化；二是它只需要强度图，不需要参考臂或额外调制，这也是它能直接搬进「没人给得出物体支撑」的 3D 打印场景的原因。薄样品近似与近场采集几何仍是它的边界条件。"
+    },
+    {
+      id: "cascaded-holo", no: 101, tier: "B", section: "physics", primaryTopic: "T04", topicTags: ["T04", "T06"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Misalignment-Robust Dynamic Cascaded Holography Accelerated by Deep Neural Networks",
+      titleZh: "把层间错位写进波传播模型：抗失调的级联全息由神经网络加速",
+      authors: ["Gyeongsu Jin", "Seokmin Kim", "Seung-Yeol Lee"],
+      venue: "Laser & Photonics Reviews", published: "2026-11-08", url: "https://doi.org/10.1002/lpor.72192", doi: "10.1002/lpor.72192",
+      tags: ["级联全息", "随机失调鲁棒优化", "相位型 SLM"], primaryClass: "physics.optics",
+      summary: "级联全息结构能为光信息处理、加密与复用带来单层器件做不到的功能，但层与层之间的对准极为苛刻，实际系统几乎无法长期稳定工作。作者用商用相位型空间光调制器搭了一个动态级联全息平台，核心是一个把随机失调误差显式写进波传播模型的鲁棒优化框架：优化相位图案时不是对准一套理想几何，而是在大量随机错位条件下同时满足重建要求，因此得到的全息图在横向位移达约 100 像素时仍保持稳定的重建性能。在此之上实验演示了三类应用——鲁棒的全息秘密共享、波长选择性重建，以及高容量信息复用的高保真图像重建。为了压掉鲁棒优化带来的计算开销，作者再用深度神经网络去近似这一迭代寻优过程，大幅缩短相位图案的生成时间。",
+      why: "级联全息长期停在演示阶段，卡点不在物理而在机械：两层 SLM 之间几十微米的漂移就足以毁掉重建。常见做法是加主动对准或事后标定，这篇换了思路——把失调当成模型的一部分，让优化器从一开始就在「一族可能的几何」上求解，于是容差变成了设计变量。这类「误差感知优化」在计算成像里越来越常见（散射介质标定、无透镜编码、端到端相机设计都能套），关键问题是：训练分布里的失调范围是否覆盖真实漂移，以及容差换来的重建质量损失有多大——文中给出的约 100 像素容忍度已足以覆盖商用 SLM 的机械公差。用网络替代迭代优化则是务实的工程选择，但要注意它的泛化边界仍在训练时的失调分布内。"
+    },
+    {
+      id: "hs-endmember-dr", no: 102, tier: "B", section: "efficient", primaryTopic: "T05", topicTags: ["T05"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Hyperspectral Image Data Reduction for Endmember Extraction",
+      titleZh: "先剔掉混合像素：高光谱端元提取的自字典方法提速",
+      authors: ["Tomohiko Mizutani"],
+      venue: "SIAM Journal on Imaging Sciences 19: 2410–2445", published: "2026-11-02", url: "https://doi.org/10.1137/25m1829565", doi: "10.1137/25m1829565",
+      tags: ["端元提取", "线性混合模型", "数据缩减"], primaryClass: "math.NA",
+      summary: "端元提取要从高光谱图像里找出场景中各种材质的谱签名。近年的自字典方法精度很高，但计算代价随像素数迅速膨胀，大规模高光谱图像难以承受。作者改从数据侧下手：在线性混合模型加纯像素假设下，设计一种数据缩减技术，把「多个端元混合而成」的像素先剔除掉，只留下靠近端元的像素参与后续求解。文章给出了这一步的理论性质——缩减过程会保留那些与端元接近的像素，因此不会把真正需要的信息删掉；在此基础上提出「数据缩减 + 线性规划型自字典」的组合方法。数值实验表明，该方法在大幅降低原自字典方法计算时间的同时，端元提取精度没有损失。",
+      why: "自字典方法的成本大头在字典规模，而字典规模由像素数决定；但纯像素假设本身已经告诉你，绝大多数像素是「混合物」，对定端元几乎没有贡献。这篇的价值是把这一直觉做成有理论保证的预处理：先几何式地筛掉明显不在端元附近的点，再解一个规模小得多的线性规划。对做高光谱解混、光谱库构建的人，这是典型的「先降规模再上重算法」路线，可与空间预分割、波段选择叠用。要留意的边界是它的两个前提：线性混合模型与纯像素假设。前者在强多次散射或粗糙表面会偏，后者要求每个端元在场景里至少有一个近乎纯净的像素——城市遥感通常成立，生物医学或密集成像场景则未必。"
+    },
+    {
+      id: "2611.06020", no: 103, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.64, score: 0.64, evidence: "real",
+      title: "METRIC-GS: Selective Metric-Scale Estimation for 3D Gaussian Splatting",
+      titleZh: "METRIC-GS：从重建自身的语义里读出米制尺度，证据不足就拒答",
+      authors: ["Sooyeun Yang", "Jongseong Brad Choi"],
+      venue: "arXiv · cs.CV", published: "2026-11-04", url: "https://arxiv.org/abs/2611.06020",
+      tags: ["3DGS 尺度恢复", "语义先验", "选择性预测"], primaryClass: "cs.CV",
+      summary: "三维高斯泼溅（3DGS）重建从运动恢复结构继承的是任意单位，没有尺度就无法测量，也无法把 AR 内容放进去。两条常规配方在真实拍摄上都很脆：在 5 个用卷尺量过层高的室内场景上，分位数式「地板到天花板」启发式的误差达 27%，而度量深度对齐在三个网络上误差为 35–71%。作者提出 METRIC-GS，一个面向真实室内照片的选择性尺度估计器：它从重建自身的语义内容读出尺度，并且同样重要的是——证据不足时明确拒答。做法是先用冻结的二维教师模型按可见性投票给高斯打标签，再把建筑与家具类别（门、桌、地板到天花板的间隙）的实例级尺寸先验用鲁棒最大似然融合，最后用一个内点质量检验把薄弱证据转成显式弃权，而弃权同时充当路由，把难例交给重量级度量模型。在 47 个带激光真值的 ScanNet++ 场景上（配置在公开评测前冻结），估计器单独工作就把启发式的平均误差从 21.1% 降到 16.6%（在其实际出手的 28 个场景上是 9.3%），每场景约 11 秒。单独使用时 MASt3R 仍更准（9.9%），但只把弃权样本路由给它，就能以少 60% 的调用次数达到接近全量调用的效果。可见性投票把可出手场景从 16 个提到 28 个且部署精度不变。方法原封不动用于作者自采的 13 段手机与无人机拍摄（MASt3R 在其中 12 次连自己的配准门限都过不了），在它出手的 5 段上全部改善、无一退化。作者还报告：一个当前的前馈度量模型在其训练混合分布内的基准上误差 2.3%，在从未见过的拍摄上则是 28–35%——已发表的度量尺度数字是最佳情况，不是部署估计。",
+      why: "这篇的两个贡献都值得记。其一，尺度不在几何里而在语义里：门高、桌高、层高这些类别尺寸是唯一稳定的锚，把高斯按可见性投票绑定到二维教师的语义上，等于用「已知物体的大小」反解全局尺度，比拟合深度可靠得多。其二，也是更少见的一点——它把「不知道」当成一个合法输出。内点质量检验给出弃权，弃权又当路由器，于是系统在易例上快而准、在难例上把判断权交出去，这正是落地系统该有的形状。最后那个 2.3% 对 28–35% 的对照尤其该被引用：凡是拿单目度量模型做尺寸测量的工作，报的都是分布内数字，跨设备跨场景会掉一个数量级。做 3DGS 落地、AR 配准、单目测量的团队可以把它当作尺度环节的默认基线。"
+    },
+    {
+      id: "2611.05359", no: 104, tier: "B", section: "efficient", primaryTopic: "T04", topicTags: ["T04", "T10"], confidence: 0.68, score: 0.68, evidence: "real",
+      title: "GSCV++: Lightweight 3D Gaussian Splatting Sequence Compression via Standard Video Codecs",
+      titleZh: "GSCV++：不碰标准，把 3DGS 序列塞进现成视频编码器",
+      authors: ["Qi Yang", "Yingzhan Xu", "Kai Zhang", "Li Zhang"],
+      venue: "arXiv · cs.CV", published: "2026-11-03", url: "https://arxiv.org/abs/2611.05359",
+      tags: ["3DGS 压缩", "视频编解码", "率失真"], primaryClass: "cs.CV",
+      summary: "3DGS 序列要在产业里落地，压缩必须低复杂度、且能跑在现成硬件上，因此直接复用标准视频编码器是很有吸引力的一条路——难点全在「怎么把三维高斯映射成编码器友好的二维图」。GSCV++ 在三个环节同时改：预处理用能量自适应的帧间球谐交流分量降维（EA-SHDR），得到一个紧凑且时间上稳定的球谐特征空间，在去冗余的同时降低后续映射与压缩的数据量；三维到二维映射提出带先验的 Inter-MiniPLAS（P-MiniPLAS），通过先验权重推断与小尺度重映射生成平滑特征图，比原始 PLAS 与 Morton 扫描更适合视频编码器，同时保持低复杂度；实际压缩提出内容感知的广义压缩（CA-GC），对坐标图采用非均匀位深切分，并引入编码单元尺寸选择来控制压缩复杂度。实验显示，相比同类先进方法，帧内与帧间预测的率失真增益分别超过 20% 与 60%，二维图生成、编码与解码速度也更快，且不涉及编码标准的规范性改动。",
+      why: "3DGS 的存储与传输已经是比「能不能重建」更硬的瓶颈，而重训一个端到端压缩网络在部署上没有优势——这篇的路线是「让标准编码器吃得下高斯」，工程上最容易过审。真正的方法含量在映射：PLAS 那类并行线性分配排序本是为压缩效率服务的，但它不考虑编码器的块划分与运动预测，所以作者用先验加权与尺度重映射把二维图做得更平滑、更符合编码器胃口。球谐交流分量的帧间降维则是另一处值得借的细节：高斯的视角相关颜色在时间上高度冗余，砍掉高阶交流分量几乎不损失重建质量，却直接减少要编码的数据量。要注意它对比的是同一类基于视频编码器的方案，率失真增益不能直接与端到端神经压缩横向比较；另外非均匀位深切分依赖场景坐标范围，跨场景泛化时的参数选择仍需调。"
     }
   ],
   archive: [
-    { date: "2026-11-09", number: 12, count: 7, highlights: "4 个方向 · 跨方向 3 篇 · 6 飞米散斑光谱仪 / OCT 薄界面 SDF 回归 / 单目 4D 重建数据集", current: true,
+    { date: "2026-11-10", number: 13, count: 5, highlights: "3 个方向 · 跨方向 2 篇 · 复平面支撑约束的动态 CDI / 抗失调级联全息 / 高光谱端元数据缩减", current: true,
+      dailyIds: ["cdi-dyn-support", "cascaded-holo", "hs-endmember-dr", "2611.06020", "2611.05359"], headlineIds: ["cdi-dyn-support", "cascaded-holo", "hs-endmember-dr"] },
+    { date: "2026-11-09", number: 12, count: 7, highlights: "4 个方向 · 跨方向 3 篇 · 6 飞米散斑光谱仪 / OCT 薄界面 SDF 回归 / 单目 4D 重建数据集", current: false,
       dailyIds: ["speckle-fm", "bbnirs-abs", "pg-sdfnet", "niraf-lsci", "m3isr-bench", "tt4d-lift", "mrf-reg-hybrid"], headlineIds: ["speckle-fm", "pg-sdfnet", "tt4d-lift"] },
     { date: "2026-11-08", number: 11, count: 8, highlights: "4 个方向 · 跨方向 1 篇 · 动态 RGB-热 4D 重建 / 组织偏振前向模型 / 相干声波纳米成像", current: false,
       dailyIds: ["dtg-4d", "pmgs-mesh", "ao-litho-dan", "josaa-polar-fwd", "lpr-kk-kerker", "lpr-phonon", "oe-ife-markov", "mm-cage-llie"], headlineIds: ["dtg-4d", "josaa-polar-fwd", "lpr-phonon"] },
