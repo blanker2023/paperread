@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-10",
-    number: 13,
-    updatedAt: "2026-11-09T16:15:55Z",
+    date: "2026-11-11",
+    number: 14,
+    updatedAt: "2026-11-10T16:14:52Z",
     sourceCount: 3,
-    fetched: 1544,
-    kept: 5,
-    headline: "复平面上的有界增量让动态相干衍射成像摆脱空间支撑约束，10π 累积相位也能顺着帧序跟着走；级联全息把层间错位直接写进波传播模型，约 100 像素的横向失调下重建仍稳定；高光谱端元提取先剔掉混合像素再解自字典，精度不掉而计算时间大幅下降。",
-    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1544 条、产出 57 条候选、0 错误；但成像类候选严重不足，按既定策略追加 7 天窗口兜底（137 条候选，同一批 1544 条检索结果按更宽时间窗过滤），两窗口合并去重后共 137 条，再与往期 99 篇按 DOI（含 id 中 doi: 前缀）与标题双重比对，剔除重复 38 条，余 99 条中绝大多数仍为噪声——ACM MM '26 会议录批量入库带来的生成式编辑、视频压缩、多模态大模型、AI 生成图检测论文占了一半以上，另有车辆紧急制动、驾驶员疲劳检测、医学影像分割与分类综述、光伏故障诊断、睡眠呼吸暂停 CBCT 测量、全息对偶场论等。最终收录 5 篇：T04×3 / T05×1 / T06×1，跨方向 2 篇；全部 B 级，当日最高分 0.72，无 ≥0.75 的成像候选。T01/T02/T03/T07/T08/T09 空缺：T01 仅 1 条共聚焦内窥（且为 accepted 无摘要），T02 仅有声呐到光学的 GAN 转换与 SAR 基础模型（均为下游任务而非散射成像），T03 全是量子光学与激光器件（簇态产生、声子辅助倍频、等离激元振动激发），T07 仍是近眼显示设计与莫尔结构光拓扑，T08 仅 1 条 AIGC 图像增强的用户接受度问卷研究，T09 的显微方向仅剩荧光内滤噪声与视频超分，均非成像重建，不掺水。另弃用 3 篇 Optica 论文：动态 CDI 之外的定量三维吸收成像（YongKeun Park 组）、双通道共聚焦内窥、OCT 弹性成像与二次谐波显微，三篇在 Crossref 与出版社页面均只有「accepted for publication」占位、无摘要，无法据实撰写，按既定规则弃用；其中动态 CDI 一篇已找到同期 arXiv 预印本（2605.24250）故予收录。出处已按 Crossref container-title 逐个核实：OpenAlex 仍把 GSCV++ 的 venue 污染为「西安电子科技大学杭州研究院」（实为 arXiv 预印本，作者 Qi Yang 等）。",
-    dailyIds: ["cdi-dyn-support", "cascaded-holo", "hs-endmember-dr", "2611.06020", "2611.05359"],
-    headlineIds: ["cdi-dyn-support", "cascaded-holo", "hs-endmember-dr"],
-    crossIds: ["cascaded-holo", "2611.05359"]
+    fetched: 1324,
+    kept: 12,
+    headline: "给生成的高斯贴上来源标签，动态场景的单目高斯 SLAM 既补全了被遮挡背景、又不让扩散幻觉污染位姿；平行平移 CT 用分块扩散加随阶段自适应的接缝正则，把截断投影下的缺陷细节救回来；彩色目标的偏振三维重建把反射率交给色度、把折射率交给色散，摆脱了材料均匀性假设。",
+    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1324 条、87 次查询、产出 45 条候选，13 次请求失败：arXiv 侧 T09 三条（超分/定量相位/深度学习与显微）与 T10 五条（benchmark/dataset/simulator/开源/可复现）先后超时或被 429 限流，OpenAlex 侧 SIGGRAPH、CLEO 两个会议查询与中科院微电子所朱精果组、上海光机所、亚利桑那大学 Brady 组三个机构查询均遇 429；Crossref 全通。失败只影响覆盖广度，未清空旧数据，其余查询正常返回。45 条候选与往期 104 篇按 DOI（含 id 中 doi: 前缀）与标题双重比对，剔除重复 2 条（即前两期的抗失调级联全息与只用复平面支撑约束的动态 CDI），余 43 条逐条读摘要甄别，噪声仍占多数——J-Imaging 整期入库带来的降雨估计、可见光红外目标检测、皮肤癌分类、胸部 X 光分割综述、Nd:YAG 放大器退偏基准，以及光伏故障诊断综述、无人机虚拟实验室、玻璃转变温度符号回归、自动驾驶地图表示、空采样/去雾等。最终收录 12 篇：T04×3 / T05×3 / T06×2 / T08×2 / T07×1 / T03×1，跨方向 5 篇；A 级 1 篇（DPGS-SLAM 0.80，本周唯一 ≥0.75 候选），B 级 6 篇，C 级 5 篇。T01/T02/T09/T10 空缺：T01 仅角膜共聚焦临床评估与双通道共聚焦内窥（后者为 accepted 占位无摘要），均非非视域；T02 唯一候选是水下近距离去散射与硅光逻辑门，前者在 Optica 与 arXiv 均无摘要；T09 的定量三维吸收成像仍是 accepted 占位（该篇上期已因此弃用，今日复查依旧只有占位页），另有角膜 OCT 力学表征属应用研究；T10 当日无任何成像工具或数据集类候选，arXiv 相关五条查询全部失败，故不掺水。另弃用 4 篇 Optica 论文：水下去散射、暗光彩色偏振增强（Stokes 双分支）、双通道共聚焦内窥、角膜 OCT，四篇出版社页面均为「accepted for publication」占位、无摘要，且按标题检索 arXiv 无预印本，无法据实撰写。出处已逐条核实：OpenAlex 把 10.1145/3842531 的 venue 污染为「COSI」，Crossref container-title 实为 ACM Transactions on Graphics（45 卷 6 期，1–13 页）；OpenAlex 亦把 FSCM-Net 的 venue 标注为机构名，实为 arXiv 预印本。",
+    dailyIds: ["2611.12038", "ptct-diffusion", "2611.12716", "pol3d-color-dispersion", "pol-display-ir", "2611.10413", "lc-axicon-holo", "2611.12667", "2611.11814", "modalformer-llie", "2611.10665", "2611.11160"],
+    headlineIds: ["2611.12038", "ptct-diffusion", "pol3d-color-dispersion"],
+    crossIds: ["pol-display-ir", "lc-axicon-holo", "2611.12667", "2611.11814", "2611.10665"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -1074,10 +1074,132 @@ window.NLOS_DATA = {
       tags: ["3DGS 压缩", "视频编解码", "率失真"], primaryClass: "cs.CV",
       summary: "3DGS 序列要在产业里落地，压缩必须低复杂度、且能跑在现成硬件上，因此直接复用标准视频编码器是很有吸引力的一条路——难点全在「怎么把三维高斯映射成编码器友好的二维图」。GSCV++ 在三个环节同时改：预处理用能量自适应的帧间球谐交流分量降维（EA-SHDR），得到一个紧凑且时间上稳定的球谐特征空间，在去冗余的同时降低后续映射与压缩的数据量；三维到二维映射提出带先验的 Inter-MiniPLAS（P-MiniPLAS），通过先验权重推断与小尺度重映射生成平滑特征图，比原始 PLAS 与 Morton 扫描更适合视频编码器，同时保持低复杂度；实际压缩提出内容感知的广义压缩（CA-GC），对坐标图采用非均匀位深切分，并引入编码单元尺寸选择来控制压缩复杂度。实验显示，相比同类先进方法，帧内与帧间预测的率失真增益分别超过 20% 与 60%，二维图生成、编码与解码速度也更快，且不涉及编码标准的规范性改动。",
       why: "3DGS 的存储与传输已经是比「能不能重建」更硬的瓶颈，而重训一个端到端压缩网络在部署上没有优势——这篇的路线是「让标准编码器吃得下高斯」，工程上最容易过审。真正的方法含量在映射：PLAS 那类并行线性分配排序本是为压缩效率服务的，但它不考虑编码器的块划分与运动预测，所以作者用先验加权与尺度重映射把二维图做得更平滑、更符合编码器胃口。球谐交流分量的帧间降维则是另一处值得借的细节：高斯的视角相关颜色在时间上高度冗余，砍掉高阶交流分量几乎不损失重建质量，却直接减少要编码的数据量。要注意它对比的是同一类基于视频编码器的方案，率失真增益不能直接与端到端神经压缩横向比较；另外非均匀位深切分依赖场景坐标范围，跨场景泛化时的参数选择仍需调。"
+    },
+    {
+      id: "2611.12038", no: 105, tier: "A", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.8, score: 0.8, evidence: "real",
+      title: "DPGS-SLAM: Diffusion-Prior and Provenance-Aware Monocular Gaussian Splatting SLAM for Dynamic Visual Sensing",
+      titleZh: "DPGS-SLAM：扩散先验补全遮挡背景，来源标签把生成内容挡在位姿优化之外",
+      authors: ["Yifan Luo", "Takafumi Matsumaru", "Vibekananda Dutta", "Xin He"],
+      venue: "arXiv · cs.RO", published: "2026-11-09", url: "https://arxiv.org/abs/2611.12038", pdf: "https://arxiv.org/pdf/2611.12038",
+      tags: ["动态 SLAM", "扩散补全", "来源标注"], primaryClass: "cs.RO",
+      summary: "动态物体让单目视觉 SLAM 的两件事同时受损：跟踪被运动物体污染，稠密建图被撕出空洞；而 3DGS-SLAM 建立在静态场景假设上，遇到运动物体就会失稳。直接把动态区剔掉能保住跟踪，却让被遮挡的静态背景既无观测也无约束。DPGS-SLAM 的做法是「先补再标」：用光流做运动发现、用 SAM2 做时序一致的掩膜传播划出动态区；对选定的关键帧，用微调过的扩散修补模型在被遮挡区域生成合理的背景外观，再由 Metric3D v2 从补全后的图像预测米制深度，初始化一批「临时」高斯基元。关键在来源标签（provenance）：生成的高斯与观测支撑的高斯分开记账，生成内容被排除在相机位姿估计与观测地图优化之外。当原先被遮挡的背景真正露出时，符合条件的生成基元被删除，改由真实 RGB 与该帧预测深度独立初始化。TUM RGB-D 上平均 ATE RMSE 为 1.2 cm、BONN RGB-D 上为 2.7 cm，与既有方法相当；在 StaDy4D 上仅用单目 RGB 就把平均 PSNR 比 WildGS-SLAM 提高 4.60 dB。",
+      why: "这篇最值得借的不是「用扩散补背景」——这在今天已不新鲜——而是补完之后怎么办。生成内容一旦进了优化，就会靠自洽性把位姿拉偏：扩散模型编出来的纹理与几何会反过来解释观测，形成看起来很漂亮的错解。来源标签等于给地图上的每个高斯加了「证据等级」，位姿只由真实观测决定，生成物只在没有观测的地方占位，且随时可被真实观测替换。这套「临时占位 + 到期替换」的机制，比一味滤掉动态区实用：滤掉会丢背景，不滤会失真。要注意它的前提是全套二维先验（SAM2、Metric3D v2、扩散修补）都足够可靠，任一环节在低纹理或强反光场景失效时，临时基元就会变成系统性偏差；对实时性要求高的 SLAM，异步补全能否跟上帧率也是落地门槛。"
+    },
+    {
+      id: "ptct-diffusion", no: 106, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "High-resolution parallel-translation CT reconstruction based on a patch-based adaptive-regularization-guided diffusion model",
+      titleZh: "分块去噪 + 自适应正则：平行平移 CT 在截断投影下的高分辨重建",
+      authors: ["Xuanheng Li", "Mingze Lv", "Jiahong Liu", "Yu He", "Yi Sun"],
+      venue: "Optics Express", published: "2026-11-09", url: "https://doi.org/10.1364/oe.613003", doi: "10.1364/OE.613003",
+      tags: ["平行平移 CT", "扩散模型", "接缝正则"], primaryClass: "physics.optics",
+      summary: "工业无损检测里，大型板状构件转不动，旋转 CT 的机械系统又过于复杂，于是有了平行平移 CT（PTCT）——样品只做平移、不做旋转。代价是扫描范围有限、投影数据截断，重建出现混叠伪影。作者用扩散模型补这一段缺失信息：先用 SIRT 得到一个初值，把结构先验带进重建；再设计「拆分—重组」去噪模块（SRDM）做分块重建，并用位置编码作为条件引导，强化局部结构细节；同时提出自适应正则校正模块（ARCM），其中的接缝项（seam-based）与掩膜项（mask-based）随去噪阶段自适应调整，负责全局结构恢复与局部连续性。为验证方法，作者自建了一个含缺陷结构的 PCB 数据集。结果显示，方法在整体重建可靠的同时，能把缺陷区域的细微结构恢复出来。",
+      why: "扩散先验做不完备数据重建已很常见，难的是「整图先验」与「分块计算」之间的矛盾：分块能省显存、能并行，但每个 patch 单独去噪会破坏跨块连续性，接缝本身就成了假结构。这篇的解法是把接缝与掩膜写成可调正则项，并让权重随去噪阶段变化——早期管全局骨架，后期管局部细节，这比固定权重的后处理拼接更贴合扩散的去噪动力学。PTCT 这个几何也值得关注：只用平移不要旋转台，是大尺寸平板件在线检测的刚需，而它的截断投影恰是「先验比算法更要紧」的典型场景。可质疑处在于自建 PCB 数据集的规模与缺陷类型覆盖面，结论能否外推到金属焊缝、复合材料分层等其他材料，还需要更多验证。"
+    },
+    {
+      id: "2611.12716", no: 107, tier: "C", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Spaghetti Splatting: Differentiating Curvilinear Dirac Masses via Convolution",
+      titleZh: "Spaghetti Splatting：把曲线当图元，用卷积让线上的狄拉克质量可微",
+      authors: ["George Shramko", "Shrisudhan Govindarajan", "Rudy Lam", "Yizheng Xie", "Daniel Rebain", "David B. Lindell", "Andrea Tagliasacchi"],
+      venue: "arXiv · cs.CV", published: "2026-11-09", url: "https://arxiv.org/abs/2611.12716", pdf: "https://arxiv.org/pdf/2611.12716",
+      tags: ["曲线图元", "EWA splatting", "体渲染"], primaryClass: "cs.CV",
+      summary: "生产系统里的三维几何是点、线、三角形这类图元，渲染硬件就是为它们优化的；但要反过来从图像里学出这些图元很难——它们都是定义在无穷小位置上的狄拉克质量，无法直接体渲染求导。EWA splatting、泊松重建与 3DGS 的解法本质相同：把狄拉克质量与一个低频核做卷积，使它变成可积、可微的团块。作者指出这个配方可沿两个轴推广——核的选择与图元的选择——点和三角形都已被充分研究，曲线还是空白，于是提出 Spaghetti Splatting：用折线逼近曲线，使折线的卷积收敛到连续曲线的卷积；逐段体渲染，并保证相邻段在接点处合成时不重复计数；为提速，对每段线性化相机投影，这套线性化也允许使用高斯以外的核（如 Beta 核）。由于点是长度为零的曲线，该表示是 3DGS 的严格超集：在一般场景上与当前最优方法相当，在线状几何上超过专用方法，原生支持抗锯齿，并能生成可直接用于物理仿真的长连通股线。",
+      why: "这是一篇讲「表示」的文章，价值在于把 splatting 的通用配方讲清楚：图元是狄拉克质量，必须卷积低频核，而核与图元这两个自由度可以独立替换。理解这一点，3DGS 就不再是「高斯」的专利，而是一族方法的特例。曲线图元的工程难点作者都点了：一是接点处的重复计数，相邻段各自贡献会在线段连接处堆积能量、表现为亮斑；二是逐段投影非线性的计算代价，用逐段线性化换速度。对做毛发、线缆、植被、血管、纤维增强材料的人，这比继续堆高斯数量更对症；「点是零长度曲线」的说法还提供了一个干净的一致性检验。要留意它仍是离线优化框架，段数增加后光栅化与梯度累积的开销会上升，而文中的「有竞争力」是在一般场景上说的，并非全面超越。"
+    },
+    {
+      id: "pol3d-color-dispersion", no: 108, tier: "B", section: "physics", primaryTopic: "T05", topicTags: ["T05"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Polarimetric 3D reconstruction of colored targets based on narrowband multispectral dispersion constraints and chromaticity-based desaturation",
+      titleZh: "彩色目标的偏振三维重建：色度解耦反射率，色散约束解折射率",
+      authors: ["Zhe Wang", "Haoyang Wu", "Yong Tan", "Ye Zhang"],
+      venue: "Optics Express", published: "2026-11-09", url: "https://doi.org/10.1364/oe.618751", doi: "10.1364/OE.618751",
+      tags: ["偏振三维", "本征图像分解", "柯西色散"], primaryClass: "physics.optics",
+      summary: "偏振三维重建的前提是表面折射率与反射率均匀，而彩色目标的反射率在空间上并不均匀，这会让天顶角估计产生系统性偏差、方位角消歧随之失效，最终形状被拉歪、细节丢失。作者针对彩色朗伯（或近似朗伯）电介质目标提出一套组合方案。先用窄带多光谱成像系统采集目标在多个光谱通道的偏振图像，用色度梯度约束的本征图像分解剥离反射率的空间非均匀性，还原仅由几何调制的明暗分量，从根上消除颜色对法向估计的干扰。再把柯西色散方程引入，刻画折射率随波长的变化，构建天顶角与色散系数的联合反演模型——把单通道下的欠定问题变成多通道的联合约束估计，从而无需已知折射率先验就能定出天顶角。最后用去饱和后的干净明暗法向作方向约束，通过矢量角一致性筛选消除方位角二义性，再做平滑正则优化，用泊松积分重建三维面形。自然光、单视角下的实验表明，对反射率非均匀的彩色电介质物体，精度显著优于单光谱通道方法。",
+      why: "偏振三维的老问题一直是「两个未知数、一个方程」：反射率未知就分不清「暗」是几何背光还是材质本身暗，折射率未知就分不清偏振度对应哪个天顶角。传统做法靠假设均匀或额外标定，这篇把两个未知数分别交给两个物理维度解决：反射率交给色度，颜色不随几何变、明暗随几何变，本征分解天然可分；折射率交给色散，同一材料在不同波长下 n 不同，多通道就多出方程。妙处在于它把多光谱用成了「多方程」而不是「多颜色」，这在偏振成像里是很少见的用法。边界也清楚：朗伯假设、单视角、需要窄带滤光或快照多光谱相机；镜面反射与次表面散射强的目标（皮肤、釉面、蜡质）不适用。做偏振三维、材质识别、文化遗产数字化的人值得一读。"
+    },
+    {
+      id: "pol-display-ir", no: 109, tier: "B", section: "system", primaryTopic: "T05", topicTags: ["T05", "T08"], confidence: 0.65, score: 0.65, evidence: "real",
+      title: "Snapshot Polarimetric Display Inverse Rendering",
+      titleZh: "屏幕当光源、偏振相机当传感器：桌面单帧完成材质反解",
+      authors: ["Seokjun Choi", "Yunseong Moon", "Kaizhang Kang", "Hoon-Gyu Chung", "Jin-Nyeong Kim", "Giljoo Nam", "Seung-Hwan Baek"],
+      venue: "ACM Transactions on Graphics 45(6): 1–13", published: "2026-11-09", url: "https://doi.org/10.1145/3842531", doi: "10.1145/3842531",
+      tags: ["单帧逆向渲染", "偏振 BRDF", "显示—相机系统"], primaryClass: "cs.GR",
+      summary: "逆向渲染要在单帧内解出法向、反照率、粗糙度与金属度，信息量天生不够，因此以往工作分别在时间调制、光谱编码、偏振几个维度上加信息。作者提出「偏振显示逆向渲染」：用一块 LCD 投影线偏振的 RGB 二值图案作为可控光源，再用一台加装四分之一波片的 RGB 偏振相机，单次曝光就采到彩色偏振测量。一个前馈 Transformer 把这些测量直接映射到逐像素的法向、反照率、粗糙度与金属度。训练数据不足是这类工作的通病，作者用生成式流形把少量实测偏振 BRDF 扩增成可用训练集。在真实桌面装置上的实验显示，跨多种场景的逆向渲染精度优于既有方法。",
+      why: "这篇工程味道很浓，但思路值得抄：它不是「更好的网络」，而是重新分配单帧的信息预算。二值图案经 LCD 偏振投影后，等于同时给了结构光（空间编码）与偏振（角度编码）两种线索，而四分之一波片让相机一次拿到完整的彩色偏振测量——空间、偏振、颜色三个维度叠在一帧里，把欠定问题推到近乎可解。用生成式流形扩增实测偏振 BRDF 也是务实之举：真实偏振反射数据极难采，纯合成数据又不够真，在两者之间插值比纯合成靠谱。需要提醒的是装置依赖：它要能显示偏振图案的 LCD 与偏振相机，普通屏幕加普通相机无法复现；「桌面工作流」这个定位也意味着工作距离与视场都很受限，不是通用室内重建方案。"
+    },
+    {
+      id: "2611.10413", no: 110, tier: "C", section: "core", primaryTopic: "T05", topicTags: ["T05"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Frequency-Structure Complementary Modeling for Hyperspectral Image Fusion",
+      titleZh: "频域与结构互补：高光谱融合网络让局部聚合随结构自适应",
+      authors: ["Song Qiya", "Tian Siyu", "Li Shutao", "Dian Renwei", "Sun Long", "Liu Jinyang"],
+      venue: "arXiv · cs.CV", published: "2026-11-07", url: "https://arxiv.org/abs/2611.10413", pdf: "https://arxiv.org/pdf/2611.10413",
+      tags: ["高光谱融合", "结构张量", "频域注意力"], primaryClass: "cs.CV",
+      summary: "高光谱与多光谱融合的目标是同时拿到高空间分辨率与高光谱保真度。现有方法多依赖卷积聚合或注意力做空谱交互，但作者指出两个短板：常规的特征域注意力并不显式刻画沿空间 token 与隐通道坐标的变化模式；空间共享的局部算子又缺少随结构异构性调整邻域聚合的灵活性。为此提出频率—结构互补建模网络 FSCM-Net，把频率感知的依赖学习与结构自适应的局部精修耦合起来。空间—光谱频率校准注意力（SSFCA）模块用傅里叶交互后的 query-key 表示构建空间 token 亲和度，并在沿学习到的通道坐标做输入条件化频域滤波之后构建隐通道亲和度，隐通道响应再经一个共享增益校准后与空间 token 响应合并。结构相干动态特征融合（SC-DFF）模块把多光谱特征的正则化结构张量线索与上下文调制的高光谱细节表示结合，生成随通道与位置变化的聚合核，使局部精修能区分平滑区、边缘与纹理，同时保持光谱保真。两个模块在多尺度编解码器中渐进集成。在两个模拟基准与一个真实遥感数据集上，空间细节重建与光谱保持均优于代表性融合方法。",
+      why: "高光谱融合的核心矛盾是「细节来自谁、光谱谁来守」，这篇的两个模块正好对应这两件事：SSFCA 在频域里找依赖，避免空间注意力在平坦区被噪声主导；SC-DFF 用结构张量给出各向异性线索（边缘方向、纹理强弱），让聚合核不再空间共享。值得记的是它对「常规注意力不显式建模坐标轴变化模式」的批评——这在高光谱里确实成立，因为光谱维的相关结构与空间维完全不同，混在一个注意力里会互相稀释。实证上仍是常规配置（两个模拟基准加一个真实遥感数据集），提升幅度与消融的完整性要回原文看表；另外结构张量取自多光谱图像，当多光谱本身分辨率不足或存在配准误差时，动态核会把这些误差放大。做 pansharpening 与 HSI-MSI 融合的人，可以把它当作「结构先验 + 频域注意力」的组合范式参考。"
+    },
+    {
+      id: "lc-axicon-holo", no: 111, tier: "B", section: "system", primaryTopic: "T06", topicTags: ["T06", "T07"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Large‐Depth‐of‐Focus and High‐Quality Layer‐Based Holographic 3D Display System Based on Liquid Crystal Axicon",
+      titleZh: "液晶轴棱锥把焦深拉长一倍：分层全息在 2 cm 连续焦段内清晰成像",
+      authors: ["Fan‐Chuan Lin", "Qian Huang", "Yi‐Long Li", "Rui‐Yi Zhao", "Qiong‐Hua Wang", "Jiang‐Hao Xiong", "Di Wang"],
+      venue: "Laser & Photonics Reviews", published: "2026-11-08", url: "https://doi.org/10.1002/lpor.72201", doi: "10.1002/lpor.72201",
+      tags: ["分层全息", "液晶轴棱锥", "焦深扩展"], primaryClass: "physics.optics",
+      summary: "分层（layer-based）全息显示靠「离焦随深度变化」提供深度线索，但系统焦深有限，能清晰成像的轴向范围很窄，这是分层方案的核心瓶颈。作者的思路是硬件与算法一起改：硬件上，基于无衍射贝塞尔光束的产生原理设计了一片液晶轴棱锥，用它把焦深撑开；软件上，提出多平面全息优化方法压制层间边界串扰，与液晶轴棱锥配合，实现大焦深、高质量的分层全息三维重建。系统由加载高质量全息图的 SLM 与特制液晶轴棱锥构成，在 2 cm 的连续焦段内完成重建，相比已报道的大焦深系统提升两倍以上。作者认为这有助于把全息显示推向工业、教育与娱乐场景。",
+      why: "全息显示的分层方案一直卡在「层数—焦深—串扰」的三角里：层多了算力吃不消、层少了深度不连续，焦深不够则只有焦面附近清晰。这篇的巧处是用一片液晶轴棱锥把「焦深」这个自由度从算法侧挪到器件侧——贝塞尔光束本身无衍射、轴向强度近乎不变，正好补上 SLM 焦深短的短板，算法只需专心处理层间串扰。2 cm 连续焦段对桌面级全息显示是可用量级，但也要看清代价：轴棱锥是额外一片有源液晶器件，会带来偏振依赖、驱动电压与装调公差问题；文中比较的是「已报道的大焦深系统」，不是与多平面纯算法方案的公平对比。做全息显示、AR 近眼、光场三维的人可以把它当作器件—算法协同设计的范例。"
+    },
+    {
+      id: "2611.12667", no: 112, tier: "C", section: "efficient", primaryTopic: "T06", topicTags: ["T06", "T04"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Stochastic Multilevel Sampling for Inverse Problems via Coarse-Space Identifiability",
+      titleZh: "小样本也能可靠更新：多尺度随机采样让逆问题每次迭代更省",
+      authors: ["Zichao Wendy Di"],
+      venue: "arXiv · math.NA", published: "2026-11-09", url: "https://arxiv.org/abs/2611.12667", pdf: "https://arxiv.org/pdf/2611.12667",
+      tags: ["随机采样", "多重网格", "病态反问题"], primaryClass: "math.NA",
+      summary: "只采样一部分数据能降低逆问题每次迭代的开销，但更新会变得不可靠。作者研究「随机多尺度采样」：在一组由粗到细的校正空间层级上计算更新，核心直觉是——一个小样本即使不足以支撑细网格更新，也往往足以支撑可靠的粗网格更新。对二次型目标函数，作者给出了校正量能降低全数据目标函数的条件。在 CT 与周期去模糊的小批量实验中，该方法的重建精度优于同配置的单层方法；在一个条件数随图像维度恶化、投影角度数固定的 CT 精化任务里，单层方法的误差随维度增大而上升，而深层级方法能维持甚至改善精度，并在相同的前向/伴随算子调用次数下超过全数据单层优化。这些增益在测试的各类局部求解器下都成立，并随问题病态程度加深而更明显。",
+      why: "这篇文章没有新网络、没有新数据集，讲的是一件很基础但常被忽略的事：小批量带来的噪声对不同尺度的分量影响完全不同。粗尺度分量由低频主导，少量投影就能约束住；细尺度分量需要更多角度，小批量下更新方向几乎全是噪声——所以「少采样」不该一刀切，而应按尺度分配预算。这与多重网格、多分辨率优化的直觉一致，但作者把它做成了带条件的随机方法，并给出误差随维度增长的实证。对 CT、层析等大规模反问题里「算力不够只能小批量」的实践者，这是可直接落地的一条：把预算花在粗层，细层少动。局限是理论保证主要针对二次目标，非线性算子（如相位恢复、非线性扩散）上的收敛性还没被覆盖。"
+    },
+    {
+      id: "2611.11814", no: 113, tier: "B", section: "system", primaryTopic: "T07", topicTags: ["T07", "T04"], confidence: 0.68, score: 0.68, evidence: "real",
+      title: "Lensless single-pixel imaging through dynamic coded-aperture illumination",
+      titleZh: "用二值掩模相干传播出灰度照明：无透镜单像素成像的照明设计空间",
+      authors: ["Yuhan Guo", "Shilei Li", "Tong Zhou", "Liming Li"],
+      venue: "arXiv · physics.optics", published: "2026-11-09", url: "https://arxiv.org/abs/2611.11814", pdf: "https://arxiv.org/pdf/2611.11814",
+      tags: ["单像素成像", "编码孔径照明", "无透镜"], primaryClass: "physics.optics",
+      summary: "单像素成像的分辨率与信噪比很大程度上取决于照明图案的统计特性，但要在实验中自由产生各种照明场并不容易。作者搭了一套「动态编码孔径照明 + 单像素探测」的无透镜单像素成像系统：用 DMD 的二值掩模，经相干传播直接生成定制的灰度强度场，既不需要中继投影光路，也不需要靠时间上的灰度合成（多帧平均）来拼灰度。他们系统比较了六种目标场配置——均匀场、瑞利散斑、瑞利平方散斑，以及稀疏度 p=10%、5%、1% 的稀疏二值场——在二值与灰度两类物体上的表现，重建分别用强度相关法与带非负全变分正则的方法。结果显示「最优照明」取决于物体、重建算法与评价指标三者的组合，没有普适最优。作者认为这套「快速二值调制 + 可编程灰度照明 + 单像素读出」的组合，为无透镜计算成像以及光学编码与重建的联合设计提供了一个灵活的实验平台。",
+      why: "单像素成像的文献里，算法（全变分、深度学习）远多于「照明该长什么样」，而照明统计恰恰决定了测量矩阵的性质。这篇的价值是把照明当成一等公民来做对照实验，而且给出一个不太讨喜但重要的结论：不存在普适最优照明——散斑照明在稀疏物体上加全变分效果好，均匀场在灰度物体上反而稳，指标从 PSNR 换成 SSIM 排序还会变。这对「端到端联合设计编码与重建」是个提醒：训练集与评价指标一旦定下，最优编码也就被绑死了，跨场景迁移要重新设计。技术上「DMD 二值掩模经相干传播直接得到灰度场」很实用，绕开了灰度调制需要多帧或高帧率 DMD 的限制，代价是灰度场形状受传播距离与掩模相关性的约束，不能任意指定。"
+    },
+    {
+      id: "modalformer-llie", no: 114, tier: "B", section: "core", primaryTopic: "T08", topicTags: ["T08"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "ModalFormer: Multimodal Transformer for Low-Light Image Enhancement",
+      titleZh: "ModalFormer：把九种辅助表征喂进跨模态注意力做暗光增强",
+      authors: ["Alexandru Brateanu", "Raul Balmez", "Ciprian Orhei", "Codruta Ancuti", "Cosmin Ancuti"],
+      venue: "Journal of Imaging 12(11): 566", published: "2026-11-09", url: "https://doi.org/10.3390/jimaging12110566", doi: "10.3390/jimaging12110566",
+      tags: ["暗光增强", "跨模态注意力", "辅助表征"], primaryClass: "eess.IV",
+      summary: "暗光图像增强（LLIE）的困难在于噪声、细节丢失与对比度不足三者纠缠。近年方法多只在 RGB 像素上做变换，忽略了其他视觉模态提供的上下文。ModalFormer 从输入 RGB 派生出九种辅助表征，框架由两部分组成：跨模态 Transformer（CM-T）负责在恢复退化图像的同时融合多模态信息；若干辅助子网络负责多模态特征的重建。CM-T 的核心是跨模态多头自注意力（CM-MSA），它把 RGB 数据与模态专属特征——深层特征嵌入、分割信息、几何线索、颜色信息——融合起来，生成信息更丰富的混合注意力图。在多个基准数据集上，ModalFormer 取得了暗光增强的最优性能。",
+      why: "暗光增强做到今天，纯 RGB 端到端已接近饱和，增量只能来自额外信息。这篇的路线是零成本外部信息：不引入红外或事件相机，而是从输入自己派生九种表征（深度、分割、色度等）。好处是部署简单、不需要多传感器配准；代价是这些表征本身由 RGB 估计而来，在极暗条件下并不可靠——噪声会被「派生」成结构，再被网络当作先验强化，形成自我确认的伪细节。CM-MSA 用混合注意力图融合异构模态，是合理的设计；但九个辅助子网络的推理开销在移动端基本不可接受。读它时建议重点看两处：极暗（低于 0.1 lux）场景的对比，以及辅助表征在噪声下的鲁棒性消融——这两点最能判断「自派生先验」这条路到底能走多远。"
+    },
+    {
+      id: "2611.10665", no: 115, tier: "C", section: "physics", primaryTopic: "T08", topicTags: ["T08", "T05"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Physically Guided TeX Generation for Low-Light Visual Tasks",
+      titleZh: "从可见光加红外反解温度、发射率与纹理：给暗光融合补一个物理中间层",
+      authors: ["Daoheng Li", "Jianjun Qian", "Mengkai Yan", "Jian Yang"],
+      venue: "arXiv · cs.CV", published: "2026-11-07", url: "https://arxiv.org/abs/2611.10665", pdf: "https://arxiv.org/pdf/2611.10665",
+      tags: ["热简并", "物理分解", "红外可见光融合"], primaryClass: "cs.CV",
+      summary: "暗光下可见光对比度低、细节被埋，红外图像又缺颜色与纹理，因此常把两者融合。现有融合方法多直接优化图像外观或任务特征，没有显式拆解热观测背后的耦合因素，导致「热简并」下物理可解释性差。高光谱热测量本可做物理分解，但需要专用硬件，逐像素物理标注的成本也很高。作者提出 TeX-Gen：从成对的可见光与红外图像生成「温度（T）、发射率（ε）、纹理（X）」三层物理表征。生成部分构建互补的多视角特征，用独立的分支门控把线索分别路由到温度、发射率、纹理三个图。评价部分提出 TeXMetric，把辐射度重建、通道结构与材料一致性结合起来，在不需要逐像素物理标签的情况下评估生成质量。再用 TeX Tune 做任务引导的调整：冻结生成器，联合优化调整模块与下游任务网络。在 FLIR、LLVIP、M3FD、MSRS 上，暗光任务性能具有竞争力；在 HADAR 数据集上还考察了 TeXMetric 分数与下游检测性能的关联。",
+      why: "热红外成像的经典难题是温度与发射率简并——测到的辐射是两者乘积，单波段无法拆开。这篇不去造硬件解简并，而是用可见光提供材质与纹理这一侧的信息，让网络输出 T、ε、X 三层，再用一个无需像素级标签的度量去约束它们。这在思想上比「端到端融合出好看的图」前进了一步：中间层是可解释、可复用的物理量，下游任务可以只取其中一层。但要说清它的定位——这是「代理分解」而非真解简并：没有多波段热测量，T 与 ε 的分离本质上靠先验与数据分布，换个场景（不同材质、不同环境温度）很可能失准。TeXMetric 与检测性能的相关性在 HADAR 上被检验，这是全文最有说服力的部分；若相关性弱，三层表征的意义就退回成一种正则。"
+    },
+    {
+      id: "2611.11160", no: 116, tier: "C", section: "system", primaryTopic: "T03", topicTags: ["T03"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Design and Performance Evaluation of a Quad-panel Dual-isotope PET Imaging System",
+      titleZh: "四面板、不要专用瞬发伽马探测器：一台紧凑型双同位素 PET 的系统账本",
+      authors: ["Yu Shi", "Tengjiao Wang", "Sen Yang", "Bo Wen", "Meng Niu", "Yirong Wang", "Risheng Yang", "Yanyun Liu", "Wei Ding", "Xiangyu Liu", "Fei Kang", "Shouping Zhu"],
+      venue: "arXiv · physics.med-ph", published: "2026-11-08", url: "https://arxiv.org/abs/2611.11160", pdf: "https://arxiv.org/pdf/2611.11160",
+      tags: ["双同位素 PET", "三重符合", "时间分辨"], primaryClass: "physics.med-ph",
+      summary: "同时双同位素 PET 想靠瞬发伽马做同位素分离，但三重符合计数统计量低，符合逻辑对多能量事件提取的灵活性也有限。作者设计并评估了一套紧凑的四面板双同位素 PET：四块探测面板正交排布，每块有效面积 107.0 × 145.5 mm，不配专用瞬发伽马探测器。用 GPU 加速的软件符合处理，从原始单光子数据中提取双重符合与被瞬发伽马标记的三重符合；三重符合图像用一致延迟期望最大化（consistent delayed EM）做偶然—三重校正后重建，再在图像域用空间变化的缩放因子做同位素分离。系统在 511、1077、1275 keV 的能量分辨分别为 15.7%、12.9%、10.2%，时间分辨 1.35 ns；68Ga Derenzo 模体中双重符合图像可分辨 1.6 mm 棒、1.2 mm 部分可辨，三重符合图像仍能辨认 1.6 mm 棒；三个轴向上的瞬发伽马平均探测效率为 8.19%–9.31%；350–650 keV 能窗下双重符合灵敏度 1.12%，双能窗偶然校正后三重符合灵敏度 0.068%；散射比 27.81%；NECR 在 9.38 MBq 时双重符合为 83 kcps、21.42 MBq 时三重符合为 106 cps。模体与在体实验成功分离了 18F/68Ga 与 18F/124I 的分布。",
+      why: "双同位素 PET 的关键在怎么把两种示踪剂分开，主流做法是加专用瞬发伽马探测器，代价是几何复杂、成本上升。这篇反其道而行：不加硬件，靠 1.35 ns 的时间分辨与软件符合逻辑，从同一批单光子数据里挖出被瞬发伽马标记的三重符合。1.35 ns 这个数字是全文的技术支点——没有它，三重符合的时间窗会把偶然符合全放进来。值得称道的是它把代价讲得很清楚：三重符合灵敏度只有 0.068%、NECR 仅 106 cps，意味着这条路只适合小动物等低计数、可长采集的场景，不可能直接上临床。做 PET 系统、光子计数、多示踪剂成像的读者，可以把它当作一份诚实的系统设计账本——性能指标与代价逐项列出，比只报分辨率的文章有用得多。"
     }
   ],
   archive: [
-    { date: "2026-11-10", number: 13, count: 5, highlights: "3 个方向 · 跨方向 2 篇 · 复平面支撑约束的动态 CDI / 抗失调级联全息 / 高光谱端元数据缩减", current: true,
+    { date: "2026-11-11", number: 14, count: 12, highlights: "6 个方向 · 跨方向 5 篇 · 动态高斯 SLAM 来源标签 / 平行平移 CT 分块扩散 / 彩色目标偏振三维", current: true,
+      dailyIds: ["2611.12038", "ptct-diffusion", "2611.12716", "pol3d-color-dispersion", "pol-display-ir", "2611.10413", "lc-axicon-holo", "2611.12667", "2611.11814", "modalformer-llie", "2611.10665", "2611.11160"], headlineIds: ["2611.12038", "ptct-diffusion", "pol3d-color-dispersion"] },
+    { date: "2026-11-10", number: 13, count: 5, highlights: "3 个方向 · 跨方向 2 篇 · 复平面支撑约束的动态 CDI / 抗失调级联全息 / 高光谱端元数据缩减", current: false,
       dailyIds: ["cdi-dyn-support", "cascaded-holo", "hs-endmember-dr", "2611.06020", "2611.05359"], headlineIds: ["cdi-dyn-support", "cascaded-holo", "hs-endmember-dr"] },
     { date: "2026-11-09", number: 12, count: 7, highlights: "4 个方向 · 跨方向 3 篇 · 6 飞米散斑光谱仪 / OCT 薄界面 SDF 回归 / 单目 4D 重建数据集", current: false,
       dailyIds: ["speckle-fm", "bbnirs-abs", "pg-sdfnet", "niraf-lsci", "m3isr-bench", "tt4d-lift", "mrf-reg-hybrid"], headlineIds: ["speckle-fm", "pg-sdfnet", "tt4d-lift"] },
