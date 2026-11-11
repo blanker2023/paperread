@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T16:15:05.819Z",
+  "generatedAt": "2026-11-11T16:12:36.174Z",
   "rangeDays": 90,
   "papers": [
     {
@@ -4115,6 +4115,263 @@
       "primaryClass": "physics.med-ph",
       "summary": "同时双同位素 PET 想靠瞬发伽马做同位素分离，但三重符合计数统计量低，符合逻辑对多能量事件提取的灵活性也有限。作者设计并评估了一套紧凑的四面板双同位素 PET：四块探测面板正交排布，每块有效面积 107.0 × 145.5 mm，不配专用瞬发伽马探测器。用 GPU 加速的软件符合处理，从原始单光子数据中提取双重符合与被瞬发伽马标记的三重符合；三重符合图像用一致延迟期望最大化（consistent delayed EM）做偶然—三重校正后重建，再在图像域用空间变化的缩放因子做同位素分离。系统在 511、1077、1275 keV 的能量分辨分别为 15.7%、12.9%、10.2%，时间分辨 1.35 ns；68Ga Derenzo 模体中双重符合图像可分辨 1.6 mm 棒、1.2 mm 部分可辨，三重符合图像仍能辨认 1.6 mm 棒；三个轴向上的瞬发伽马平均探测效率为 8.19%–9.31%；350–650 keV 能窗下双重符合灵敏度 1.12%，双能窗偶然校正后三重符合灵敏度 0.068%；散射比 27.81%；NECR 在 9.38 MBq 时双重符合为 83 kcps、21.42 MBq 时三重符合为 106 cps。模体与在体实验成功分离了 18F/68Ga 与 18F/124I 的分布。",
       "why": "双同位素 PET 的关键在怎么把两种示踪剂分开，主流做法是加专用瞬发伽马探测器，代价是几何复杂、成本上升。这篇反其道而行：不加硬件，靠 1.35 ns 的时间分辨与软件符合逻辑，从同一批单光子数据里挖出被瞬发伽马标记的三重符合。1.35 ns 这个数字是全文的技术支点——没有它，三重符合的时间窗会把偶然符合全放进来。值得称道的是它把代价讲得很清楚：三重符合灵敏度只有 0.068%、NECR 仅 106 cps，意味着这条路只适合小动物等低计数、可长采集的场景，不可能直接上临床。做 PET 系统、光子计数、多示踪剂成像的读者，可以把它当作一份诚实的系统设计账本——性能指标与代价逐项列出，比只报分辨率的文章有用得多。"
+    },
+    {
+      "id": "hs-hdr-fusion",
+      "no": 117,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T05",
+      "topicTags": [
+        "T05",
+        "T08"
+      ],
+      "confidence": 0.92,
+      "score": 0.92,
+      "evidence": "real",
+      "title": "Overcoming Dynamic Range Limitations in Computational Hyperspectral Imaging",
+      "titleZh": "编码测量域的多曝光融合：让计算光谱成像同时看清高光与阴影",
+      "authors": [
+        "Qianqian Yu",
+        "Jinhang Lin",
+        "Zhihai Yao",
+        "Shuo Wang",
+        "Chaofan Weng",
+        "Xiang Hao"
+      ],
+      "venue": "arXiv · physics.optics",
+      "published": "2026-11-10",
+      "url": "https://arxiv.org/abs/2611.13663",
+      "pdf": "https://arxiv.org/pdf/2611.13663",
+      "tags": [
+        "计算光谱成像",
+        "高动态范围",
+        "多曝光融合"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "计算光谱成像靠编码掩膜把光谱压进少数测量，但掩膜各通道的光谱响应率并不相等，它们的可靠区间落在完全不同的入射信号水平上——高光处某些通道先饱和，阴影处另一些通道先被噪声淹没。于是单次曝光无法同时保住高光与阴影的光谱信息，测量可靠性同时取决于曝光时间与编码通道。作者提出一套物理引导的多曝光融合框架，直接在编码测量域（而非重建后的图像域）工作：由解析的可靠性先验与学到的空间变化、通道特定修正共同决定自适应融合权重；再用测量域的光谱角监督约束通道间相对响应，为下游光谱反演提供一致输入。集合式（set-wise）建模使框架可接受不同数量、不同配置的输入曝光。作者在 9 通道宽带编码随机光谱相机上实现，含全视场传感器响应标定与通道感知的可靠性门控。仿真 HDR 基准上重建误差低于代表性融合方法；用光密度靶实测，光谱重建动态范围相对最佳固定单曝光提升 16.0 dB。",
+      "why": "多曝光融合在 HDR 摄影里是常识，搬到编码孔径光谱相机上却多出一层麻烦：要融合的不是像素亮度，而是「测量可靠性」，而可靠性逐通道不同——同一个像素，红端通道可能刚好、蓝端通道已经饱和。所以权重不能只看亮度阈值，得由「曝光 × 通道」二维决定，这正是它用解析先验加学习修正的原因。更关键的是把融合放在编码测量域：先融合再反演，测量之间「同一场景、同一掩膜」的物理约束还在；若先各自反演再融合光谱，非线性反演会把误差分布扭曲，融合反而放大不一致。测量域的光谱角监督也很巧——约束通道相对响应而非绝对光谱，恰好对上掩膜响应的失配。需注意 16 dB 来自光密度靶这类受控目标，真实场景的提升会受杂散光与掩膜标定精度限制。"
+    },
+    {
+      "id": "depthgs",
+      "no": 118,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.76,
+      "score": 0.76,
+      "evidence": "real",
+      "title": "DepthGS: Depth-Guided Gaussian Splatting with Adaptive Regularization for High-Quality Surface Reconstruction",
+      "titleZh": "先证出深度误差与重建误差的上界，再让法向正则强度跟着几何可靠性走",
+      "authors": [
+        "Xiao Ren",
+        "Yu Liu",
+        "Ning An",
+        "Jian Cheng",
+        "Xin Qiao",
+        "You-Fu Li",
+        "He Kong"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-10",
+      "url": "https://arxiv.org/abs/2611.13628",
+      "pdf": "https://arxiv.org/pdf/2611.13628",
+      "tags": [
+        "高斯泼溅",
+        "表面重建",
+        "自适应正则"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "3DGS 已被广泛扩展到表面重建，但深度信息与重建误差之间究竟是什么关系一直没被讲清，几何优化策略的设计因此缺少依据。DepthGS 补上这一环：分别在单视图与多视图设定下推导深度差异与重建误差的关系，并给出重建误差的上界。由上界出发设计两套自适应正则——单视图优化中，用局部深度差算出的几何可靠性权重调节法向约束强度，深度差大处几何不可信、法向先验就该放松；多视图优化中引入跨视图深度一致性正则，把当前视图的深度预测变换到邻近视图，要求它与邻近视图自身的深度图一致。在 DTU、Mip-NeRF360、Tanks and Temples 上，表面重建与新视图合成均取得有竞争力的结果。",
+      "why": "高斯泼溅做表面重建的常见做法是把法向约束、深度约束一股脑加上去，权重靠调参。这篇的价值在于先给一个可证的误差上界，再让正则强度成为上界的函数——「深度差大 ⇒ 几何不可信 ⇒ 少信法向先验」，这条链可解释，也容易迁移到神经隐式、点云等别的表征。跨视图一致性那一项尤其值得借：单目深度先验在多视图优化里常互相打架，与其各自平滑，不如显式要求变换后的一致。要留意上界推导依赖线性化等假设，在薄结构、镜面这些假设失效处，自适应权重未必比固定权重更稳；文中的「competitive」也说明它是把工程直觉理论化，而非大幅超越。"
+    },
+    {
+      "id": "retinexgs",
+      "no": 119,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04",
+        "T08"
+      ],
+      "confidence": 0.76,
+      "score": 0.76,
+      "evidence": "real",
+      "title": "RetinexGS: Retinex-Inspired Gaussian Splatting for Low-Light RAW Reconstruction",
+      "titleZh": "Retinex 分解加 DNG 噪声元数据：暗光下的 RAW 域高斯泼溅",
+      "authors": [
+        "Yulang Fei",
+        "Huaiyuan Weng",
+        "Chul Min Yeum"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-09",
+      "url": "https://arxiv.org/abs/2611.13280",
+      "pdf": "https://arxiv.org/pdf/2611.13280",
+      "tags": [
+        "低光重建",
+        "RAW 域",
+        "噪声建模"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "常规 3DGS 管线遇到严重欠曝输入会失稳：颜色漂移、出现漂浮伪影、暗区重建残缺。作者认为根因是低光观测里的噪声没被正确建模，而 RAW 图天然适合噪声感知重建——它保留线性传感器测量，还带着噪声元数据。RetinexGS 因此在 RAW 域重建，并把 Retinex 思路搬进外观建模：把每个高斯的颜色分解为与视角无关的基础色，加一个共享的、随位置与视角变化的调制场，两个分量分别正则化，用这种分解约束从含噪观测中的外观学习。优化时用 DNG 噪声元数据给损失加权以处理信号相关噪声；渲染时采用畸变感知采样，避免对 RAW 目标做空间重采样。暗区几何稀疏用深度引导初始化解决。在三个公开 RawNeRF 场景与两个自采暗光 RAW 场景上，同输入训练下平均 sRGB PSNR 比 LE3D 高 2.18 dB、比 RawNeRF 高 2.71 dB，且仍支持实时新视图渲染。",
+      "why": "低光 3DGS 的关键不在网络结构，而在损失该相信哪个像素。RAW 域的好处是噪声模型有物理依据：散粒噪声方差随信号线性增长，DNG 元数据直接给出增益与读出噪声，于是每个像素都能算出「这个观测有多可信」，这比在 sRGB 上做完 Gamma 再猜噪声干净得多。Retinex 分解解决的是另一处病：暗区里基础色与光照耦合，网络容易用「整体压暗」解释，导致颜色不稳；拆成视角无关基色加共享调制场，等于把材质与光照的职责分开，各自正则化就不会互相污染。畸变感知渲染这个细节也别忽略——对 RAW 插值会破坏噪声的独立性，使前面的噪声加权失效，这类自洽性在低光管线里常被漏掉。局限是仍要多视图采集与逐场景优化，深度引导初始化也依赖外部深度先验的质量。"
+    },
+    {
+      "id": "diff-ano-usct",
+      "no": 120,
+      "tier": "B",
+      "section": "efficient",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.65,
+      "score": 0.65,
+      "evidence": "real",
+      "title": "Diff-ANO: Towards fast high-resolution ultrasound computed tomography via conditional consistency models and adjoint neural operators",
+      "titleZh": "一致性模型加伴随神经算子：超声计算断层成像的快速高分辨反演",
+      "authors": [
+        "Xiang Cao",
+        "Qiaoqiao Ding",
+        "Xinliang Liu",
+        "Lei Zhang",
+        "Xiaoqun Zhang"
+      ],
+      "venue": "Inverse Problems",
+      "published": "2026-11-10",
+      "url": "https://doi.org/10.1088/1361-6420/aec045",
+      "doi": "10.1088/1361-6420/aec045",
+      "tags": [
+        "超声计算断层成像",
+        "伴随神经算子",
+        "扩散先验"
+      ],
+      "primaryClass": "physics.med-ph",
+      "summary": "超声计算断层成像（USCT）要从残缺、含噪的散射波测量中反演声速，其不稳定性来自非线性逆映射与采集几何。生成模型能提供学习到的先验来稳定这类受偏微分方程约束的反演。Diff-ANO 把条件一致性模型（CM）的细化与代理测量梯度优化交替进行：先用一个前向多重网格神经算子（MgNO）一次预测发射/接收的源场库，再对这些场做共轭残差组合，得到伴随作用与声速梯度。在四种采集几何下，与基于求解器的细化做匹配计算效率比较，取得 6.75 倍在线加速。为降低「逆犯罪」风险，作者另用更细网格的 WaveSim 做独立测量验证，重建趋势与匹配 CBS 的研究一致。",
+      "why": "扩散先验做 PDE 约束反演已是主流，代价通常落在线推理上：每步都要对一个正问题求解器求梯度。这篇把两件事解耦——神经算子一次前向给出源场库（相当于把 Helmholtz 解算器蒸馏成算子），伴随梯度只是这些场的共轭组合，于是测量一致性那一步不再需要迭代求解器；生成先验只负责在零空间里补信息。6.75 倍是这么来的，不是靠少采样。方法学上更值得学的是它对 inverse crime 的处理：训练与评估若共用同一套 CBS 正演，重建好看可能只是自洽；用细网格 WaveSim 独立验证，「趋势一致」才成为有意义的结论。可质疑处在数据真实性——全文仍是仿真测量，作者自己也把扩展到更真实采集物理与实测数据列为后续工作，6.75 倍与高分辨的结论在体模、活体上仍需复核。"
+    },
+    {
+      "id": "holo-retinal-rpd",
+      "no": 121,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T06",
+      "topicTags": [
+        "T06"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Holographic Retinal Projection With Wide Field of View and Large Eyebox Based on an Electrically Switchable Liquid Crystal Grating",
+      "titleZh": "电控双周期液晶光栅加角度载波复用：视网膜投影做到 15° 视场与 25.6 mm 眼盒",
+      "authors": [
+        "Zi Wang",
+        "Li Liang",
+        "Yuan Liu",
+        "Miao Xu",
+        "Qibin Feng",
+        "Guoqiang Lv",
+        "Fan‐Chuan Lin",
+        "Qian Huang",
+        "Yi‐Long Li",
+        "Di Wang"
+      ],
+      "venue": "Laser & Photonics Reviews",
+      "published": "2026-11-11",
+      "url": "https://doi.org/10.1002/lpor.72207",
+      "doi": "10.1002/lpor.72207",
+      "tags": [
+        "全息显示",
+        "视网膜投影",
+        "液晶光栅"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "全息视网膜投影（RPD）因恒焦成像与灵活波前调制成为近眼显示热点，但在有限带宽下视场与眼盒互相牵制，宽视场加大眼盒的全息视网膜投影此前未能实现。作者提出基于电控双周期液晶光栅的方案，让两者同时扩展：设计光栅的同时提出角度载波复用全息图生成方法，把多个子图像编码到不同角度，由液晶光栅做二次衍射，从而在空间上拼出更大的视场与出瞳。实现结果为 15° 视场与 25.6 mm 水平复制视点跨度，相对传统全息 RPD 参考配置约提升 3 倍视场、4 倍水平视点跨度，两者乘积对应 12 倍的「视场—视点跨度」性能指标提升。",
+      "why": "全息显示有一个绕不过去的带宽算术：空间光调制器的像素间距决定最大衍射角，视场就那么大；想让眼盒变大得复制出瞳，而复制既分掉能量、又受同一个衍射角限制。这篇不去硬提带宽，而是把「一次衍射不够」变成「两次衍射」——全息图先把子图像编码到不同载波角度，液晶光栅再按不同周期状态把它们二次衍射到不同出瞳位置。读出结论时要注意口径：3 倍视场、4 倍视点跨度是分别测的，12 倍是两者的乘积指标，不等于整体观感提升 12 倍。另外电控切换意味着不同光栅状态要分时工作，闪烁、亮度下降与状态间串扰在摘要里没有给出评估，这也是该方案走向近眼显示产品的关键待验项。"
+    },
+    {
+      "id": "marigold-v2",
+      "no": 122,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T08",
+      "topicTags": [
+        "T08",
+        "T04"
+      ],
+      "confidence": 0.65,
+      "score": 0.65,
+      "evidence": "real",
+      "title": "Marigold V2: Revisiting Diffusion Transformers for Monocular Depth Estimation",
+      "titleZh": "Marigold V2：把扩散 Transformer 重新调教成更锐利的单目深度估计器",
+      "authors": [
+        "Igor Pavlovic",
+        "Thiemo Wandel",
+        "Anton Obukhov",
+        "Luca Bartolomei",
+        "Andrey Davydov",
+        "Fabio Tosi",
+        "Matteo Poggi",
+        "Sabine Süsstrunk",
+        "Dengxin Dai"
+      ],
+      "venue": "ACM Transactions on Graphics 45(6): 1–15",
+      "published": "2026-11-09",
+      "url": "https://doi.org/10.1145/3842528",
+      "doi": "10.1145/3842528",
+      "tags": [
+        "单目深度",
+        "扩散 Transformer",
+        "稠密回归"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "单目深度估计极度欠定，下游却连着场景重建、计算摄影与机器人，而现有模型在分布外输入上泛化差、深度图不够锐利。作者重访 Marigold 这套「把现代图像生成/编辑模型改造成深度估计器」的做法，这次针对扩散 Transformer（DiT）：目标是让预训练的多步流匹配模型做单步推理，必要时量化，在保住模型容量的同时把推理成本压下来。他们分析了朴素训练产生的伪影，给出两条补救——把模型内部表示与从真值提取的语义特征对齐；采用围绕新的 Sinkhorn 损失设计的两阶段微调。结果深度图更锐利干净，分布外泛化明显改善，KITTI 与 ETH3D 上 AbsRel 相对此前最好结果提升 16–26%，定性上能分辨此前模型解不出的毛发、枝叶与发丝级边缘。迁到表面法向估计、本征图像分解等其他稠密回归任务同样达到最优。",
+      "why": "生成模型做深度估计有个反直觉的坑：预训练模型的内部表示是按语义组织的，不是按几何。直接微调出来的深度图会继承语义边界——物体轮廓很清楚，细几何却糊成一片。第一条补救正对此：用真值的语义特征去校准内部表示，而不是让模型自己猜。第二条补救用 Sinkhorn 把「深度分布匹配」写成可微最优传输，避免 L1/L2 在深度不连续处给出折中解，伪影就是这么消掉的。对做计算成像的人，实用价值在于单步推理、可量化的 DiT 深度先验能直接塞进 3DGS、NLOS、去散射等下游管线当几何先验，成本比多步扩散低一个量级。提醒一句：AbsRel 是在 KITTI/ETH3D 这类室外驾驶与室内场景上测的，显微、水下、强散射仍属分布外。"
+    },
+    {
+      "id": "pulseq-pcasl",
+      "no": 123,
+      "tier": "C",
+      "section": "tools",
+      "primaryTopic": "T10",
+      "topicTags": [
+        "T10"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "real",
+      "title": "Vendor-Agnostic Pseudocontinuous Arterial Spin Labeling Using Pulseq: Cross-Vendor Quantitative Evaluation",
+      "titleZh": "用开源 Pulseq 重写一遍序列：让三家厂商的灌注成像给出同一套脑血流值",
+      "authors": [
+        "Jianing Zhang",
+        "Jun Wang",
+        "Joseph G. Woods",
+        "Shaoyou Ye",
+        "Shuai Ming",
+        "Hongwei Li",
+        "Wei Hu",
+        "Wei Wei",
+        "Xiaohu Li",
+        "Thomas W. Okell",
+        "Yang Ji"
+      ],
+      "venue": "arXiv · physics.med-ph",
+      "published": "2026-11-09",
+      "url": "https://arxiv.org/abs/2611.12584",
+      "pdf": "https://arxiv.org/pdf/2611.12584",
+      "tags": [
+        "开源序列",
+        "跨厂商可复现",
+        "灌注成像"
+      ],
+      "primaryClass": "physics.med-ph",
+      "summary": "多中心动脉自旋标记（ASL）研究的痛点是不同扫描仪之间脑血流（CBF）定量不一致。作者用开源 Pulseq 框架实现了一套与厂商无关的伪连续 ASL（PCASL）序列，部署在西门子、GE、联影三家的 3T 机器上；7 名健康志愿者在每个平台做单标记后延迟 PCASL（含重测），并以一套改造过的西门子原生序列作参照。评估指标含个体内变异系数、RMSE、区域 CBF 相关与体素级变异比图。结果：灰质平均 CBF 在各实现间接近；重测灰质 CVwithin 全部低于 4%（西门子—Pulseq 最低 2.65%，原生序列 3.64%）；原厂与 Pulseq 实现间的灰质 RMSE 与重测 RMSE 相当，跨扫描仪 CVwithin 均低于 3%；体素级变异比分布中心在 100% 附近，说明跨厂商差异与生理基线波动同量级。多 PLD 与免规划 VE-PCASL 作为概念验证在所有平台跑通，给出一致的 CBF/ATT 图与血管区域划分。",
+      "why": "这篇不含新重建算法，但解决的是更靠前的问题：序列由各家厂商实现，同一个名字下的射频与梯度波形并不相同，血流定量就带着系统性偏差。Pulseq 的意义是把序列写成可交换的文本，同一份波形在三个平台执行，剩下的差异才归因于硬件与生理。衡量标准也值得学：作者没有停在「平均值接近」，而是用重测变异作尺度去校准跨厂商差异——RMSE 与重测 RMSE 相当、变异比中心落在 100%，这才是有说服力的等价性论证。对做计算成像的读者，这是「采集端标准化」的范本：重建再好，若各中心的原始数据不在同一物理尺度上，跨中心学习与评测就不成立。局限是志愿者仅 7 人、只覆盖 3T 与三家厂商，且各平台仍需独立的安全与序列验证。"
     }
   ]
 }
