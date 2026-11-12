@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-12",
-    number: 15,
-    updatedAt: "2026-11-11T16:12:24Z",
+    date: "2026-11-13",
+    number: 16,
+    updatedAt: "2026-11-12T16:30:48Z",
     sourceCount: 3,
-    fetched: 1537,
-    kept: 7,
-    headline: "把多曝光融合搬进编码测量域，融合权重由「曝光 × 通道」的可靠性共同决定，计算光谱成像的动态范围实测拓宽 16 dB；先给深度差与重建误差推出上界，再让法向正则强度跟着几何可靠性走，高斯泼溅的表面重建才不必靠调参；RAW 域重建叠加 Retinex 分解与 DNG 噪声加权，暗光下的高斯泼溅不再颜色漂移、暗区残缺。",
-    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1537 条、87 次查询、产出 78 条候选，0 次请求失败——本期三信源全通，无因超时或 429 缺口的检索方向。78 条候选与往期 116 篇按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，剔除重复 9 条（含第 14 期头条 DPGS-SLAM、ModalFormer、Spaghetti Splatting 等），余 69 条逐条读摘要甄别。最终收录 7 篇：T04×3 / T05×1 / T06×1 / T08×1 / T10×1，覆盖 5 个方向，跨方向 3 篇；A 级 3 篇（编码域多曝光光谱 0.92、DepthGS 0.76、RetinexGS 0.76），B 级 3 篇，C 级 1 篇。T01/T02/T03/T07/T09 空缺，均因摘要不可得或内容不属成像而非配额不足：T01 唯一真正对题的是 Optics Express 的欠扫描非视域瞬态恢复（oe.616837），出版社页面仍是 accepted 占位、无摘要，按标题检索 arXiv 亦无预印本；T02 的两条候选（时空调制超表面散射建模 oe.619234、同步辐射散斑对比 oe.612522）与 CARS 非线性显微（boe.614508）同为 accepted 占位；T03 无对题候选；T07 无候选；T09 的定量三维吸收显微（boe.620774）已是连续第三期复查、仍是占位页。当期 Crossref 命中的 Optica 系论文（oe.616837 / oe.619234 / oe.612522 / oe.615342 / ao.614831 / ao.619810 / boe.620774 / boe.614508）全部无摘要，共 8 篇，一律不据标题臆写。噪声仍占多数：J-Imaging 整期入库带来的降雨估计、可见光红外目标检测、乳腺 MRI 分割、Transformer 医学分割位置编码；SIGGRAPH/TOG 的自动绑骨、人脸绑定、计数图像理解；以及离岸锡矿船检测、咽炎分类、交通流预测、Kubernetes 缓存、加权 Dice 等跨域论文。出处已逐条核实：OpenAlex 把 10.1088/1361-6420/aec045 的 venue 污染为「COSI」，Crossref 实为 Inverse Problems；把 10.1145/3842585 与 10.1145/3842528 标为「ICCP」，实为 ACM Transactions on Graphics 45 卷 6 期（分别 1–15 页），本期收录的 Marigold V2 已按 TOG 标注。另有多条高分但判弃者：双层介质超表面太赫兹波前调控（lpor.72177）与全息光盘存储（ao.618922）属器件与材料、非成像任务；2611.14348 数字岩心流动仿真、2611.13925 需求工程基准虽被 T10 命中，实为跨领域工具；jimaging 12110569 的乳腺 MRI 分割数据集虽是数据集型工作，但面向手术规划而非成像方法，域外性过强未纳入。",
-    dailyIds: ["hs-hdr-fusion", "depthgs", "retinexgs", "diff-ano-usct", "holo-retinal-rpd", "marigold-v2", "pulseq-pcasl"],
-    headlineIds: ["hs-hdr-fusion", "depthgs", "retinexgs"],
-    crossIds: ["hs-hdr-fusion", "retinexgs", "marigold-v2"]
+    fetched: 1533,
+    kept: 6,
+    headline: "把高斯基元从像素格点上解耦，单图前馈的三维表示才在大视角偏移下贴住表面；让方向、面积权重与置信度在同一个绕数能量里交替优化，无定向脏点云也能直接重建水密曲面；相干结构照明多给一束互补光，离焦伪影在强度上自相消，厚样品不必再靠后处理去猜。",
+    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1533 条、87 次查询、产出 84 条候选，0 次请求失败——本期三信源全通，无因超时或 429 造成的检索缺口。84 条候选与往期 123 篇按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，剔除重复 13 条（含第 15 期头条三条：编码域多曝光光谱 2611.13663、DepthGS 2611.13628、RetinexGS 2611.13280，以及第 14 期已收的 10.1145/3842531 等），余 71 条逐条读摘要甄别。最终收录 6 篇：T04×3 / T09×2 / T07×1，覆盖 3 个方向，跨方向 3 篇；A 级 0 篇（当日最高分 0.72），B 级 5 篇，C 级 1 篇——当日确无 ≥0.75 的成像候选，A 级空缺不是筛选保守。T01/T02/T03/T05/T06/T08/T10 空缺，原因分两类：一是信源覆盖不足，二是内容不属计算成像。T01 唯一命中是 1.84 W 单频涡旋激光器（oe.616034），属光源而非成像；T02 的两条命中分别为 SRS/MIP/SRP 灵敏度比较框架（oe.613446，属模态评估而非成像方法）与短脉冲受激布里渊阈值模型（oe.615229，非线性光纤）；T03 的 CO₂ 激光束修形（ao.607221）属光学加工；T05 唯一对题的「MTF 光谱快照压缩成像的光谱边缘不变先验」（ao.619015）仍是 accepted 占位：Crossref 无摘要、arXiv 按标题检索无预印本、OpenAlex 按 DOI 查询 404，按规则不据标题臆写；T06 的唯一命中（ao.618922）实为纳米多孔 TiO₂ 全息光盘存储，属存储介质；T08 的 VTOI-GAN（jimaging 12110571）是可见光到红外的图像翻译、LiveLight（10.1145/3842529）是扩散式视频重打光，均属生成任务而非采集；T10 仍是噪声重灾区：J-Imaging 整期入库带来的降雨估计、心脏 CT 分形分析综述、角膜共聚焦临床综述、可见红外目标检测；另有钢琴演奏辅具设计史、离岸锡矿船检测、咽炎分类、青光眼跨院检测、语音情绪识别、交通流预测、Kubernetes 缓存、加权骰子物理等跨域论文。出处已逐条核实：OpenAlex 把 10.1145/3842585 与 10.1145/3842515 标为「ICCP」「SIGGRAPH」，Crossref 实为 ACM Transactions on Graphics 45 卷 6 期（分别 1–15、1–19 页），本期已按 TOG 标注；ao.614831（手机光学投影断层）出版社页面亦为占位，但其预印本 arXiv:2604.13004 可查，摘要与作者据此核对后收录，并在 venue 中注明预印本源。判弃者另记：数字岩心流动仿真（2611.14348）、需求工程基准（2611.13925）、时空光链手性（10.1038/s41377-026-02432-0）、MLLM 推理分割（10.1007/s11263-026-03118-1）、光子晶体触觉传感器（2611.12383）虽被方向词命中，均因任务不属成像而未收。",
+    dailyIds: ["c-sim-5beam", "phone-opt", "dc-cle", "infini-splat", "diwr", "mspr-gre"],
+    headlineIds: ["infini-splat", "diwr", "c-sim-5beam"],
+    crossIds: ["c-sim-5beam", "phone-opt", "infini-splat"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -1264,10 +1264,72 @@ window.NLOS_DATA = {
       tags: ["开源序列", "跨厂商可复现", "灌注成像"], primaryClass: "physics.med-ph",
       summary: "多中心动脉自旋标记（ASL）研究的痛点是不同扫描仪之间脑血流（CBF）定量不一致。作者用开源 Pulseq 框架实现了一套与厂商无关的伪连续 ASL（PCASL）序列，部署在西门子、GE、联影三家的 3T 机器上；7 名健康志愿者在每个平台做单标记后延迟 PCASL（含重测），并以一套改造过的西门子原生序列作参照。评估指标含个体内变异系数、RMSE、区域 CBF 相关与体素级变异比图。结果：灰质平均 CBF 在各实现间接近；重测灰质 CVwithin 全部低于 4%（西门子—Pulseq 最低 2.65%，原生序列 3.64%）；原厂与 Pulseq 实现间的灰质 RMSE 与重测 RMSE 相当，跨扫描仪 CVwithin 均低于 3%；体素级变异比分布中心在 100% 附近，说明跨厂商差异与生理基线波动同量级。多 PLD 与免规划 VE-PCASL 作为概念验证在所有平台跑通，给出一致的 CBF/ATT 图与血管区域划分。",
       why: "这篇不含新重建算法，但解决的是更靠前的问题：序列由各家厂商实现，同一个名字下的射频与梯度波形并不相同，血流定量就带着系统性偏差。Pulseq 的意义是把序列写成可交换的文本，同一份波形在三个平台执行，剩下的差异才归因于硬件与生理。衡量标准也值得学：作者没有停在「平均值接近」，而是用重测变异作尺度去校准跨厂商差异——RMSE 与重测 RMSE 相当、变异比中心落在 100%，这才是有说服力的等价性论证。对做计算成像的读者，这是「采集端标准化」的范本：重建再好，若各中心的原始数据不在同一物理尺度上，跨中心学习与评测就不成立。局限是志愿者仅 7 人、只覆盖 3T 与三家厂商，且各平台仍需独立的安全与序列验证。"
+    },
+    {
+      id: "c-sim-5beam", no: 124, tier: "B", section: "core", primaryTopic: "T09", topicTags: ["T09", "T06"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Coherent structured illumination microscopy with enhanced suppression of coherent defocus artifacts",
+      titleZh: "五光束相干结构光照明显微：把相干离焦伪影压下去，横向分辨率提升两倍",
+      authors: ["Kevin T. Crampton", "Alan G. Joly", "Long D. Nguyen", "Saleem Iqbal", "Robert W. Boyd", "James E. Evans"],
+      venue: "Optics Express 34(23), 44884", published: "2026-11-12", url: "https://doi.org/10.1364/OE.607016", doi: "10.1364/OE.607016",
+      tags: ["相干结构照明", "合成孔径", "离焦伪影抑制"], primaryClass: "physics.optics",
+      summary: "相干结构光照明显微（c-SIM）用相干光的合成孔径把传统 SIM 的能力扩展到非荧光样品：靠移动照明图案把高频信息搬进通带，再在频域拼回超衍射极限的图像。但它探测的是相干散射产生的强度图样，离焦平面上的相干场会与焦面信号叠加，形成四极照明难以剔除的结构性伪影。作者提出互补的五光束照明实现：多引入一束互补波矢，使离焦层的相干贡献在强度探测中相互抵消，而焦面内的合成孔径频移保持不变；因为始终只测强度而不测复场，系统避开了相干探测的相位稳定与定标负担。在标定样品与活体微藻上的对比测量显示，五光束 c-SIM 有效衰减了相干场相互作用引起的离焦伪影，图像质量改善，同时相对宽场获得最高 2 倍的横向分辨率提升。",
+      why: "c-SIM 的老矛盾是「看得更细」和「看不深」不能兼得：相干照明的离焦场不像荧光那样自然衰减，叠加到焦面强度上就成了结构性伪影，后处理去不掉，只能在照明端解决。这篇的办法很「光学」——多一束互补照明，让离焦贡献在强度上自相消，而不是训一个网络去猜哪里是伪影；对厚样品和活体成像来说，这种物理手段不引入幻觉，比生成式去伪影可靠。要看清增益幅度：最高 2 倍分辨率加伪影抑制，属中等提升，不是数量级跨越；五束照明意味着光路对准与各束光强配比更敏感，复现门槛高于成熟四极方案，文中也没有给出厚样品下的定量深度极限。"
+    },
+    {
+      id: "phone-opt", no: 125, tier: "B", section: "system", primaryTopic: "T07", topicTags: ["T07", "T09"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Inexpensive Optical Projection Tomography on a Mobile Phone Platform",
+      titleZh: "五十美元的断层显微镜：手机、旋转台加滤波反投影做光学投影断层成像",
+      authors: ["Gennifer Smith", "James Sikes", "Nicholas Dwork"],
+      venue: "Applied Optics（预印本 arXiv:2604.13004）", published: "2026-11-10", url: "https://arxiv.org/abs/2604.13004", pdf: "https://arxiv.org/pdf/2604.13004", doi: "10.1364/AO.614831",
+      tags: ["光学投影断层", "低成本系统", "滤波反投影"], primaryClass: "eess.IV",
+      summary: "光学投影断层成像（OPT）从多角度投影重建样品的三维吸收分布，是毫米级样品三维显微的成熟手段，但商用系统价格高昂。作者用 iPhone 摄像头、低成本商用显微物镜附件、步进电机旋转台、LED 照明与 3D 打印件搭出一台完整 OPT，除手机外元件成本约 50 美元。流程上先用棋盘格标定相机、用 1951 USAF 分辨率靶估计有效放大率；旋转采集的投影图转成衰减图并做视场不均匀性校正，再逐层做滤波反投影（FBP）、堆叠成三维体。为便于评测，作者还用紫外固化树脂包埋固定斑马鱼幼体，做出低成本体模。整机横向分辨率 3.91 μm，重建体中斑马鱼脊柱等解剖结构清晰可见，作者指出该方案适合教学、野外作业与资源受限场景。",
+      why: "这篇的价值不在算法，而在把整条成像链路压到 50 美元：相机标定、倍率标定、投影转衰减、视场校正、FBP 重建，每一步都必须做对，缺一环三维体就糊成一团——对做低成本或现场成像的人，这是一份可以照着抄的工程清单，紫外树脂包埋做体模的思路尤其解决了「没有标定样品」的常见困境。边界同样清楚：3.91 μm 分辨率配单一步进的 FBP，正演里没有考虑折射率失配造成的射线弯曲，样品一厚、折射率对比一大，直线假设就失效，想再往上走得引入光学衍射断层的散射模型。"
+    },
+    {
+      id: "dc-cle", no: 126, tier: "B", section: "system", primaryTopic: "T09", topicTags: ["T09"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Dual-channel confocal laser endomicroscopy for co-localized epithelial and microvascular imaging in experimental colitis",
+      titleZh: "双通道共聚焦激光显微内镜：在同一视场里分开看上皮结构与微血管渗漏",
+      authors: ["Huahui Zhang", "Zhongyu He", "Yiting Xu", "Yuyang Yuan", "Jiaming Zhuo", "Tianyu Li", "Congcong Zhou", "Bo Liang", "Peng Wang", "Liangliang Yu", "Yifan Wang", "Xuesong Ye"],
+      venue: "Biomedical Optics Express", published: "2026-11-11", url: "https://doi.org/10.1364/BOE.612840", doi: "10.1364/BOE.612840",
+      tags: ["共聚焦内镜", "双通道共定位", "色差补偿"], primaryClass: "physics.optics",
+      summary: "单通道共聚焦激光显微内镜（CLE）把上皮与血管荧光压在同一张灰度图里，黏膜结构与微血管通透性难以独立评估。作者搭建双通道 CLE（DCCLE）：可见光与近红外两条光路，在同一视场内分别成像结肠上皮结构与微血管示踪剂动态；一个自制对准模块补偿轴向色差与横向焦点偏移，使两路能通过相干光纤束实现细胞级共定位。系统指标为横向分辨率 1.55 μm、视场 385 μm、1024×1024 像素下 15 fps。离体小鼠组织验证了双通道细胞级共定位，在体小鼠结肠成像把 ICG 上皮染色与 70 kDa FITC-葡聚糖的微血管成像分离开；在 DSS 诱导结肠炎模型中，延时成像捕捉到第 3 天 FITC-葡聚糖的渐进性外渗，而同期的结构成像显示上皮架构基本完整。",
+      why: "双通道的意义是把「结构」与「功能」拆成两个可独立定量的通道：单通道时，示踪剂渗漏引起的亮度变化会和上皮染色强弱混在一起，到底屏障破了还是染色不均，判断不了。技术难点其实在色差——可见与近红外的焦面在光纤束里并不重合，作者用光路中的对准模块补偿，而不是靠后期配准；这点比软件配准可靠得多，因为轴向失焦一旦丢了信息，配准也救不回来。限制也很明确：属概念验证，样本量小、只做小鼠结肠；1.55 μm 对亚细胞结构仍不够，15 fps 相对血流动态偏慢，动态信息更多是时间平均的结果。"
+    },
+    {
+      id: "infini-splat", no: 127, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04", "T08"], confidence: 0.65, score: 0.65, evidence: "real",
+      title: "InfiniSplat: Implicit Gaussian Decoding for Large-Baseline Monocular View Synthesis",
+      titleZh: "把高斯从像素格点上解耦：面向大基线单目新视图合成的隐式高斯解码",
+      authors: ["Jiawei Wang", "Hao Yu", "Yongzhen Hu", "Xinyi Yang", "Tao Ni", "Xin Zhan", "Junbo Chen", "Xiaowei Zhou", "Ruizhen Hu", "Sida Peng"],
+      venue: "ACM Transactions on Graphics 45(6), 1-15", published: "2026-11-09", url: "https://doi.org/10.1145/3842585", doi: "10.1145/3842585",
+      tags: ["单图三维重建", "高斯泼溅", "表面对齐表示"], primaryClass: "cs.CV",
+      summary: "单图前馈 3DGS 希望从一张图直接生成可渲染的三维表示，免去多视图采集与逐场景优化，但现有方法普遍采用像素对齐表示——每个高斯都从固定的图像网格位置预测。这类原语在近邻视角尚可，却与场景表面耦合很弱，视角一大就保不住连贯结构。InfiniSplat 把表示从像素对齐推向表面对齐：先用几何引导采样，按深度诱导的局部表面结构放置二维支撑点；再用查询条件化的隐式解码器，在这些支撑点上查询图像特征并预测高斯属性。支撑点位置由几何决定、高斯预测与固定像素中心解耦，于是高斯布局更贴合表面，也减少了网格离散造成的散乱原语。跨数据集新视图合成评测中相对单图前馈基线取得 SOTA，并展示了从 Hyper-sim 合成室内训练到开放世界复杂场景的零样本泛化。",
+      why: "单图前馈 3DGS 的瓶颈不在网络容量，而在表示被钉死在像素网格上：像素是采样点不是表面点，视角一偏，钉在像素上的基元就暴露出它们没贴着任何东西。这篇用「几何引导放支撑点 + 隐式解码属性」两步，把「基元放哪里」和「基元长什么样」解耦，思路与 NeRF 时代的表面引导采样同源，换成显式基元后渲染更快、也更好接 3DGS 的训练技巧。要留意零样本泛化的边界：训练集是合成室内场景，真实室外大场景的稳定性尚待验证；几何引导依赖单目深度先验，深度一错，支撑点跟着错，误差会比像素对齐方法更「结构化」而不易被渲染损失掩盖。"
+    },
+    {
+      id: "diwr", no: 128, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.65, score: 0.65, evidence: "real",
+      title: "Joint Orientation and Weight Optimization for Robust Watertight Reconstruction from Unoriented Points",
+      titleZh: "方向、面积权重与置信度一起优化：从无定向脏点云重建水密曲面",
+      authors: ["Jiaze Li", "Daisheng Jin", "Fei Hou", "Junhui Hou", "Zheng Liu", "Shiqing Xin", "Wenping Wang", "Ying He"],
+      venue: "ACM Transactions on Graphics 45(6), 1-19", published: "2026-11-09", url: "https://doi.org/10.1145/3842515", doi: "10.1145/3842515", code: "https://github.com/LaoChui999/DiWR",
+      tags: ["水密重建", "广义绕数", "无定向点云"], primaryClass: "cs.GR",
+      summary: "从无定向、带噪声与离群点的点云重建水密曲面，传统流程要先估法向、再去噪、最后重建，每一步的错误都会往下传。作者提出 Dirichlet Winding Reconstruction（DiWR）：以广义绕数（GWN）场表示几何，其基于点的离散化同时依赖点方向与每点贡献。做法是不把每点贡献当固定值，而是交替更新三组量——点方向、补偿局部采样密度的面积权重、降低不可靠样本影响的置信系数；优化目标由采样 Dirichlet 能量正则、绕数曲面约束、面积稳定性正则与置信度正则共同构成。这种联合处理减少了对独立去噪/去离群点环节的依赖，在受损输入上更稳。在受控压力测试以及 3DGS 与视觉管线产出的点云上，DiWR 在多数困难案例上优于经典多阶段流程与若干近期联合定向-重建方法，前提仍是输入足以采样一个水密流形曲面；代码与测试模型已开源。",
+      why: "「先估法向再重建」的脆弱之处在于法向是局部估计，而噪声与离群点恰好破坏局部性，错误先固化在法向里，后面再好的重建也救不回来。DiWR 把方向、面积权重、置信度塞进同一个绕数能量里交替优化，让「这个点可不可信」和「这个点朝哪」互相校验，而不是先验地信任每个点。更实用的是它能直接吃 3DGS 与视觉管线产出的脏点云——这类数据法向缺失、采样不均，正是经典流程最容易崩的输入。边界要说清：方法假设输入采样的是水密流形，薄板、布料、扫描缺面这类开放曲面上绕数约束会失效；交替优化也带来迭代成本与初值敏感性，实际用仍需调参。"
+    },
+    {
+      id: "mspr-gre", no: 129, tier: "C", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Multi-Stage Phase-Aware Self-Supervised Reconstruction for Multi-Echo Gradient-Echo MRI",
+      titleZh: "相位感知的多阶段自监督重建：没有全采样标签也能做多回波 GRE 定量成像",
+      authors: ["Juan Liu", "Nian Wang"],
+      venue: "arXiv · cs.AI", published: "2026-11-09", url: "https://arxiv.org/abs/2611.13352", pdf: "https://arxiv.org/pdf/2611.13352",
+      tags: ["MRI 重建", "相位估计", "自监督"], primaryClass: "cs.AI",
+      summary: "加速高分辨多回波梯度回波（mGRE）MRI 的难点是两头都要保：既保解剖细节，又保用于定量映射的复数回波信息。作者提出多阶段相位感知自监督重建（MSPR-GRE）：把渐进式 k 空间扩展与相位估计/精化结合，用串联的展开网络重建复数多回波图像并同步更新随回波变化的相位先验；回波数不少于 4 时引入弛豫信息引导的时间子空间，回波更少时退回图像域重建。训练只用留出的已采集 k 空间样本，不需要全采样目标。评测含 9.4 T 离体鼠脑 30 μm 八回波与 18 μm 双回波数据，以及回顾性欠采样的 7 T 人脑数据，并做了监督消融。结果显示：相位快速变化区域的伪影减少、鼠脑精细解剖得以保留；人脑五组测试数据在 R=4/8/12 下幅度图、T2* 图与 QSM 指标总体改善，加速越高收益越明显——R=12 时第四回波幅度 NRMSE 为 12.09±0.60%，对照的 SSDU 为 21.55±1.12%。消融显示相位精化有实质贡献，作者亦指出泛化性与相位估计精度仍需进一步验证。",
+      why: "mGRE 的定量映射（T2*、QSM）吃的就是相位，而多数加速重建把复数数据当两通道实数处理，相位等到最后才被读出来，相位一错 QSM 整片偏。这篇把相位先验放进展开网络的迭代里反复精化，让重建与相位估计互为条件，这正是相位型逆问题该有的结构。自监督（SSDU 式留出采样）让它绕开「全采样参考」这个在 9.4 T 显微成像里几乎拿不到的东西，工程意义大于指标本身。需要打折的地方：数据只来自两个特定场强与单一被试队列，跨厂商、跨序列的泛化没有验证；作者也承认相位精化的收益依赖初始相位质量，而高加速下的提升有一部分来自时间子空间先验，不完全是相位建模的功劳。"
     }
   ],
   archive: [
-    { date: "2026-11-12", number: 15, count: 7, highlights: "5 个方向 · 跨方向 3 篇 · 编码域多曝光光谱 HDR / 深度上界驱动高斯正则 / RAW 域暗光高斯", current: true,
+    { date: "2026-11-13", number: 16, count: 6, highlights: "3 个方向 · 跨方向 3 篇 · 表面对齐单图 3DGS / 无定向点云水密重建 / 五光束相干 SIM", current: true,
+      dailyIds: ["c-sim-5beam", "phone-opt", "dc-cle", "infini-splat", "diwr", "mspr-gre"], headlineIds: ["infini-splat", "diwr", "c-sim-5beam"] },
+    { date: "2026-11-12", number: 15, count: 7, highlights: "5 个方向 · 跨方向 3 篇 · 编码域多曝光光谱 HDR / 深度上界驱动高斯正则 / RAW 域暗光高斯", current: false,
       dailyIds: ["hs-hdr-fusion", "depthgs", "retinexgs", "diff-ano-usct", "holo-retinal-rpd", "marigold-v2", "pulseq-pcasl"], headlineIds: ["hs-hdr-fusion", "depthgs", "retinexgs"] },
     { date: "2026-11-11", number: 14, count: 12, highlights: "6 个方向 · 跨方向 5 篇 · 动态高斯 SLAM 来源标签 / 平行平移 CT 分块扩散 / 彩色目标偏振三维", current: false,
       dailyIds: ["2611.12038", "ptct-diffusion", "2611.12716", "pol3d-color-dispersion", "pol-display-ir", "2611.10413", "lc-axicon-holo", "2611.12667", "2611.11814", "modalformer-llie", "2611.10665", "2611.11160"], headlineIds: ["2611.12038", "ptct-diffusion", "pol3d-color-dispersion"] },
