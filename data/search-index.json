@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T16:30:59.056Z",
+  "generatedAt": "2026-11-13T16:14:38.736Z",
   "rangeDays": 90,
   "papers": [
     {
@@ -4592,6 +4592,322 @@
       "primaryClass": "cs.AI",
       "summary": "加速高分辨多回波梯度回波（mGRE）MRI 的难点是两头都要保：既保解剖细节，又保用于定量映射的复数回波信息。作者提出多阶段相位感知自监督重建（MSPR-GRE）：把渐进式 k 空间扩展与相位估计/精化结合，用串联的展开网络重建复数多回波图像并同步更新随回波变化的相位先验；回波数不少于 4 时引入弛豫信息引导的时间子空间，回波更少时退回图像域重建。训练只用留出的已采集 k 空间样本，不需要全采样目标。评测含 9.4 T 离体鼠脑 30 μm 八回波与 18 μm 双回波数据，以及回顾性欠采样的 7 T 人脑数据，并做了监督消融。结果显示：相位快速变化区域的伪影减少、鼠脑精细解剖得以保留；人脑五组测试数据在 R=4/8/12 下幅度图、T2* 图与 QSM 指标总体改善，加速越高收益越明显——R=12 时第四回波幅度 NRMSE 为 12.09±0.60%，对照的 SSDU 为 21.55±1.12%。消融显示相位精化有实质贡献，作者亦指出泛化性与相位估计精度仍需进一步验证。",
       "why": "mGRE 的定量映射（T2*、QSM）吃的就是相位，而多数加速重建把复数数据当两通道实数处理，相位等到最后才被读出来，相位一错 QSM 整片偏。这篇把相位先验放进展开网络的迭代里反复精化，让重建与相位估计互为条件，这正是相位型逆问题该有的结构。自监督（SSDU 式留出采样）让它绕开「全采样参考」这个在 9.4 T 显微成像里几乎拿不到的东西，工程意义大于指标本身。需要打折的地方：数据只来自两个特定场强与单一被试队列，跨厂商、跨序列的泛化没有验证；作者也承认相位精化的收益依赖初始相位质量，而高加速下的提升有一部分来自时间子空间先验，不完全是相位建模的功劳。"
+    },
+    {
+      "id": "flic-svct",
+      "no": 130,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.98,
+      "score": 0.98,
+      "evidence": "real",
+      "title": "Taming Neural Fields with a Frequency-Lipschitz Curriculum for Sparse-View CT Reconstruction",
+      "titleZh": "给神经场定一份频率-Lipschitz 课程：稀疏视角 CT 什么时候放出高频，由预算说了算",
+      "authors": [
+        "Songtao Hu",
+        "Jingrui Wu",
+        "Hong Ding",
+        "Fanhao Zhu",
+        "Yunhao Liu",
+        "Suyang Xi"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-11",
+      "url": "https://arxiv.org/abs/2611.15652",
+      "pdf": "https://arxiv.org/pdf/2611.15652",
+      "tags": [
+        "稀疏视角 CT",
+        "隐式神经表示",
+        "Lipschitz 正则"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "稀疏视角 CT 靠减少投影数降剂量，代价是逆问题欠定，正则化稍不到位就把条纹伪影与幻觉结构当成解剖学进去。现有隐式神经表示（INR）方法依赖谱偏置这类「隐式」机制，或外挂迭代去噪，对「高频容量何时释放」几乎没有控制权。作者提出 FLIC：把网络表示容量显式化并可调度。核心是频率-Lipschitz 联合课程——在非均匀 Lipschitz 预算下，把随机傅里叶特征编码与谱归一化 MLP 解码耦合起来，让重建沿「先稳定全局解剖、再逐级补细节」的轨迹推进；终端容量由 FBP 重建的梯度统计自动标定，从而做到扫描自适应，无需逐扫描手调预算。另引入先验引导的自适应射线采样，把积分样本集中到高梯度解剖边界，提高正演保真度。整套流程单阶段训练，不含迭代去噪。四个公开 CT 数据集、无噪声与低剂量设置下均取得无监督重建的 SOTA，且在不同解剖结构上表现一致。",
+      "why": "稀疏视角 CT 最致命的失败模式不是模糊，而是网络先学会了条纹伪影——因为伪影在训练早期就比细节「更容易拟合」。这篇的关键动作是把正则化强度变成一条显式的、随训练推进的日程：用 Lipschitz 预算卡住高频通道什么时候开，而不是指望谱偏置这种隐式偏置碰运气。更实用的是终端预算从 FBP 梯度统计里自动读出来——这消掉了「每换一个扫描就得重调超参」这个落地时最大的阻力。要打的折扣：它是逐图优化（per-image）而非前馈推理，单例重建要跑一次训练，临床吞吐上是硬约束；四个数据集都是公开仿真/公开临床数据，真实低剂量噪声的相关性、金属伪影、截断数据都没覆盖；课程的形状（预算怎么涨）本身还是超参，作者只给了自动定终点的办法，没给自动定路径的办法。"
+    },
+    {
+      "id": "sp-fiber-shape",
+      "no": 131,
+      "tier": "A",
+      "section": "system",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T03"
+      ],
+      "confidence": 0.92,
+      "score": 0.92,
+      "evidence": "real",
+      "title": "Optical fiber shape sensing using picosecond spatiotemporal single-photon reflectometry",
+      "titleZh": "一根多模光纤加一块 SPAD 阵列：用回波单光子的时空指纹反推三维形状",
+      "authors": [
+        "Harikumar K Chandrasekharan",
+        "Saba N. Khan",
+        "Muhammad Afnan Ansari",
+        "Robert R. Thomson"
+      ],
+      "venue": "arXiv · physics.optics",
+      "published": "2026-11-12",
+      "url": "https://arxiv.org/abs/2611.16717",
+      "pdf": "https://arxiv.org/pdf/2611.16717",
+      "tags": [
+        "单光子探测",
+        "光纤形状传感",
+        "时空编码"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "只从光纤一个可及端推断整根光纤的三维形态，是光子传感里的老难题：现有方案要么刻多芯光纤，要么靠相干干涉，要么用分布式光谱编码，都得在光纤里预置结构。作者换了一条信息通道——回波单光子的时空动力学。实验用激光刻写的多模光纤，由时间分辨的 32×32 单光子雪崩二极管（SPAD）阵列探测背向反射光子；光纤一旦形变，回波光子在探测器上的空间分布与到达时间就印上独特签名。他们把这种高维「光子返回态」映射到低维几何流形，实现连续弯曲角估计，并能仅凭近端采集的数据重建此前未见过的二维与三维形状。实测逐像素信噪比中位数约 26 dB，重复性波动低于 1%。作者据此提出把多模单光子动力学当作分布式几何传感的信息通道，用于单端光纤形状重建与微创光子导航。",
+      "why": "把形状传感从「在光纤里预置多芯/光栅再解调」改成「普通多模光纤的回波光子自己带签名」，硬件门槛降了一个量级：一根光纤、一块 SPAD 阵列，不需要特纤、不需要相干探测的稳频。对微创器械导航这类场景，单端、无预置结构的吸引力很直接。但别把它当成通用形状传感器：26 dB 与 <1% 重复性是受控条件下的数字，重建的是「低维几何流形上的形状」——流形靠训练阶段覆盖的形变撑起来，训练分布外的复杂曲率（连续双弯、S 形、扭转）能否外推没说清；长光纤的模态色散会拉宽到达时间分布，长度一上去签名可分性就下降；温度与弯曲引起的模间耦合漂移、以及动态实时性也都没有定量。"
+    },
+    {
+      "id": "sym-break-field",
+      "no": 132,
+      "tier": "A",
+      "section": "core",
+      "primaryTopic": "T06",
+      "topicTags": [
+        "T06"
+      ],
+      "confidence": 0.8,
+      "score": 0.8,
+      "evidence": "real",
+      "title": "Optical symmetry breaking for single-image field reconstruction",
+      "titleZh": "别在算法里跟病态性硬拼：设计一块破坏对称性的掩模，单帧强度图直接解出复场",
+      "authors": [
+        "Egor Manuylovich"
+      ],
+      "venue": "arXiv · physics.optics",
+      "published": "2026-11-11",
+      "url": "https://arxiv.org/abs/2611.16094",
+      "pdf": "https://arxiv.org/pdf/2611.16094",
+      "tags": [
+        "相位恢复",
+        "测量端设计",
+        "模式分解"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "相机只记录强度，复场重建一般要多帧测量或迭代相位恢复。当场可由已知空间模式展开时，强度由复系数的成对乘积决定——问题就出在这里：光学对称性会让不同的成对乘积变得难以区分，于是完全不同的场给出几乎相同的图像。作者反过来设计测量：优化一块相位掩模加后续自由传播，把成对模式的签名在探测器上分开，同时约束光通量别被掩模吃掉；标定后用一个线性逆加秩一投影，直接解出各模式的幅度与相对相位，不需要迭代相位恢复。仿真显示优化掩模能满足随机掩模达不到的条件数与光捕获要求；实验用空间光调制器或一块被动散射片重建 42 模光纤场，相对全息参考的复场误差中位数分别为 9.1% 与 4.6%。单帧计算 2.1 ms，批处理吞吐超过 4000 帧/秒。",
+      "why": "这是一条和主流相反的路：多数工作把病态性交给算法去啃（先验、展开网络、扩散），这篇把它挪到测量端——造一个让病态性根本不出现的掩模，逆问题就退化成一次线性求解。2.1 ms/帧、4000 fps 的吞吐说明它不是演示品，具备进在线系统的形态。要留意三点：方法绑定「已知空间模式基」（这里是 42 模光纤），换成未知场景的连续场，模式数一多条件数会迅速恶化，这条路就回到原点；被动散射片（4.6%）反而优于 SLM（9.1%）看着反直觉，说明标定质量与掩模实现精度主导误差，换光路就得重标；掩模是按模式基优化出来的，模式数变化要重新优化，泛化性天然受限。"
+    },
+    {
+      "id": "matrixsplat",
+      "no": 133,
+      "tier": "B",
+      "section": "efficient",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.76,
+      "score": 0.76,
+      "evidence": "real",
+      "title": "MatrixSplat: Matrix-Parallel and Feature-Scalable 3D Gaussian Splatting Rendering on GPUs",
+      "titleZh": "把 alpha 合成的顺序依赖改写成加权累加：高维特征 3DGS 渲染才能喂饱 Tensor Core",
+      "authors": [
+        "Yangming Zhang",
+        "Siyi Wu",
+        "Jian Wang",
+        "Bingzhe Li",
+        "Wei Niu",
+        "Sheng Di",
+        "Ming Li",
+        "Miao Yin"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-11",
+      "url": "https://arxiv.org/abs/2611.15153",
+      "pdf": "https://arxiv.org/pdf/2611.15153",
+      "tags": [
+        "高斯泼溅",
+        "渲染加速",
+        "GPU 体系结构"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "3D 高斯泼溅（3DGS）已是实时新视图合成与三维重建的主流表示，但它的渲染流水线与现代 GPU 架构并不对齐：深度排序后的 alpha 合成带来强逐像素顺序依赖，并行度上不去，执行退化成标量 FMA 为主，Tensor Core 这类高吞吐矩阵单元基本闲置。对多模态与语义增强的 3DGS（每个高斯挂高维特征）更糟——几百万个高斯要累加高维特征，算力与访存同时爆。作者提出 MatrixSplat：首先指出顺序依赖是高效高维特征渲染的核心障碍，改用顺序无关的加权累加形式，把特征渲染转成面向矩阵的计算；再落三个设计——基于 tile 的 splatting 把特征累加映射为 warp 级矩阵乘累加、warp 粒度的高斯打包缓解可见性不规则并提高特征复用、惰性通道分批取特征以降低共享内存压力并把访存与矩阵执行重叠。在 Mip-NeRF 360、LERF、3D-OVS 上相对 3DGS 最高 3.8×、相对 TC-GS 2× 加速，高维特征渲染核最高降 36.7×，接入现有快速渲染器还能再快 1.69–2.84×。",
+      "why": "语义/特征场 3DGS 的瓶颈已经从「重建得像不像」转到「几百维特征乘几百万高斯怎么渲染」，标量流水线根本撑不住。这篇最有迁移价值的一点不是具体 kernel，而是那句判断：alpha 合成本来满足结合律，顺序依赖是「实现选择」而不是「数学必然」——一旦改写成顺序无关的加权累加，矩阵单元就能吃进来。这个视角可以直接搬到别的 splatting 变体上。适用范围要看清：加速比随特征维度升高才明显，纯 RGB 场景收益有限；依赖 Tensor Core，老卡与移动端不适用；它是系统层工作，渲染质量宣称不变，但打包与分批带来的显存占用、以及不同高斯密度下的稳定性没有完整曲线。"
+    },
+    {
+      "id": "cgh-hdbs",
+      "no": 134,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T06",
+      "topicTags": [
+        "T06"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Full-color computer-generated holography using a photopolymer holographic dichroic beam splitter and a single LCoS-SLM",
+      "titleZh": "一块 SLM 做全彩全息：自制全息二向色分束器分色，再把照明不均写进 CGH 计算",
+      "authors": [
+        "Cheng-Yu Chang",
+        "Fang-Yu Lu",
+        "Mei-Ci Chen",
+        "Yu-Ning Ren",
+        "Hui-Chi Chen"
+      ],
+      "venue": "Applied Optics",
+      "published": "2026-11-12",
+      "url": "https://doi.org/10.1364/AO.614563",
+      "doi": "10.1364/AO.614563",
+      "tags": [
+        "计算全息",
+        "全彩重建",
+        "衍射光学元件"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "全彩计算全息（CGH）通常要三套空间光调制器，或靠复杂合束光路把 RGB 送到同一面板的不同区域。作者用实验室自制的光聚合物全息二向色分束器（HDBS）加单块 LCoS-SLM 搭了一套全彩 CGH 重建系统：HDBS 把入射的 RGB 光束在空间上分到 SLM 上对应的 CGH 区域，红、绿、蓝光栅实测衍射效率分别为 36%、43%、24%。针对分束后 SLM 上照明不均的问题，他们把实测的照明幅度约束直接写进 CGH 计算里做补偿。重建的单色与全彩图像亮度与色均匀性均有改善，验证了这套基于 HDBS 的全彩 CGH 架构可行。",
+      "why": "单 SLM 做全彩全息的难点从来不在编码算法，而在「三色怎么共用一块面板」：分束效率、色串扰、面板照明不均三者互相牵制。这篇的做法值得学的是分工——光路做不到完美，就用实测幅度把不完美测出来、塞进 CGH 计算里补偿，而不是指望器件理想。这是计算成像该有的姿态：测量与计算互为补偿。但要清醒：蓝光栅只有 24% 效率，蓝通道先天欠亮，白平衡靠算法硬拉，色域与亮度上限被器件效率锁死；论文停留在可行性验证，没有给视场角、色串扰定量、也没有 ΔE 之类的色准指标，离显示应用还差一段系统级评估。"
+    },
+    {
+      "id": "deblend-diff",
+      "no": 135,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04",
+        "T08"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "real",
+      "title": "Image Deblending with Diffusion Models",
+      "titleZh": "用文本提示给病态解混划边界：一个扩散先验同时拆两张源图",
+      "authors": [
+        "Dan Botchan",
+        "Ohad Fried",
+        "Yacov Hel-Or"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-11",
+      "url": "https://arxiv.org/abs/2611.15760",
+      "pdf": "https://arxiv.org/pdf/2611.15760",
+      "tags": [
+        "图像解混",
+        "扩散后验采样",
+        "免训练"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "图像解混（deblending）要把一张合成图分解回源图层——玻璃反光、混合曝光、双图层叠加都是这个形式。它天生病态：一张混合图能对应多组都说得通的分解。扩散模型常用于解逆问题，但多针对「单输出」重建；作者把它写成联合逆问题，用扩散后验采样同时重建两张源图，说明单个扩散先验足以一次拆开两张完整图像，而不是只解一个。方法免训练：借人类视觉的经验——语义理解能帮人拆解视觉矛盾——用文本提示约束解空间，先由文本引导的潜扩散做语义分离，再做像素域精修恢复细节；随机采样可产出多个可行分解，无需真值即可排序。在未见域上取得 SOTA，并扩展到空间变化的 alpha 图，在标准标量混合基准上与监督基线相当。",
+      "why": "解混的多解性根源是「没有先验知道什么样的两张图才算合理」，这篇把那个先验外部化成文本提示：既省掉训练专用网络，也把控制权交回使用者。免训练意味着可以直接吃现成扩散模型，迁移成本低，这对做反光去除、多层图像分离的人是实用路线。局限同样明显：语义分离质量完全取决于提示词，提示写偏就拆错，且没有自动生成提示的机制；只验证了两图层，三层以上或强遮挡未涉及；「多个可行分解再排序」用的是启发式评分，不是可证明的准则；像素域精修仍是逐图优化，推理时间远高于前馈方法。"
+    },
+    {
+      "id": "cacnp-afmir",
+      "no": 136,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T05",
+      "topicTags": [
+        "T05",
+        "T09"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "real",
+      "title": "Uncertainty Aware AFM-IR Hyperspectral Cube Reconstruction via Convolutional-Attentive Conditional Neural Processes",
+      "titleZh": "只采 5% 的光谱就重建 AFM-IR 高光谱立方，还顺手告诉你哪里不可信",
+      "authors": [
+        "William F. Kent",
+        "Roberto does Reis",
+        "Gajendra Shekhawat",
+        "Emma Alexander",
+        "Vinayak P. Dravid"
+      ],
+      "venue": "arXiv · cond-mat.mtrl-sci",
+      "published": "2026-11-12",
+      "url": "https://arxiv.org/abs/2611.16118",
+      "pdf": "https://arxiv.org/pdf/2611.16118",
+      "tags": [
+        "高光谱重建",
+        "神经过程",
+        "不确定度量化"
+      ],
+      "primaryClass": "cond-mat.mtrl-sci",
+      "summary": "原子力显微镜-红外光谱（AFM-IR）能在纳米尺度上映射化学成分，但逐点采谱太慢，高光谱成像被采集时间卡住。作者提出卷积-注意力条件神经过程（CACNP）：输入是稀疏采样的光谱，加少量在选定波数上采集的结构图，输出整个 AFM-IR 高光谱立方。模型完全用基于实验红外光谱生成的合成立方训练，同时预测光谱强度与对应的不确定度。在聚甲基丙烯酸甲酯与聚苯乙烯颗粒嵌入环氧的实测数据上，仅用 5% 的可用光谱即可准确重建，性能与其他方法相当；128×128 立方的推理不到 0.1 s，可支撑快速重建更新，而预测不确定度可作为局部化学特征自适应采样的依据，朝向自主、高通量 AFM-IR 流程。",
+      "why": "神经过程用在高光谱重建上是「对症」的：这个领域最怕的不是重建得不像，而是重建得像却不知道哪块不可信——AFM-IR 恰好能闭环，把不确定度高的点补采一条谱，比全域密集扫描省一个量级。0.1 s 的推理让「边采边重建」真正可做，这是方法之外最实际的贡献。需要打折的地方：训练完全在合成立方上，真实仪器的探针状态漂移、基线畸变、散射背景都没建模，实测只覆盖两种聚合物体系；5% 采样率是在特定化学对比下取得的，弱对比或纳米级相分离样品要更高采样率；预测不确定度是否标定良好（calibration）文中没做系统检验，而不确定度不校准就没法直接用于采样决策。"
+    },
+    {
+      "id": "itm-lum",
+      "no": 137,
+      "tier": "C",
+      "section": "core",
+      "primaryTopic": "T08",
+      "topicTags": [
+        "T08",
+        "T04"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "real",
+      "title": "Reframing Video Inverse Tone Mapping as Blind Posterior Inference via Latent Luminance Supervision",
+      "titleZh": "裁剪区的亮度本来就没有唯一答案：把 SDR 转 HDR 重述成后验分位选择",
+      "authors": [
+        "Hanwool Sul",
+        "Chang-Hoon Jeong",
+        "Kisung Shin",
+        "Bomseok Park",
+        "Donghoon Cha",
+        "Hansl von Kwon",
+        "DoHyung Ku",
+        "Byoung-Tak Zhang"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-11",
+      "url": "https://arxiv.org/abs/2611.15146",
+      "pdf": "https://arxiv.org/pdf/2611.15146",
+      "tags": [
+        "逆色调映射",
+        "盲逆问题",
+        "扩散先验"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "HDR 显示已普及，但大量视频只有 SDR：档案素材、广播节目，以及生成视频——后者压根没有 HDR 母版。SDR→HDR 意味着撤销一个从未被记录过的色调映射，而裁剪一旦发生，被裁掉的辐射度就无法恢复，所以这是盲逆问题。作者发现基于生成视频先验的方法存在系统性偏差：在他们测试的每一个公开方法里，饱和内容都整体偏亮或偏暗，且偏移方向随输入背后的色调算子而变——他们把这个失效命名为 luminance error，并同时测量其幅度与符号。把逆色调映射重述为「未知算子下的后验推断」后，失效被定位在两处并给出两项修正：用视频扩散潜变量的一个固定仿射泛函直接读出对数亮度而不必解码；在该坐标上用非对称损失取后验的 expectile，且只在裁剪导致亮度无约束的区域施加；训练时用一族显式的色调算子合成 SDR，让模型对观测无法呈现的部分做边缘化。这样训练后，亮度误差跨算子更平坦、平均更小，三个基准上感知质量均为最佳。",
+      "why": "这篇的价值不在指标，而在重新定义问题：它指出裁剪区间的亮度本来就没有唯一解，任何点估计都会往训练分布的均值塌，于是「偏亮还是偏暗」取决于输入背后的算子——这一句解释了为什么各家方法的偏差方向对不上，也说明继续堆生成先验解决不了。用 expectile 在潜空间上直接挑后验分位、只在无约束处施加，思路干净、几乎不加推理成本，这个 trick 可以搬到其他「观测截断」的逆问题上。要冷静：色度与高频细节仍由生成先验补，暗部可能「看着对但不对」；luminance error 只在饱和区可测，非饱和区的偏差没被这个指标覆盖；评测只在公开基准，真实档案素材的胶片颗粒、压缩块效应与色调算子失配都未评估。"
+    },
+    {
+      "id": "pc-gap",
+      "no": 138,
+      "tier": "C",
+      "section": "core",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T03",
+        "T06"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "real",
+      "title": "Learning-Based Interpolation of Detector Gaps in Photon-Counting X-ray Imaging",
+      "titleZh": "拼接探测器的物理缝隙怎么补：只许改缝隙、不许动别的像素，还要保住强度统计",
+      "authors": [
+        "Johannes B. Thalhammer",
+        "Patrick Ilg",
+        "Tina Dorosti",
+        "Sebastian Peterhansl",
+        "Theresa Hiu",
+        "Daniel Frey",
+        "Zijin Huang",
+        "Florian Schaff",
+        "Daniela Pfeiffer",
+        "Franz Pfeiffer"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-11",
+      "url": "https://arxiv.org/abs/2611.15614",
+      "pdf": "https://arxiv.org/pdf/2611.15614",
+      "code": "https://github.com/J-3TO/detectorGapRemoval_Pix2Pix",
+      "tags": [
+        "光子计数探测器",
+        "缝隙插值",
+        "CT 预处理"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "拼接模块组成的大面积探测器在视场内存在物理缝隙，这些缝里的数据必须在相位恢复或断层重建之前补上。它与自然图像修复有本质区别：其余像素一个都不能改，填补区的强度统计必须与周围一致——均值稍有偏移，重建后就是环状伪影。作者把 WGAN-GP 与条件 Pix2Pix 两个生成模型改造到该任务上：用掩模策略把所有改动限制在缝隙像素内，并加入约束填补区均值与强度分布的损失项。在带仿真缝隙的 nanoCT 投影上训练，与线性插值、Navier–Stokes 修复、深度修复网络 MADF 对比——仿真缝隙做定量、真实缝隙做视觉评估。两模型在 LPIPS 与直方图距离上最好，推理时间仅次于线性插值，Pix2Pix 所需训练 GPU 时长约为 WGAN-GP 的 1/5。消融显示「对网络输出做掩模」贡献远大于其他设计。应用到正弦图时 Pix2Pix 补得最自然，但相比线性插值，重建提升很有限。代码与最终 Pix2Pix 权重已开源。",
+      "why": "这是一篇少见的诚实工程论文：感知指标（LPIPS、直方图距离）明显领先，可一落到正弦图重建，只比线性插值好一点点——作者把这个落差原样写了出来，没有用「感知质量提升」去掩盖「重建没用上」。对做拼接探测器或 CT 预处理的人，真正可拿走的不是网络结构，而是那套约束设计与消融结论：输出掩模 + 强度均值/分布约束，其中掩模是主要贡献，模型选型反而次要。局限要说清：真实缝隙样本少、只有视觉评估；只处理静态缝隙，而缝隙位置与增益会随温度漂移；重建增益有限意味着它适合「必须在重建前补全」的流程刚需，而不是拿来提升成像质量的手段。"
     }
   ]
 }

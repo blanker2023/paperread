@@ -437,7 +437,7 @@ def fetch_openalex(search, days, rows=15):
     frm = (datetime.now(timezone.utc) - timedelta(days=days)).date().isoformat()
     params = urllib.parse.urlencode({
         "search": search,
-        "filter": "from_publication_date:" + frm + ",type:article|proceedings-article|preprint",
+        "filter": "from_publication_date:" + frm + ",type:article|conference-paper|preprint",
         "per-page": rows,
         "sort": "publication_date:desc",
         "mailto": "1296527078@qq.com",
