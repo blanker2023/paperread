@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T16:14:38.736Z",
+  "generatedAt": "2026-11-15T03:11:24.363Z",
   "rangeDays": 90,
   "papers": [
     {
@@ -4908,6 +4908,280 @@
       "primaryClass": "cs.CV",
       "summary": "拼接模块组成的大面积探测器在视场内存在物理缝隙，这些缝里的数据必须在相位恢复或断层重建之前补上。它与自然图像修复有本质区别：其余像素一个都不能改，填补区的强度统计必须与周围一致——均值稍有偏移，重建后就是环状伪影。作者把 WGAN-GP 与条件 Pix2Pix 两个生成模型改造到该任务上：用掩模策略把所有改动限制在缝隙像素内，并加入约束填补区均值与强度分布的损失项。在带仿真缝隙的 nanoCT 投影上训练，与线性插值、Navier–Stokes 修复、深度修复网络 MADF 对比——仿真缝隙做定量、真实缝隙做视觉评估。两模型在 LPIPS 与直方图距离上最好，推理时间仅次于线性插值，Pix2Pix 所需训练 GPU 时长约为 WGAN-GP 的 1/5。消融显示「对网络输出做掩模」贡献远大于其他设计。应用到正弦图时 Pix2Pix 补得最自然，但相比线性插值，重建提升很有限。代码与最终 Pix2Pix 权重已开源。",
       "why": "这是一篇少见的诚实工程论文：感知指标（LPIPS、直方图距离）明显领先，可一落到正弦图重建，只比线性插值好一点点——作者把这个落差原样写了出来，没有用「感知质量提升」去掩盖「重建没用上」。对做拼接探测器或 CT 预处理的人，真正可拿走的不是网络结构，而是那套约束设计与消融结论：输出掩模 + 强度均值/分布约束，其中掩模是主要贡献，模型选型反而次要。局限要说清：真实缝隙样本少、只有视觉评估；只处理静态缝隙，而缝隙位置与增益会随温度漂移；重建增益有限意味着它适合「必须在重建前补全」的流程刚需，而不是拿来提升成像质量的手段。"
+    },
+    {
+      "id": "edfnet-doe",
+      "no": 139,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T09",
+      "topicTags": [
+        "T09",
+        "T07"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Deep diffractive optics for high-fidelity microscopy with an extended depth-of-field network",
+      "titleZh": "在光瞳面放一块可微衍射元件，再让网络把 16 倍景深一次解卷",
+      "authors": [
+        "Qiaofeng Tan",
+        "Liangcai Cao"
+      ],
+      "venue": "Advanced Photonics Nexus 6(1): 016010",
+      "published": "2026-11-13",
+      "url": "https://doi.org/10.1117/1.apn.6.1.016010",
+      "doi": "10.1117/1.apn.6.1.016010",
+      "tags": [
+        "衍射光学元件",
+        "扩展景深",
+        "端到端光学设计"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "显微成像里横向分辨率与景深是一对死结：孔径开到能分辨细节，景深就只剩薄薄一层，厚样品或起伏表面只能靠 z 扫描逐层拍。EDFNet 的做法是把「设计光」和「设计算法」放进同一条可微链路——光瞳面放一块衍射光学元件（DOE）做相位编码，让不同深度的离焦信息混叠成可区分的编码；后端用 NAFNet 解码器把整幅图一次拉回全焦。训练时 DOE 面形与解码器权重联合优化，并加入可制造性约束（相位台阶、最小线宽），保证优化出的元件真能加工。仿真中 16 倍景深范围内重建一致，平均 PSNR 25.86 dB、SSIM 0.7989，显著优于代表性基线；实验在分辨率板与约 30 μm 厚的细胞样品上做单帧成像，±20 μm 轴向离焦内保持高保真。",
+      "why": "端到端光学-算法联合设计这几年在显微里反复出现，这篇值得看的不是网络结构（NAFNet 是现成的），而是把可制造性约束写进优化——不定这一条，优化出的 DOE 相位往往是一堆无法加工的连续面形，工作就只能停在仿真。25.86 dB 在荧光单帧重建里不算漂亮，说明这块 DOE 换来的信息量本身有上限；16 倍景深是相对标称景深而言，绝对景深与 NA 的关系没给出，与纯计算 EDOF、纯相位掩模方法的公平对比也偏少。实验止步于 30 μm 厚样品、±20 μm 离焦，而 EDOF 显微真正想拍的是厚组织，那里的散射与荧光衰减完全没涉及。"
+    },
+    {
+      "id": "msf-spi",
+      "no": 140,
+      "tier": "B",
+      "section": "physics",
+      "primaryTopic": "T07",
+      "topicTags": [
+        "T07"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Moiré fringe-based super-resolution single-pixel imaging",
+      "titleZh": "不给视场让路：共轭面插一块旋转掩模，用莫尔和频把单像素成像的采样频率半径翻倍",
+      "authors": [
+        "Ao Shen",
+        "Pengcheng Chen",
+        "Yong Zhang"
+      ],
+      "venue": "Journal of the Optical Society of America A 43(12): 1992",
+      "published": "2026-11-13",
+      "url": "https://doi.org/10.1364/JOSAA.610934",
+      "doi": "10.1364/JOSAA.610934",
+      "tags": [
+        "单像素成像",
+        "莫尔条纹",
+        "频率混叠"
+      ],
+      "primaryClass": "physics.optics",
+      "summary": "单像素成像（SPI）的分辨率被投影图案的最高空间频率锁死，想提分辨率通常只能缩小视场或换更细的图案——前者丢信息，后者受器件像素与衍射限制。作者提出莫尔和频单像素成像（MSF-SPI）：在样品共轭面上插一块固定频率、可旋转的掩模，样品高频信息与掩模频率拍频产生低频莫尔条纹，原本落在采样带宽外的高频被搬到低频区被单像素探测器采到。解调用一个线性模型加标定好的权重系数直接取出和频分量。理论上在圆形采样区假设下给出采样频率半径的两倍扩展；再用包含相位型 SLM、有限像素孔径与填充因子、衍射级次选择、有限中继光阑的波动光学仿真，验证频率混合机制在所述模型假设下仍成立。",
+      "why": "这篇的价值在于指出 SPI 的「分辨率-视场」不是只能二选一：把欠采样的高频搬到低频，是通信里成熟的外差思路在成像里的移植，物理上干净。但要看清成色——题目里就写了 numerical proof of concept，全文没有一台实物装置：SLM 相位量化、掩模装调误差、单像素探测信噪比在仿真里都是理想化的，而和频分量幅度通常比基频低一到两个数量级，真实系统里最先垮的往往是 SNR 而不是原理。两倍频率半径也是模型假设下的结论，掩模频率与样品频谱的相位匹配、多角度旋转带来的采集时间成本都没算进去。适合当作「值得试一次的方案」，而不是可直接照抄的系统。"
+    },
+    {
+      "id": "pcd-review",
+      "no": 141,
+      "tier": "B",
+      "section": "benchmark",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T03"
+      ],
+      "confidence": 0.72,
+      "score": 0.72,
+      "evidence": "real",
+      "title": "Uncooled Photon-Counting Detectors: From PMTs to CMOS-Integrated and Emerging SPAD Technologies",
+      "titleZh": "室温单光子探测器的全景对照：从 PMT 到 CMOS SPAD 阵列，哪个指标才是系统的真上限",
+      "authors": [
+        "Zbigniew Bielecki",
+        "Małgorzata Kopytko",
+        "Janusz Mikołajczyk",
+        "Antoni Rogalski"
+      ],
+      "venue": "Laser & Photonics Reviews: e72132",
+      "published": "2026-11-13",
+      "url": "https://doi.org/10.1002/lpor.72132",
+      "doi": "10.1002/lpor.72132",
+      "tags": [
+        "单光子探测器",
+        "SPAD 阵列",
+        "综述"
+      ],
+      "primaryClass": "physics.ins-det",
+      "summary": "这是一篇面向室温/热电制冷单光子探测的综述，作者团队长期做红外探测器综述。文章先把指标体系摆清楚：量子效率 QE 与光子探测效率 PDE、暗计数率 DCR、后脉冲、死时间、时间抖动、光谱范围、填充因子——这几项互相牵制，单独拉满任何一项都没有意义。随后按器件谱系逐类比较：光电倍增管 PMT、微通道板 PMT、混合光子探测器 HPD、单光子雪崩二极管 SPAD（硅基、III-V、Ge-on-Si、CMOS 集成阵列）、硅光电倍增器 SiPM，以及以电荷积分逼近单光子灵敏度的 EMCCD、sCMOS/qCMOS 与量子图像传感器 QIS。文中还讨论量子通信与激光雷达这类外场系统对强光功率的耐受、盖革模式与其他高增益机制的边界、频率上转换作为近红外之外室温探测的补充路线，最后按光谱范围、PDE/QE、抖动、DCR、工作温度与应用给出横向对照。",
+      "why": "做计算成像的人常把探测器当黑盒，直到系统信噪比卡在 DCR 或抖动上才发现器件选错了。这篇的作用是提供一张跨技术路线的对照表：为什么时间相关单光子计数选 Si SPAD 而不是 SiPM，为什么 QIS 在低速高动态场景有吸引力，为什么近红外单光子还得靠 InGaAs 或上转换——这些判断在方法论文里几乎不会讲。作为综述它没有新结果，读者要的是那张表而不是结论；覆盖面天然滞后于最新工艺（背照式 CMOS SPAD 阵列、三维堆叠），拿它当索引用、具体参数回原始文献核对更稳妥。"
+    },
+    {
+      "id": "madssn-spike",
+      "no": 142,
+      "tier": "C",
+      "section": "efficient",
+      "primaryTopic": "T03",
+      "topicTags": [
+        "T03",
+        "T04"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "real",
+      "title": "MADSNet: A Multi-Scale Axial-Attentive Dense Spiking Network for Spike Camera Image Reconstruction",
+      "titleZh": "脉冲相机重建不必让给 ANN：多尺度轴向注意力 + 稠密脉冲瓶颈，精度更高而能耗只有 1/40",
+      "authors": [
+        "Sirui Li",
+        "Rui Zhao",
+        "Siqi Cai",
+        "Haizhou Li",
+        "Tiejun Huang",
+        "Yajing Zheng"
+      ],
+      "venue": "arXiv · cs.LG",
+      "published": "2026-11-08",
+      "url": "https://arxiv.org/abs/2611.12980",
+      "pdf": "https://arxiv.org/pdf/2611.12980",
+      "tags": [
+        "脉冲相机",
+        "脉冲神经网络",
+        "高速成像"
+      ],
+      "primaryClass": "cs.LG",
+      "summary": "脉冲相机把动态场景编码成高时间分辨的二值脉冲流，天然匹配脉冲神经网络的稀疏累加计算，但现有 SNN 重建网络普遍偏浅，保真度落后于 ANN。MADSNet 走「把 SNN 做深」的路线：层次化脉冲编解码器，多尺度脉冲 stem 提早期特征，轴向脉冲注意力捕捉长程依赖，稠密脉冲瓶颈提高特征复用，最后由脉冲到连续强度的解码器输出图像。灰度与彩色脉冲重建实验里，SREDS 上比 SSIR 高 4.3 dB、比 Spk2ImgNet 高 1.94 dB；相对 Spk2ImgNet 延迟约低 15 倍，估计能耗约为其 1/40。作者据此主张设计得当的 SNN 架构能在提升重建质量的同时保住稀疏计算的效率优势。",
+      "why": "脉冲相机是少数「传感器端就已经是计算问题」的器件，重建质量长期被 ANN 压着；这篇给出的路径不是换更花的结构，而是解决深网络在脉冲域里的训练与特征复用，轴向注意力与稠密瓶颈这两个设计对做事件/脉冲类重建的人可以直接借用。需要打折：能耗与延迟都是按脉冲稀疏度和 MAC 数折算的估计值，没有在神经形态硬件上实测——SNN 的理论省电在 GPU 上跑并不成立；数据集以 SREDS 为主，强运动、低照度等真实高速场景的泛化没有覆盖；与 ANN 的对比也只在重建保真度一个维度。"
+    },
+    {
+      "id": "litex-gs",
+      "no": 143,
+      "tier": "B",
+      "section": "efficient",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.65,
+      "score": 0.65,
+      "evidence": "real",
+      "title": "LiteTex-GS: Fast and Lightweight Texturing for Gaussian Splatting",
+      "titleZh": "贴图不该比几何更贵：极简起步，只给重建误差大的高斯逐级升分辨率",
+      "authors": [
+        "Zhiwei Li",
+        "Yijia Guo",
+        "Yishi Lu",
+        "Liwen Hu",
+        "Hong Rao",
+        "Shengbo Chen",
+        "Lei Ma"
+      ],
+      "venue": "Computer Graphics Forum: e70637",
+      "published": "2026-11-13",
+      "url": "https://doi.org/10.1111/cgf.70637",
+      "doi": "10.1111/cgf.70637",
+      "tags": [
+        "高斯泼溅",
+        "纹理表示",
+        "参数效率"
+      ],
+      "primaryClass": "cs.GR",
+      "summary": "3D 高斯泼溅能实时新视图合成，但几何与外观耦合在同一个原语里，要还原高频纹理就得堆大量高斯，显存与优化成本随之上涨。给高斯基元挂贴图的 textured 2D Gaussian 缓解了这一点，可离散高斯与连续二维纹理网格之间的结构鸿沟需要复杂参数化来弥合，开销反而吃掉 3DGS 本来的效率。LiteTex-GS 的思路是「从极简长起、按需长大」：初始化时每个高斯只分配极小的局部纹理，仅对重建误差显著的原语逐级提高分辨率；用贡献度与面积感知的剪枝剔除低效高斯以保持几何骨架精简；再针对纹理上采样引起的梯度稀释设计分辨率感知的更新规则，让收敛速度与稳定性不掉。标准新视图合成基准上渲染质量与现有贴图高斯基线相当或更好，参数与训练时间显著更少。",
+      "why": "贴图高斯这条线的核心矛盾是「表示要连续、原语是离散」，多数工作靠更复杂的参数化硬接，这篇反过来控制「哪里需要连续」——只给误差大的地方升分辨率，等于把纹理分辨率当成可分配资源。这个思路可以直接迁移到任何表示粒度可变的系统（按区域分配球谐阶数、按残差分配网格细分）。但它是一篇工程优化论文：摘要只给「相当或更好、参数更少」的相对结论，没有绝对 PSNR 与训练时长曲线，看不出什么场景下会输；剪枝与升分辨率的调度本身引入新超参，跨数据集是否稳定、在压缩与流式传输这类真正吃显存的场景里能省多少，都得看正文数据。"
+    },
+    {
+      "id": "macp-video",
+      "no": 144,
+      "tier": "B",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04"
+      ],
+      "confidence": 0.64,
+      "score": 0.64,
+      "evidence": "real",
+      "title": "Learning Motion-Appearance Coupling Priors for Solving Video Inverse Problems",
+      "titleZh": "别再假设「运动就能解释帧间差异」：学一个运动-外观耦合残差的扩散先验当插件",
+      "authors": [
+        "Anselm Krainovic",
+        "Reinhard Heckel"
+      ],
+      "venue": "arXiv · cs.CV",
+      "published": "2026-11-11",
+      "url": "https://arxiv.org/abs/2611.15420",
+      "pdf": "https://arxiv.org/pdf/2611.15420",
+      "tags": [
+        "视频逆问题",
+        "扩散先验",
+        "时间一致性"
+      ],
+      "primaryClass": "cs.CV",
+      "summary": "从退化观测重建视频，需要同时刻画单帧外观与时间动态。流行做法是拿预训练图像扩散先验加运动引导，用光度损失或基于 warp 的约束保证时间一致性——这些约束隐含假设「运动能解释帧间（或潜变量间）的变化，只差一点小扰动」。作者指出该假设在遮挡、光照变化与非刚性形变下直接失效，而这三种恰恰是真实视频的常态。替代方案是把「运动导致的外观残差」当作待学的生成先验：用条件扩散模型学该残差的分布，再作为可插拔正则项加进基于扩散的视频重建，既保留图像扩散先验，又与现有外观正则兼容。在动态视频逆问题上，带该先验的重建优于光度一致性与 noise-warping 基线，并能迁移到心脏 MRI 重建。",
+      "why": "这篇贡献的是判断而不是网络：warp 类时间约束的失效不是调参问题，是假设错了，继续加正则项没用。把它重述成「学运动-外观耦合残差的分布」，问题就变成可训练的先验，且以插件形式接入——对已经在用图像扩散做视频逆问题的人改造成本很低，这是最实际的吸引力。局限也要看清：多了一个扩散模型，采样成本上升，实时性无从谈起；残差先验在什么数据上训、跨域（自然视频 → 医学）为何还能迁移，摘要没有交代；只在若干动态视频逆问题上验证，遮挡与光照剧变这类极端情形是否明显退化不得而知。"
+    },
+    {
+      "id": "pcmri-ssl",
+      "no": 145,
+      "tier": "C",
+      "section": "core",
+      "primaryTopic": "T04",
+      "topicTags": [
+        "T04",
+        "T06"
+      ],
+      "confidence": 0.52,
+      "score": 0.52,
+      "evidence": "real",
+      "title": "Phase-Constrained Self-Supervised Reconstruction and Denoising for Ultra-High-Resolution MRI",
+      "titleZh": "没有干净参考也能去噪：把由低分辨相位估出的调制算子写进展开网络的编码模型",
+      "authors": [
+        "Juan Liu",
+        "Zhuoheng Liu",
+        "Hongbo Wu",
+        "Xinyue Han",
+        "Jiaen Liu",
+        "Nian Wang"
+      ],
+      "venue": "arXiv · physics.med-ph",
+      "published": "2026-11-08",
+      "url": "https://arxiv.org/abs/2611.11121",
+      "pdf": "https://arxiv.org/pdf/2611.11121",
+      "tags": [
+        "相位恢复",
+        "自监督重建",
+        "QSM"
+      ],
+      "primaryClass": "physics.med-ph",
+      "summary": "超高场梯度回波 MRI 能看到精细解剖与强磁化率对比，代价是小体素带来的低信噪比，加上磁化率引起的相位变化与相位卷绕，让重建与定量磁化率成像（QSM）都变难——去噪相位时既不能糊掉解剖，也不能扭曲相位。作者提出测量域自监督框架：把采到的 k 空间样本切成输入集与留出集，用留出集做监督，因此不需要干净参考或全采样数据即可联合重建与去噪复数图像。关键设计是一个显式相位调制算子——由低分辨率相位估计，嵌入展开网络的编码模型，把正则器要面对的相位图案简化，同时保持与实测复数 k 空间数据的一致。评测覆盖离体小鼠脑 15/18/72 μm、在体小鼠脑 30 μm 与人脑 0.3×0.3×0.4 mm³：多数噪声条件下指标改善、精细解剖保留，T2* 与 QSM 的误差传播被抑制；消融显示相位正则可压住快速相位变化导致的局部伪影。",
+      "why": "把相位当成「显式算子」而不是让网络自己学，是这篇最干净的一步：卷绕与快速相位变化本就是已知的物理调制，交给网络隐式拟合既浪费容量又不可解释。自监督那套 k 空间切分在 MRI 里已不新，但与相位调制算子组合后，解决的是「没有干净参考时如何同时去噪与保相位」这个具体痛点，对 QSM 流程有直接价值。要注意：留出集切分比例直接决定去噪强度，这个超参怎么选文中没有通则；评测集中在脑部与小鼠，其他部位与运动伪影未涉及；人脑数据是 0.3 mm 各向异性体素，更高分辨率下增益是否保持要看正文。"
+    },
+    {
+      "id": "smart-trans",
+      "no": 146,
+      "tier": "B",
+      "section": "system",
+      "primaryTopic": "T08",
+      "topicTags": [
+        "T08"
+      ],
+      "confidence": 0.68,
+      "score": 0.68,
+      "evidence": "real",
+      "title": "Smartphone-Enabled Depth-Aware Transillumination Imaging for Detection of Chicken Breast Fillet Myopathies in Chicken Fillets",
+      "titleZh": "一部手机拍透射光加点云：91 个特征里，真正管用的是那个 Beer-Lambert 衰减项",
+      "authors": [
+        "Chaitanya Pallerla",
+        "Ramesh Bahadur Bist",
+        "Yihong Feng",
+        "Yang Tian",
+        "Shiva Paudel",
+        "Casey M. Owens",
+        "Cengiz Koparan",
+        "Jeyamkondan Subbiah",
+        "Dongyi Wang"
+      ],
+      "venue": "arXiv · cs.LG",
+      "published": "2026-11-09",
+      "url": "https://arxiv.org/abs/2611.12796",
+      "pdf": "https://arxiv.org/pdf/2611.12796",
+      "tags": [
+        "透射成像",
+        "深度感知",
+        "无损检测"
+      ],
+      "primaryClass": "cs.LG",
+      "summary": "木质胸（Woody Breast）是肉鸡常见肌肉病变，手感分级主观又费人力，现成的无损检测设备贵、算力要求也高。这项研究用一部 iPhone 16 Pro 搭了透射光 + 三维点云的廉价方案：对 267 块鸡胸（正常 87、轻度 85、重度 95）同时采集 RAW 透射图像与点云，提取 91 个特征——14 个图像特征、76 个几何特征，再加 1 个基于 Beer-Lambert 定律的物理衰减特征。关键在于把厚度作为协变量做偏相关分析：控制厚度后图像特征与病变程度仍显著相关（r=0.413，p<0.0001），说明透射光携带的是独立于几何的光学信息；重度病变组织单位厚度光衰减比正常组织高约 26%。只用二维特征的模型测试准确率约 82%，融合 Fusion-DGCNN、XGBoost 与物理引导逻辑回归的多模态集成达到约 90%。",
+      "why": "这是一篇把「物理先验当特征」写得很诚实的工作：91 个特征里 76 个是几何，真正让模型跳出「厚度决定一切」的，是那个 Beer-Lambert 衰减项，以及用偏相关把厚度影响剥掉这一步——方法本身比网络选型重要得多。对做低成本计算成像的人是正面案例：手机 RAW 加结构光点云就能构成一个有物理含义的多模态采集。局限也直接：267 个样本、单一实验室、单一品种，90% 在工业产线节拍与跨批次泛化下能否守住完全未知；胴体厚度分布比切块更宽，而透射光对厚度极敏感；论文停在分类，没做病变区域的空间成像，所以它更接近「用光学做质检」而非「成像」。"
     }
   ]
 }
