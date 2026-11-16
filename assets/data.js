@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-15",
-    number: 18,
-    updatedAt: "2026-11-15T03:11:11Z",
+    date: "2026-11-16",
+    number: 19,
+    updatedAt: "2026-11-16T04:56:14Z",
     sourceCount: 3,
-    fetched: 1549,
-    kept: 8,
-    headline: "在光瞳面放一块可微衍射元件、让网络把十六倍景深一次解卷，显微的单帧全焦才算把光学与算法接进同一条梯度链；室温单光子探测器终于有了一张跨 PMT、SPAD 与 QIS 的统一指标地图，选型不必再靠猜；而视频逆问题里「运动就能解释帧间差异」这个隐含假设，被一个学出来的运动-外观耦合残差先验正面推翻。",
-    note: "3 天窗口三信源（arXiv / Crossref / OpenAlex）共检索 1549 条、87 次查询、产出 54 条候选，0 次请求失败，但成像类命中偏少且集中在期刊侧；为补足覆盖面追加 --days 7 扩大窗口，产出 119 条候选，两轮候选合并后与往期 138 篇按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，剔除重复 21 条，余 98 条逐条读摘要甄别。最终收录 8 篇：T04×3 / T03×2 / T09×1 / T07×1 / T08×1，覆盖 5 个方向，跨方向 3 篇；A 级 0 篇（当日最高 0.72，无 ≥0.75 的成像候选）、B 级 6 篇、C 级 2 篇。T01/T02/T05/T06/T10 空缺：T01 的三条命中分别是金刚石色心自旋单次读出、共聚焦反射显微测光谱、视频生成中的运动与遮挡控制设计空间，均非非视域成像；T02 的命中集中在半导体平板光耦合、结构色与光逻辑门，均非散射介质成像；T05 唯一条目是「宽视场光学设备的平移手感」这类感知研究；T06 的两条命中分别是 AdS/CFT 的摆动曲面与引力记忆效应，属检索词污染（其相位/波前词汇命中了评分），真正的相位恢复内容本期只以 T04 的相位约束 MRI 重建（tags T04/T06）形式出现；T10 仍是噪声重灾区：ARTS 微创手术机械臂平台（0.80）、RICapBench 遥感视觉语言基准（0.76）、数字岩心 Darcy-Brinkman-Stokes 流动仿真（0.76）、OpenRE-Bench 多智能体需求工程基准（0.76）、IoTPwnBench 固件安全基准、SpaRRTa 空间智能基准、文本到 4D 生成、MasterFace 冒充攻击、数据集水印审计、路面裂缝分割、Kubernetes 缓存不可能性定理等，全部剔除。出处已核实：OpenAlex 继续把大批 Crossref 期刊论文的 venue 污染为「COSI (Computational Optical Sensing and Imaging)」「ICCP」或「SIGGRAPH / SIGGRAPH Asia」（本期如 10.1038/s41467-026-78668-6 实为 Nature Communications、10.1126/sciadv.aei0428 实为 Science Advances、10.1088/2631-8695/aec1b6 实为 Engineering Research Express），收录的四篇期刊论文均已用 Crossref 的 container-title、卷期页码与作者名逐条纠正（Advanced Photonics Nexus 6(1):016010、JOSA A 43(12):1992、Computer Graphics Forum e70637、Laser & Photonics Reviews e72132）。判弃另记：SplatCo（10.1007/s11263-026-03096-4）候选仍无摘要且 T04 配额已满；VTOI-GAN（10.3390/jimaging12110571）为 SDR 图像生成红外的 Pix2Pix 变体，属图像翻译而非新型采集；Neutron Image Super-Resolution（2611.16620）是单一模态的后处理超分，成像贡献有限；GEMOR-GS（2611.13528）与 LoopMR（2611.14947）质量均达标，但 T04 三条配额已由贴图高斯、视频逆问题先验与相位约束 MRI 占满，按「配额独立、不掺水」原则留作后续；Optica 的 accepted-only 占位页（boe.609871、boe.614508、ao.619015）依旧三路无摘要，按规则不据标题臆写。",
-    dailyIds: ["edfnet-doe", "msf-spi", "pcd-review", "madssn-spike", "litex-gs", "macp-video", "pcmri-ssl", "smart-trans"],
-    headlineIds: ["edfnet-doe", "pcd-review", "macp-video"],
-    crossIds: ["edfnet-doe", "madssn-spike", "pcmri-ssl"]
+    fetched: 186,
+    kept: 3,
+    headline: "大场景高斯泼溅缺的从来不是高斯数量，而是几何约束——SplatCo 用全局三平面加局部网格的双分支、再配一道结构一致性剪枝来补；湍流复原里把 PSF 参数化成 Zernike 系数组，本该换来可解释性，GridPSF 却自己报告前向拟合很准而复原增益检测不到；双光子斜平面显微镜则干脆从采集端改写前向模型，把 300 nm 级的体成像推到多细胞深处。",
+    note: "3 天窗口三信源共 87 次查询，仅取回 186 条记录、40 条候选，失败 58 次——这是本期最关键的事实：arXiv 的 57 次方向查询无一成功（47 次 HTTP 429 限流、10 次读取超时），运行末尾单独复测 export.arxiv.org 仍返回 429，故 arXiv 信源本期整体降级；OpenAlex 的「中科院光电所（刘博团队）」机构查询亦被 429；Crossref 与其余 OpenAlex 会议/期刊查询正常。按预案保留既有 146 篇不动、不清空旧数据，其余信源继续。40 条候选按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，剔除往期重复 4 条（第 18 期的 EDFNet、MSF-SPI、单光子探测器综述、宽视场平移手感），余 36 条逐条读摘要甄别。arXiv 缺席的直接后果是计算成像主线（非视域、散射、相位恢复、单像素、无透镜）几乎零候选，剩余条目以期刊非成像论文为主：结构色与 MOF/COF 光子学、空芯反谐振光纤、水下光通信可重构逻辑门、太赫兹超表面、荧光增强硅光栅、飞秒光纤激光器、冰云微物理反演、YOLOv11 矿业船检测、监控视频事故检测、碳价混合预测、古画配色数字人文分析等，全部剔除。最终收录 3 篇：T04×2 / T09×1，覆盖 3 个方向，跨方向 1 篇；A 级 0 篇（全场最高 0.72）、B 级 3 篇。T01/T02/T03/T05/T06/T07/T08/T10 空缺：T05 的唯一强候选是 Optics Express 的多光谱滤光阵列去马赛克（10.1364/oe.616011），但 Crossref 无摘要、OpenAlex 尚未收录该 DOI、Semantic Scholar 查无此文，三路皆无摘要，按「不据标题臆写」弃用；T03 命中为冰云参数反演，T06 无相位恢复条目，T10 仍是基准与工程噪声。判弃另记：EvoGS（10.1111/cgf.70602）质量达标，但属纯动态新视角合成的图形学工作，与本期 SplatCo 同系高斯泼溅且成像信息量更低，按不掺水原则留作后续；LiteTex-GS 已在第 18 期收录（其标题含 Unicode 连字符、与 data.js 中 ASCII 写法不一致导致自动去重未命中，人工剔除）；boe.596807 为 MUSE 临床可行性研究（纹理 + ViT 分类），ao.614890 为双探头共焦反射测反射率，均非计算成像方法。出处已用 Crossref 逐条纠正 OpenAlex 的 venue 污染：SplatCo 被标为 ICCP，实为 International Journal of Computer Vision 134(12): 522；GridPSF 被标为 COSI，实为 Applied Physics B 132(12): 119；双光子斜平面显微镜被标为 COSI，实为 Nature Communications（2026-11-13，暂无卷期号）。本期为信源降级下的小期，未凑数——若 arXiv 次日恢复，遗漏的方向会在后续期次补齐。",
+    dailyIds: ["splatco-ijcv", "gridpsf", "opm-2p"],
+    headlineIds: ["splatco-ijcv", "gridpsf", "opm-2p"],
+    crossIds: ["gridpsf"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -1494,10 +1494,42 @@ window.NLOS_DATA = {
       tags: ["透射成像", "深度感知", "无损检测"], primaryClass: "cs.LG",
       summary: "木质胸（Woody Breast）是肉鸡常见肌肉病变，手感分级主观又费人力，现成的无损检测设备贵、算力要求也高。这项研究用一部 iPhone 16 Pro 搭了透射光 + 三维点云的廉价方案：对 267 块鸡胸（正常 87、轻度 85、重度 95）同时采集 RAW 透射图像与点云，提取 91 个特征——14 个图像特征、76 个几何特征，再加 1 个基于 Beer-Lambert 定律的物理衰减特征。关键在于把厚度作为协变量做偏相关分析：控制厚度后图像特征与病变程度仍显著相关（r=0.413，p<0.0001），说明透射光携带的是独立于几何的光学信息；重度病变组织单位厚度光衰减比正常组织高约 26%。只用二维特征的模型测试准确率约 82%，融合 Fusion-DGCNN、XGBoost 与物理引导逻辑回归的多模态集成达到约 90%。",
       why: "这是一篇把「物理先验当特征」写得很诚实的工作：91 个特征里 76 个是几何，真正让模型跳出「厚度决定一切」的，是那个 Beer-Lambert 衰减项，以及用偏相关把厚度影响剥掉这一步——方法本身比网络选型重要得多。对做低成本计算成像的人是正面案例：手机 RAW 加结构光点云就能构成一个有物理含义的多模态采集。局限也直接：267 个样本、单一实验室、单一品种，90% 在工业产线节拍与跨批次泛化下能否守住完全未知；胴体厚度分布比切块更宽，而透射光对厚度极敏感；论文停在分类，没做病变区域的空间成像，所以它更接近「用光学做质检」而非「成像」。"
+    },
+    {
+      id: "splatco-ijcv", no: 147, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "SplatCo: Structure-View Collaborative Gaussian Splatting for Detail-Preserving Rendering of Large-Scale Unbounded Scenes",
+      titleZh: "全局三平面加局部网格、再按结构一致性剪枝：大场景高斯泼溅不再只靠堆高斯换细节",
+      authors: ["Haihong Xiao", "Jianan Zou", "Yuxin Zhou", "Ying He", "Wenxiong Kang"],
+      venue: "International Journal of Computer Vision 134(12): 522", published: "2026-11-13", url: "https://doi.org/10.1007/s11263-026-03096-4", doi: "10.1007/s11263-026-03096-4",
+      tags: ["高斯泼溅", "大场景重建", "几何约束"], primaryClass: "cs.CV",
+      summary: "3DGS 比 NeRF 更快，但扩到大尺度无界场景时难以兼顾全局结构一致与局部细节保真，更关键的是缺少有效几何约束，导致高斯冗余与渲染伪影。SplatCo 由三个模块组成：跨结构协同模块（CSCM）把刻画粗布局的全局三平面表示与表征细节的局部上下文网格特征融合，用分层补偿机制同时保住全局空间感与局部细节；跨视角剪枝机制（CVPM）依据结构一致性剪掉过拟合或位置不准的高斯，在压缩存储的同时抑制伪影；结构-视角协同学习（SVC）把结构梯度与视角梯度聚合，用额外的结构梯度流更稳健地引导高斯几何与外观属性优化。在 Mill-19、MatrixCity、Tanks & Temples、WHU 及自采航拍等 13 个场景上评测，作者称其在大尺度无界场景的高保真渲染上刷新了基准，代码与项目页已公开。",
+      why: "大场景 3DGS 的瓶颈其实不在高斯数量，而在「没有任何东西约束高斯该落在哪」——SplatCo 把结构先验拆成表示、剪枝、梯度三个可插拔的位置，路线比单纯调 densification 启发式干净。要做计算成像的话，得看清它优化的目标：全部指标仍是渲染 PSNR/SSIM/LPIPS，优化的是「看起来对」，而航拍与城市级重建真正在意的是深度误差、表面完整性与跨视角一致性，这些一个都没给；三平面表示本身是为显存做的妥协，双分支融合带来的训练时间与显存开销、CVPM 的剪枝阈值如何随场景尺度迁移，摘要里都没有交代。适合当作「结构一致性可以怎么注入」的参考实现，而不是可直接照抄的系统。"
+    },
+    {
+      id: "gridpsf", no: 148, tier: "B", section: "physics", primaryTopic: "T04", topicTags: ["T04", "T08"], confidence: 0.65, score: 0.65, evidence: "real",
+      title: "GridPSF: an inspectable Zernike-parameterized forward regularizer for synthetic turbulence video restoration",
+      titleZh: "可检查不等于可辨识：给湍流视频复原加上 Zernike 前向约束，作者自己报告「复原增益检测不到」",
+      authors: ["Pratyush Uppuluri", "Naman Saxena", "Shubhankar Jape", "Zubin Jacob", "Vaneet Aggarwal"],
+      venue: "Applied Physics B 132(12): 119", published: "2026-11-14", url: "https://doi.org/10.1007/s00340-026-08736-8", doi: "10.1007/s00340-026-08736-8",
+      tags: ["大气湍流", "Zernike 系数", "物理约束"], primaryClass: "physics.optics",
+      summary: "GridPSF 给视频复原网络加了一条基于 Zernike 的前向约束：从观测视频与宿主网络的潜场出发，预测 8×8 网格上每格 35 个去活塞项 Zernike 系数；一个无量纲 Fraunhofer 渲染器把这些单位质量的 PSF 混合起来，去拟合「干净目标 → 湍流观测」的成像过程。在 ATSyn-dynamic 视频上前向一致性达到 29.49 dB PSNR / 0.8882 SSIM，平均 PSF 场呈低奇异值参与秩、主二阶矩接近相等，零像差渲染器自身二阶矩宽度为 4.121 像素。但复原侧的结果很克制：一组经验证集挑出的匹配宿主 checkpoint 只带来 +0.419 dB PSNR、+0.0022 SSIM，LPIPS 反而升高 0.0017，且对 checkpoint 选择敏感；与同信息量的 CNN 及未改动宿主做五种子对比，未发现可检测的平均复原增益。在重放的合成湍流中，每段视频的 PSF 场比错配片段与打乱单元更贴近模拟器定义的位移，但位移被系统性低估，模糊宽度与形状吻合仍差；前向拟合并不能识别生成波前。",
+      why: "这篇最该读的是它敢报的结论：前向拟合很准，复原增益检测不到，拟合出的系数也不是标定过的波前估计。做物理驱动复原的人常默认「把 PSF 参数化再拟合」等于拿到了真实光学量，这篇用五种子对照把这个等式拆开——可检查（inspectability）与可辨识（identifiability）是两件事。局限同样明确：只用单一合成数据集 ATSyn-dynamic、单一宿主网络、五种子的统计量，结论不能外推到真实湍流视频；「无增益」也可能被 checkpoint 选择与容量分配掩盖，而不是物理约束本身无用。当反面证据读，比当方法读更有价值。"
+    },
+    {
+      id: "opm-2p", no: 149, tier: "B", section: "system", primaryTopic: "T09", topicTags: ["T09"], confidence: 0.65, score: 0.65, evidence: "real",
+      title: "Depth-enhanced molecular imaging with two-photon oblique plane microscopy",
+      titleZh: "单物镜、双光子面照明：把 300 nm 横向分辨率的体成像推到多细胞深处",
+      authors: ["Kevin Keomanee-Dizon", "Yaakov Clenman", "Alejandra Duran", "Sergey Ryabichko", "Pauline Hansen", "Tohn Borjigin", "Richard H. Thornton", "Jared E. Toettcher", "Harold M. McNamara"],
+      venue: "Nature Communications", published: "2026-11-13", url: "https://doi.org/10.1038/s41467-026-78668-6", doi: "10.1038/s41467-026-78668-6",
+      tags: ["斜平面显微镜", "双光子", "深层成像"], primaryClass: "physics.optics",
+      summary: "高 NA 斜平面显微镜（OPM）能在不改动样品的前提下对活细胞亚细胞动态成像，但在多细胞样品深处，散射与折射率不均匀抬高离焦背景、性能迅速衰减。作者报告一台双光子斜平面显微镜：高 NA 单物镜探测结合多光子面照明，实现约 300 nm 横向、约 650 nm 轴向分辨率，具备单分子灵敏度，活体内定位精度优于 60 nm。相比双光子点扫描，更低的照明 NA 使峰值强度低一个数量级，体采集速度提升 5 倍以上（最高 3.25×10⁶ voxel/s）；在多细胞环境中，近红外非线性激发把照明深度内的对比度提升约 2 倍，体分辨能力相对线性激发恢复 2 倍以上。演示覆盖上皮组织、干细胞来源的类原肠胚与活体果蝇胚胎，包含多色转录因子动态、光遗传亚细胞操控与单条 mRNA 追踪，且全部使用标准玻璃载玻片装片。",
+      why: "对做计算显微的人，这篇没有一行重建算法，价值在别处：它直接改写了采集端的前向模型。多光子面照明把离焦背景压下去，等于提前去掉了你后面要解卷积的那部分退化，而 300 nm/650 nm 的分辨率配 3.25×10⁶ voxel/s 的体速率，意味着 4D 活体数据量再上一个量级，重建、配准与存储的压力随之整体转移。要留意的是：单物镜 OPM 的视场边缘与轴向一致性、散射样品中的照明均匀性都强依赖具体光路，摘要没给穿透深度的绝对值；「<60 nm」是定位精度而非分辨率；演示集中在发育生物学，对脑等厚组织尚无数据。按「采集端能力清单」读，比按「新方法」读准确。"
     }
   ],
   archive: [
-    { date: "2026-11-15", number: 18, count: 8, highlights: "5 个方向 · 跨方向 3 篇 · 衍射光学联合设计的大景深显微 / 莫尔和频单像素超分辨 / 运动-外观耦合视频先验", current: true,
+    { date: "2026-11-16", number: 19, count: 3, highlights: "3 个方向 · 跨方向 1 篇 · 大场景高斯泼溅的结构约束 / 湍流 PSF 前向约束的负结果 / 双光子斜平面深层体成像", current: true,
+      dailyIds: ["splatco-ijcv", "gridpsf", "opm-2p"], headlineIds: ["splatco-ijcv", "gridpsf", "opm-2p"] },
+    { date: "2026-11-15", number: 18, count: 8, highlights: "5 个方向 · 跨方向 3 篇 · 衍射光学联合设计的大景深显微 / 莫尔和频单像素超分辨 / 运动-外观耦合视频先验", current: false,
       dailyIds: ["edfnet-doe", "msf-spi", "pcd-review", "madssn-spike", "litex-gs", "macp-video", "pcmri-ssl", "smart-trans"], headlineIds: ["edfnet-doe", "pcd-review", "macp-video"] },
     { date: "2026-11-14", number: 17, count: 9, highlights: "5 个方向 · 跨方向 4 篇 · 稀疏视角 CT 频率课程 / 单光子光纤形状传感 / 单帧破坏对称性复场重建", current: false,
       dailyIds: ["flic-svct", "sp-fiber-shape", "sym-break-field", "matrixsplat", "cgh-hdbs", "deblend-diff", "cacnp-afmir", "itm-lum", "pc-gap"], headlineIds: ["flic-svct", "sp-fiber-shape", "sym-break-field"] },
