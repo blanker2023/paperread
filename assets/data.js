@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-16",
-    number: 19,
-    updatedAt: "2026-11-16T04:56:14Z",
+    date: "2026-11-18",
+    number: 20,
+    updatedAt: "2026-11-18T07:31:13Z",
     sourceCount: 3,
-    fetched: 186,
-    kept: 3,
-    headline: "大场景高斯泼溅缺的从来不是高斯数量，而是几何约束——SplatCo 用全局三平面加局部网格的双分支、再配一道结构一致性剪枝来补；湍流复原里把 PSF 参数化成 Zernike 系数组，本该换来可解释性，GridPSF 却自己报告前向拟合很准而复原增益检测不到；双光子斜平面显微镜则干脆从采集端改写前向模型，把 300 nm 级的体成像推到多细胞深处。",
-    note: "3 天窗口三信源共 87 次查询，仅取回 186 条记录、40 条候选，失败 58 次——这是本期最关键的事实：arXiv 的 57 次方向查询无一成功（47 次 HTTP 429 限流、10 次读取超时），运行末尾单独复测 export.arxiv.org 仍返回 429，故 arXiv 信源本期整体降级；OpenAlex 的「中科院光电所（刘博团队）」机构查询亦被 429；Crossref 与其余 OpenAlex 会议/期刊查询正常。按预案保留既有 146 篇不动、不清空旧数据，其余信源继续。40 条候选按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，剔除往期重复 4 条（第 18 期的 EDFNet、MSF-SPI、单光子探测器综述、宽视场平移手感），余 36 条逐条读摘要甄别。arXiv 缺席的直接后果是计算成像主线（非视域、散射、相位恢复、单像素、无透镜）几乎零候选，剩余条目以期刊非成像论文为主：结构色与 MOF/COF 光子学、空芯反谐振光纤、水下光通信可重构逻辑门、太赫兹超表面、荧光增强硅光栅、飞秒光纤激光器、冰云微物理反演、YOLOv11 矿业船检测、监控视频事故检测、碳价混合预测、古画配色数字人文分析等，全部剔除。最终收录 3 篇：T04×2 / T09×1，覆盖 3 个方向，跨方向 1 篇；A 级 0 篇（全场最高 0.72）、B 级 3 篇。T01/T02/T03/T05/T06/T07/T08/T10 空缺：T05 的唯一强候选是 Optics Express 的多光谱滤光阵列去马赛克（10.1364/oe.616011），但 Crossref 无摘要、OpenAlex 尚未收录该 DOI、Semantic Scholar 查无此文，三路皆无摘要，按「不据标题臆写」弃用；T03 命中为冰云参数反演，T06 无相位恢复条目，T10 仍是基准与工程噪声。判弃另记：EvoGS（10.1111/cgf.70602）质量达标，但属纯动态新视角合成的图形学工作，与本期 SplatCo 同系高斯泼溅且成像信息量更低，按不掺水原则留作后续；LiteTex-GS 已在第 18 期收录（其标题含 Unicode 连字符、与 data.js 中 ASCII 写法不一致导致自动去重未命中，人工剔除）；boe.596807 为 MUSE 临床可行性研究（纹理 + ViT 分类），ao.614890 为双探头共焦反射测反射率，均非计算成像方法。出处已用 Crossref 逐条纠正 OpenAlex 的 venue 污染：SplatCo 被标为 ICCP，实为 International Journal of Computer Vision 134(12): 522；GridPSF 被标为 COSI，实为 Applied Physics B 132(12): 119；双光子斜平面显微镜被标为 COSI，实为 Nature Communications（2026-11-13，暂无卷期号）。本期为信源降级下的小期，未凑数——若 arXiv 次日恢复，遗漏的方向会在后续期次补齐。",
-    dailyIds: ["splatco-ijcv", "gridpsf", "opm-2p"],
-    headlineIds: ["splatco-ijcv", "gridpsf", "opm-2p"],
-    crossIds: ["gridpsf"]
+    fetched: 1500,
+    kept: 11,
+    headline: "本期三篇其实在讲同一件事：逆问题能解出什么，取决于前向模型写到了哪一步。极光反演把激发态寿命造成的延迟发光写进渲染链，才敢从地面相机反推电子能谱；一篇以 MAP 为纲的相位恢复综述把测量模型、先验与算法收进同一个估计框架，并点明不少自称 MAP 的方法只是「MAP 启发」；quantEM 则把电子显微的每类分析拆成可微前向模型加可换组件，让新正则化只是新加一个损失项。",
+    note: "3 天窗口三信源共 87 次查询、取回 1500 条记录、65 条候选，仅 4 次失败：OpenAlex 的 CLEO 会议查询与 IEEE ICCP/ICASSP 查询各一次 429，机构追踪里西湖大学读取超时、西安电子科技大学杭州研究院 429；arXiv 的 57 次方向查询与 Crossref 的 19 本期刊查询全部成功——与第 19 期 arXiv 全灭相比，本期是久违的正常抓取。65 条候选按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，与既有 149 篇零重合（arXiv 编号已推进到 2611.2xxxx），故无需剔除。逐条读摘要后收录 11 篇，覆盖 6 个方向：T04×3 / T06×3 / T09×2 / T03×1 / T02×1 / T07×1；A 级 1 篇（极光神经场 0.92，为本月最高分）、B 级 8 篇、C 级 2 篇；跨方向 7 篇。T01 非视域、T05 高光谱、T08 计算摄影、T10 工具与数据集本期空缺：T01 与 T05 全天零候选，T08 只有慢光波导与 Q 开关激光器等器件论文，T10 的条目是标注工具（RoadAnnoter、MedImgAnnoter）、世界模型基准 SciWorldBench 与 YOLOv11 矿业船检测，均不属成像方法，按不掺水原则不凑。判弃另记：2611.22548 的扩散模型做 MIMO 信道联合估计（0.76，本期第二高分）与 2611.20179 的雷达波形设计（0.52，实为带四重歧义的相位恢复）分属通信与雷达信号处理，成像信息量不足；10.1364/ao.613115（环形 PSF 编码孔径的自引导维纳反卷积）、10.1364/oe.621031（1.55 μm 单光子差分吸收水汽激光雷达）、10.1364/oe.618078（全息定向扩散膜斜投影光场显示）三条 Crossref 无摘要、OpenAlex 尚未收录对应 DOI、Semantic Scholar 亦查无，按「不据标题臆写」弃用——其中 613115 本可补 T07、621031 本可补 T03，属本期最可惜的缺口；10.1364/ao.613054（三波长 FMCW 数字全息测形）质量达标，但 T06 已满 3 篇且它与已收的 PCSA-U-Net 同属 DHM 相位解包裹，取一舍一；10.1364/boe.614189（DINOCT）本质是 OCT 图像上的表面定位分割，非重建方法。出处全部用 Crossref 纠正过 OpenAlex 的 venue 污染：72204/72205 被标为会议，实为 Laser & Photonics Reviews 在线发表；614107 与 612436 被标为 COSI，实为 Applied Optics 65(33) 的 11896 与 11886 页；616107 被标为 COSI，实为 Biomedical Optics Express；25m1791755 被标为 ICCP，实为 SIAM Journal on Imaging Sciences 19(4): 2512–2546。版本号 v17→v18。",
+    dailyIds: ["aurora-nf", "capi-lpr", "pr-map-review", "pcsa-unet", "quantem", "plenoptic-design", "realsccp-oct", "mm-seqreg", "fisher-metrology", "thermosight", "apex-zpc"],
+    headlineIds: ["aurora-nf", "pr-map-review", "quantem"],
+    crossIds: ["aurora-nf", "capi-lpr", "pr-map-review", "pcsa-unet", "quantem", "realsccp-oct", "apex-zpc"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -1524,10 +1524,122 @@ window.NLOS_DATA = {
       tags: ["斜平面显微镜", "双光子", "深层成像"], primaryClass: "physics.optics",
       summary: "高 NA 斜平面显微镜（OPM）能在不改动样品的前提下对活细胞亚细胞动态成像，但在多细胞样品深处，散射与折射率不均匀抬高离焦背景、性能迅速衰减。作者报告一台双光子斜平面显微镜：高 NA 单物镜探测结合多光子面照明，实现约 300 nm 横向、约 650 nm 轴向分辨率，具备单分子灵敏度，活体内定位精度优于 60 nm。相比双光子点扫描，更低的照明 NA 使峰值强度低一个数量级，体采集速度提升 5 倍以上（最高 3.25×10⁶ voxel/s）；在多细胞环境中，近红外非线性激发把照明深度内的对比度提升约 2 倍，体分辨能力相对线性激发恢复 2 倍以上。演示覆盖上皮组织、干细胞来源的类原肠胚与活体果蝇胚胎，包含多色转录因子动态、光遗传亚细胞操控与单条 mRNA 追踪，且全部使用标准玻璃载玻片装片。",
       why: "对做计算显微的人，这篇没有一行重建算法，价值在别处：它直接改写了采集端的前向模型。多光子面照明把离焦背景压下去，等于提前去掉了你后面要解卷积的那部分退化，而 300 nm/650 nm 的分辨率配 3.25×10⁶ voxel/s 的体速率，意味着 4D 活体数据量再上一个量级，重建、配准与存储的压力随之整体转移。要留意的是：单物镜 OPM 的视场边缘与轴向一致性、散射样品中的照明均匀性都强依赖具体光路，摘要没给穿透深度的绝对值；「<60 nm」是定位精度而非分辨率；演示集中在发育生物学，对脑等厚组织尚无数据。按「采集端能力清单」读，比按「新方法」读准确。"
+    },
+    {
+      id: "aurora-nf", no: 150, tier: "A", section: "physics", primaryTopic: "T04", topicTags: ["T04", "T03"], confidence: 0.92, score: 0.92, evidence: "real",
+      title: "Spatiotemporal Reconstruction of Auroral Precipitations with Neural Fields",
+      titleZh: "把「延迟发光」写进前向模型：从地面极光相机反演电子沉降能谱",
+      authors: ["Nazar Misyats", "Mizuki Fukizawa", "Yoshimasa Tanaka", "Satoshi Ikehata"],
+      venue: "arXiv preprint (cs.CV)", published: "2026-11-15", url: "https://arxiv.org/abs/2611.19757",
+      tags: ["神经场", "发射层析", "前向模型"], primaryClass: "cs.CV",
+      summary: "极光提供了对沉降到高层大气的能量电子进行远程光学观测的窗口，其能谱编码着大尺度磁层过程的信息；但从地面相机图像反推电子沉降场是一个困难逆问题。已有极光层析方法多受限于静态假设、离散的空间与能量网格，或对电子能谱的强先验。作者用时间条件化的神经网络建模动态沉降场：每一帧的状态由逐帧隐码表示，隐码由学习到的离散动力学驱动；一个共享解码器把水平位置与隐状态映射到电子能谱；预测的能通量再转换为多波长体发射率，并渲染成相机图像，渲染中显式计入延迟发光。在合成动态极光序列与真实多视角极光视频上评测，作者报告该表示能给出时间连贯的沉降重建，且其图像投影与观测一致。",
+      why: "这篇值得读的地方不在「又用了神经场」，而在它把整条物理链写全了：能谱 → 多波长体发射率 → 相机图像，中间没有跳过任何一步，而且显式保留了激发态寿命造成的延迟发光——也就是说某一帧的图像依赖于前一时刻的沉降通量。对做瞬态与非视域反演的人，这是同一个结构：忘记写进前向模型的项，会以「重建看起来合理但物理量错」的方式回来。局限也要看清：状态只按水平位置参数化，垂直方向没有显式建模；真实数据侧没有场级真值，评测口径是「投影与观测一致」，而不是能谱误差；地面相机的绝对辐射定标与大气透过率如何进入模型，摘要没交代。当作「前向模型该写到多细」的范本读，而不是当作可迁移的极光产品。"
+    },
+    {
+      id: "capi-lpr", no: 151, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04", "T06", "T09"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "High-Fidelity, Adaptive Label-Free Imaging via Color-Multiplexing With Analytical Aberration Estimation",
+      titleZh: "五张 RGB 图换一幅无标记定量相位像：像差改用解析估计，不再迭代",
+      authors: ["Shuo Ma", "Yutong Li", "Kun Huang", "Ming Sun", "Guancheng Huang", "Bin Gao", "Zhengjun Liu", "Shutian Liu"],
+      venue: "Laser & Photonics Reviews", published: "2026-11-17", url: "https://doi.org/10.1002/lpor.72205", doi: "10.1002/lpor.72205",
+      tags: ["定量相位", "像差校正", "Kramers-Kronig"], primaryClass: "journal",
+      summary: "生物医学成像越来越需要高效、准确地重建多维光场，而传统图像域优化方法在像差校正、数据冗余与重建保真度之间互相牵制；此外，用线性时不变假设去建模非线性光学系统会引入模型失配，使暗角校正之类的后处理失效。作者提出彩色复用自适应相位成像（CAPI）：把高通量采集、解析式像差估计与 Kramers-Kronig 引导的梯度正则化组合起来。它利用光谱重叠区域中的相位不一致来估计随波长变化的像差，借边缘感知分割加 Zernike 多项式拟合，实现多通道畸变的非迭代估计；重建代价用一阶空间梯度表达，从而强制幅相一致性并抑制模型失配带来的伪影。仅需五张原始 RGB 图像即可在三个光谱通道上完成带像差校正的高分辨成像，摘要称把采集负担降至常规方法的约六点七分之一。",
+      why: "卖点是把像差估计从迭代优化里拿出来做成解析步骤——这正好切中 FPM、差分相衬这类方法最贵的一环：每次改先验都要重跑优化。用 Kramers-Kronig 关系把幅相耦合变成可解约束、再用 Zernike 拟合把多通道畸变参数化，路线干净。需要打问号的地方有三处：KK 关系依赖最小相位或吸收约束，厚样品与强吸收染色样品容易破；「采集负担降至六点七分之一」这句在原文里表述含糊（原文写作 reduces ... to 6.7 of conventional methods），是 1/6.7 还是 6.7 倍压缩，读正文时务必核；摘要给的对比对象是「传统图像域优化」，没有与 FPM、TIE 的定量横向比较。按「非迭代像差估计能做到什么程度」读它。"
+    },
+    {
+      id: "pr-map-review", no: 152, tier: "B", section: "benchmark", primaryTopic: "T06", topicTags: ["T04", "T06", "T09"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Recovering Phase From Intensity: An Inference View",
+      titleZh: "把相位恢复统一写成 MAP 估计：测量模型、先验与算法本来就是一件事",
+      authors: ["Shuhe Zhang", "Liangcai Cao"],
+      venue: "Laser & Photonics Reviews", published: "2026-11-17", url: "https://doi.org/10.1002/lpor.72204", doi: "10.1002/lpor.72204",
+      tags: ["相位恢复", "MAP 估计", "综述"], primaryClass: "journal",
+      summary: "恢复光波相位是理解光与物质相互作用的基础，支撑着计算成像、波前传感与光学计量中的大量技术；相位恢复就是从只有强度的测量中重建相位，已发展出多种形式。这篇综述以最大后验（MAP）估计为统一视角：尽管各方法算法差异很大，目标却相同——在物理与结构约束下估计最能解释观测的波场。MAP 在这里充当统计框架，把测量模型、正则化原则与算法设计连起来。作者指出，一部分方法确实在显式最小化 MAP 目标，另一些更准确的定位是「MAP 启发」或条件相关的形式，即把数据一致性与先验信息组合起来。文章聚焦光学成像、显微与计量，系统讨论了似然模型的建立、先验的作用及其算法实现，并给出朝更鲁棒、更可解释的计算成像系统发展的挑战与方向。",
+      why: "综述的价值在分类学，而这篇最有用的一句话其实是个祛魅：很多自称 MAP 的方法只是 MAP 启发式。也就是说，你写下的「先验」未必对应一个似然，加权系数也未必有概率含义——这会直接影响超参数怎么调、失效时该怀疑哪一项。对做相位恢复的人，可以拿它当定位图：先判断自己的工作落在「显式 MAP / 条件相关 / 纯启发式」哪一档，再看该档的收敛性与可解释性能承诺到什么程度。要留意覆盖偏差：作者来自全息与计算成像方向，光学计量与显微是重心，电子叠层成像与扩散先验这条线大概率着墨有限；且综述不给新实验，别指望横向 benchmark。"
+    },
+    {
+      id: "pcsa-unet", no: 153, tier: "B", section: "core", primaryTopic: "T06", topicTags: ["T06", "T09"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Noise-robust phase unwrapping for digital holographic microscopy using a parallel channel-spatial attention U-Net",
+      titleZh: "解包裹网络接上通道-空间双注意力：10–60 rad 陡变处的 RMSE 压到 0.075 rad",
+      authors: ["Xinyu Feng", "Hanjie Zheng", "Xu Zhang", "Dawei Tu"],
+      venue: "Applied Optics 65(33): 11896", published: "2026-11-17", url: "https://doi.org/10.1364/ao.614107", doi: "10.1364/ao.614107",
+      tags: ["相位解包裹", "数字全息显微", "注意力机制"], primaryClass: "journal",
+      summary: "可靠的相位解包裹是定量数字全息显微（DHM）的前提，但它对相干噪声与相位陡变依然脆弱。作者提出 PCSA-U-Net：在 U-Net 的跳跃连接中并联引入通道注意力与空间注意力，用来抑制不可靠的浅层特征、同时保住高梯度结构。在 10–60 rad 的仿真相位范围上，PCSA-U-Net 取得 0.0748 rad 的 RMSE 与 0.9976 的 SSIM，优于传统算法与标准 U-Net。在同步相移 DHM 样机上做台阶高度测量，相对白光干涉仪确定的 114.8 nm 参考高度，平均绝对误差 13.48 nm，相对误差 11.74%；十次测量的高度标准差为 9.86 nm。",
+      why: "先看数字再决定要不要读：114.8 nm 的台阶测出 11.74% 的相对误差，对计量级 DHM 并不算好（这个量级通常要求几个百分点以内），而十次重复的标准差 9.86 nm 与误差本身几乎同量级——说明误差主要由噪声与系统偏差主导，而不是解包裹跳变。真正值得看的是它怎么处理浅层特征：把注意力放在跳跃连接上，等价于承认「编码器的低层特征在相干噪声下不可信」，这个改动比堆深度更有针对性。风险在于训练分布：仿真相位 10–60 rad 配的噪声统计与实验相干噪声大概率不同，实验只验了一个台阶高度。当作「解包裹网络在实测数据上会掉多少」的参照点读。"
+    },
+    {
+      id: "quantem", no: 154, tier: "B", section: "tools", primaryTopic: "T06", topicTags: ["T06", "T10"], confidence: 0.64, score: 0.64, evidence: "real",
+      title: "quantEM: Quantitative Electron Microscopy Analysis from Differentiable Physics to Neural Priors",
+      titleZh: "把每类电子显微分析都写成「可微前向模型 + 可换组件」：quantEM 开源包",
+      authors: ["Colin Ophus", "Arthur R. C. McCray", "Georgios Varnavides", "Stephanie M. Ribet"],
+      venue: "arXiv preprint (cond-mat.mtrl-sci)", published: "2026-11-16", url: "https://arxiv.org/abs/2611.21903",
+      tags: ["可微物理", "叠层成像", "开源工具"], primaryClass: "cond-mat.mtrl-sci",
+      summary: "定量电子显微涵盖成像、衍射、谱学与层析，其数据分析越来越需要借助物理前向模型求解逆问题。开源软件已让许多分析唾手可得，但多数包围绕单一模态组织：多模态分析要在包之间搬数据，新方法也难以复用已有的物理模型与优化器。作者发布 quantEM：一个用 PyTorch 张量计算并支持自动微分、用 Zarr 存储的开源 Python 包。每种分析方法都由三部分拼装——写一个可微前向模型，再从组件库里选表示、损失、约束与优化器；因此所有方法都能跑在 CPU 与 GPU 上，可保存与续跑，并共用同一套已定标的数据结构与可视化工具。已实现模块包括取向与应变映射、直接法与迭代法叠层成像、基于神经表示的层析，以及 X 射线与电子能量损失谱；文章还演示如何用现有组件拼出叠层层析这类组合方法。MIT 许可，附文档、教程与整理好的示例数据集。",
+      why: "这套架构正是计算成像软件一直没做好的事：把前向模型当一等公民，其余全部可换。因为一切走自动微分，新加一个正则化只是新加一个损失项，而不是新开一个代码库——这也是它能把叠层成像、层析与谱学放进同一个数据结构的根本原因。要冷静的地方：摘要里没有任何定量基准，与 abTEM、py4DSTEM、ASTRA 这类成熟包的精度与速度对比一概没有；PyTorch + Zarr 在 4D-STEM 这种 TB 级数据上的开销与显存行为也未提及；生态与社区规模短期内不可能追上老牌包。对做重建管线的人，值得当设计文档读：先抄它的组件边界，再考虑是否迁移。"
+    },
+    {
+      id: "plenoptic-design", no: 155, tier: "B", section: "system", primaryTopic: "T07", topicTags: ["T07"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Analysis and design of optical systems for unfocused plenoptic cameras",
+      titleZh: "非聚焦光场相机怎么反推光路：把「瞳映射误差」直接当设计指标",
+      authors: ["Weiqi Lu", "Jiacheng Zhu", "Weimin Shen"],
+      venue: "Applied Optics 65(33): 11886", published: "2026-11-17", url: "https://doi.org/10.1364/ao.612436", doi: "10.1364/ao.612436",
+      tags: ["光场相机", "光学设计", "瞳映射"], primaryClass: "journal",
+      summary: "文章给出一套针对非聚焦光场相机的光学系统分析与设计方法：先简述工作原理，再按指定的景深范围与深度分辨率反推相机的结构参数。作者设计了一个可见光到近红外的像方远心双高斯物镜作为主镜，使物面与微透镜阵列共轭、传感器与主镜出瞳共轭。为评价成像质量，引入「瞳映射误差」这一指标，用来量化传感器上光线坐标相对于归一化瞳坐标最小二乘线性拟合的偏离程度。光线追迹仿真与公差分析进一步支撑了设计的可行性。",
+      why: "光场相机真正的失效点通常不在 MTF，而在微透镜到传感器的光线映射偏离了解码所假设的线性模型——一旦偏离，重聚焦与深度估计的误差会被结构性放大。这篇文章把这种偏离显式定义成「瞳映射误差」并纳入设计目标，等于把光学与重建的环路闭合，这正是多数光场论文跳过的共设计环节。局限同样明显：纯设计论文，没有样机、没有重建图像，也没有给出「瞳映射误差降到多少、深度精度提升多少」的端到端验证，所以这个指标目前只是被提出而非被校准；且只讨论非聚焦型，聚焦型光场的映射关系不同，结论不能直接搬。读它的方法学部分即可。"
+    },
+    {
+      id: "realsccp-oct", no: 156, tier: "B", section: "core", primaryTopic: "T02", topicTags: ["T02", "T04"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Numerical speckle reduction for optical coherence tomography based on an analytical image formation model",
+      titleZh: "不去噪，改表示：按 OCT 解析成像模型造一个「散斑可被数值调制」的图像",
+      authors: ["Xibo Wang", "Shuichi Makita", "Nobuhisa Tateno", "Suzuyo Komeda", "Rion Morishita", "Cunyou Bao", "Atsuko Furukawa", "Satoshi Matsusaka", "Makoto Kobayashi", "Yoshiaki Yasuno"],
+      venue: "Biomedical Optics Express", published: "2026-11-16", url: "https://doi.org/10.1364/boe.616107", doi: "10.1364/boe.616107",
+      tags: ["OCT", "散斑抑制", "成像模型"], primaryClass: "journal",
+      summary: "散斑是限制光学相干层析（OCT）有效分辨率的内在颗粒状图样。作者提出一种数值散斑抑制方法，核心是一个新的图像表示——「移位复共轭积的实部」（real-SCCP），它依据 OCT 的解析成像模型设计而成。在这个表示下，散斑可以在信号采集完成之后被完全地数值调制；把多幅具有不同散斑实现的 SCCP 图像做平均，即可有效抑制散斑。方法还能清晰呈现肿瘤球与斑马鱼眼内的结构，并且显著优于传统的基于帧平均的散斑抑制方案。",
+      why: "这篇的路子是「先改表示，再谈滤波」：解析模型说明散斑主要活在一个相位项里，于是把移位共轭积取实部之后，散斑变成一件可以被平均掉的东西，而帧平均会把信号一起平均掉——这就是它胜过帧平均的机理。要追问的是代价：多幅不同散斑实现意味着多次采集或角度分集，「数值」并不省光子，只是把抑制挪到了采集之后；验证以可视化为主、对照只有帧平均，摘要没给 CNR、等效视数之类的量化指标。它被放在散射方向，是因为球体与眼内都是强散射样品，但方法本身是模型驱动的表示设计，不是穿透散射介质的成像——这个区别读的时候要分清。"
+    },
+    {
+      id: "mm-seqreg", no: 157, tier: "B", section: "physics", primaryTopic: "T09", topicTags: ["T09"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "A Robust Majorization-Minimization Algorithm for Sequential Neuroimage Registration",
+      titleZh: "把鲁棒损失写成「小误差二次、大误差近乎常数」，再用 MM 一起解配准与三维重建",
+      authors: ["Gaiting Zhou", "Kenneth Lange", "Daniel J. Tward"],
+      venue: "SIAM Journal on Imaging Sciences 19(4): 2512–2546", published: "2026-11-16", url: "https://doi.org/10.1137/25m1791755", doi: "10.1137/25m1791755",
+      tags: ["图像配准", "鲁棒优化", "MM 算法"], primaryClass: "journal",
+      summary: "对一组脑图像做鲁棒配准，是三维重建、时间序列对齐与公共坐标映射的关键步骤。作者提出基于 Majorization-Minimization（MM）优化原理的鲁棒配准算法，同时输出三维重建图像与变换参数：每张二维序列图像对应一个微分同胚变换与一个刚体变换。为了在高通量场景下处理异质图像并获得强鲁棒性，他们最小化一种「小误差时为二次、大误差时近乎常数」的损失，其鲁棒性强于 L1 与 Huber 损失。文章论证了这一选择，并说明如何在 MM 框架内高效实现；在带已知金标准的仿真图像，以及两种不同模态的显微图像上做了测试。",
+      why: "贡献就是那个损失：在 MM 框架里实现一个再下降型影响函数，能保住单调收敛的保证，而这恰恰是用 IRLS 硬套 Tukey 双权时丢掉的东西。对做切片式重建的人（连续切片、光片、光学投影层析）很对症——一张坏切片能把整卷带偏，而「大误差近乎常数」等价于把损坏切片自动降权。需要留意：摘要没有给运行时间或随切片数量的扩展性，微分同胚逐片估计在小样本下有过度拟合噪声的风险；评测是仿真加两种模态，没有与主流配准工具的横向对比表；损失尾部被压平后地形非凸性更强，初值不好可能收敛到更差的解——这正是要读正文验证的地方。"
+    },
+    {
+      id: "fisher-metrology", no: 158, tier: "B", section: "physics", primaryTopic: "T03", topicTags: ["T03"], confidence: 0.65, score: 0.65, evidence: "real",
+      title: "Controlling the flow of information in optical metrology",
+      titleZh: "光学计量下一步拼的不是光子数，而是调度费舍尔信息的流向",
+      authors: ["Maximilian Weimar", "Huanli Zhou", "Luca Neubacher", "Thomas A. Grant", "Jakob Hüpfl", "Kevin F. MacDonald", "Stefan Rotter", "Nikolay I. Zheludev"],
+      venue: "Nature Materials", published: "2026-11-16", url: "https://doi.org/10.1038/s41563-026-02789-y", doi: "10.1038/s41563-026-02789-y",
+      tags: ["费舍尔信息", "光学计量", "信息极限"], primaryClass: "journal",
+      summary: "光学计量早已借非线性现象与统计积累突破阿贝–瑞利极限，近来又靠针对被测变量变化训练的人工智能估计器做到亚原子精度。这篇观点文章主张：进一步的空间来自优化携带计量内容的费舍尔信息流。作者指出，费舍尔信息的流动不必跟随光能流，它会表现共振、衍射与干涉，存在奇点与涡旋；还会呈现类似塔尔博特效应的行为——信息密度图样随传播距离周期性重复——并且可以被聚焦到衍射极限之外，效果类比光学超振荡。材料的组分、共振、几何与环境决定了信息在哪里产生、如何传播、如何被增强并导向以提高精度。文章据此把计量重述为「信息流工程」，应用覆盖原子尺度诊断、智能制造、遥感、雷达与激光雷达。",
+      why: "这是观点文章，没有新实验，读它是为了换框架：精度上限由抵达探测器的费舍尔信息量决定，而信息流可以被独立于光强地设计——于是「多收光子」和「换更好的估计器」不再是仅有的两根杠杆。塔尔博特式的信息密度复现与信息涡旋是两个可被检验的具体预言。必须打的折扣：费舍尔信息是局部界，前提是无偏估计与已知噪声模型，而亚原子精度配 AI 估计器恰恰最可能破坏这两条假设；摘要也没给任何实验演示，「重述为信息流工程」目前是纲领而非结果。对做单光子高效成像的人，它的用处是给出理论天花板在哪，而不是一件能上手的技术。"
+    },
+    {
+      id: "thermosight", no: 159, tier: "C", section: "physics", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "ThermoSight: From Appearance to Internal Thermofluid Fields via Physics-Guided Neural Reconstruction",
+      titleZh: "温度与碳烟在 RGB 里互相抵消：用可微光谱模型把两个场拆开",
+      authors: ["Yuhao Fang", "Chenglin Lu", "Hefei Ling", "Chun Lou"],
+      venue: "arXiv preprint (cs.CV)", published: "2026-11-16", url: "https://arxiv.org/abs/2611.20786",
+      tags: ["神经场", "发射层析", "病态逆问题"], primaryClass: "cs.CV",
+      summary: "多数神经重建方法只关心还原场景外观，而从视觉观测推断物理状态才是机器理解物理世界的关键。重建火焰这类辐射性热流体的内部温度场与碳烟场既困难又重要：温度与碳烟浓度共同决定可见光发射，碳烟自吸收又改变了抵达相机的光；在有限视角下，两个场的变化可以在记录到的 RGB 图像里互相抵消，使二者难以解耦。ThermoSight 是一个物理引导的神经框架，在优化过程中不依赖场级真值，从有限张已定标的火焰图像联合重建连续的三维温度场与碳烟体积分数场。它用可微光谱模型把两个场经热发射、自吸收与相机响应连到 RGB 测量；温度相关的发射谱与随波长变化的衰减，通过共享的三通道约束降低温度-碳烟歧义；色度一致性、由观测导出的空间约束与碳烟正则项补充强度拟合。合成消融显示，在高温高碳烟区域，波长分辨的衰减把温度 RMSE 从 234 K 降到 112 K，而 RGB 的 PSNR 几乎不变（65.23 对 65.24 dB）；实测数据给出连贯的场与有竞争力的 RGB 重建。",
+      why: "这篇最有价值的是一个干净的反例：RGB 的 PSNR 几乎一模一样（65.23 对 65.24 dB），温度误差却少了一半——说明外观拟合得好，完全可以与物理量错得离谱同时成立。凡是做「从图像反演物理场」的人（瞬态、非视域、层析）都应该把这一条记住：拿图像域指标当验收标准，等于允许模型在零空间里乱跑。局限很实在：实测侧仍只有三个宽通道，波长分辨的收益只在合成消融里兑现；需要相机光谱响应定标；实测没有场级真值，所谓「连贯的场」是自洽而非正确；火焰的轴对称等几何先验是否被隐含使用，摘要没说。当方法学案例读，别当火焰测温工具。"
+    },
+    {
+      id: "apex-zpc", no: 160, tier: "C", section: "physics", primaryTopic: "T09", topicTags: ["T09", "T06"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Zernike-efficient phase contrast with a scanned electron probe",
+      titleZh: "扫描电镜也能做 Zernike 相位衬度：每个电子转移的相位信息接近翻倍",
+      authors: ["Philipp Pelz"],
+      venue: "arXiv preprint (physics.optics)", published: "2026-11-17", url: "https://arxiv.org/abs/2611.22341",
+      tags: ["相位衬度", "电子显微", "费舍尔信息"], primaryClass: "physics.optics",
+      summary: "对弱相位物体，用远场探测器的扫描透射电镜（STEM）每个电子最多只能转移 Zernike 相位衬度（ZPC）常规透射电镜所能转移相位信息的一半。作者提出 APEX（Apex Phase-plate EXit-wave imaging）：一种扫描探针模式，把离焦探针、置于探针交叉点放大像中的 π/2 相位元件，以及每个扫描位置上的焦面成像探测组合起来，从而把 Dwyer 与 Paganin 的广义 Zernike 框架用到扫描探针上。在薄弱相位物体加理想相位点的线性模型下，APEX 在很宽的频带上转移了几乎全部 Zernike 费舍尔信息，明显多于衍射面的四维 STEM（4D-STEM）。在冷冻电镜剂量下对玻璃态冰中肌红蛋白的理想化仿真中（仅弹性散射、无色差、完全相干），探针离焦 1 μm 的理想点 APEX 比单个未调参的离焦 4D-STEM 叠层成像重建得更准；离焦约 25 μm 时交叉激光相位板（XLPP）充当 π/2 元件，周期样品的 APEX 接近同板 CTEM 的表现。二维情形下该模式等价于对小区域扫描的激光相位板 CTEM。单次带 XLPP 的仿真 APEX 扫描还能分离真空中相距 150 nm、深度已知的两层肌红蛋白相位屏，这是单次 ZPC CTEM 曝光做不到的。",
+      why: "论证方式很漂亮：不谈分辨率谈「每电子转移多少费舍尔信息」，直接对准低剂量成像的真正瓶颈。但要看清增益从哪来——作者自己说了二维下它等价于小区域扫描的激光相位板 CTEM，所以收益主要来自相位板加焦面探测，而不是「扫描」这个动作本身；4D-STEM 的对比对象还是「单个未调参探针」，叠层成像多参数优化后的上限并未给出。150 nm 深度分离这一条最该保留：仿真是无色差、完全相干、理想相位点，真实 XLPP 的部分相干性与相位点不理想会直接吃掉这部分裕度。当作「4D-STEM 的相位信息丢在哪」的理论分析读，价值比当作新成像模式更稳。"
     }
   ],
   archive: [
-    { date: "2026-11-16", number: 19, count: 3, highlights: "3 个方向 · 跨方向 1 篇 · 大场景高斯泼溅的结构约束 / 湍流 PSF 前向约束的负结果 / 双光子斜平面深层体成像", current: true,
+    { date: "2026-11-18", number: 20, count: 11, highlights: "6 个方向 · 跨方向 7 篇 · 极光电子沉降场的延迟发光前向模型 / 相位恢复的 MAP 统一视角 / 可微物理的电子显微工具箱", current: true,
+      dailyIds: ["aurora-nf", "capi-lpr", "pr-map-review", "pcsa-unet", "quantem", "plenoptic-design", "realsccp-oct", "mm-seqreg", "fisher-metrology", "thermosight", "apex-zpc"], headlineIds: ["aurora-nf", "pr-map-review", "quantem"] },
+    { date: "2026-11-16", number: 19, count: 3, highlights: "3 个方向 · 跨方向 1 篇 · 大场景高斯泼溅的结构约束 / 湍流 PSF 前向约束的负结果 / 双光子斜平面深层体成像", current: false,
       dailyIds: ["splatco-ijcv", "gridpsf", "opm-2p"], headlineIds: ["splatco-ijcv", "gridpsf", "opm-2p"] },
     { date: "2026-11-15", number: 18, count: 8, highlights: "5 个方向 · 跨方向 3 篇 · 衍射光学联合设计的大景深显微 / 莫尔和频单像素超分辨 / 运动-外观耦合视频先验", current: false,
       dailyIds: ["edfnet-doe", "msf-spi", "pcd-review", "madssn-spike", "litex-gs", "macp-video", "pcmri-ssl", "smart-trans"], headlineIds: ["edfnet-doe", "pcd-review", "macp-video"] },
