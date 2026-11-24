@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-20",
-    number: 21,
-    updatedAt: "2026-11-20T08:53:41Z",
+    date: "2026-11-24",
+    number: 22,
+    updatedAt: "2026-11-24T14:51:04Z",
     sourceCount: 3,
-    fetched: 1550,
-    kept: 13,
-    headline: "本期三篇都在换掉成像链条上的一环，而换哪一环决定了你能拿到什么。事件相机替掉帧相机，致密的干涉图序列变成沿时间轴的事件流，高光谱吞吐量直接涨三个数量级；散射介质替掉空间光调制器，OAM 波前扫出的实测散斑码本同时充当编码器与解码条件，单帧曝光解出八帧；原子替掉体素，样品直接写成带位置、尺度、幅度的三维高斯列表，各向同性、最小间距这些物理约束被编进参数化而不是塞进损失函数。第三篇的分值只有 C，是因为电子断层没命中方向锚词，按概念重要性它才是本期最该读的一篇。",
-    note: "3 天窗口三信源共 87 次查询、取回 1550 条记录、96 条候选，0 次失败——arXiv 的 57 次方向查询、Crossref 的 19 本期刊查询与 OpenAlex 的会议／机构追踪全部成功，是近期最干净的一次抓取。96 条候选按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，仅 3 条与既有 160 篇重合（上期收录的 lpor.72204、lpor.72205 与 2611.22341，期刊页与预印本同时入库属正常回流），余 93 条逐条读摘要。收录 13 篇，覆盖 7 个方向：T04×3 / T02×2 / T05×2 / T06×2 / T08×2 / T03×1 / T10×1；A 级 1 篇（事件相机高光谱 0.80）、B 级 10 篇、C 级 2 篇；跨方向 10 篇。T01 非视域、T07 光场与无透镜、T09 显微计算成像本期空缺：T01 的唯一候选是无线信道基础模型，与成像无关；T07 只有光涡旋拓扑编码与全息显示窗口设计，属器件与显示；T09 最可惜——oe.616009（三维定位显微中折射率失配引起的系统误差建模与校正）与 boe.620279（动态反射微分相衬显微）都是 11-19 上线的 Optica 论文，Crossref 无摘要、OpenAlex 返回 404、按标题搜 arXiv 亦无预印本、落地页仍是「已录用待排版」占位，按「不据标题臆写」原则弃用，否则本期本可补上 T09 两篇。判弃另记：2611.22548 的扩散模型做 MIMO 信道联合估计（0.76，本期第二高分）上期已判弃、本期以同样 0.76 再度出现，仍属通信而非成像；2611.23968 用光子计数器做类零差测量（0.68）是量子态估计；2611.25828 的扭转铁电界面虽用 4D-STEM 与叠层成像观测，主题是材料物理；boe.614791（可调针状光束用于 OCT）与 boe.611469（斜白光显微做免切片病理）分别是光束整形与照明技巧，没有重建环节，不算计算成像；2611.22884、2611.22450 是标注工具，2611.23151 是世界模型训练环境，延续往期「标注工具不占 T10 名额」的判据；2611.25469（HDR 增益图视觉伪装攻击）与 2611.25635（生成式美学调色）分属安全与审美增强。同类取一：T06 另有 2611.24232（X 射线叠层成像的随机优化，峰值显存降到 65%、重建时间降到 22%），工程数字漂亮但与已收的 4D-TEMPO 同属叠层重建效率，本期取其不确定性量化那篇；原子分辨的两篇（4D-TEMPO 与 Gaussian Splatoms）按主贡献分别归入 T06 与 T04，不再重复计入 T09。出处全部按 Crossref 核验：10.1145/3829340.* 这一整批被 OpenAlex 标成 ICCP（国际计算摄影会议），实为 Proceedings of the SIGGRAPH Asia 2026 Conference Papers（MVID 页码 1–12），本期按 Crossref 改标 SIGGRAPH Asia；2611.25423 的 DOI 指向 Astronomy & Astrophysics、2611.26111 指向 IEEE TBME，均由 Crossref 确认。版本号 v18→v19。",
-    dailyIds: ["event-ft-hsi", "oam-speckle", "tm-compress", "cs-coincidence", "anchor-inertial", "gaussian-splatoms", "mre-joint", "flowfs-twin", "4d-tempo", "ure-mult", "mvid", "multi-illum-sr", "fourier-py"],
-    headlineIds: ["event-ft-hsi", "oam-speckle", "gaussian-splatoms"],
-    crossIds: ["event-ft-hsi", "oam-speckle", "tm-compress", "cs-coincidence", "gaussian-splatoms", "4d-tempo", "ure-mult", "mvid", "multi-illum-sr", "fourier-py"]
+    fetched: 1078,
+    kept: 11,
+    headline: "本期两条 A 级分别改掉了探测与训练的两端。康普顿相机这一条把两块闪烁体压成一块单体闪烁体：百万像素级 SPAD 相机在像素层面分辨同一块晶体里的两个同时作用点，于是散射与吸收不再需要两个独立的探测体积，4π 视场里直接定位伽马源。全息梯度这一条把梯度从「用有限差分逐点测」换成「拍一张离轴全息图」：信号场与参考场的相对相位一次曝光就编码进强度，伴随算子用十组探测拟合、训练中数秒刷新，上千张调制图案被一个图案取代。第三条是结构光层切的定位问题——把「找峰值定焦面」换成「与标定过的轴向调制波形做匹配滤波」，单帧扫描就能给深度。",
+    note: "首轮 87 次查询取回 1078 条记录、59 条候选，但 20 次查询失败，全部落在 arXiv：T01 的 7 次查询全灭、T03 挂 5 次、T05 挂 5 次、T02 挂 3 次，错误为 429 限流与读取超时；Crossref 的 19 本期刊与 OpenAlex 的会议、机构追踪全部成功，脚本按规则保留了旧数据未清空。待 429 冷却后单测 export.arxiv.org 恢复 200，遂对 T01、T02、T03、T05 四个方向以 7 天窗、每次查询间隔 6 秒补抓一轮共 24 次查询，0 失败、新增 19 条候选，合并后 78 条候选按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，4 条与既有 173 篇重合，余 74 条逐条读摘要。收录 11 篇，覆盖 7 个方向：T02×3 / T04×2 / T09×2 / T03×1 / T05×1 / T06×1 / T08×1；A 级 2 篇（SPAD 康普顿相机 0.88、全息梯度 0.80）、B 级 6 篇、C 级 3 篇；跨方向 6 篇。T01 非视域、T07 光场与无透镜、T10 成像工具本期空缺：T01 补抓后仍只有无线信道基础模型（CSI 反馈与视距/非视距分类），与光学非视域无关——7 次查询全灭那一轮把 T01 彻底打空，补抓也没捞到成像论文；T07 补抓到的都是光纤波前整形与血流成像，已按主贡献归入 T02；T10 当日候选被 SIGGRAPH Asia 的生成式视频、IJIES 系列的农业与遥感分类整批占据，延续往期「标注工具与纯生成内容不占 T10 名额」的判据全部判弃。判弃另记：2611.23968 用光子计数器做类零差测量（0.68）仍是量子态估计，上一期已判弃、本期再度出现；2611.25378 是无线基础模型；2611.22850、2611.27633 是 LiDAR 里程计，2611.26715 是林业点云分割，2611.28129 是城市感知综述，2611.30938 是洪水变化检测，2611.29944 是高光谱分类（只做分类不做重建），2611.29995 是赛车流场模态分解，2611.28869 与 2611.24533 是天体测量，均不属计算成像。本期最大的一批损失来自 Optica 的七条候选：oe.597261、oe.612438、oe.616566、josaa.616597、ao.612624、ao.618454、ao.620135 全部命中「Crossref 无摘要 + OpenAlex 404 + 按标题搜 arXiv 无预印本 + 落地页写着 accepted for publication」四条件，按不据标题臆写的原则弃用，其中 ao.612624 的物理一致条件扩散做强散射下单光子 LiDAR 与 josaa.616597 的高光谱单像素成像是本期最该补的两个空缺（T03 与 T05 各少一篇），只能等它们正式排版后再说。出处按 Crossref 核验：10.1145/3829340.3842323 被 OpenAlex 标成 ICCP，实为 Proceedings of the SIGGRAPH Asia 2026 Conference Papers（pp.1-11），本期按 Crossref 改标 SIGGRAPH Asia；oe.620484 记为 Optics Express 34(24):46319。版本号 v19→v20。",
+    dailyIds: ["compton-spad", "holographic-grad", "mmf-250khz", "adcc-sim", "spectral-gs", "decoflat", "rmgnet-uav", "ballistic-sri", "mcp-euv-ptycho", "wildanysplat", "espg-1km"],
+    headlineIds: ["compton-spad", "holographic-grad", "adcc-sim"],
+    crossIds: ["holographic-grad", "mmf-250khz", "adcc-sim", "spectral-gs", "mcp-euv-ptycho", "espg-1km"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -1764,10 +1764,122 @@ window.NLOS_DATA = {
       tags: ["傅里叶光学", "仿真", "相位恢复"], primaryClass: "physics.optics",
       summary: "光传播仿真对光学系统的设计与定标很有用。本文给出基于傅里叶光学的传播仿真基础与 Python 实现，特别强调量纲问题：先验证数值波光仿真保持正确的物理空间尺度，再把数值传播与高斯光束、透镜聚焦、光栅衍射的闭式解析解对比；随后演示如何用这些仿真生成菲涅尔波带片等衍射光学元件，并通过采集数据、用相位恢复算法恢复相位，把数值仿真与实验衔接起来。",
       why: "看起来像教学文章，但它点的是这个领域最常见的隐性错误：FFT 传播里像素尺寸、采样率、传播距离三者的关系一旦写错，图还是像的，只是尺度错了，而尺度错会让后续所有相位恢复与系统设计悄悄跑偏。作者的验证顺序（先核对量纲，再对解析解，再做衍射元件，最后做实验相位恢复）本身就是一份可照抄的自检清单。期待值要放对：它不给新算法、不给性能数字，代码是教学级的；对已有成熟仿真链路的组，价值在于把高斯束、透镜、光栅三个闭式解当回归测试基准。"
+    },
+    {
+      id: "compton-spad", no: 174, tier: "A", section: "system", primaryTopic: "T03", topicTags: ["T03"], confidence: 0.88, score: 0.88, evidence: "real",
+      title: "A Camera-Based Single-Volume, Monolithic Compton Camera",
+      titleZh: "一块闪烁体加一台 SPAD 相机：4π 视场内直接定位伽马源",
+      authors: ["Alex Bocchieri", "Devanshi Jain", "Andreas Velten"],
+      venue: "arXiv preprint (physics.ins-det)", published: "2026-11-22", url: "https://arxiv.org/abs/2611.29116",
+      tags: ["康普顿相机", "SPAD 阵列", "辐射成像"], primaryClass: "physics.ins-det",
+      summary: "康普顿相机通过测量单光子与探测器的两次作用（散射与吸收）来反推伽马源方向。传统闪烁体方案要用两块分离的闪烁体或一块分段闪烁体，体积大、效率低；其闪烁读出也难以在同一块单体闪烁体里分辨两个相邻作用点。SPAD 阵列能以高计数率做高分辨光子计数、易扩展到上百万像素，此前工作已用它测量单个作用位置。本文把 SPAD 相机与一块紧凑的单体闪烁体组成可用的辐射成像器件，原型在 4π 立体角内多个位置成功重建伽马源，并能分辨同一块单体闪烁体中的两个同时事件，使康普顿相机可以做得更紧凑、更便携。",
+      why: "这篇的价值不在重建算法，而在用器件解决了几何前提：一块单体闪烁体加一台百万像素级 SPAD 相机，靠像素级时间与位置信息把两个相邻作用点拆开，于是不必再堆两块闪烁体。要盯住的点有三处：摘要只报了能重建源位置，没有给角度分辨率、能量分辨率与探测效率的定量对比；单体闪烁体的光传输与边缘效应会限制定位精度；SPAD 阵列的填充因子与后脉冲、串扰在高计数率下的影响也未量化。作者之一的 Velten 正是非视域成像时间分辨测量的开创者，这篇可以当作同一套探测思路换到另一个物理通道的范例来读。"
+    },
+    {
+      id: "holographic-grad", no: 175, tier: "A", section: "core", primaryTopic: "T02", topicTags: ["T02", "T06", "T04"], confidence: 0.8, score: 0.8, evidence: "real",
+      title: "Single-shot holographic gradients for training wavefronts through disorder",
+      titleZh: "一张离轴全息图就是梯度：不用上千张图案，边成像边训练波前",
+      authors: ["Kerem Ekec", "Bahadır Utku Kesgin", "Uğur Teğin"],
+      venue: "arXiv preprint (physics.optics)", published: "2026-11-20", url: "https://arxiv.org/abs/2611.27439",
+      tags: ["全息梯度", "波前整形", "散射介质"], primaryClass: "physics.optics",
+      summary: "在真实光路里训练光学系统需要损失函数的梯度，但相机只记录强度，介质也从来不是准确已知的。作者证明单张离轴全息图就能给出这个梯度，称为全息梯度：光只正向穿过介质一次，全息图负责测量误差，一个紧凑的伴随算子用十组探测拟合、在训练中数秒刷新一次，每一步只花一个调制图案。透过薄散射介质，它能聚焦、成像，并达到与实测传输矩阵相当的成像质量，却不需要后者所需的数千张图案。在受控漂移下，刷新伴随算子可把光栅恢复到 17.6 dB，冻结模型只有 9.1 dB，而无漂移时为 19.5 dB；训练在厚散射介质中同样成立。离线训练好的参考光路还能充当计算层来玩电子游戏。",
+      why: "这篇把两件事一起解决了：梯度怎么测，以及介质测不准怎么办。离轴全息图同时带回信号场与参考场的相对相位，一次曝光就把相位信息编码进强度，于是梯度不必再用有限差分逐点探测；伴随算子只拟合十组探测、训练中数秒刷新，等于把介质漂移当成在线标定而不是失败原因。这是把自适应光学从「先测波前再校正」推进到「直接对任务损失求梯度」的一步。要打问号的地方：17.6 dB 与 19.5 dB 的差距说明刷新速度仍跟不上漂移；薄介质下与实测传输矩阵持平，但传输矩阵是离线且昂贵的，公平比较应看总光子预算；玩电子游戏的演示是离线训练的，而离线与在线之差恰好是全文主张的那一点。"
+    },
+    {
+      id: "mmf-250khz", no: 176, tier: "B", section: "system", primaryTopic: "T02", topicTags: ["T02", "T07"], confidence: 0.68, score: 0.68, evidence: "real",
+      title: "Efficient phase-only wavefront shaping at 250 kHz for multimode fiber endomicroscopy",
+      titleZh: "8192 单元、七成光效、250 kHz 全帧刷新：光纤内窥的「三选二」被破掉",
+      authors: ["Pau Riera Rodríguez", "Antonio M. Caravaca-Aguirre", "Omer Tzang", "Alexander Payne", "Stephen Hamann", "Rafael Piestun"],
+      venue: "arXiv preprint (physics.optics)", published: "2026-11-21", url: "https://arxiv.org/abs/2611.29015",
+      tags: ["多模光纤", "波前整形", "荧光内窥"], primaryClass: "physics.optics",
+      summary: "多模光纤波前整形能用发丝粗细的探头实现衍射极限荧光成像，但速度与光预算受波前调制器限制：现有调制器最多只能同时满足高刷新率、高模态维数、高光效三者中的两个。作者用定制的纯相位微机电调制器同时拿到三项：32×256 共 8192 单元、7 位相位控制、250 kHz 全帧刷新。轴上直接相位调制把 70±5% 的入射光送入调制光场，省掉了离轴编码的光学损耗与全息图计算。光纤远端生成的焦点保持各向同性且保真度高。作者用实测传输的奇异值分解确定系统的有效自由度，并在多个深度扫描焦点，实现体荧光成像。",
+      why: "光纤内窥的瓶颈一直是快、多模、省光三选二，这篇用 MEMS 相位阵列把三个指标同时顶上去；70% 的轴上效率意味着不必再为离轴编码付衍射效率的税，这是系统层面最实在的收益。奇异值分解定有效自由度这一步值得学：它把「8192 个单元里真正能用几个」从宣传数字变成可测量的量。要留意的是：250 kHz 是调制器刷新率而不是完整闭环校正率，活体运动补偿仍取决于标定与反馈的速度；7 位相位量化在强散斑下的对比度损失没有给出；体成像的深度范围与荧光信噪比也缺定量。"
+    },
+    {
+      id: "adcc-sim", no: 177, tier: "B", section: "core", primaryTopic: "T09", topicTags: ["T09", "T04"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Axial difference cross-correlation with system modulation reference for 3D structured illumination microscopy",
+      titleZh: "把轴向光强差与系统调制参考做互相关：单帧扫描拿到三维层切",
+      authors: ["Xiaowei Peng", "Xiaojie Zhang", "Pengcong He", "Ziwei Wang", "Wanyu Gu", "Qijian Tang", "Xiaoli Liu"],
+      venue: "Optics Express 34(24):46319", published: "2026-11-23", url: "https://doi.org/10.1364/oe.620484", doi: "10.1364/oe.620484",
+      tags: ["结构光照明", "光学层切", "匹配滤波"], primaryClass: "journal",
+      summary: "光学层切结构光照明显微中，采集效率与重建质量此消彼长。作者提出基于轴向差互相关的单帧扫描结构光照明方法：用系统光学参数构造一个轴向系统调制参考，再把它与从图像栈中提取的每条轴向光强差廓线做互相关。该操作等价于匹配滤波，借助轴向光强差廓线的波形保持特性提升信噪比并准确提取轴向深度。理论推导验证了原理的可行性；实验表明平面度改善 33.6%，重复测量的标准差下降 36.6%。",
+      why: "结构光层切的老问题是「要扫多少帧才够」，这篇把轴向定位从「找峰值定焦面」换成「与已知调制波形做匹配滤波」，等于把标定过的轴向响应当先验塞进定位，于是单帧扫描就能给深度。33.6% 的平面度与 36.6% 的重复性改善是实打实的工程指标。要留神两点：互相关参考由系统光学参数构造，样品折射率失配或残余像差会让参考与实际廓线错配，摘要没有讨论这种失配下的退化；实验对象与成像深度也未给出，提升幅度能否在厚样品里保持并不清楚。"
+    },
+    {
+      id: "spectral-gs", no: 178, tier: "B", section: "core", primaryTopic: "T05", topicTags: ["T05", "T04"], confidence: 0.64, score: 0.64, evidence: "real",
+      title: "SpectralGS: Spectral Gaussian Splatting for Unsupervised Spectral Super-Resolution",
+      titleZh: "把高光谱写成「共享光谱 + 局部空间」的高斯：只用 RGB 监督光谱重建",
+      authors: ["Qiaoying Qu", "Bin Pan", "Chen Jia", "Haiyang Xu", "Xia Xu", "Zhenwei Shi"],
+      venue: "arXiv preprint (cs.CV)", published: "2026-11-22", url: "https://arxiv.org/abs/2611.29388",
+      tags: ["光谱超分辨", "高斯泼溅", "无监督"], primaryClass: "cs.CV",
+      summary: "无监督光谱超分辨要在没有配对高光谱数据的情况下从 RGB 恢复光谱，难点在于 RGB 观测里的光谱信息太少。SpectralGS 由两部分组成：共享光谱高斯表示用共享的光谱基元与局部空间基元构造连续的空谱表示，利用高光谱图像的低秩光谱结构；光谱响应投影渲染则用光谱响应函数对连续表示做积分投影并混合成 RGB 图，渲染结果与观测 RGB 的一致性构成训练监督。实验显示其表现优于现有方法。",
+      why: "关键是把成像过程写进了表示里：光谱响应函数不是后处理而是渲染算子，于是无监督的监督信号来自传感器物理而不是配对数据；共享光谱基元对应低秩假设，把「每个像素一条独立光谱」的病态问题压成「少数光谱基元加权」。可质疑之处：低秩假设在含稀有材料或窄发射线的场景会失效，而这类场景恰恰最需要光谱超分辨；监督只有 RGB 一致性，解的非唯一性靠低秩与空间平滑隐式约束，摘要也没有给出光谱角误差一类的定量指标。"
+    },
+    {
+      id: "decoflat", no: 179, tier: "B", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.64, score: 0.64, evidence: "real",
+      title: "Not All Directions Are Flat: Decomposed-Gradient Flatness for Sparse-View 3D Gaussian Splatting",
+      titleZh: "平坦极小值的扰动也分方向：沿「视角分歧」方向扰才泛化",
+      authors: ["Ungbae Yoon", "Kwanyoung Kim"],
+      venue: "arXiv preprint (cs.CV)", published: "2026-11-21", url: "https://arxiv.org/abs/2611.28802",
+      tags: ["3D 高斯泼溅", "稀疏视角", "平坦极小值"], primaryClass: "cs.CV",
+      summary: "稀疏视角下 3D 高斯泼溅会过拟合训练视角，在新视角上退化。平坦极小值优化把高斯基元当作可训练参数，用随机噪声或沿训练梯度扰动把训练引向泛化更好的平坦解，但这些扰动忽略了相对其他视角的方向。作者发现扰动方向决定了它是否改善泛化：把每个训练视角的梯度分解为与全体视角平均梯度平行的分量（各视角一致）与正交分量（各视角分歧），沿正交分量扰动改善泛化，沿平行分量则不会。作者还发现平坦性修正常常与重建梯度相反，会缩小甚至反转重建步。据此提出 DecoFlat：沿正交分量叠加随机噪声扰动每个高斯，引入冲突感知修正去掉与重建梯度对抗的那部分平坦性修正，并重排球谐颜色以抑制视角相关外观过拟合。作为即插即用优化器，它一致地改善原始 3DGS 与多种稀疏视角方法。",
+      why: "这篇的诊断比方法更值钱：平坦极小值在 3DGS 里被当成「加噪声就行」，作者指出方向才是关键——沿视角一致方向扰动只是把训练集再拟合一遍，沿分歧方向扰动才是在补视角间的信息缺口；而「平坦性修正会与重建梯度对抗」这一观察也解释了为什么有些正则一加就糊。局限同样清楚：分解依赖全体视角的平均梯度，只有两三张输入时「平均」本身就是噪声；结论只在 3DGS 的新视角合成基准上验证，没有跨到断层重建、显微这类测量算子完全不同的逆问题。"
+    },
+    {
+      id: "rmgnet-uav", no: 180, tier: "B", section: "core", primaryTopic: "T08", topicTags: ["T08"], confidence: 0.68, score: 0.68, evidence: "real",
+      title: "Thermal-Guided Low-Light UAV Image Enhancement: A Reliability-Aware Guidance Network and a Unified Benchmark",
+      titleZh: "热红外引导弱对齐低光增强：先估可靠性，再决定每块区域走哪条策略",
+      authors: ["Zhicheng Zhao", "Yu Wang", "Jiangong Xu", "Lixiang Xu", "Chenglong Li", "Jin Tang"],
+      venue: "arXiv preprint (cs.CV)", published: "2026-11-23", url: "https://arxiv.org/abs/2611.30114",
+      tags: ["低光增强", "热红外引导", "多模态融合"], primaryClass: "cs.CV",
+      summary: "热红外引导的低光增强适合夜间无人机感知，因为可见光严重退化时热像仍然有效。但退化后的可见光既是配准参考又是增强目标，低照度、传感器差异与无人机运动让热引导的空间对应与局部可用性都不确定；错配的热线索会引入伪影，空间变化的退化又要求分区恢复而非统一增强。作者提出可靠性感知的多策略引导网络 RMGNet：引导标定模块做粗到细的位移估计，并联合评估对齐后热引导的可靠性与退化可见光证据的可用性；多策略增强路由模块生成细节保留、高光保护重打光、热补偿三路候选，再按空间路由其贡献。作者同时构建了含 5000 组三元组的弱对齐无人机光学-热数据集 UWOT。",
+      why: "多模态融合最常见的失败模式是把错配的热边缘当成结构证据，这篇把可靠性估计做成一等公民，并按区域在多条增强路径之间路由——这比一个网络端到端出图更贴近「退化在空间上不均匀」这个事实。UWOT 的弱对齐设定也比强行配准更诚实。要打问号：可靠性分数没有外部真值，只能靠下游指标间接验证，容易出现可靠性与增益同向但都源自同一批数据偏置；增强类的 PSNR 与感知指标在夜间低光下与人眼感受、与下游检测性能的关系并不稳定。"
+    },
+    {
+      id: "ballistic-sri", no: 181, tier: "B", section: "physics", primaryTopic: "T09", topicTags: ["T09"], confidence: 0.64, score: 0.64, evidence: "mixed",
+      title: "Ballistic propagation-mediated super-resolution light-element imaging: in-situ tracking dynamic hydrogen migration",
+      titleZh: "14 pm 分辨、氢对比度 24%：把电子当粒子看，反而看见了轻原子",
+      authors: ["Zhiyao Liang", "Feng Liu", "Linyuan Chen", "Zhiwei Lv", "Shiya Chen", "Xinyu Liao", "Yuzhou He", "Yi Wang", "Pengpeng Liu", "Hua Bing Tao", "Nianpeng Lu", "Changlin Zheng", "Yang Sun", "Qinghua Zhang", "Rafal E. Dunin-Borkowski", "Xian-Kui Wei"],
+      venue: "arXiv preprint (cond-mat.mtrl-sci)", published: "2026-11-22", url: "https://arxiv.org/abs/2611.29563",
+      tags: ["电子显微", "轻元素成像", "氢动力学"], primaryClass: "cond-mat.mtrl-sci",
+      summary: "透射电子的波长只有几皮米，理论上能分辨固体中的所有原子，但受透镜像差、Z 对比度依赖与时间分辨率限制，扫描透射电镜一直无法在原子尺度追踪氢的动态。作者用实验引导的仿真表明：与重原子成像由波动成像过程主导不同，在 Cs 校正透射电镜中类粒子电子的弹道传播使轻原子实现超分辨成像，分辨率达 14 pm，氢对比度约 24%。原位超分辨成像不仅揭示了 TiHx 与 H-LaAlO3 中的聚合态氢聚集，还观测到氢的位间迁移、转动位移，以及氧化物中集体氢隧穿引起的极化突增。",
+      why: "反直觉的一点是「换成粒子图像反而更清楚」：重原子的衬度来自波的相位与干涉，轻原子在这套机制里几乎消失，而弹道传播下的粒子式散射把氢的散射截面直接变成衬度。14 pm 与 24% 意味着氢不再只是猜出来的亮点，而是可跟踪的对象，位间迁移与集体隧穿这类动力学此前基本靠理论推断。要谨慎：成像机制的解释建立在实验引导的仿真上，依赖对 Cs 校正器残余像差的建模；电子束诱导的氢迁移本身是长期争议点，原位看到的迁移有多少属于束流效应需要对照实验；样品厚度与取向对 24% 对比度的影响也未见系统扫描。"
+    },
+    {
+      id: "mcp-euv-ptycho", no: 182, tier: "C", section: "physics", primaryTopic: "T06", topicTags: ["T06", "T04"], confidence: 0.52, score: 0.52, evidence: "mixed",
+      title: "MCP-based EUV ptychography with physics-simulation-trained residual learning",
+      titleZh: "MCP 探测器又糊又非线性：先用仿真退化训练的网络把衍射图修回来",
+      authors: ["Qijun You", "Nuoxuan Yang", "Fangrui Quan", "Xu Han", "Jie Li", "Seunghwoi Han", "Wei Cao"],
+      venue: "arXiv preprint (physics.optics)", published: "2026-11-21", url: "https://arxiv.org/abs/2611.28912",
+      tags: ["极紫外叠层成像", "微通道板", "残差学习"], primaryClass: "physics.optics",
+      summary: "微通道板探测器在极紫外实验里增益高，但空间模糊与非线性响应妨碍定量衍射成像。作者搭建基于 MCP 的 EUV 叠层成像系统，把探测器硬件与物理仿真训练的计算复原结合：一个在仿真探测器退化上训练的残差学习网络，无需实验配对数据就能恢复衍射图。在相同的重建设置下，该预处理显著优于未校正数据的重建；57 nm 单谐波成像的有效边缘响应宽度为 1.08 μm，接近该几何下的衍射极限尺度；方法还支持 44.4 nm 与 57 nm 的波长复用成像。",
+      why: "探测器退化常被丢给重建算法的鲁棒性去硬扛，这篇反过来先把测量修好再重建，而且训练数据全部来自仿真——对买不起科学级 EUV CCD 的实验室，这是最现实的路径。要盯住的是仿真退化是否覆盖真实退化：残差网络只学会了作者建模的那几类模糊与非线性，MCP 的增益漂移与局部饱和一旦不在模型里，修出来的图可能比不修更糟。另外 1.08 μm 对应 57 nm 波长是两个数量级的差距，说明分辨率仍由探测器与几何决定，计算复原只是把损失追回一部分。"
+    },
+    {
+      id: "wildanysplat", no: 183, tier: "C", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "WildAnySplat: Feed-Forward 3D Gaussian Splatting in the Wild",
+      titleZh: "野外多视图里有行人、有曝光跳变：教师-学生网络直接吐出干净的高斯",
+      authors: ["Richard Shaw", "Arthur Moreau", "Athanasios Papaioannou", "Thomas Tanay", "Zhensong Zhang", "Eduardo Pérez-Pellitero"],
+      venue: "SIGGRAPH Asia 2026 (Conference Papers), pp.1-11", published: "2026-11-30", url: "https://doi.org/10.1145/3829340.3842323", doi: "10.1145/3829340.3842323",
+      tags: ["前馈重建", "3D 高斯泼溅", "野外数据"], primaryClass: "cs.CV",
+      summary: "前馈 3DGS 能从多视图图像直接回归高斯表示，但野外图像存在瞬态遮挡、光照变化与相机 ISP 造成的多视图不一致，会拖垮现有前馈重建。作者提出学生-教师框架学习瞬态鲁棒、外观一致的三维表示：教师网络处理干净图像，学生处理对应的野外输入，教师提供干净监督把学生引向一致的规范表示。由于成对的干净与野外数据稀少，采用真实配对采集、合成增广与优化式重建生成的伪干净标签混合的数据策略。架构为 transformer 加分别预测位姿、深度与高斯的 DPT 头，并预测逐视角瞬态掩码来重加权光度监督、抑制不可靠高斯；双边网格模块建模逐图像颜色变换以恢复规范辐照表示。",
+      why: "前馈重建的真正门槛不是网络容量而是训练目标的干净程度：野外数据的不一致既包含该丢弃的瞬态物体，也包含该保留的真实光照变化，这篇用逐视角瞬态掩码与双边网格把两者分开处理，是结构上正确的拆法；教师-学生加伪干净标签则是承认「没有干净真值」之后的务实选择。要警惕：伪干净标签来自优化式重建，优化式重建自身的失败（大面积遮挡、强曝光）会被蒸馏进前馈模型；保留快速推理意味着能力上限受单次前向的表达力限制，而评测集中在野外基准，缺少对极端遮挡比例的失效分析。"
+    },
+    {
+      id: "espg-1km", no: 184, tier: "C", section: "system", primaryTopic: "T02", topicTags: ["T02", "T03"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "eSPG: The Unreasonable Effectiveness of Event Speckle Plethysmography",
+      titleZh: "一公里外测心率：事件相机把皮肤散斑的抖动变成脉搏",
+      authors: ["Aniket Dashpute", "Anirudh Bindiganavale Harish", "Bhargav Ghanekar", "Alankar Kotwal", "Andrew Negrut", "Syna Gupta", "Pablo A. Valdes", "Ashok Veeraraghavan"],
+      venue: "arXiv preprint (cs.CV)", published: "2026-11-20", url: "https://arxiv.org/abs/2611.28275",
+      tags: ["事件相机", "动态散斑", "非接触测量"], primaryClass: "cs.CV",
+      summary: "非接触测量心率对监护与救援有价值，但现有方法受环境光与运动影响，演示距离只有几十米。作者提出事件散斑脉搏波：用 0.5 至 5 mW 的低功率激光照射身体部位，用事件相机记录随之产生的动态散斑。事件相机的高动态范围、高时间分辨率与对光强变化的敏感性，适合捕捉编码生理信号的快速散斑涨落。在一公里距离上心率估计的平均绝对误差为 5 次/分，90% 的估计满足 AAMI 心率估计标准；该距离比此前的远程脉搏波演示远一个数量级，比散斑脉搏波演示远三个数量级。作者还刻画了对运动与环境光的鲁棒性并给出理论分析。",
+      why: "值得读的是「探测器特性对齐信号特性」这条思路：脉搏引起的是散斑强度的高频微涨落，帧相机在远距离被曝光与带宽卡住，事件相机按变化触发、等效时间分辨率极高，正好把信号从噪声里挑出来。一公里、5 次/分、90% 满足 AAMI，是少见的把实验室指标推到户外量级的演示。要打问号：公里级激光照射在眼睛安全与合规上的边界摘要未提；5 次/分的误差对心律失常筛查不够；「三个数量级」的对比基准是散斑脉搏波而非远程光电容积脉搏波，后者公开的最好结果通常在十米量级，跨方法比较需要谨慎。"
     }
   ],
   archive: [
-    { date: "2026-11-20", number: 21, count: 13, highlights: "7 个方向 · 跨方向 10 篇 · 事件相机傅里叶变换高光谱 / OAM 散斑码本单帧动态成像 / 原子高斯表示做电子断层", current: true,
+    { date: "2026-11-24", number: 22, count: 11, highlights: "7 个方向 · 跨方向 6 篇 · SPAD 单体积康普顿相机 / 单张全息图给出波前训练梯度 / 轴向差互相关单帧三维层切", current: true,
+      dailyIds: ["compton-spad", "holographic-grad", "mmf-250khz", "adcc-sim", "spectral-gs", "decoflat", "rmgnet-uav", "ballistic-sri", "mcp-euv-ptycho", "wildanysplat", "espg-1km"], headlineIds: ["compton-spad", "holographic-grad", "adcc-sim"] },
+    { date: "2026-11-20", number: 21, count: 13, highlights: "7 个方向 · 跨方向 10 篇 · 事件相机傅里叶变换高光谱 / OAM 散斑码本单帧动态成像 / 原子高斯表示做电子断层", current: false,
       dailyIds: ["event-ft-hsi", "oam-speckle", "tm-compress", "cs-coincidence", "anchor-inertial", "gaussian-splatoms", "mre-joint", "flowfs-twin", "4d-tempo", "ure-mult", "mvid", "multi-illum-sr", "fourier-py"], headlineIds: ["event-ft-hsi", "oam-speckle", "gaussian-splatoms"] },
     { date: "2026-11-18", number: 20, count: 11, highlights: "6 个方向 · 跨方向 7 篇 · 极光电子沉降场的延迟发光前向模型 / 相位恢复的 MAP 统一视角 / 可微物理的电子显微工具箱", current: false,
       dailyIds: ["aurora-nf", "capi-lpr", "pr-map-review", "pcsa-unet", "quantem", "plenoptic-design", "realsccp-oct", "mm-seqreg", "fisher-metrology", "thermosight", "apex-zpc"], headlineIds: ["aurora-nf", "pr-map-review", "quantem"] },
