@@ -1,16 +1,16 @@
 window.NLOS_DATA = {
   issue: {
-    date: "2026-11-25",
-    number: 23,
-    updatedAt: "2026-11-25T15:08:20Z",
+    date: "2026-11-26",
+    number: 24,
+    updatedAt: "2026-11-26T11:03:48Z",
     sourceCount: 3,
-    fetched: 1520,
+    fetched: 1540,
     kept: 9,
-    headline: "本期三条 A 级都在换「先验从哪来」。叠层衍射这一条把相位恢复的迭代过程换成一个物理感知的基础模型：训练用可微前向模型、不需要物体标签，步进扫描学到的东西能直接用到另一批样品的飞行扫描上，线站端的推断速度到每秒 200 帧，重建从采集之后的事后处理变成采集过程中的可视化。高光谱这一条反过来造数据：把 3D 场景按材质取实测反射率、逐波长做完整光路追踪，渲出 4500 张高光谱图，只在这些合成图上训练的重建网络，迁移到未见真实数据时多数测试集上超过用最大真实数据集训练的网络——按材质赋光谱而不是按颜色赋光谱，是其中最关键的一步。第三条是显微复原的流匹配：起点从与目标无关的标准高斯，换成由退化观测预测出来的分布，训练路径变短、速度目标不再互相冲突，十个数据集上与十三类基线比，保真度与感知指标的每种组合下都拿到最佳中位排名。",
-    note: "首轮 87 次查询取回 1520 条记录、83 条候选，其中 1 次查询失败：T09 的定量相位显微查询被远程主机重置（WinError 10054）；Crossref 的 19 本期刊与 OpenAlex 的会议、数据库、机构追踪全部成功，脚本按规则保留旧数据未清空。T01 与 T07 首轮候选极稀（各只有 1 至 2 条），遂对 T09、T01、T07 以 7 天窗、每次查询间隔 6 秒补抓一轮共 17 次查询，0 失败、新增 3 条候选，合并后 86 条按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，7 条与既有 184 篇重合，余 79 条逐条读摘要。收录 9 篇，覆盖 7 个方向：T02×2 / T09×2 / T03×1 / T04×1 / T05×1 / T06×1 / T10×1；A 级 3 篇（叠层衍射基础模型 0.80、光谱渲染数据集 0.80、流匹配起点 0.76）、B 级 6 篇、C 级 0 篇；跨方向 3 篇。T01 非视域、T08 计算摄影本期空缺：T01 唯一像样的候选是 Optics Express 的 10.1364/oe.613926（多模光纤耦合分形超导纳米线探测器的非视域成像），四条件全部命中——Crossref 无摘要、OpenAlex 查不到该 DOI、按标题搜 arXiv 无预印本、落地页写着 accepted for publication——按不据标题臆写的原则弃用，这是本期最可惜的一条；T08 当日候选全是低光增强之外的目标跟踪、遥感分类与医学分割，无一命中成像形成过程。T10 只收 Spectrify 一篇，其余候选是自动驾驶传感器故障综述（0.98 的高分来自词面命中，与成像无关）、水稻病害分类、DAS 事件分类、LULC 制图等，一律判弃。另判弃：2611.31667 传感器故障综述；2611.26751 三维超声定位显微（0.76，属声学超分辨，不在光学计算成像范围，且为可行性研究）；2611.32628 与 2611.31918 是 3DGS 的压缩编码与光栅化架构，属图形学系统而非成像反演；2611.32396 是 4D 重建的物理关系约束，偏场景表示；doi:10.1364/josaa.616597 的高光谱单像素标定仍是 Optica 占位、三路无摘要，上一期已弃、本期再现。出处按 Crossref 核验：10.1364/ao.619818 被 OpenAlex 标成 CLEO，实为 Applied Optics（已录用待排版，无卷期页）；10.1364/ao.610645 记为 Applied Optics 65(34):12087；10.1364/boe.620774 记为 Biomedical Optics Express 17(12):6376；10.1002/lpor.72247 为 Laser & Photonics Reviews 早期在线。版本号 v20→v21。",
-    dailyIds: ["ptychofm", "spectrify", "beacon-flow", "qat-brightfield", "dsm-mmf", "uw-plc-gmm", "itof-uncertainty", "sharpnp", "pps-diffusion"],
-    headlineIds: ["ptychofm", "spectrify", "beacon-flow"],
-    crossIds: ["ptychofm", "spectrify", "qat-brightfield"]
+    headline: "今天两条 A 级都在处理「标注与标定从哪来」。显微这一条把点扩散函数从需要另拍的标定物变成从数据里推断的隐变量：训练全部来自物理仿真，网络不知道物镜参数也能用，逐位置的 PSF 顺带把宽场与光片视场边缘的离焦一起校正，变形镜上 1290 张实测图像给出的盲估与独立参考吻合，随机照明超分辨重建也跟着改善——这一步的价值在于它验证了对 PSF 误差最敏感的那类重建。SPAD 这一条相反：单光子数据人眼几乎看不出内容，标注无从下手，于是把光子散粒噪声、暗计数与空间串扰写进三维仿真器，只在合成数据上训练的分类器在低于 2 勒克斯的真实记录上零样本可用，仿真的旋转扫描迁到真实 20 度与 30 度旋转时误差小于 1 度。第三条是新鲜的结直肠标本：毫米级组织里的多重散射既压低偏振对比也让部分像素失去物理意义，作者先用蒙特卡洛把每个深度上偏振还剩多少可信度算成分数，再与九个结构偏振特征一起送进变分贝叶斯回归，特异度 0.91、敏感度 0.88。",
+    note: "首轮 87 次查询取回 1540 条记录、101 条候选、0 次失败；成像候选明显偏少，遂以 7 天窗补跑一轮（87 次查询、1502 条、147 候选），其中 4 次 OpenAlex 查询被限流（ICCP、CLEO、中科院光电所刘博团队、西湖大学，均为 HTTP 429），Crossref 的 19 本期刊与 arXiv 全部成功，旧数据按规则保留未清空。两轮合并 154 条，按 id、DOI（含 id 中 doi: 前缀）与标题三重比对，26 条与既有 193 篇重合，余 128 条逐条读摘要。收录 9 篇，覆盖 7 个方向：T02×2 / T05×2 / T03×1 / T04×1 / T06×1 / T08×1 / T09×1；A 级 2 篇（单张图盲估空间变化 PSF 0.92、被动 SPAD 三维仿真器 0.76）、B 级 4 篇、C 级 3 篇；跨方向 1 篇（SPAD 仿真器同时计入 T03 与 T10）。T01 非视域、T07 光场与无透镜两个方向本期没有一条像样的候选，唯一挂到 T01 的是上期已判弃的 2611.32396（4D 重建的物理关系约束，偏场景表示），不重复收录。最可惜的是 T05 的核心候选 doi:10.1364/oe.613330（快照压缩光谱成像的相关引导循环色散校正）与 doi:10.1364/oe.603943（双光子散斑照明超分辨显微），两条都是 Optica「已录用待排版」：Crossref 无摘要无卷期、落地页写着 accepted for publication、按标题在 arXiv 也搜不到预印本，四条件全中，按不据标题臆写原则弃用；同样的 doi:10.1364/josaa.616597（高光谱单像素标定）已连续第三期以占位状态出现。其余判弃：doi:10.1002/lpor.72265 相变超表面多通道全息与 doi:10.1364/ao.619810 全息视频运动补偿误差模型属显示与编码，不做成像反演；doi:10.1117/1.apn.6.1.016015 的 D2NN 结构光识别与 doi:10.1038/s41377-026-02421-3 的钙钛矿可见光通信天线属光计算与通信；2611.32144（多对比 MRI 超分辨）、2611.33920（超声 B 模式高斯泼溅）、doi:10.1002/mrm.70662（QSM 反演）、2611.34008（PET 剂量数据集）、2611.26751（三维超声定位显微，上期已弃）均非光学计算成像；2611.33380、2611.32628、2611.31918、2611.33905、2611.33796 是 3DGS 的轨迹规划、压缩、光栅化与航空正射，属图形学系统工程而非成像反演；2611.31667 传感器故障综述（0.98 来自词面命中）、2611.34700 与 2611.33760 等一批多模态大模型基准、doi:10.22266/ijies* 的水稻病害与 DAS 事件分类、doi:10.5829 与 doi:10.32604 的交通流与无人机跟踪、doi:10.24057 的 LULC 制图，一律判弃。出处按 Crossref 核验：10.1364/boe.613989 为 Biomedical Optics Express 17(12):6390；10.1364/ao.612967 为 Applied Optics 65(34):12176；10.3390/jimaging12110591 为 Journal of Imaging 12(11):591，OpenAlex 曾把 Journal of Imaging 标成 ICCP，属检索词污染。版本号 v21→v22。",
+    dailyIds: ["deepblur", "spad-sim3d", "mueller-crc", "stokes-lowlight", "diff-wfs", "csi-review", "hymts", "pr-stability", "lstmp"],
+    headlineIds: ["deepblur", "spad-sim3d", "mueller-crc"],
+    crossIds: ["spad-sim3d"]
   },
   features: { dynamicTopics: true, shadowClassify: true, coldStart: true },
   topics: [
@@ -1964,10 +1964,102 @@ window.NLOS_DATA = {
       tags: ["扩散先验", "后验采样", "线性逆问题"], primaryClass: "cs.LG",
       summary: "扩散模型为含噪线性逆问题提供了有效的生成先验，但现有后验采样方法往往需要对测量算子做奇异值分解，或者需要事先知道测量噪声方差；基于局部梯度的引导又只能看到后验几何的局部。作者提出带流形投影的渐进后验采样（PPS）：在反向扩散过程中自动估计测量噪声方差并避开 SVD，用闭式构造后验的高斯近似，把从局部先验采出的样本引向近似后验均值；随后把引导后的样本投影到一个球面水平集上，该水平集近似局部的含噪图像流形，以保持与扩散先验局部几何的一致。在 FFHQ 与 ImageNet 上跨四类复原任务、三档测量噪声的实验显示，PPS 在重建精度与感知质量上具有竞争力。",
       why: "真正做逆问题的人最怕两件事：算子太大做不了奇异值分解，噪声水平说不准。这篇把两者一并去掉——方差在采样过程中估计，算子只以作用于样本的形式出现，于是方法可以挂到任意可微前向模型上。球面水平集投影把「样本该落在哪个半径」变成几何约束，比单纯用梯度拉一把更稳。要打问号：FFHQ 与 ImageNet 上的四类复原任务以模糊、下采样为主，与计算成像里真正的物理算子（多次散射、非线性响应、光子计数）差得很远，噪声也是加性高斯而非泊松；自动估计噪声方差在噪声与信号强相关时最容易失效，摘要没有给这类压力测试；采样步数预算与感知—失真取舍也没有可复现的说明。"
+    },
+    {
+      id: "deepblur", no: 194, tier: "A", section: "core", primaryTopic: "T09", topicTags: ["T09"], confidence: 0.92, score: 0.92, evidence: "real",
+      title: "Blind spatially varying PSF estimation for fluorescence microscopy",
+      titleZh: "像差不必另拍标定：单张生物图像里直接估出空间变化的点扩散函数",
+      authors: ["Minh Hai Nguyen", "Florian Sarron", "Paul Escande", "Sylvain Cantaloube", "Thomas Mangeat", "Pierre Weiss"],
+      venue: "arXiv preprint (physics.optics)", published: "2026-11-25", url: "https://arxiv.org/abs/2611.34607",
+      tags: ["盲反卷积", "点扩散函数", "空间变化像差"], primaryClass: "physics.optics",
+      summary: "光学像差会降低荧光显微图像的质量，而测量对应的点扩散函数往往需要专门的采集，例如孤立发射体或已知标样。作者提出 DeepBlur：一个直接从生物结构的单张图像估计空间变化二维 PSF 的神经网络。它的训练完全基于物理仿真，覆盖像差、照明与噪声三类变化，因此不需要用户提供任何光学参数就能适应不同的成像条件。作者用变形镜采集了 1290 张图像，并把盲估的 PSF 与独立参考逐一对比：估计值与参考吻合得相当好，并且改善了对实验含像差图像的去卷积。逐位置的 PSF 估计还能校正空间变化的离焦，并改进生物组织中的随机照明超分辨重建。方法已通过 DeepInv、napari 插件与一个网页演示开放，可直接接入计算显微的工作流。",
+      why: "传统标定要单独拍荧光珠或找孤立点源，等于每装一次片就多一轮采集，而活体或稀缺样品往往不给你这个时间。这里把 PSF 变成从数据里推断的隐变量：仿真的像差—照明—噪声三元组覆盖得足够宽，网络就不必知道物镜参数，装片即可用。空间变化这一点最关键——宽场和光片视场边缘的像差不是常数，用一个全局 PSF 去做去卷积会在边缘留下系统性的模糊，逐位置的 PSF 恰好补上这一块。改进随机照明超分辨是更有力的证据，因为那类重建对 PSF 误差极其敏感，PSF 不准时拼图直接错位。要打问号：训练分布是物理仿真，真实系统的像差若落在仿真族之外（强散射样品、非线性响应、装片应力）会退化；1290 张变形镜图像只覆盖受控像差；精度是用「与参考吻合」描述的，摘要没给去卷积后的定量增益，也没给单张推断耗时，实时性未知。"
+    },
+    {
+      id: "spad-sim3d", no: 195, tier: "A", section: "tools", primaryTopic: "T03", topicTags: ["T03", "T10"], confidence: 0.76, score: 0.76, evidence: "real",
+      title: "A 3D Simulator for Passive SPAD Imaging",
+      titleZh: "被动 SPAD 缺的不是器件而是标注：把光子探测仿出来，零样本迁到真实暗光",
+      authors: ["Elia Mergaert", "Rong Zou", "Roberto Pellerito", "Simone Nascivera", "Davide Scaramuzza"],
+      venue: "arXiv preprint (cs.CV)", published: "2026-11-24", url: "https://arxiv.org/abs/2611.33498",
+      tags: ["SPAD 仿真", "仿真到真实", "暗光感知"], primaryClass: "cs.CV",
+      summary: "被动单光子雪崩二极管（SPAD）相机能在极短曝光下给出观测，适合暗光感知，但为这类传感器标注任务数据很困难，带标注的数据集因此稀缺。作者提出一条三维仿真流水线，同时生成逼真的光子探测与相机运动、语义标签，使感知模型可以先在合成的 SPAD 观测上训练，再直接用到真实数据上。流水线把可控的场景几何与运动，与一个计入光子散粒噪声、暗计数与空间串扰的传感器观测模型耦合起来。作者用标定的光子计数对比，以及三项下游任务的零样本仿真到真实迁移来评估：只在合成 SPAD 数据上训练的分类器，在照度低于 2 勒克斯的真实暗光记录上无需微调即取得很高准确率；完全在仿真相机旋转扫描上训练的模型，零样本部署到真实的 20 度与 30 度旋转、0.5 与 5.0 勒克斯条件下，平均绝对旋转误差小于 1 度；用自动生成的稠密标签训练语义分割模型并直接在真实暗光记录上推断，同样有效。作者认为这条流水线为真实 SPAD 感知提供了可用的标注数据来源。",
+      why: "SPAD 的瓶颈早已不在器件而在标注：单光子数据人眼几乎看不出内容，标一次成本高到无法规模化。把探测物理写进仿真器是关键的一步——散粒噪声、暗计数、空间串扰这三项正是 SPAD 区别于普通 CMOS 的地方，只有它们被正确建模，合成数据的统计特性和真实传感器才对得上，零样本迁移才谈得上。三项任务里旋转估计最有说服力：它对噪声与光子稀疏最敏感，误差小于 1 度说明时间维度上的光子统计被保住了。要打问号：场景几何与材质取自现有三维资产，真实暗光的动态范围与近红外响应未必覆盖；评测最低只到 0.5 勒克斯，而每帧只有几个光子的极端条件是 SPAD 的主场，那里散粒噪声的离散性最难仿；语义标签由渲染直接得到，真实场景的类别分布偏差没有讨论。"
+    },
+    {
+      id: "mueller-crc", no: 196, tier: "B", section: "core", primaryTopic: "T02", topicTags: ["T02"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Physics-guided Mueller matrix analysis for delineating colorectal tumors in fresh millimeter-scale ex vivo tissue",
+      titleZh: "毫米级新鲜组织里偏振对比被散射压掉：先用蒙特卡洛算出每个像素还剩多少可信度",
+      authors: ["Ruyin Lyu", "Lu Ding", "Fei Liao", "Xuejuan Zhu", "Xin Ma", "Xiuqing Dai", "Yanni Dong"],
+      venue: "Biomedical Optics Express 17(12):6390", published: "2026-11-24", url: "https://doi.org/10.1364/boe.613989", doi: "10.1364/boe.613989",
+      tags: ["穆勒矩阵", "多重散射", "偏振成像"], primaryClass: "journal",
+      summary: "新鲜结直肠标本的穆勒矩阵测量受毫米级组织内多重散射的影响：散射既压低偏振信号，也削弱肿瘤相关的对比。作者提出一个物理引导框架来应对。先用蒙特卡洛仿真建模随深度变化的偏振损失，据此生成一个物理置信度分数，再把这个分数与九个结构偏振特征一起送入变分贝叶斯逻辑回归。模型在 74 例标本上训练、46 例上测试。加入物理分数后性能明显提升，特异度达到 0.91、敏感度 0.88、Dice 系数 0.87；框架也优于 DeepLabV3（Dice 0.84），单例处理时间不到 10 分钟。",
+      why: "偏振成像在组织里的老问题是「信号弱」与「信号假」分不开——散射既压低了对比，也让某些像素的偏振量失去物理意义，而分类器并不知道哪些像素该信。这里没有硬扛散射，而是先用蒙特卡洛把「这个深度上偏振还剩多少可信度」算成一个逐像素的分数，等于把前向物理当成权重直接喂给判别器。用变分贝叶斯逻辑回归而不是大网络，在 120 例这个量级上是更稳的选择，参数不确定性也保住了可解释性。要打问号：训练与测试来自同一批采集条件，跨中心、跨设备的泛化没有验证；Dice 0.87 是相对什么标注（病理医师勾画还是大体边界）没有交代，临床终点也不明确；不到 10 分钟的单例耗时对术中决策仍偏慢，硬件成本未提。"
+    },
+    {
+      id: "stokes-lowlight", no: 197, tier: "B", section: "core", primaryTopic: "T08", topicTags: ["T08"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "Dual-branch low-light color polarization image enhancement method based on Stokes vectors",
+      titleZh: "低照度偏振图不能当普通暗图增强：S0 走 Retinex，S1/S2 只管结构",
+      authors: ["Yangjing Hou", "Jin Duan", "Meiling Gao", "Mengmeng Jiang", "Hua Cai", "Yingzhi Wang"],
+      venue: "Applied Optics 65(34):12176", published: "2026-11-25", url: "https://doi.org/10.1364/ao.612967", doi: "10.1364/ao.612967",
+      tags: ["Stokes 矢量", "低照度增强", "偏振去噪"], primaryClass: "journal",
+      summary: "针对低照度下彩色偏振图像噪声严重、整体退化与细节丢失的问题，作者提出一个基于 Stokes 矢量的双分支增强框架。双分支按 Stokes 各分量的物理属性差异设计：强度分支先用自编码器主干从 S0 提取特征，再结合 Retinex 分解与暗通道约束做全局亮度增强并抑制噪声，从而保住 S0 的颜色、纹理与细节；偏振分支利用 S1 与 S2 的结构信息，通过全局与边缘特征提取提升结构轮廓的清晰度、抑制噪声干扰，完成结构增强与细节重建，并由此改善 DoLP 与 AoP 的质量。在 PLIE 与 RCPI 数据集上的实验显示，方法在 PSNR、SSIM、AE 与 MAE 四项指标上取得有竞争力的结果。",
+      why: "三个 Stokes 分量的物理意义不同：S0 是总强度，可以按 Retinex 的思路分解成照度与反射率；S1、S2 是差分强度，量级本来就小。若把三者一起做亮度拉伸，偏振对比会被放大成伪影，DoLP 与 AoP 直接失真。分两支处理等于承认「该增强的量」和「该保结构的量」不是一回事，DoLP、AoP 也因此成为可评估的中间量——这比只报 PSNR 更贴近偏振成像的真实用途。要打问号：两个数据集都是既有偏振数据集，暗光条件究竟是真实长曝光还是数值降质，摘要没有交代，而这直接决定结论的分量；改善主要体现在派生量的质量上，缺少去雾、材质区分这类下游任务的验证；双分支的参数量与实时性未给。"
+    },
+    {
+      id: "diff-wfs", no: 198, tier: "B", section: "efficient", primaryTopic: "T02", topicTags: ["T02"], confidence: 0.64, score: 0.64, evidence: "real",
+      title: "Deep-learning-enabled rapid spatially multiplexed wavefront sensing with a thin diffuser",
+      titleZh: "一块薄散射片把视场切成多路同时测波前，重建时间从 2.8 秒压到 23 毫秒",
+      authors: ["Ming Xue", "Shijie Wei", "Shulei Zhao", "Zhuojia Shi", "Tengfei Wu", "Xiaopeng Shao"],
+      venue: "arXiv preprint (physics.optics)", published: "2026-11-25", url: "https://arxiv.org/abs/2611.33724",
+      tags: ["波前传感", "薄散射片", "散斑重建"], primaryClass: "physics.optics",
+      summary: "常规波前传感只沿单一导星方向测量像差，难以校正大视场内随视场变化的像差。用薄散射片做空间复用，可以在多个等晕区上同时测量，但重建的计算成本高，难以跟踪不断变化的像差。作者提出一种深度学习方法，把用于位移估计的循环全对场变换（RAFT）与 Zernike 系数回归结合起来。实验显示，方法能从单张散斑图准确重建多个波前，并把三通道重建时间从传统数字图像相关的 2801.6 毫秒降到 23.1 毫秒；重建波前与逐通道顺序测量的参考吻合度，高于复用数字图像相关的结果；仿真还表明 Zernike 回归比直接梯度积分更抗噪。作者认为这为动态宽场像差传感与高速自适应光学提供了一条路径。",
+      why: "散射片在这里不是障碍而是编码器：一块薄扩散片把不同视场的波前打成彼此错开的散斑，单帧就能并行读出多路相位梯度，硬件上比多导星或 Shack–Hartmann 阵列便宜得多。难点一直在解算——数字图像相关要逐块串行配准，慢到无法闭环；换成 RAFT 的稠密位移场，一次前向就出全视场的流，两个数量级的速度提升正是自适应光学闭环所需要的。回归 Zernike 系数而不是积分梯度，顺带绕开了噪声沿积分路径累积的问题。要打问号：23 毫秒只是 GPU 推断时间，相机读出、传输与变形镜响应的整环延迟没有给；等晕区数量受散射片记忆效应与相机带宽限制，复用的通道上限与通道间串扰没有量化；实验的像差幅度远小于真实大气湍流或活体像差，强湍流下的泛化仍待验证。"
+    },
+    {
+      id: "csi-review", no: 199, tier: "B", section: "benchmark", primaryTopic: "T05", topicTags: ["T05"], confidence: 0.72, score: 0.72, evidence: "real",
+      title: "A Review of Compressive Spectral Imaging: Acquisition, Reconstruction, and Dynamic Imaging",
+      titleZh: "压缩光谱成像：按编码方式分家，动态场景只有两条路可走",
+      authors: ["Zhenghan Lin", "Jingzhao Duan", "Qiong Liu", "You Yang"],
+      venue: "Journal of Imaging 12(11):591", published: "2026-11-20", url: "https://doi.org/10.3390/jimaging12110591", doi: "10.3390/jimaging12110591",
+      tags: ["压缩光谱成像", "综述", "动态光谱成像"], primaryClass: "journal",
+      summary: "光谱成像记录常规彩色图像难以区分的谱差异，为材质识别等应用提供信息；传统扫描系统采集完整光谱耗时，且在运动场景中容易出现空间与光谱的失配。压缩光谱成像通过编码或欠采样减少对完整扫描的依赖，再用计算方法恢复光谱信息。这篇综述按记录光谱信息的方式梳理代表性采集系统的发展，并考察模型驱动、数据驱动与混合三类重建方法。作者用编码孔径快照光谱成像的仿真说明重建质量如何随压缩比变化，并在相应系统与方法中讨论动态场景问题，用原型与重建结果检验成像能力。比较中区分了两条路线：快速采集缩短光谱测量之间的时间差；帧间恢复利用时间相关性补足单次观测。作者还把重建精度与计算成本、实际器件运行联系起来，指出后续需要减少空间细节损失、降低计算成本，并改善复杂运动与器件状态变化下的成像。",
+      why: "这一行的进展常被「压缩比」一个数字掩盖，而压缩比、重建质量与计算成本三者的关系才是选型的关键，综述把它们拆成采集方式、重建范式、动态处理三条线分别对照，正好补上单篇论文不会讲的取舍。动态场景那一节最有价值：快速采集与帧间恢复是两种完全不同的工程承诺，前者靠硬件（更高帧率、更快编码），后者靠算法（跨帧先验），混为一谈会导致对系统能力的误判。要打问号：覆盖以编码孔径快照这条主流路线为主，滤波器阵列、积分视场等其他体制着墨多少未知；比较多是定性梳理加一个仿真示例，没有跨系统的统一基准；收录截止时间决定 2026 年下半年的新工作是否在内。"
+    },
+    {
+      id: "hymts", no: 200, tier: "C", section: "core", primaryTopic: "T05", topicTags: ["T05"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "HyMTS: A Multiscale Tensor Factorization-Based Network for Hyperspectral Image Restoration",
+      titleZh: "低秩不必写进损失：把多尺度张量分解做成算子，网络每一步都在子空间里算",
+      authors: ["Lei Xu", "Fahad Sohrab", "Moncef Gabbouj", "Mehmet Yamac"],
+      venue: "arXiv preprint (cs.CV)", published: "2026-11-23", url: "https://arxiv.org/abs/2611.31506",
+      tags: ["低秩先验", "张量分解", "高光谱复原"], primaryClass: "cs.CV",
+      summary: "高光谱图像在谱向与空间上都有很强的冗余，干净的底层信号通常可以用低维谱子空间与局部低秩的空间结构表示，而现有方法多在谱带之间做稠密注意力或特征混合。作者提出 HyMTS：一个以多尺度张量求和（MTS）分解算子为骨干的高光谱复原网络。它把低秩先验嵌进网络算子本身，而不是靠辅助损失或对重建输出加约束来施加；网络堆叠统一的模块，把分解层与输入自适应层耦合起来，同时捕捉谱向与空间上的局部与全局依赖。在不使用辅助数据的条件下，于高斯噪声去噪、真实噪声去噪与单幅超分辨的标准基准上，HyMTS 取得优于或可比于多种先进方法的结果。",
+      why: "把低秩从损失项搬进算子，是一个有实际后果的选择：写在损失里只是「罚」，网络仍可靠容量绕过去；写成算子则每一步前向都在低秩子空间里运算，参数量与计算量随之下降，也不必再额外调一个正则权重。多尺度这一点对高光谱尤其对路——不同尺度的谱相关长度不同，单尺度分解要么切碎谱结构，要么糊掉空间细节。要打问号：评测是去噪与单幅超分辨两类退化，与真实采集中的谱混叠、编码孔径压缩感知差得较远；「真实噪声」基准的噪声来源与传感器型号没有在摘要中说明；低秩假设在强纹理或稀疏点目标场景会失效，这类失败案例没有给。"
+    },
+    {
+      id: "pr-stability", no: 201, tier: "C", section: "physics", primaryTopic: "T06", topicTags: ["T06"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Stable phase retrieval from operator measurements",
+      titleZh: "无限维里稳定相位恢复几乎不可能：只有 p=4 这一个指数留了口子",
+      authors: ["Deanna Needell", "Yaniv Plan", "Tomasz Szczepanski", "Özgür Yılmaz"],
+      venue: "arXiv preprint (math.FA)", published: "2026-11-20", url: "https://arxiv.org/abs/2611.27085",
+      tags: ["相位恢复", "稳定性理论", "算子测量"], primaryClass: "math.FA",
+      summary: "Cahill、Casazza 与 Daubechies 曾证明：无限维 Hilbert 空间中没有框架能实现稳定的相位恢复。本文表明，对更一般的算子测量，稳定恢复可以做到，但只在一个特定指数上。给定实或复 Hilbert 空间上的一族有界算子，作者研究从二次测量及其保相平方根恢复相差一个全局相位的元素。考虑 p-Bessel 算子族（2≤p<∞），二次数据在 ℓ_{p/2} 中度量、平方根数据在 ℓ_p 中度量：无限维下只要 p≠4，任何 p-Bessel 算子族都不具备稳定相位恢复；p=4 时，对任何半正定算子族稳定性仍然失败。但作者构造出一族秩一算子（并非全部自伴），在其上稳定恢复可以实现；对秩二的自伴算子族，稳定性同样可达。两类测量下稳定性都可以在正交对上检验，这一归约保持最优常数；由此可推出有限维中恢复的唯一性蕴含稳定性。作者还说明，只保留测量模时，正交归约与「唯一性蕴含稳定性」在二维就会失效，并以冷冻电镜的二阶矩测量作为二次模型的动机。",
+      why: "做相位恢复的人真正关心的从来不是「能不能唯一恢复」，而是「测量带噪时误差会不会被放大」。这条结果给出了一个很硬的边界：在无限维里稳定性几乎被禁掉，只有 p=4 这一档幸存，而且半正定算子仍然不行，必须放宽到非自伴的秩一算子或秩二自伴算子。这种「几乎全否、极少可」的结论比任何一条算法改进都更能划定问题的可行域。两条副产品很实用：稳定性可在正交对上检验，把无穷多对的验证压到一组；有限维里唯一性即稳定性，数值上只需证唯一性。要打问号：结论是渐近与定性层面的，最优常数的具体数值、噪声放大的实际量级都没有给；作者自陈动机来自冷冻电镜二阶矩测量，却未与任何具体成像系统对接；p≠4 的否定结论依赖 ℓ_{p/2} 这一特定度量选择，换度量边界是否移动没有讨论。"
+    },
+    {
+      id: "lstmp", no: 202, tier: "C", section: "core", primaryTopic: "T04", topicTags: ["T04"], confidence: 0.52, score: 0.52, evidence: "real",
+      title: "Learned Score-Based Turbo Message Passing for Compressive Image Recovery",
+      titleZh: "消息传递里的去噪器一直在猜错噪声：把去噪步展开进网络，三次迭代收敛",
+      authors: ["Peihang Li", "Hao Jiang", "Xiaojun Yuan"],
+      venue: "arXiv preprint (eess.IV)", published: "2026-11-20", url: "https://arxiv.org/abs/2611.27337",
+      tags: ["深度展开", "分数先验", "压缩感知重建"], primaryClass: "eess.IV",
+      summary: "分数生成模型已被引入消息传递算法用于压缩图像恢复，为消息传递中的去噪模块提供先验；但这类模型假设输入是干净信号被独立同分布高斯噪声扰动，而消息传递的迭代过程中这一假设经常不成立，导致收敛慢、重建质量受限。作者提出学习式分数涡轮消息传递（LSTMP）：用深度展开把迭代过程展开成神经网络，使去噪器能适应迭代更新中固有的复杂噪声分布；同时把去噪器视为迭代求解器，将压缩测量的似然信息并入去噪器的网络，类似于涡轮消息传递中线性模块与非线性模块之间的消息交换。在 FFHQ 数据集上的实验显示，LSTMP 在不超过三次迭代内收敛并给出高保真重建，显著优于现有基线。",
+      why: "分数先验与迭代重建拼接时的错配是这一路方法的通病：去噪器按高斯噪声训练，而消息传递传到第 k 步的残差既不是高斯的也不是白的，去噪器于是在错误的噪声假设上做最优，误差随迭代累积。把展开网络与似然反馈接进来，等于让去噪器每一步都看到自己实际面对的噪声与测量约束，收敛压到三次迭代是这种对齐的直接收益——成像里算子昂贵、迭代预算紧，这个收益是可兑现的。要打问号：实验只在 FFHQ 这一种自然图像分布上、且以随机压缩感知矩阵为算子，与真实成像算子（编码孔径、多次散射、非线性响应）的距离没有触及；「三次迭代收敛」缺少随迭代数变化的质量曲线，也没给与扩散后验采样类方法的训练成本对比；增益在小尺寸图像上取得，高分辨率下的显存与速度未知。"
     }
   ],
   archive: [
-    { date: "2026-11-25", number: 23, count: 9, highlights: "7 个方向 · 跨方向 3 篇 · 叠层衍射基础模型 200 帧/秒 / 按材质光谱渲出的高光谱训练集 / 流匹配把起点换成观测条件分布", current: true,
+    { date: "2026-11-26", number: 24, count: 9, highlights: "7 个方向 · 跨方向 1 篇 · 单张图盲估空间变化 PSF / 被动 SPAD 光子仿真器零样本迁移 / 散射组织的偏振置信度打分", current: true,
+      dailyIds: ["deepblur", "spad-sim3d", "mueller-crc", "stokes-lowlight", "diff-wfs", "csi-review", "hymts", "pr-stability", "lstmp"], headlineIds: ["deepblur", "spad-sim3d", "mueller-crc"] },
+    { date: "2026-11-25", number: 23, count: 9, highlights: "7 个方向 · 跨方向 3 篇 · 叠层衍射基础模型 200 帧/秒 / 按材质光谱渲出的高光谱训练集 / 流匹配把起点换成观测条件分布", current: false,
       dailyIds: ["ptychofm", "spectrify", "beacon-flow", "qat-brightfield", "dsm-mmf", "uw-plc-gmm", "itof-uncertainty", "sharpnp", "pps-diffusion"], headlineIds: ["ptychofm", "spectrify", "beacon-flow"] },
     { date: "2026-11-24", number: 22, count: 11, highlights: "7 个方向 · 跨方向 6 篇 · SPAD 单体积康普顿相机 / 单张全息图给出波前训练梯度 / 轴向差互相关单帧三维层切", current: false,
       dailyIds: ["compton-spad", "holographic-grad", "mmf-250khz", "adcc-sim", "spectral-gs", "decoflat", "rmgnet-uav", "ballistic-sri", "mcp-euv-ptycho", "wildanysplat", "espg-1km"], headlineIds: ["compton-spad", "holographic-grad", "adcc-sim"] },
